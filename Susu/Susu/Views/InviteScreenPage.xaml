@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" xmlns:custom="clr-namespace:Susu.CustomControl"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             mc:Ignorable="d"
+             x:Class="Susu.Views.InviteScreenPage">
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <Image Source="backgroundImage.PNG"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Aspect="AspectFill"   AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" Opacity="0.5" />
+            <StackLayout VerticalOptions="Center" HorizontalOptions="Center"  AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+                <Image Source="Esorr_logo.png" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit" WidthRequest="150" HeightRequest="150"/>
+                <Label Text="{Binding GroupCreationSuccess}" VerticalOptions="Center" HorizontalOptions="Center" HorizontalTextAlignment="Center" FontSize="20" FontAttributes="Bold" TextColor="#2d67e4"  FontFamily="{StaticResource NormalFont}" Margin="10,0,10,0"/>
+                <Label Text="Invite people to group" FontSize="18" FontAttributes="Bold" TextColor="#2d67e4" VerticalOptions="Center" HorizontalOptions="Center" FontFamily="{StaticResource NormalFont}"/>
+                <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                    <Frame VerticalOptions="Center" HorizontalOptions="Center" Margin="10,0,10,0" CornerRadius="10">
+                        <StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Group Code:" FontSize="20" FontAttributes="Bold" TextColor="#2d67e4"  FontFamily="{StaticResource NormalFont}"/>
+                            <Label Text="{Binding GroupCode}" FontSize="20" TextColor="#2d67e4" FontFamily="{StaticResource NormalFont}"/>
+                        </StackLayout>
+                                <Label Text="Share this code with group" TextColor="#2d67e4" VerticalOptions="Center" HorizontalOptions="Center" FontFamily="{StaticResource NormalFont}"/>
+                                <Label Text="members and ask them to join" TextColor="#2d67e4" VerticalOptions="Center" HorizontalOptions="Center" FontFamily="{StaticResource NormalFont}"/>
+                        </StackLayout>
+                    </Frame>
+                    <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Center" Margin="10,10,10,0">
+                        <Frame VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="#2d67e4" CornerRadius="{x:OnPlatform Android='60', iOS='25'}"   WidthRequest="200" Margin="0,10,0,0" Padding="15" HasShadow="False">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding InviteClicked}"/>
+                            </Frame.GestureRecognizers>
+                            <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Center">
+                                <Label Text="SHARE" TextColor="White"  VerticalOptions="Center" HorizontalOptions="Center" FontFamily="{StaticResource NormalFont}"/>
+                                <Image Source="share.png" VerticalOptions="Center" HorizontalOptions="Start" HeightRequest="20"/>
+                            </StackLayout>
+                        </Frame>
+                        <Frame VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="#2d67e4"  CornerRadius="{OnPlatform Android='60',iOS='25'}" WidthRequest="200" Margin="0,10,0,0" Padding="15" HasShadow="False">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding NextClicked}"/>
+                            </Frame.GestureRecognizers>
+                            <Label Text="{Binding ButtonText}" TextColor="White"  VerticalOptions="Center" HorizontalOptions="Center" FontFamily="{StaticResource NormalFont}"/>
+                        </Frame>
+                    </StackLayout>
+                    
+                </StackLayout>
+            </StackLayout>
+            <custom:LoadingIndicator/>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

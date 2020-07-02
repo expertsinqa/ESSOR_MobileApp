@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" 
+             xmlns:custom="clr-namespace:Susu.CustomControl" xmlns:local="clr-namespace:Susu.Views"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="Susu.Views.ViewDetailNotification">
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <Image Source="backgroundImage.PNG"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Aspect="AspectFill"   AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" Opacity="0.5" />
+            <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+                <Image Source="Esorr_logo.png" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit" WidthRequest="150" HeightRequest="150"/>
+                <StackLayout Margin="10,0,10,0">
+                    <StackLayout>
+                        <Label Text="Notification Title:" TextColor="Black" FontFamily="{StaticResource NormalFont}"/>
+                        <!--<Custom:CustomEntry Text="{Binding NotificationTitle}"  IsEnabled="False" FontFamily="{StaticResource NormalFont}"/>-->
+                        <Frame>
+                            <Label Text="{Binding NotificationTitle}" FontFamily="{StaticResource NormalFont}"/>
+                        </Frame>
+                    </StackLayout>
+                    <StackLayout Margin="0,10,0,0">
+                        <Label Text="Notification Message:" TextColor="Black" FontFamily="{StaticResource NormalFont}"/>
+                        <Frame>
+                            <Label Text="{Binding NotificationMessage}" FontFamily="{StaticResource NormalFont}"/>
+                        </Frame>
+                    </StackLayout>
+                    <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Orientation="Horizontal" IsVisible="{Binding IsOrderSwap}">
+                        <Frame VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="#2d67e4"  CornerRadius="{OnPlatform Android='60',iOS='25'}" WidthRequest="200" Margin="0,10,0,0" Padding="15" HasShadow="False">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding AcceptSwapClicked}"/>
+                            </Frame.GestureRecognizers>
+                            <Label Text="ACCEPT" TextColor="White"  VerticalOptions="Center" HorizontalOptions="Center" FontFamily="{StaticResource NormalFont}"/>
+                        </Frame>
+                        <Frame VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="#2d67e4"  CornerRadius="{OnPlatform Android='60',iOS='25'}" WidthRequest="200" Margin="0,10,0,0" Padding="15" HasShadow="False">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding RejectSwapClicked}"/>
+                            </Frame.GestureRecognizers>
+                            <Label Text="REJECT" TextColor="White"  VerticalOptions="Center" HorizontalOptions="Center" FontFamily="{StaticResource NormalFont}"/>
+                        </Frame>
+                    </StackLayout>
+                    <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Orientation="Horizontal" IsVisible="{Binding IsAdminApprove}">
+                        <Frame VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="#2d67e4"  CornerRadius="{OnPlatform Android='60',iOS='25'}" WidthRequest="200" Margin="0,10,0,0" Padding="15" HasShadow="False">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding AdminApproveClicked}"/>
+                            </Frame.GestureRecognizers>
+                            <Label Text="APPROVE" TextColor="White"  VerticalOptions="Center" HorizontalOptions="Center" FontFamily="{StaticResource NormalFont}"/>
+                        </Frame>
+                        <Frame VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="#2d67e4"  CornerRadius="{OnPlatform Android='60',iOS='25'}" WidthRequest="200" Margin="0,10,0,0" Padding="15" HasShadow="False">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding AdminRejectCicked}"/>
+                            </Frame.GestureRecognizers>
+                            <Label Text="REJECT" TextColor="White"  VerticalOptions="Center" HorizontalOptions="Center" FontFamily="{StaticResource NormalFont}"/>
+                        </Frame>
+                    </StackLayout>
+                    <StackLayout VerticalOptions="Center" HorizontalOptions="Center" IsVisible="{Binding isBackVisible}">
+                        <Frame VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="#2d67e4"  CornerRadius="{OnPlatform Android='60',iOS='25'}" WidthRequest="200" Margin="0,10,0,0" Padding="15" HasShadow="False">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding BackClicked}"/>
+                            </Frame.GestureRecognizers>
+                            <Label Text="Back" TextColor="White"  VerticalOptions="Center" HorizontalOptions="Center" FontFamily="{StaticResource NormalFont}"/>
+                        </Frame>
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+            <custom:LoadingIndicator/>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

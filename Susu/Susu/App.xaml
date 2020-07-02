@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<prism:PrismApplication xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             x:Class="Susu.App">
+ <Application.Resources>
+      <ResourceDictionary>
+    <!-- Application resource dictionary -->
+        <OnPlatform x:TypeArguments="x:String" x:Key="BoldFont">
+            <On Platform="Android" Value="Montserrat-Medium.ttf#Montserrat Medium" />
+            <On Platform="iOS" Value="Montserrat-Medium" />
+        </OnPlatform>
+        <OnPlatform x:TypeArguments="x:String" x:Key="NormalFont">
+            <On Platform="Android" Value="Montserrat-Medium.ttf#Montserrat Medium" />
+            <On Platform="iOS" Value="Montserrat-Medium" />
+        </OnPlatform>
+      <OnPlatform x:TypeArguments="x:Double" x:Key="EntryHeight">
+            <On Platform="Android" Value='20' />
+            <On Platform="iOS" Value='50'/>
+        </OnPlatform>
+         
+          </ResourceDictionary>
+    </Application.Resources>
+</prism:PrismApplication>       

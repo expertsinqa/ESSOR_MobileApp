@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" 
+             xmlns:custom="clr-namespace:Susu.CustomControl"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="Susu.Views.AdminNotificationPage">
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <Image Source="backgroundImage.PNG"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Aspect="AspectFill"   AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" Opacity="0.5" />
+            <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+                <StackLayout Grid.Row="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="20,0,20,0">
+                    <Image Source="Esorr_logo.png" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit" WidthRequest="150" HeightRequest="150"/>
+                    <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="90*"/>
+                            <RowDefinition Height="10*"/>
+                        </Grid.RowDefinitions>
+                    
+                    <StackLayout Grid.Row="0">
+                    <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="0,10,0,0" IsVisible="{Binding IsSendToVisible}">
+                        <Label Text="Send To :" TextColor="Black" FontFamily="{StaticResource NormalFont}"/>
+                        <StackLayout Orientation="Horizontal" Margin="0,0,0,0">
+                            <RadioButton Text="All" IsChecked="False" TextColor="Black" CheckedChanged="AllRadioButton_CheckedChanged"  VerticalOptions="Start" HorizontalOptions="Start"/>
+                            <RadioButton Text="Single User" IsChecked="False" TextColor="Black" CheckedChanged="SpecificRadioButton_CheckedChanged" VerticalOptions="End" HorizontalOptions="End"/>
+                        </StackLayout>
+                    </StackLayout>
+                    <ListView ItemsSource="{Binding lstnotificationDto}" HasUnevenRows="True" SelectionMode="Single" ItemTapped="ListView_ItemTapped" SeparatorVisibility="None" IsVisible="{Binding IsListViewVisible}" RowHeight="40">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <custom:CustomListViewCell>
+                                    <Frame BackgroundColor="White" CornerRadius="10" Margin="0,20,0,0" HasShadow="False">
+                                        <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="90*"/>
+                                                <ColumnDefinition Width="10*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Label Grid.Column="0" Text="{Binding Tittle}" TextColor="Black" VerticalOptions="Start" HorizontalOptions="Start" FontFamily="{StaticResource NormalFont}"/>
+                                            <Image Grid.Column="1" Source="right_arrow.png" HeightRequest="20" WidthRequest="20" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit"/>
+                                        </Grid>
+                                    </Frame>
+                                </custom:CustomListViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    </StackLayout>
+                    <Frame Grid.Row="1" VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="#2d67e4"  CornerRadius="{OnPlatform Android='60',iOS='25'}" WidthRequest="150" Margin="0,0,0,10" Padding="10" HasShadow="False">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding BackClicked}"/>
+                        </Frame.GestureRecognizers>
+                        <StackLayout>
+                            <Label Text="Back" TextColor="White"  VerticalOptions="Center" HorizontalOptions="Center" FontFamily="{StaticResource NormalFont}"/>
+                        </StackLayout>
+                    </Frame>
+                    </Grid>
+                </StackLayout>
+            </StackLayout>
+            <custom:LoadingIndicator/>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

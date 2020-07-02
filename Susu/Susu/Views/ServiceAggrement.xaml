@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" 
+             xmlns:Custom="clr-namespace:Susu.CustomControl"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="Susu.Views.ServiceAggrement">
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <Image Source="backgroundImage.PNG"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Aspect="AspectFill"   AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" Opacity="0.5" />
+            <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="8*"/>
+                    <RowDefinition Height="90*"/>
+                </Grid.RowDefinitions>
+                <Label Text="Service agreement" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#2d67e4" FontAttributes="Bold" FontFamily="{StaticResource NormalFont}" FontSize="20"/>
+                <ScrollView Grid.Row="1">
+                <StackLayout Grid.Row="1" Margin="10,10,10,0">
+                        <Custom:CustomLabel LineBreakMode="CharacterWrap"  HorizontalTextAlignment="Start" VerticalOptions="Fill" TextColor="Black" HorizontalOptions="Fill">
+                            <Custom:CustomLabel.FormattedText>
+                                <FormattedString>
+                                    <Span LineHeight="1.2" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.">
+                                        <Span.FontFamily>
+                                            <OnPlatform  x:TypeArguments="x:String" Android="Montserrat-Medium.ttf#Montserrat Medium" iOS="Montserrat Medium"/>
+                                        </Span.FontFamily>
+                                    </Span>
+                                </FormattedString>
+                            </Custom:CustomLabel.FormattedText>
+                        </Custom:CustomLabel>
+                        <Custom:CustomLabel LineBreakMode="CharacterWrap"  HorizontalTextAlignment="Start" VerticalOptions="Fill" TextColor="Black" HorizontalOptions="Fill">
+                            <Custom:CustomLabel.FormattedText>
+                                <FormattedString>
+                                    <Span LineHeight="1.2" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.">
+                                        <Span.FontFamily>
+                                            <OnPlatform  x:TypeArguments="x:String" Android="Montserrat-Medium.ttf#Montserrat Medium" iOS="Montserrat Medium"/>
+                                        </Span.FontFamily>
+                                    </Span>
+                                </FormattedString>
+                            </Custom:CustomLabel.FormattedText>
+                        </Custom:CustomLabel>
+                        <Custom:CustomLabel LineBreakMode="CharacterWrap"  HorizontalTextAlignment="Start" VerticalOptions="Fill" TextColor="Black" HorizontalOptions="Fill">
+                            <Custom:CustomLabel.FormattedText>
+                                <FormattedString>
+                                    <Span LineHeight="1.2" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.">
+                                        <Span.FontFamily>
+                                            <OnPlatform  x:TypeArguments="x:String" Android="Montserrat-Medium.ttf#Montserrat Medium" iOS="Montserrat Medium"/>
+                                        </Span.FontFamily>
+                                    </Span>
+                                </FormattedString>
+                            </Custom:CustomLabel.FormattedText>
+                        </Custom:CustomLabel>
+                        <Custom:CustomLabel LineBreakMode="CharacterWrap"  HorizontalTextAlignment="Start" VerticalOptions="Fill" TextColor="Black" HorizontalOptions="Fill">
+                            <Custom:CustomLabel.FormattedText>
+                                <FormattedString>
+                                    <Span LineHeight="1.2" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.">
+                                        <Span.FontFamily>
+                                            <OnPlatform  x:TypeArguments="x:String" Android="Montserrat-Medium.ttf#Montserrat Medium" iOS="Montserrat Medium"/>
+                                        </Span.FontFamily>
+                                    </Span>
+                                </FormattedString>
+                            </Custom:CustomLabel.FormattedText>
+                        </Custom:CustomLabel>
+                        <!--<Frame VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="#2d67e4"  CornerRadius="{OnPlatform Android='60',iOS='25'}" WidthRequest="100" Margin="0,10,0,10" Padding="15" IsEnabled="True">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding AcceptClicked}"/>
+                            </Frame.GestureRecognizers>
+                            <Label Text="Accept" TextColor="White"  VerticalOptions="Center" HorizontalOptions="Center" FontFamily="{StaticResource NormalFont}"/>
+                        </Frame>-->
+                        <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,10,0,10">
+                            <Frame VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="#2d67e4"  CornerRadius="{OnPlatform Android='60',iOS='25'  }" WidthRequest="200" Margin="0,10,0,0" Padding="15" HasShadow="False">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding AcceptClicked}"/>
+                                </Frame.GestureRecognizers>
+                                <Label Text="Accept" TextColor="White"  VerticalOptions="Center" HorizontalOptions="Center" FontFamily="{StaticResource NormalFont}"/>
+                            </Frame>
+                            <Frame VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="#2d67e4"  CornerRadius="{OnPlatform Android='60',iOS='25'}" WidthRequest="200" Margin="0,10,0,0" Padding="15" HasShadow="False">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding RejectClicked}"/>
+                                </Frame.GestureRecognizers>
+                                <Label Text="Reject" TextColor="White"  VerticalOptions="Center" HorizontalOptions="Center" FontFamily="{StaticResource NormalFont}"/>
+                            </Frame>
+                        </StackLayout>
+                    </StackLayout>
+                </ScrollView>
+            </Grid>
+            <Custom:LoadingIndicator/>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

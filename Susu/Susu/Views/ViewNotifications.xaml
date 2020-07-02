@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" 
+             xmlns:custom="clr-namespace:Susu.CustomControl" xmlns:local="clr-namespace:Susu.Views"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="Susu.Views.ViewNotifications">
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <Image Source="backgroundImage.PNG"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Aspect="AspectFill"   AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" Opacity="0.5" />
+            <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+                <StackLayout Grid.Row="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="20,0,20,0">
+                    <Image Source="Esorr_logo.png" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit" WidthRequest="150" HeightRequest="150"/>
+                    <ListView ItemsSource="{Binding lstEmailNotificationDto}" HasUnevenRows="True" BackgroundColor="Transparent" SelectionMode="Single" ItemTapped="ListView_ItemTapped" SeparatorVisibility="None">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <custom:CustomListViewCell>
+                                    <Frame CornerRadius="10" Margin="0,15,0,10" HasShadow="False" BackgroundColor="{Binding BGcolor}">
+                                        <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="90*"/>
+                                                <ColumnDefinition Width="10*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Label Grid.Column="0" Text="{Binding mailSubject}" TextColor="Black" VerticalOptions="Start" HorizontalOptions="Start" FontFamily="{StaticResource NormalFont}"/>
+                                            <Image Grid.Column="1" Source="right_arrow.png" HeightRequest="20" WidthRequest="20" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit"/>
+                                        </Grid>
+                                    </Frame>
+                                </custom:CustomListViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    <Frame VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="#2d67e4"  CornerRadius="{OnPlatform Android='60',iOS='25'}" WidthRequest="150" Margin="0,0,0,10" Padding="10" HasShadow="False">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding BackClicked}"/>
+                        </Frame.GestureRecognizers>
+                        <StackLayout>
+                            <Label Text="Back" TextColor="White"  VerticalOptions="Center" HorizontalOptions="Center" FontFamily="{StaticResource NormalFont}"/>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+            </StackLayout>
+            <custom:LoadingIndicator/>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>
