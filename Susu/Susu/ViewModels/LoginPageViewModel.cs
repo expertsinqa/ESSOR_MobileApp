@@ -5,13 +5,14 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 using static Susu.Models.Enums;
 
 namespace Susu.ViewModels
 {
-    public class LoginPageViewModel:ViewModelBase
+    public class LoginPageViewModel : ViewModelBase
     {
         #region Properties
 
@@ -21,7 +22,7 @@ namespace Susu.ViewModels
         public string _Password;
         public string Password { get { return _Password; } set { SetProperty(ref _Password, value); } }
 
-        public Color _EmailPlaceholder=Color.Gray;
+        public Color _EmailPlaceholder = Color.Gray;
         public Color EmailPlaceholder { get { return _EmailPlaceholder; } set { SetProperty(ref _EmailPlaceholder, value); } }
 
         public Color _PasswordPlaceholder = Color.Gray;
@@ -58,7 +59,7 @@ namespace Susu.ViewModels
         #endregion
 
         #region Constructor
-        public LoginPageViewModel(INavigationService navigationService):base(navigationService)
+        public LoginPageViewModel(INavigationService navigationService) : base(navigationService)
         {
             SignUpClicked = new Command(SignUp);
         }
@@ -67,7 +68,7 @@ namespace Susu.ViewModels
         #region Functions
         public async void SignUp()
         {
-           await NavigationService.NavigateAsync("SignUpPage");
+            await NavigationService.NavigateAsync("SignUpPage");
         }
         public async void Login()
         {
@@ -77,30 +78,30 @@ namespace Susu.ViewModels
                 EmailPlaceholder = Color.Red;
                 return;
             }
-            else if(string.IsNullOrEmpty(Password))
+            else if (string.IsNullOrEmpty(Password))
             {
                 PasswordPlaceholder = Color.Red;
                 return;
             }
-            else if(!string.IsNullOrEmpty(Email) && !string.IsNullOrEmpty(Password))
+            else if (!string.IsNullOrEmpty(Email) && !string.IsNullOrEmpty(Password))
             {
                 const string emailRegex = @"^(?("")("".+?(?<!\\)""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))" +
                     @"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-\w]*[0-9a-z]*\.)+[a-z0-9][\-a-z0-9]{0,22}[a-z0-9]))$";
-                if((Regex.IsMatch(Email, emailRegex, RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250))))
+                if ((Regex.IsMatch(Email, emailRegex, RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250))))
                 {
                     IsLoading = true;
-                    Dictionary<string,string> response = await ServiceBase.Login(Email, Password);
-                    if(response!=null && response.ContainsKey("access_token"))
+                    Dictionary<string, string> response = await ServiceBase.Login(Email, Password);
+                    if (response != null && response.ContainsKey("access_token"))
                     {
                         App.AccessToken = response["access_token"];
                     }
-                    if(response != null && response.ContainsKey("userDetails"))
+                    if (response != null && response.ContainsKey("userDetails"))
                     {
                         userDto = new UserDto();
                         var res = response["userDetails"];
                         userDto = JsonConvert.DeserializeObject<UserDto>(res);
                     }
-                    if (userDto!=null && userDto.Id >0)
+                    if (userDto != null && userDto.Id > 0)
                     {
                         App.Current.Properties["UserId"] = userDto.Id;
                         //App.Current.Properties["UserName"] = userDto.Email;
@@ -110,26 +111,26 @@ namespace Susu.ViewModels
                         App.GroupId = userDto.GroupId != null ? (long)userDto.GroupId : 0;
                         App.Current.Properties["GroupId"] = App.GroupId;
                         int? RoledId = userDto.RoleId != null ? userDto.RoleId : 0;
-                        if(RoledId == (int)Roles.groupadmin)
+                        if (RoledId == (int)Roles.groupadmin)
                         {
                             App.IsGroupAdmin = true;
                             App.Current.Properties["GroupAdmin"] = App.IsGroupAdmin;
                         }
-                        if(!userDto.IsAcceptAggrement)
+                        if (!userDto.IsAcceptAggrement)
                         {
                             NavigationParameters np = new NavigationParameters();
                             np.Add("userDto", userDto);
-                            await NavigationService.NavigateAsync("ServiceAggrement",np);
+                            await NavigationService.NavigateAsync("ServiceAggrement", np);
                         }
                         else if (userDto.GroupId > 0)
                         {
                             await NavigationService.NavigateAsync("SamplePage");
                         }
-                        else if(userDto.ProofFilePath == null)
+                        else if (userDto.ProofFilePath == null)
                         {
                             NavigationParameters np = new NavigationParameters();
                             np.Add("userDto", userDto);
-                            await NavigationService.NavigateAsync("UploadIdProof",np);
+                            await NavigationService.NavigateAsync("UploadIdProof", np);
                         }
                         else
                         {
@@ -138,7 +139,7 @@ namespace Susu.ViewModels
                     }
                     else
                     {
-                       await App.Current.MainPage.DisplayAlert("Alert", "Enter valid email and password", "ok");
+                        await App.Current.MainPage.DisplayAlert("Alert", "Enter valid email and password", "ok");
                     }
                     await App.Current.SavePropertiesAsync();
                     IsLoading = false;
@@ -149,11 +150,12 @@ namespace Susu.ViewModels
                     return;
                 }
             }
-            
+
         }
-        public  void ForgotPassword()
+        public void ForgotPassword()
         {
             IsLoading = true;
+            UserMail = string.Empty;
             IsForgotPasswordVisible = true;
             IsLoading = false;
         }
@@ -164,19 +166,26 @@ namespace Susu.ViewModels
         }
         private async void SubmitForgetPassword()
         {
-            if(!string.IsNullOrEmpty(UserMail))
+            if (!string.IsNullOrEmpty(UserMail) && !IsLoading)
             {
+                IsLoading = true;
                 bool result = await ServiceBase.ForgotPassword(UserMail);
                 if (result)
                 {
-                    IsForgotPasswordVisible = false;
+                    if (await App.Current.MainPage.DisplayAlert("", "Verification code send to your enterd emailId", "OK", " "))
+                    {
+                        IsForgotPasswordVisible = false;
+                    }
                 }
-                else {
-                 await App.Current.MainPage.DisplayAlert("", "Please enter a valid EmailId", "OK");
+                else
+                {
+                    await App.Current.MainPage.DisplayAlert("", "Please enter a valid EmailId", "OK");
                 }
+                IsLoading = false;
             }
             else
             {
+                IsLoading = true;
                 ForgotPasswordEmailPlaceholderColor = Color.Red;
             }
         }

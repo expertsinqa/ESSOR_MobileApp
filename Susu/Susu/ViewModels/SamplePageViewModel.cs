@@ -307,6 +307,7 @@ namespace Susu.ViewModels
                     {
                         App.GroupId = groupDto.Id;
                         App.Current.Properties["GroupId"] = App.GroupId;
+                        await App.Current.SavePropertiesAsync();
                         if (groupDto.ContributionAmount > 0)
                             ContributionAmount = "$ " + string.Format("{0:00.00}", groupDto.ContributionAmount);
                         if (groupDto.ContributionDate != null)

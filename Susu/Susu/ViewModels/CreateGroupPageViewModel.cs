@@ -90,7 +90,7 @@ namespace Susu.ViewModels
         #region Constructor
         public CreateGroupPageViewModel(INavigationService navigationService):base(navigationService)
         {
-            _lstperiod = new List<string>() { "Daily", "Weekly", "Monthly", "Yearly" };
+            _lstperiod = new List<string>() {"Weekly", "Monthly", "Yearly" };
             DaysList = new List<string>() { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
             
         }
@@ -103,6 +103,7 @@ namespace Susu.ViewModels
 
         public  void customRules()
         {
+            //CustomRulesText = "";
             IsCustomRulesVisible = true;
         }
         public  void Close()
@@ -120,6 +121,19 @@ namespace Susu.ViewModels
             {
                 AmountPlaceholder = Color.Red;
                 return;
+            }
+            else if(string.IsNullOrEmpty(CustomRulesText))
+            {
+                if(await App.Current.MainPage.DisplayAlert("","Please add the custom rules to the group","OK","Cancel"))
+                {
+                    IsCustomRulesVisible = true;
+                    return;
+                }
+                else
+                {
+                    IsCustomRulesVisible = false;
+                    //CreateGroup();
+                }
             }
             IsLoading = true;
             GroupDto groupDto = new GroupDto();
@@ -141,6 +155,7 @@ namespace Susu.ViewModels
             if (group!=null && group.Id > 0)
             {
                 App.Current.Properties["GroupId"] = group.Id;
+                await App.Current.SavePropertiesAsync();
                 App.GroupId = group.Id;
                 App.IsGroupAdmin = true;
                 NavigationParameters np = new NavigationParameters();
