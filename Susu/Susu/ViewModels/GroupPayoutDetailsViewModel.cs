@@ -133,8 +133,9 @@ namespace ESORR.ViewModels
                     emailNotificatinDetailsDto.mailSubject = PaymentnotificationDto.Tittle;
                     if (PaymentnotificationDto.Message != null)
                     {
-                        PaymentnotificationDto.Message = PaymentnotificationDto.Message.Replace("<username>", userDto.FirstName+userDto.LastName);
-                       // PaymentnotificationDto.Message = PaymentnotificationDto.Message.Replace("<payment date>", userDto.CreateDate.ToString());
+                        PaymentnotificationDto.Message = PaymentnotificationDto.Message.Replace("<username>", userDto.FirstName+" "+userDto.LastName);
+                        PaymentnotificationDto.Message = PaymentnotificationDto.Message.Replace("<paidamount>", userPayOutDetails.PaidAmount.ToString());
+                        // PaymentnotificationDto.Message = PaymentnotificationDto.Message.Replace("<<paidamount>>", userDto.CreateDate.ToString());
                     }
                     emailNotificatinDetailsDto.NotificationMessage = PaymentnotificationDto.Message;
                     emailNotificatinDetailsDto.isReadbyUser = false;

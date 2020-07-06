@@ -56,28 +56,28 @@
                         <ScrollView>
                         <StackLayout Margin="10,10,10,0">
                             <Label Text="GroupName:" VerticalOptions="Center" HorizontalOptions="Start" TextColor="#2d67e4" FontFamily="{StaticResource NormalFont}" FontSize="{OnPlatform iOS='20'}" FontAttributes="None"/>
-                            <custom:CustomEntry Text="{Binding groupDto.GroupName}" IsEnabled="False" HeightRequest="{OnPlatform iOS='50'}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" FontFamily="{StaticResource NormalFont}" />
+                            <custom:CustomEntry Text="{Binding groupDto.GroupName}" IsEnabled="False" TextColor="Black" HeightRequest="{OnPlatform iOS='50'}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" FontFamily="{StaticResource NormalFont}" />
 
                             <Label Text="Amount:" TextColor="#2d67e4" VerticalOptions="Center" HorizontalOptions="Start" FontFamily="{StaticResource NormalFont}" FontSize="{OnPlatform iOS='20'}" Margin="0,10,0,0"/>
-                            <custom:CustomEntry Text="{Binding ContributionAmount}" IsEnabled="False" HeightRequest="{OnPlatform iOS='50'}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" FontFamily="{StaticResource NormalFont}"/>
+                                <custom:CustomEntry Text="{Binding ContributionAmount}" IsEnabled="False" TextColor="Black" HeightRequest="{OnPlatform iOS='50'}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" FontFamily="{StaticResource NormalFont}"/>
 
                             <Label Text="Contribution Period:" TextColor="#2d67e4" VerticalOptions="Center" HorizontalOptions="Start" FontFamily="{StaticResource NormalFont}" FontSize="{OnPlatform iOS='20'}" Margin="0,10,0,0"/>
-                            <custom:CustomEntry Text="{Binding groupDto.ContributionPeriod}" IsEnabled="False" HeightRequest="{OnPlatform iOS='50'}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" FontFamily="{StaticResource NormalFont}"/>
+                                <custom:CustomEntry Text="{Binding groupDto.ContributionPeriod}" IsEnabled="False" TextColor="Black" HeightRequest="{OnPlatform iOS='50'}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" FontFamily="{StaticResource NormalFont}"/>
 
                             <Label Text="Group Contribution Date:" TextColor="#2d67e4"  VerticalOptions="Center" HorizontalOptions="Start" FontFamily="{StaticResource NormalFont}" FontSize="{OnPlatform iOS='20'}" Margin="0,10,0,0" IsVisible="{Binding IsContributionDateVisible}"/>
-                                <custom:CustomEntry Text="{Binding groupDto.ContributinDateString}" IsEnabled="False" HeightRequest="{OnPlatform iOS='50'}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" FontFamily="{StaticResource NormalFont}" IsVisible="{Binding IsContributionDateVisible}"/>
+                                <custom:CustomEntry Text="{Binding groupDto.ContributinDateString}" IsEnabled="False" TextColor="Black" HeightRequest="{OnPlatform iOS='50'}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" FontFamily="{StaticResource NormalFont}" IsVisible="{Binding IsContributionDateVisible}"/>
 
                                 <Label Text="Group Contribution Day:" TextColor="#2d67e4"  VerticalOptions="Center" HorizontalOptions="Start" FontFamily="{StaticResource NormalFont}" FontSize="{OnPlatform iOS='20'}" Margin="0,10,0,0" IsVisible="{Binding IsContributionDayVisible}"/>
-                                <custom:CustomEntry Text="{Binding groupDto.ContributionDay}" IsEnabled="False" HeightRequest="{OnPlatform iOS='50'}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" FontFamily="{StaticResource NormalFont}" IsVisible="{Binding IsContributionDayVisible}"/>
+                                <custom:CustomEntry Text="{Binding groupDto.ContributionDay}" IsEnabled="False" TextColor="Black" HeightRequest="{OnPlatform iOS='50'}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" FontFamily="{StaticResource NormalFont}" IsVisible="{Binding IsContributionDayVisible}"/>
 
                                 <Label Text="Group Start Date:" TextColor="#2d67e4"  VerticalOptions="Center" HorizontalOptions="Start" FontFamily="{StaticResource NormalFont}" FontSize="{OnPlatform iOS='20'}" Margin="0,10,0,0" IsVisible="{Binding IsGroupStartDateVisible}"/>
-                                <custom:CustomEntry Text="{Binding groupDto.GroupStartDateString}" IsEnabled="False" HeightRequest="{OnPlatform iOS='50'}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" FontFamily="{StaticResource NormalFont}" IsVisible="{Binding IsGroupStartDateVisible}"/>
+                                <custom:CustomEntry Text="{Binding groupDto.GroupStartDateString}" IsEnabled="False" TextColor="Black" HeightRequest="{OnPlatform iOS='50'}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" FontFamily="{StaticResource NormalFont}" IsVisible="{Binding IsGroupStartDateVisible}"/>
 
                                 <Label Text="Group PayOut Day:" TextColor="#2d67e4"  VerticalOptions="Center" HorizontalOptions="Start" FontFamily="{StaticResource NormalFont}" FontSize="{OnPlatform iOS='20'}" Margin="0,10,0,0" IsVisible="{Binding IsGroupPayOutDayVisible}"/>
-                                <custom:CustomEntry Text="{Binding groupDto.PayOutDay}" IsEnabled="False" HeightRequest="{OnPlatform iOS='50'}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" FontFamily="{StaticResource NormalFont}" IsVisible="{Binding IsGroupPayOutDayVisible}"/>
+                                <custom:CustomEntry Text="{Binding groupDto.PayOutDay}" IsEnabled="False" TextColor="Black" HeightRequest="{OnPlatform iOS='50'}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" FontFamily="{StaticResource NormalFont}" IsVisible="{Binding IsGroupPayOutDayVisible}"/>
 
                                 <Label Text="Group PayOut Date:" TextColor="#2d67e4"  VerticalOptions="Center" HorizontalOptions="Start" FontFamily="{StaticResource NormalFont}" FontSize="{OnPlatform iOS='20'}" Margin="0,10,0,0" IsVisible="{Binding IsGroupPayOutDateVisible}"/>
-                                <custom:CustomEntry Text="{Binding groupDto.PayOutDateString}" IsEnabled="False" HeightRequest="{OnPlatform iOS='50'}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" FontFamily="{StaticResource NormalFont}" IsVisible="{Binding IsGroupPayOutDateVisible}"/>
+                                <custom:CustomEntry Text="{Binding groupDto.PayOutDateString}" IsEnabled="False" TextColor="Black" HeightRequest="{OnPlatform iOS='50'}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" FontFamily="{StaticResource NormalFont}" IsVisible="{Binding IsGroupPayOutDateVisible}"/>
                         </StackLayout>
                         </ScrollView>
                     </StackLayout>
@@ -308,7 +308,7 @@
                             <custom:CustomLabel LineBreakMode="CharacterWrap"  HorizontalTextAlignment="Start" VerticalOptions="Fill" TextColor="Black" HorizontalOptions="Fill">
                                 <custom:CustomLabel.FormattedText>
                                     <FormattedString>
-                                        <Span LineHeight="1.2" Text="Please drop your feedback or complaints at help@essor.com and will get back you for your queries with 48hours of maximum time frame">
+                                        <Span LineHeight="1.2" Text="Please drop your feedback or complaints at help@esorr.com and will get back you for your queries within 48 hours of maximum time frame">
                                             <Span.FontFamily>
                                                 <OnPlatform  x:TypeArguments="x:String" Android="Montserrat-Medium.ttf#Montserrat Medium" iOS="Montserrat Medium"/>
                                             </Span.FontFamily>
@@ -317,7 +317,7 @@
                                 </custom:CustomLabel.FormattedText>
                             </custom:CustomLabel>
                             <Label Text="Thanks," TextColor="Black" VerticalOptions="Start" HorizontalOptions="Start" FontFamily="{StaticResource NormalFont}" Margin="0,10,0,0"/>
-                            <Label Text="ESSOR" TextColor="Black" VerticalOptions="Start" HorizontalOptions="Start" FontFamily="{StaticResource NormalFont}"/>
+                            <Label Text="ESORR" TextColor="Black" VerticalOptions="Start" HorizontalOptions="Start" FontFamily="{StaticResource NormalFont}"/>
                         </StackLayout>
                         <!--<custom:CustomEntry Text="{Binding GroupId}" Placeholder="Entry Id to join the group" PlaceholderColor="{Binding GroupIdPlaceholderColor}" HeightRequest="{OnPlatform iOS='50'}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="0,10,0,0" FontFamily="{StaticResource NormalFont}"/>-->
                         <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Margin="0,10,0,0">

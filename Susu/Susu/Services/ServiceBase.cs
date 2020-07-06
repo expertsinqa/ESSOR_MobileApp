@@ -20,7 +20,8 @@ namespace Susu.Services
         {
 
         }
-        public string baseUrl = "http://167.86.126.236/ESORRAPI/api/";
+        // public string baseUrl = "http://167.86.126.236/ESORRAPI/api/";
+        public string baseUrl = "https://www.esorr.com/ESORRAPI/api/";
         public HttpClient _client { get; set; }
         public ServiceBase()
         {
@@ -36,8 +37,9 @@ namespace Susu.Services
                             new KeyValuePair<string,string>("username",username),
                              new KeyValuePair<string, string>("password",password),
                              new KeyValuePair<string, string>("grant_type","password")
-                   });
-                var request = await _client.PostAsync("http://167.86.126.236/ESORRAPI/token", formcontent);
+                });
+                string url = "https://www.esorr.com/ESORRAPI/token";
+                var request = await _client.PostAsync(url, formcontent);
                 request.EnsureSuccessStatusCode();
                 var response = await request.Content.ReadAsStringAsync();
                 if (response != null)

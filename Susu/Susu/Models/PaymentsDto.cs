@@ -78,6 +78,7 @@ namespace ESORR.Models
         public DateTime? ModifyDate { get; set; }
         public string UserName { get; set; }
         public int UserOrderNo { get; set; }
+        public decimal PaidAmount { get; set; }
         public DateTime PayOutDate { get; set; }
         public DateTime ContributionDate { get; set; }
         public ImageSource PaidImage
