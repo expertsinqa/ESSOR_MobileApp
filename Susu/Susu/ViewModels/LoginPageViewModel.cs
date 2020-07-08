@@ -111,11 +111,22 @@ namespace Susu.ViewModels
                         App.GroupId = userDto.GroupId != null ? (long)userDto.GroupId : 0;
                         App.Current.Properties["GroupId"] = App.GroupId;
                         int? RoledId = userDto.RoleId != null ? userDto.RoleId : 0;
+                        if (userDto.IsAcceptAggrement)
+                            App.Current.Properties["IsAggrementAccepted"] = true;
+                        else
+                            App.Current.Properties["IsAggrementAccepted"] = false;
+
+                        if(userDto.ProofFilePath!=null)
+                            App.Current.Properties["IsProfileUpdated"] = true;
+                        else
+                            App.Current.Properties["IsProfileUpdated"] = false;
+                        await App.Current.SavePropertiesAsync();
                         if (RoledId == (int)Roles.groupadmin)
                         {
                             App.IsGroupAdmin = true;
                             App.Current.Properties["GroupAdmin"] = App.IsGroupAdmin;
                         }
+                        await App.Current.SavePropertiesAsync();
                         if (!userDto.IsAcceptAggrement)
                         {
                             NavigationParameters np = new NavigationParameters();

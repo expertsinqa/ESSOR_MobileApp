@@ -146,6 +146,26 @@ namespace Susu.ViewModels
         public ICommand HelpCloseClicked { get { return new Command(CloseHelp); } }
 
         public ICommand HelpClicked { get { return new Command(HelpPopup); } }
+
+        public bool _IsGroupInfoEditable = false;
+        public bool IsGroupInfoEditable { get { return _IsGroupInfoEditable; } set { SetProperty(ref _IsGroupInfoEditable, value); } }
+
+        public List<string> _lstperiod;
+        public List<string> ContributionPeriod { get { return _lstperiod; } set { SetProperty(ref _lstperiod, value); } }
+
+        public List<string> _DaysList;
+        public List<string> DaysList { get { return _DaysList; } set { SetProperty(ref _DaysList, value); } }
+
+        public DateTime _selectedDate;
+        public DateTime selectedDate { get { return _selectedDate; } set { SetProperty(ref _selectedDate, value); } }
+
+        public ICommand updateGroupDetails { get { return new Command(updateGroup); } }
+
+        public bool _IsGroupInfoupdateVisible = false;
+        public bool IsGroupInfoupdateVisible { get { return _IsGroupInfoupdateVisible; } set { SetProperty(ref _IsGroupInfoupdateVisible, value); } }
+
+        public ICommand GroupudateClosed { get { return new Command(CloseGroup); } }
+
         public SamplePageViewModel(INavigationService navigationService) : base(navigationService)
         {
             NavigationService = navigationService;
@@ -155,6 +175,9 @@ namespace Susu.ViewModels
                 IsGroupAdmin = false;
             GetGroupDetails();
             GetNotification();
+            _lstperiod = new List<string>() { "Weekly", "Monthly", "Yearly" };
+            DaysList = new List<string>() { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
+
         }
 
         private void GroupInfo()
@@ -301,7 +324,6 @@ namespace Susu.ViewModels
                 {
                     IsLoading = true;
                     long groupId = long.Parse(App.Current.Properties["GroupId"].ToString());
-                    await App.Current.SavePropertiesAsync();
                     groupDto = await ServiceBase.GetGroupDetialsByGroupId(App.GroupId != null ? App.GroupId : 0);
                     if (groupDto != null)
                     {
@@ -312,6 +334,20 @@ namespace Susu.ViewModels
                             ContributionAmount = "$ " + string.Format("{0:00.00}", groupDto.ContributionAmount);
                         if (groupDto.ContributionDate != null)
                             ContributionDate = string.Format("{0:d/M/yyyy}", groupDto.ContributionDate);
+                        //if (groupDto.ContributionDate != null) {
+                        //    selectedDate = DateTime.Parse(groupDto.ContributionDate.ToString().Split(' ')[0]);
+                        //   // selectedDate = DateTime.ParseExact(date,"d/M/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                        //  }
+
+                        if(groupDto.ContributionDate!=null && App.IsGroupAdmin && DateTime.Now < groupDto.ContributionDate)
+                        {
+                            IsGroupInfoEditable = true;
+                        }
+                        else
+                        {
+                            IsGroupInfoEditable = false;
+                        }
+
                         if (groupDto != null && groupDto.ContributionPeriod == "Monthly")
                         {
                             IsContributionDateVisible = true;
@@ -355,6 +391,21 @@ namespace Susu.ViewModels
             }
             catch (Exception ex)
             { }
+        }
+
+        public async void updateGroup()
+        {
+            GroupDto updatedgroupDto = groupDto;
+            GroupDto group = await ServiceBase.SaveGroupInfo(updatedgroupDto);
+            if(group!=null &&  group.Id>0)
+            {
+                // await App.Current.MainPage.DisplayAlert("", "Group details updated successfully", "OK");
+                IsGroupInfoupdateVisible = true;
+            }
+            else
+            {
+                await App.Current.MainPage.DisplayAlert("", "Something went wrong", "OK");
+            }
         }
 
         public async void GetNotification()
@@ -444,7 +495,7 @@ namespace Susu.ViewModels
                     if (PaymentnotificationDto.Message != null)
                     {
                         PaymentnotificationDto.Message = PaymentnotificationDto.Message.Replace("<Name>", userDto.FirstName+userDto.LastName);
-                        PaymentnotificationDto.Message = PaymentnotificationDto.Message.Replace("<payment date>", userDto.CreateDate.ToString());
+                        PaymentnotificationDto.Message = PaymentnotificationDto.Message.Replace("<payment date>", groupContributionDetails.NextContributionDate.ToString());
                     }
                     emailNotificatinDetailsDto.NotificationMessage = PaymentnotificationDto.Message;
                     emailNotificatinDetailsDto.isReadbyUser = false;
@@ -552,6 +603,10 @@ namespace Susu.ViewModels
         private void HelpPopup()
         {
             IsHelppopupVisible = true;
+        }
+        public void CloseGroup()
+        {
+            IsGroupInfoupdateVisible = false;
         }
     }
 }

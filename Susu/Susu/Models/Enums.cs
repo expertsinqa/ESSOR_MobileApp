@@ -31,7 +31,8 @@ namespace Susu.Models
             UserRejectChangeOrder = 8,
             AdminAcceptChangeOrder = 9,
             AdminRejectChangeOrder = 10,
-            PayOutPaymentSuccess = 11
+            PayOutPaymentSuccess = 11,
+            ContributionPaymentReminder=12
         }
 
     }

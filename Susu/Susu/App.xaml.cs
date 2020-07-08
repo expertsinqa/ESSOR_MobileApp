@@ -34,6 +34,10 @@ namespace Susu
 
         public static int GroupNumber { get; set; }
 
+        public static bool IsAggreementAccepted { get; set; }
+
+        public static bool IsProfilePhotoUploaded { get; set; }
+
         public App(IPlatformInitializer initializer) : base(initializer) { }
 
         protected override async void OnInitialized()
@@ -51,6 +55,20 @@ namespace Susu
                         App.GroupId = long.Parse(App.Current.Properties["GroupId"].ToString());
                     if (App.Current.Properties.ContainsKey("GroupAdmin"))
                         App.IsGroupAdmin = bool.Parse(App.Current.Properties["GroupAdmin"].ToString());
+                    if (App.Current.Properties.ContainsKey("IsAggrementAccepted"))
+                        App.IsAggreementAccepted = bool.Parse(App.Current.Properties["IsAggrementAccepted"].ToString());
+                    if (App.Current.Properties.ContainsKey("IsProfileUpdated"))
+                        App.IsProfilePhotoUploaded = bool.Parse(App.Current.Properties["IsProfileUpdated"].ToString());
+                    if(!App.IsAggreementAccepted)
+                    {
+                        await NavigationService.NavigateAsync("ServiceAggrement");
+                        return;
+                    }
+                    if(!App.IsProfilePhotoUploaded)
+                    {
+                        await NavigationService.NavigateAsync("UploadIdProof");
+                        return;
+                    }
                     if(App.GroupId>0)
                     {
                         await NavigationService.NavigateAsync("SamplePage");

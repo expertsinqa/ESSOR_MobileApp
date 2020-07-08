@@ -1,4 +1,5 @@
-﻿using Prism.Navigation;
+﻿using ESORR.Models;
+using Prism.Navigation;
 using Susu.Models;
 using System;
 using System.Collections.Generic;
@@ -51,7 +52,7 @@ namespace Susu.ViewModels
         public bool IsAdmin { get { return _IsAdmin; } set { SetProperty(ref _IsAdmin, value); } }
 
         public string RequestFromName = "";
-
+        GroupContributionDetails groupContributionDetails = new GroupContributionDetails();
 
 
         #endregion
@@ -67,6 +68,12 @@ namespace Susu.ViewModels
                 IsUser = false;
                 Task.Run(async () => await GetUsers());
             }
+            IsLoading = true;
+            Task.Run(async () =>
+            {
+                groupContributionDetails = await ServiceBase.GetContributionDetailsByGroupNO(App.GroupNumber);
+            });
+            IsLoading = false;
         }
 
         public async Task<List<UserDto>> GetUsers()
@@ -207,6 +214,10 @@ namespace Susu.ViewModels
                             emailNotificatinDetailsDto.UserId = UserDto != null ? UserDto.Id : 0;
                             emailNotificatinDetailsDto.UserMail = UserDto != null ? UserDto.Email : null;
                             emailNotificatinDetailsDto.mailSubject = notificationDto.Tittle;
+                            if(notificationDto!=null && notificationDto.NotificationType == (int)NotificationType.ContributionPaymentReminder)
+                            {
+                                notificationDto.Message = notificationDto.Message.Replace("<date>", string.Format("{0:d/M/yyyy}", groupContributionDetails?.ContributionDate));
+                            }
                             emailNotificatinDetailsDto.NotificationMessage = notificationDto.Message;
                             emailNotificatinDetailsDto.isReadbyUser = false;
                             emailNotificatinDetailsDto.FromUserId = App.UserId;

@@ -186,10 +186,14 @@ namespace Susu.ViewModels
                 IsLoading = true;
                 if (isProofUploaded)
                 {
+                    App.Current.Properties["IsProfileUpdated"] = true;
+                    await App.Current.SavePropertiesAsync();
                     await NavigationService.NavigateAsync("LandingPage");
                 }
                 else
                 {
+                    App.Current.Properties["IsProfileUpdated"] = false;
+                    await App.Current.SavePropertiesAsync();
                     await App.Current.MainPage.DisplayAlert("Alert", "Something went wrong", "OK");
                 }
             }

@@ -24,7 +24,14 @@ namespace Susu.ViewModels
             long userId = await ServiceBase.SaveUser(userDto);
             if(userId>0)
             {
+                App.Current.Properties["IsAggrementAccepted"] = true;
+                await App.Current.SavePropertiesAsync();
                 await NavigationService.NavigateAsync("UploadIdProof");
+            }
+            else
+            {
+                App.Current.Properties["IsAggrementAccepted"] = false;
+                await App.Current.SavePropertiesAsync();
             }
             
         }
