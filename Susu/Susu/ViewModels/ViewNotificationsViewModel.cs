@@ -8,7 +8,7 @@ using Xamarin.Essentials;
 
 namespace Susu.ViewModels
 {
-    public class ViewNotificationsViewModel : ViewModelBase,INavigatedAware
+    public class ViewNotificationsViewModel : ViewModelBase
     {
         public List<EmailNotificatinDetailsDto> _lstEmailNotificationDto = null;
         public List<EmailNotificatinDetailsDto> lstEmailNotificationDto { get { return _lstEmailNotificationDto; } set { SetProperty(ref _lstEmailNotificationDto, value); } }
@@ -19,10 +19,27 @@ namespace Susu.ViewModels
         public ViewNotificationsViewModel(INavigationService navigationService):base(navigationService)
         {
             NavigationService = navigationService;
+            BindData();
+
         }
         #endregion
 
         #region Functions
+
+        public async void BindData()
+        {
+            try
+            {
+                IsLoading = true;
+                lstEmailNotificationDto = new List<EmailNotificatinDetailsDto>();
+                lstEmailNotificationDto = await ServiceBase.GetUserNotificationsById(App.UserId);
+                IsLoading = false;
+            }
+            catch(Exception ex)
+            {
+
+            }
+        }
         public async void ViewNotification(EmailNotificatinDetailsDto emailNotificatinDetailsDto)
         {
             NavigationParameters np = new NavigationParameters();
@@ -41,17 +58,17 @@ namespace Susu.ViewModels
             //throw new NotImplementedException();
         }
 
-        public void OnNavigatedTo(INavigationParameters parameters)
-        {
-            if (parameters.ContainsKey("NotificationsList"))
-            {
-                IsLoading = true;
-                lstEmailNotificationDto = new List<EmailNotificatinDetailsDto>();
-                List<EmailNotificatinDetailsDto> lst = new List<EmailNotificatinDetailsDto>();
-                lst = (List<EmailNotificatinDetailsDto>)parameters["NotificationsList"];
-                lstEmailNotificationDto = new List<EmailNotificatinDetailsDto>(lst);
-                IsLoading = false;
-            }
-        }
+        //public void OnNavigatedTo(INavigationParameters parameters)
+        //{
+        //    if (parameters.ContainsKey("NotificationsList"))
+        //    {
+        //        IsLoading = true;
+        //        lstEmailNotificationDto = new List<EmailNotificatinDetailsDto>();
+        //        List<EmailNotificatinDetailsDto> lst = new List<EmailNotificatinDetailsDto>();
+        //        lst = (List<EmailNotificatinDetailsDto>)parameters["NotificationsList"];
+        //        lstEmailNotificationDto = new List<EmailNotificatinDetailsDto>(lst);
+        //        IsLoading = false;
+        //    }
+        //}
     }
 }

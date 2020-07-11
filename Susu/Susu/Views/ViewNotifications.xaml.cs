@@ -37,6 +37,12 @@ namespace Susu.Views
                     vm.ViewNotification(emailNotificatinDetailsDto);
                 }
             }
+           
+        }
+
+        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+
         }
     }
 }

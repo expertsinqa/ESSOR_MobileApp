@@ -51,8 +51,8 @@ namespace Susu.ViewModels
 
         private async void Back()
         {
-            // await NavigationService.NavigateAsync("SamplePage");
-            await NavigationService.GoBackAsync();
+            await NavigationService.NavigateAsync("ViewNotifications");
+           // await NavigationService.GoBackAsync();
 
         }
 

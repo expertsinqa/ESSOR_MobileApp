@@ -471,12 +471,9 @@ namespace Susu.ViewModels
 
         public async void ViewNotifications()
         {
-            if (lstemailNotificatinDetailsDtos != null)
-            {
-                NavigationParameters np = new NavigationParameters();
-                np.Add("NotificationsList", lstemailNotificatinDetailsDtos);
-                await NavigationService.NavigateAsync("ViewNotifications", np);
-            }
+                //NavigationParameters np = new NavigationParameters();
+                //np.Add("NotificationsList", lstemailNotificatinDetailsDtos);
+                await NavigationService.NavigateAsync("ViewNotifications");
         }
 
         private async void paymentContribution()

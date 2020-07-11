@@ -47,9 +47,21 @@ namespace Susu.Models
             get
             {
                 if (isReadbyUser)
-                    return Color.WhiteSmoke;
+                    return Color.White;
                 else
-                    return Color.FromHex("#CEDEEB");
+                    return Color.FromHex("#2d67e4");
+            }
+            set { }
+        }
+
+        public Color TextColor
+        {
+            get
+            {
+                if (isReadbyUser)
+                    return Color.Black;
+                else
+                    return Color.White;
             }
             set { }
         }

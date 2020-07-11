@@ -18,13 +18,13 @@
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <custom:CustomListViewCell>
-                                    <Frame CornerRadius="10" Margin="0,15,0,10" HasShadow="False" BackgroundColor="{Binding BGcolor}">
+                                    <Frame x:Name="lblColor" CornerRadius="10" Margin="0,15,0,10" HasShadow="False" BackgroundColor="{Binding BGcolor}">
                                         <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="90*"/>
                                                 <ColumnDefinition Width="10*"/>
                                             </Grid.ColumnDefinitions>
-                                            <Label Grid.Column="0" Text="{Binding mailSubject}" TextColor="Black" VerticalOptions="Start" HorizontalOptions="Start" FontFamily="{StaticResource NormalFont}"/>
+                                            <Label Grid.Column="0" Text="{Binding mailSubject}" TextColor="{Binding TextColor}" VerticalOptions="Start" HorizontalOptions="Start" FontFamily="{StaticResource NormalFont}"/>
                                             <Image Grid.Column="1" Source="right_arrow.png" HeightRequest="20" WidthRequest="20" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit"/>
                                         </Grid>
                                     </Frame>
