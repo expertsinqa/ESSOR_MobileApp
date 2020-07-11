@@ -58,11 +58,21 @@ namespace Susu.Views
 
         private void GroupSartdate(object sender, DateChangedEventArgs e)
         {
+            if (viewModel.SelectedDate != null && viewModel.SelectedDate < e.NewDate)
+            {
+                DisplayAlert("", "Group start date should be lessthan contribution date", "OK");
+                return;
+            }
             viewModel.GroupStartDate = e.NewDate;
         }
 
         private void PayoutDate(object sender, DateChangedEventArgs e)
         {
+            if(viewModel.SelectedDate!=null && viewModel.SelectedDate  > e.NewDate)
+            {
+                DisplayAlert("", "Payout date should be greater than contribution date", "OK");
+                return;
+            }
             viewModel.payoutDate = e.NewDate;
         }
 

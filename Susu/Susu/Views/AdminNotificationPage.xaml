@@ -28,7 +28,7 @@
                             <RadioButton Text="Single User" IsChecked="False" TextColor="Black" CheckedChanged="SpecificRadioButton_CheckedChanged" VerticalOptions="End" HorizontalOptions="End"/>
                         </StackLayout>
                     </StackLayout>
-                    <ListView ItemsSource="{Binding lstnotificationDto}" HasUnevenRows="True" SelectionMode="Single" ItemTapped="ListView_ItemTapped" SeparatorVisibility="None" IsVisible="{Binding IsListViewVisible}" RowHeight="40">
+                            <ListView ItemsSource="{Binding lstnotificationDto}" HasUnevenRows="True" SelectionMode="Single" ItemTapped="ListView_ItemTapped" SeparatorVisibility="None" IsVisible="{Binding IsListViewVisible}" RowHeight="{OnPlatform Android='40',iOS='100'}" BackgroundColor="Transparent">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <custom:CustomListViewCell>

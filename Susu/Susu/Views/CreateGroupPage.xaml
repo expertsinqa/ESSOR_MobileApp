@@ -29,10 +29,10 @@
                             <custom:CustomPicker Placeholder="Select Contribution day"  Title="Contribution Day" HeightRequest="{OnPlatform iOS='50'}" ItemsSource="{Binding DaysList}" SelectedItem="{Binding selectedContributionDay}" VerticalOptions="Fill" HorizontalOptions="Fill" FontFamily="{StaticResource NormalFont}"/>
                     </Frame>
                     <Frame CornerRadius="{OnPlatform Android='10'}" BorderColor="#2d67e4"  Padding="0,0,0,0" IsClippedToBounds="True" HasShadow="False" IsVisible="{Binding IsContributionDateVisible}"> 
-                        <custom:CustomDatePicker PlaceHolder="Select Contribution Date" DateSelected="CustomDatePicker_DateSelected"  Image="date_icon.png" HeightRequest="{OnPlatform iOS='50'}"  VerticalOptions="Fill" HorizontalOptions="Fill" FontFamily="{StaticResource NormalFont}"/>
+                        <custom:CustomDatePicker x:Name="grpContributiondate" PlaceHolder="Select Contribution Date" DateSelected="CustomDatePicker_DateSelected"  Image="date_icon.png" HeightRequest="{OnPlatform iOS='50'}"  VerticalOptions="Fill" HorizontalOptions="Fill" FontFamily="{StaticResource NormalFont}"/>
                     </Frame>
                         <Frame CornerRadius="{OnPlatform Android='10'}" BorderColor="#2d67e4"  Padding="0,0,0,0" IsClippedToBounds="True" HasShadow="False" IsVisible="{Binding IsGroupStartDateVisible}">
-                            <custom:CustomDatePicker PlaceHolder="Select GroupStrat Date" DateSelected="GroupSartdate"  Image="date_icon.png" HeightRequest="{OnPlatform iOS='50'}"  VerticalOptions="Fill" HorizontalOptions="Fill" FontFamily="{StaticResource NormalFont}"/>
+                            <custom:CustomDatePicker x:Name="grpStartdate" PlaceHolder="Select GroupStrat Date" DateSelected="GroupSartdate"  Image="date_icon.png" HeightRequest="{OnPlatform iOS='50'}"  VerticalOptions="Fill" HorizontalOptions="Fill" FontFamily="{StaticResource NormalFont}"/>
                         </Frame>
                         <Frame CornerRadius="{OnPlatform Android='10'}" BorderColor="#2d67e4"  Padding="0,0,0,0" IsClippedToBounds="True" HasShadow="False" IsVisible="{Binding IsPayoutDateVisible}">
                             <custom:CustomDatePicker PlaceHolder="Select Payout Date" DateSelected="PayoutDate"  Image="date_icon.png" HeightRequest="{OnPlatform iOS='50'}"  VerticalOptions="Fill" HorizontalOptions="Fill" FontFamily="{StaticResource NormalFont}"/>

@@ -122,6 +122,21 @@ namespace Susu.ViewModels
                 AmountPlaceholder = Color.Red;
                 return;
             }
+            else if (SelectedDate != null && SelectedDate > payoutDate)
+            {
+                await App.Current.MainPage.DisplayAlert("", "Contribution date should be less than payout date", "OK");
+                return;
+            }
+            else if (SelectedDate != null && payoutDate == null)
+            {
+                await App.Current.MainPage.DisplayAlert("", "Payout date should be greater than contribution date", "OK");
+                return;
+            }
+            else if (SelectedDate != null && payoutDate != null && payoutDate < SelectedDate)
+            {
+                await App.Current.MainPage.DisplayAlert("", "Payout date should be greater than contribution date", "OK");
+                return;
+            }
             else if(string.IsNullOrEmpty(CustomRulesText))
             {
                 if(await App.Current.MainPage.DisplayAlert("","Please add the custom rules to the group","OK","Cancel"))
@@ -135,6 +150,7 @@ namespace Susu.ViewModels
                     //CreateGroup();
                 }
             }
+            
             IsLoading = true;
             GroupDto groupDto = new GroupDto();
             groupDto.GroupName = GroupName;
@@ -155,6 +171,7 @@ namespace Susu.ViewModels
             if (group!=null && group.Id > 0)
             {
                 App.Current.Properties["GroupId"] = group.Id;
+                App.Current.Properties["GroupAdmin"] = true;
                 await App.Current.SavePropertiesAsync();
                 App.GroupId = group.Id;
                 App.IsGroupAdmin = true;

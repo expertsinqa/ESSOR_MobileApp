@@ -166,6 +166,11 @@ namespace Susu.ViewModels
 
         public ICommand GroupudateClosed { get { return new Command(CloseGroup); } }
 
+        public Color _notificationBGColor = Color.White;
+        public Color notificationBGColor { get { return _notificationBGColor; } set { SetProperty(ref _notificationBGColor, value); } }
+
+        public Color _noficationLabelColor = Color.White;
+        public Color noficationLabelColor { get { return _noficationLabelColor; } set { SetProperty(ref _noficationLabelColor, value); } }
         public SamplePageViewModel(INavigationService navigationService) : base(navigationService)
         {
             NavigationService = navigationService;
@@ -177,6 +182,14 @@ namespace Susu.ViewModels
             GetNotification();
             _lstperiod = new List<string>() { "Weekly", "Monthly", "Yearly" };
             DaysList = new List<string>() { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
+            if (groupDto!=null && groupDto.ContributionDate != null && App.IsGroupAdmin && DateTime.Now < groupDto.ContributionDate)
+            {
+                IsGroupInfoEditable = true;
+            }
+            else
+            {
+                IsGroupInfoEditable = false;
+            }
 
         }
 
@@ -334,6 +347,8 @@ namespace Susu.ViewModels
                             ContributionAmount = "$ " + string.Format("{0:00.00}", groupDto.ContributionAmount);
                         if (groupDto.ContributionDate != null)
                             ContributionDate = string.Format("{0:d/M/yyyy}", groupDto.ContributionDate);
+                        if (App.UserId != 0 && groupDto.CreatorId != 0 && App.UserId == groupDto.CreatorId)
+                            App.IsGroupAdmin = true;
                         //if (groupDto.ContributionDate != null) {
                         //    selectedDate = DateTime.Parse(groupDto.ContributionDate.ToString().Split(' ')[0]);
                         //   // selectedDate = DateTime.ParseExact(date,"d/M/yyyy", System.Globalization.CultureInfo.InvariantCulture);
@@ -396,16 +411,27 @@ namespace Susu.ViewModels
         public async void updateGroup()
         {
             GroupDto updatedgroupDto = groupDto;
-            GroupDto group = await ServiceBase.SaveGroupInfo(updatedgroupDto);
-            if(group!=null &&  group.Id>0)
+            if(updatedgroupDto!=null)
             {
-                // await App.Current.MainPage.DisplayAlert("", "Group details updated successfully", "OK");
-                IsGroupInfoupdateVisible = true;
+                if(updatedgroupDto.ContributionDate!=null && updatedgroupDto.PayOutDate!=null &&  updatedgroupDto.PayOutDate <= updatedgroupDto.ContributionDate)
+                {
+                    await App.Current.MainPage.DisplayAlert("", "Group payout date should be greater than group contribution date", "OK");
+                    return;
+                }
+                IsLoading = true;
+                GroupDto group = await ServiceBase.SaveGroupInfo(updatedgroupDto);
+                IsLoading = false;
+                if (group != null && group.Id > 0)
+                {
+                    // await App.Current.MainPage.DisplayAlert("", "Group details updated successfully", "OK");
+                    IsGroupInfoupdateVisible = true;
+                }
+                else
+                {
+                    await App.Current.MainPage.DisplayAlert("", "Something went wrong", "OK");
+                }
             }
-            else
-            {
-                await App.Current.MainPage.DisplayAlert("", "Something went wrong", "OK");
-            }
+            
         }
 
         public async void GetNotification()
@@ -417,7 +443,18 @@ namespace Susu.ViewModels
             if (lstemailNotificatinDetailsDtos != null && lstemailNotificatinDetailsDtos.Count > 0)
             {
                 NotificationCount = lstemailNotificatinDetailsDtos.Where(x => x.isReadbyUser == false).Count();
+                if(NotificationCount>0)
+                {
+                    notificationBGColor = Color.Red;
+                    noficationLabelColor = Color.White;
+                }
+                else
+                {
+                    notificationBGColor = Color.White;
+                    noficationLabelColor = Color.Black;
+                }
             }
+            
         }
 
         public async void RestPassword()

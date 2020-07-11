@@ -124,7 +124,7 @@ namespace Susu.ViewModels
                         if (RoledId == (int)Roles.groupadmin)
                         {
                             App.IsGroupAdmin = true;
-                            App.Current.Properties["GroupAdmin"] = App.IsGroupAdmin;
+                            App.Current.Properties["GroupAdmin"] = true ;
                         }
                         await App.Current.SavePropertiesAsync();
                         if (!userDto.IsAcceptAggrement)
