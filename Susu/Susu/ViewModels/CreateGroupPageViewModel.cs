@@ -137,19 +137,19 @@ namespace Susu.ViewModels
                 await App.Current.MainPage.DisplayAlert("", "Payout date should be greater than contribution date", "OK");
                 return;
             }
-            else if(string.IsNullOrEmpty(CustomRulesText))
-            {
-                if(await App.Current.MainPage.DisplayAlert("","Please add the custom rules to the group","OK","Cancel"))
-                {
-                    IsCustomRulesVisible = true;
-                    return;
-                }
-                else
-                {
-                    IsCustomRulesVisible = false;
-                    //CreateGroup();
-                }
-            }
+            //else if(string.IsNullOrEmpty(CustomRulesText))
+            //{
+            //    if(await App.Current.MainPage.DisplayAlert("","Please add the custom rules to the group","OK","Cancel"))
+            //    {
+            //        IsCustomRulesVisible = true;
+            //        return;
+            //    }
+            //    else
+            //    {
+            //        IsCustomRulesVisible = false;
+            //        //CreateGroup();
+            //    }
+            //}
             
             IsLoading = true;
             GroupDto groupDto = new GroupDto();
