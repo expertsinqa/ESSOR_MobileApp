@@ -13,7 +13,7 @@ using static Susu.Models.Enums;
 
 namespace ESORR.ViewModels
 {
-    public class GroupPayoutDetailsViewModel : ViewModelBase,INavigationAware
+    public class GroupPayoutDetailsViewModel : ViewModelBase, INavigationAware
     {
         GroupContributionDetails groupContributionDetails { get; set; }
         public int groupNumber = 0;
@@ -29,14 +29,19 @@ namespace ESORR.ViewModels
         public ICommand BackClicked { get { return new Command(Back); } }
 
         public bool _IsAdmin = false;
-        public bool IsAdmin { get { return _IsAdmin; } set { SetProperty(ref _IsAdmin,value); } }
+        public bool IsAdmin { get { return _IsAdmin; } set { SetProperty(ref _IsAdmin, value); } }
+
+        public string _PaidMembers = "";
+        public string PaidMembers { get { return _PaidMembers; } set { SetProperty(ref _PaidMembers, value); } }
+        public string _UnPaidMembers = "";
+        public string UnPaidMembers { get { return _UnPaidMembers; } set { SetProperty(ref _UnPaidMembers, value); } }
 
         private async void Back(object obj)
         {
             await NavigationService.GoBackAsync();
         }
 
-        public GroupPayoutDetailsViewModel(INavigationService navigationService):base(navigationService)
+        public GroupPayoutDetailsViewModel(INavigationService navigationService) : base(navigationService)
         {
             NavigationService = navigationService;
         }
@@ -48,9 +53,40 @@ namespace ESORR.ViewModels
             else
                 IsAdmin = false;
             UserPayOutDetails = await ServiceBase.GetPayOutDetailsByGroupNO(groupNumber);
-            if(UserPayOutDetails!=null && UserPayOutDetails.Count>0)
+            if (UserPayOutDetails != null && UserPayOutDetails.Count > 0)
             {
-
+                int Pm = UserPayOutDetails.Where(x => x.isPaymentCompleted == true).Count();
+                int UPm = UserPayOutDetails.Where(x => x.isPaymentCompleted == false).Count();
+                if (Pm < 10)
+                {
+                    PaidMembers = "0" + Pm;
+                }
+                else
+                {
+                    PaidMembers = Pm.ToString();
+                }
+                if (UPm < 10)
+                {
+                    UnPaidMembers = "0" + UPm;
+                }
+                else
+                {
+                    UnPaidMembers = UPm.ToString();
+                }
+                UserPayOutDetails.ForEach(u =>
+                {
+                    if (u != null)
+                    {
+                        if (u.ContributionId == App.contributionId && IsAdmin)
+                        {
+                            u.IsEnabled = true;
+                        }
+                        else
+                        {
+                            u.IsEnabled = false;
+                        }
+                    }
+                });
             }
             //groupContributionDetails = new GroupContributionDetails();
             //groupContributionDetails = await ServiceBase.GetContributionDetailsByGroupNO(groupNumber);
@@ -133,7 +169,7 @@ namespace ESORR.ViewModels
                     emailNotificatinDetailsDto.mailSubject = PaymentnotificationDto.Tittle;
                     if (PaymentnotificationDto.Message != null)
                     {
-                        PaymentnotificationDto.Message = PaymentnotificationDto.Message.Replace("<username>", userDto.FirstName+" "+userDto.LastName);
+                        PaymentnotificationDto.Message = PaymentnotificationDto.Message.Replace("<username>", userDto.FirstName + " " + userDto.LastName);
                         PaymentnotificationDto.Message = PaymentnotificationDto.Message.Replace("<paidamount>", userPayOutDetails.PaidAmount.ToString());
                         // PaymentnotificationDto.Message = PaymentnotificationDto.Message.Replace("<<paidamount>>", userDto.CreateDate.ToString());
                     }

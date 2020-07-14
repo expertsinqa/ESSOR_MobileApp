@@ -31,7 +31,7 @@
                             <Image Source="favicon_white.png" VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="40" WidthRequest="40" Aspect="AspectFit"/>
                                 <Label Text="ESORR" VerticalOptions="Start" HorizontalOptions="Center" TextColor="#2d67e4" FontAttributes="Bold" FontSize="20" Margin="0,10,0,0" FontFamily="{StaticResource NormalFont}"/>
                             </StackLayout>-->
-                            <custom:CustomEntry  Text="{Binding Email}" Keyboard="Email" Placeholder="Email" PlaceholderColor="{Binding EmailPlaceholder}" HeightRequest="{OnPlatform iOS='50'}" VerticalOptions="Fill" HorizontalOptions="Fill"  FontFamily="{StaticResource NormalFont}">
+                            <custom:CustomEntry  Text="{Binding Email}" Keyboard="Email" Placeholder="Email" PlaceholderColor="{Binding EmailPlaceholder}" HeightRequest="{OnPlatform iOS='50'}" VerticalOptions="Fill" HorizontalOptions="Fill"  FontFamily="{StaticResource NormalFont}" Margin="0,10,0,0">
                                    <custom:CustomEntry.Behaviors>
                                     <custom1:EmailValidationBehaviour/>
                                 </custom:CustomEntry.Behaviors>

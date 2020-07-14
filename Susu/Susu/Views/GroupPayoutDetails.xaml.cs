@@ -45,7 +45,7 @@ namespace ESORR.Views
         {
             var s = sender as Image;
             var item = s.Parent.BindingContext as UserPayOutDetails;
-            if (item != null && !item.isPaymentCompleted)
+            if (item != null && !item.isPaymentCompleted && item.IsEnabled)
             {
                 item.isPaymentCompleted = true;
                 vm.UpdatePayment(item);

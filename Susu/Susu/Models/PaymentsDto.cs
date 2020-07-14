@@ -102,7 +102,7 @@ namespace ESORR.Models
             {
                 if(PayOutDate!=null)
                 {
-                    return string.Format("{0:M/d/yyyy}", PayOutDate);
+                    return string.Format("{0:M/dd/yyyy}", PayOutDate);
                 }
                 else
                 {
@@ -110,6 +110,8 @@ namespace ESORR.Models
                 }
             }
         }
+
+       public bool IsEnabled { get; set; }
 
 
     }

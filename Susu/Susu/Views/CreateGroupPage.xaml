@@ -38,7 +38,7 @@
                             <custom:CustomDatePicker PlaceHolder="Select Payout Date" DateSelected="PayoutDate"  Image="date_icon.png" HeightRequest="{OnPlatform iOS='50'}"  VerticalOptions="Fill" HorizontalOptions="Fill" FontFamily="{StaticResource NormalFont}"/>
                         </Frame>
                         <Frame CornerRadius="{OnPlatform Android='10'}" BorderColor="#2d67e4"  Padding="0,0,0,0" IsClippedToBounds="True" HasShadow="False" IsVisible="{Binding IsPayoutDayVisible}">
-                            <custom:CustomPicker Placeholder="Select Payout day"  Title="Contribution Day" HeightRequest="{OnPlatform iOS='50'}" ItemsSource="{Binding DaysList}" SelectedItem="{Binding selectedPayoutDay}" VerticalOptions="Fill" HorizontalOptions="Fill" FontFamily="{StaticResource NormalFont}"/>
+                            <custom:CustomPicker Placeholder="Select Payout day"  Title="Payout Day" HeightRequest="{OnPlatform iOS='50'}" ItemsSource="{Binding DaysList}" SelectedItem="{Binding selectedPayoutDay}" VerticalOptions="Fill" HorizontalOptions="Fill" FontFamily="{StaticResource NormalFont}"/>
                         </Frame>
                         <!--<Label Text="Click here to add customrules for group" VerticalOptions="Start" HorizontalOptions="Start" TextDecorations="Underline" FontFamily="{StaticResource NormalFont}" FontSize="15">
                             <Label.GestureRecognizers>

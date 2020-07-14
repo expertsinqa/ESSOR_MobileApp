@@ -109,19 +109,87 @@
       "scale": "2x",
       "size": "60x60",
       "idiom": "iphone",
-      "filename": "Favicon_120.png"
+      "filename": "120.png"
     },
     {
       "scale": "3x",
       "size": "60x60",
       "idiom": "iphone",
-      "filename": "Favicon_180.png"
+      "filename": "180.png"
     },
     {
       "scale": "1x",
       "size": "1024x1024",
       "idiom": "ios-marketing",
-      "filename": "Favicon_1024.png"
+      "filename": "appstore.png"
+    },
+    {
+      "role": "notificationCenter",
+      "subtype": "38mm",
+      "scale": "2x",
+      "size": "24x24",
+      "idiom": "watch"
+    },
+    {
+      "role": "notificationCenter",
+      "subtype": "42mm",
+      "scale": "2x",
+      "size": "27.5x27.5",
+      "idiom": "watch"
+    },
+    {
+      "role": "companionSettings",
+      "scale": "2x",
+      "size": "29x29",
+      "idiom": "watch"
+    },
+    {
+      "role": "companionSettings",
+      "scale": "3x",
+      "size": "29x29",
+      "idiom": "watch"
+    },
+    {
+      "role": "appLauncher",
+      "subtype": "38mm",
+      "scale": "2x",
+      "size": "40x40",
+      "idiom": "watch"
+    },
+    {
+      "role": "appLauncher",
+      "subtype": "40mm",
+      "scale": "2x",
+      "size": "44x44",
+      "idiom": "watch"
+    },
+    {
+      "role": "appLauncher",
+      "subtype": "44mm",
+      "scale": "2x",
+      "size": "50x50",
+      "idiom": "watch"
+    },
+    {
+      "role": "quickLook",
+      "subtype": "38mm",
+      "scale": "2x",
+      "size": "86x86",
+      "idiom": "watch"
+    },
+    {
+      "role": "quickLook",
+      "subtype": "42mm",
+      "scale": "2x",
+      "size": "98x98",
+      "idiom": "watch"
+    },
+    {
+      "role": "quickLook",
+      "subtype": "44mm",
+      "scale": "2x",
+      "size": "108x108",
+      "idiom": "watch"
     }
   ],
   "properties": {},
