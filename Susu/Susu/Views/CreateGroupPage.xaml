@@ -40,11 +40,11 @@
                         <Frame CornerRadius="{OnPlatform Android='10'}" BorderColor="#2d67e4"  Padding="0,0,0,0" IsClippedToBounds="True" HasShadow="False" IsVisible="{Binding IsPayoutDayVisible}">
                             <custom:CustomPicker Placeholder="Select Payout day"  Title="Payout Day" HeightRequest="{OnPlatform iOS='50'}" ItemsSource="{Binding DaysList}" SelectedItem="{Binding selectedPayoutDay}" VerticalOptions="Fill" HorizontalOptions="Fill" FontFamily="{StaticResource NormalFont}"/>
                         </Frame>
-                        <!--<Label Text="Click here to add customrules for group" VerticalOptions="Start" HorizontalOptions="Start" TextDecorations="Underline" FontFamily="{StaticResource NormalFont}" FontSize="15">
+                        <Label Text="Click here to add customrules for group" VerticalOptions="Start" HorizontalOptions="Start" TextDecorations="Underline" FontFamily="{StaticResource NormalFont}" FontSize="15">
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding CustomRolesClicked}"/>
                             </Label.GestureRecognizers>
-                        </Label>-->
+                        </Label>
                     <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,10,0,0">
                         <Frame VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="#2d67e4"  CornerRadius="{OnPlatform Android='60',iOS='25'  }" WidthRequest="200" Margin="0,10,0,0" Padding="15" HasShadow="False">
                             <Frame.GestureRecognizers>

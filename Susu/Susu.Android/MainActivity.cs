@@ -25,24 +25,24 @@ namespace Susu.Droid
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App(new AndroidInitializer()));
-            var config = new PayPalConfiguration(PayPalEnvironment.Sandbox, "AUSkwXXhdMQBLTjWwTBHilMz4SvfZ_I5AbOA6icmIhX6_IVNWzoghjBP0AUTffaT2R4-UGIyIRLFRR-D")
-            {
-                //If you want to accept credit cards
-                AcceptCreditCards = true,
-                //Your business name
-                MerchantName = "ESORR",
-                //Your privacy policy Url
-                MerchantPrivacyPolicyUri = "https://www.example.com/privacy",
-                //Your user agreement Url
-                MerchantUserAgreementUri = "https://www.example.com/legal",
-                // OPTIONAL - ShippingAddressOption (Both, None, PayPal, Provided)
-                ShippingAddressOption = ShippingAddressOption.Both,
-                // OPTIONAL - Language: Default languege for PayPal Plug-In
-                Language = "us",
-                // OPTIONAL - PhoneCountryCode: Default phone country code for PayPal Plug-In
-                PhoneCountryCode = "52",
-            };
-            CrossPayPalManager.Init(config, this);
+            //var config = new PayPalConfiguration(PayPalEnvironment.Sandbox, "AUSkwXXhdMQBLTjWwTBHilMz4SvfZ_I5AbOA6icmIhX6_IVNWzoghjBP0AUTffaT2R4-UGIyIRLFRR-D")
+            //{
+            //    //If you want to accept credit cards
+            //    AcceptCreditCards = true,
+            //    //Your business name
+            //    MerchantName = "ESORR",
+            //    //Your privacy policy Url
+            //    MerchantPrivacyPolicyUri = "https://www.example.com/privacy",
+            //    //Your user agreement Url
+            //    MerchantUserAgreementUri = "https://www.example.com/legal",
+            //    // OPTIONAL - ShippingAddressOption (Both, None, PayPal, Provided)
+            //    ShippingAddressOption = ShippingAddressOption.Both,
+            //    // OPTIONAL - Language: Default languege for PayPal Plug-In
+            //    Language = "us",
+            //    // OPTIONAL - PhoneCountryCode: Default phone country code for PayPal Plug-In
+            //    PhoneCountryCode = "52",
+            //};
+            //CrossPayPalManager.Init(config, this);
             
         }
 

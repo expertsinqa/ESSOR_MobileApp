@@ -109,7 +109,7 @@ namespace Susu.ViewModels
 
         public ICommand PayouDetailsClicked { get { return new Command(PayoutClicked); } }
 
-        public ICommand PayNowClicked { get { return new Command(Paynow); } }
+        //public ICommand PayNowClicked { get { return new Command(Paynow); } }
 
         public ICommand InvitelinkClicked { get { return new Command(Invite); } }
 
@@ -135,7 +135,7 @@ namespace Susu.ViewModels
 
         public ICommand CloseClicked { get { return new Command(Close); } }
 
-        public ICommand OKButtonClicked { get { return new Command(Pay); } }
+        //public ICommand OKButtonClicked { get { return new Command(Pay); } }
 
         public bool _TaxMessageVisible = false;
         public bool TaxMessageVisible { get { return _TaxMessageVisible; } set { SetProperty(ref _TaxMessageVisible, value); } }
@@ -413,7 +413,7 @@ namespace Susu.ViewModels
             GroupDto updatedgroupDto = groupDto;
             if(updatedgroupDto!=null)
             {
-                if(updatedgroupDto.ContributionDate!=null && updatedgroupDto.PayOutDate!=null &&  updatedgroupDto.PayOutDate <= updatedgroupDto.ContributionDate)
+                if(updatedgroupDto.ContributionDate!=null && updatedgroupDto.PayOutDate!=null &&  updatedgroupDto.PayOutDate < updatedgroupDto.ContributionDate)
                 {
                     await App.Current.MainPage.DisplayAlert("", "Group payout date should be greater than group contribution date", "OK");
                     return;
@@ -494,11 +494,11 @@ namespace Susu.ViewModels
             await NavigationService.NavigateAsync("GroupPayoutDetails", np);
         }
 
-        private async void Paynow()
-        {
-            TaxMessageVisible = true;
+        //private async void Paynow()
+        //{
+        //    TaxMessageVisible = true;
 
-        }
+        //}
 
         private async void Invite()
         {
@@ -566,69 +566,69 @@ namespace Susu.ViewModels
             TaxMessageVisible = false;
         }
 
-        private async void Pay()
-        {
-            if (groupDto != null && groupDto.ContributionAmount > 0)
-            {
-                Double price = AddTaxes(groupDto.ContributionAmount);
-                var result = await CrossPayPalManager.Current.Buy(new PayPalItem("ESORR", new Decimal(price), "USD"), new Decimal(0));
-                if (result.Status == PayPalStatus.Cancelled)
-                {
-                    //Debug.WriteLine("Cancelled");
-                }
-                else if (result.Status == PayPalStatus.Error)
-                {
-                    await App.Current.MainPage.DisplayAlert("", "Something went wrong", "OK");
-                }
-                else if (result.Status == PayPalStatus.Successful)
-                {
-                    //await  App.Current.MainPage.DisplayAlert("", "Payment completed successfully", "OK");
-                    UserPaymentDetails userPaymentDetails = new UserPaymentDetails();
-                    userPaymentDetails.GroupNumber = groupDto.GroupNumber;
-                    userPaymentDetails.PaidAmount = Convert.ToDouble(groupDto.ContributionAmount);
-                    userPaymentDetails.UserId = App.UserId;
-                    userPaymentDetails.ContributionId = groupContributionDetails.ContributionId;
-                    long paymentId = await ServiceBase.SavePayPalPaymentDetails(userPaymentDetails);
-                    if (paymentId > 0)
-                    {
-                        TaxMessageVisible = false;
-                        //await  App.Current.MainPage.DisplayAlert("", "Payment done successfully", "OK");
-                        SendNotification();
-                    }
-                    else
-                    {
-                        TaxMessageVisible = false;
-                        await App.Current.MainPage.DisplayAlert("", "Some thing went wrong", "OK");
-                    }
+        //private async void Pay()
+        //{
+        //    if (groupDto != null && groupDto.ContributionAmount > 0)
+        //    {
+        //        Double price = AddTaxes(groupDto.ContributionAmount);
+        //        var result = await CrossPayPalManager.Current.Buy(new PayPalItem("ESORR", new Decimal(price), "USD"), new Decimal(0));
+        //        if (result.Status == PayPalStatus.Cancelled)
+        //        {
+        //            //Debug.WriteLine("Cancelled");
+        //        }
+        //        else if (result.Status == PayPalStatus.Error)
+        //        {
+        //            await App.Current.MainPage.DisplayAlert("", "Something went wrong", "OK");
+        //        }
+        //        else if (result.Status == PayPalStatus.Successful)
+        //        {
+        //            //await  App.Current.MainPage.DisplayAlert("", "Payment completed successfully", "OK");
+        //            UserPaymentDetails userPaymentDetails = new UserPaymentDetails();
+        //            userPaymentDetails.GroupNumber = groupDto.GroupNumber;
+        //            userPaymentDetails.PaidAmount = Convert.ToDouble(groupDto.ContributionAmount);
+        //            userPaymentDetails.UserId = App.UserId;
+        //            userPaymentDetails.ContributionId = groupContributionDetails.ContributionId;
+        //            long paymentId = await ServiceBase.SavePayPalPaymentDetails(userPaymentDetails);
+        //            if (paymentId > 0)
+        //            {
+        //                TaxMessageVisible = false;
+        //                //await  App.Current.MainPage.DisplayAlert("", "Payment done successfully", "OK");
+        //                SendNotification();
+        //            }
+        //            else
+        //            {
+        //                TaxMessageVisible = false;
+        //                await App.Current.MainPage.DisplayAlert("", "Some thing went wrong", "OK");
+        //            }
 
-                }
-            }
-        }
+        //        }
+        //    }
+        //}
 
-        private double AddTaxes(decimal amount)
-        {
-            double TotalAmount = 0;
-            if (amount > 0)
-            {
-                // TotalAmount = Convert.ToDouble(amount) + (Convert.ToDouble(amount) * 0.30);
-                TotalAmount = Convert.ToDouble(amount) + (Convert.ToDouble(amount) * 0.015);
-            }
-            return TotalAmount;
-            //if (money < 10000)
-            //{
-            //    tax = .05 * money;
-            //}
-            //else if (money <= 100000)
-            //{
-            //    tax = .08 * money;
-            //}
-            //else
-            //{
-            //    tax = .085 * money;
-            //}
+        //private double AddTaxes(decimal amount)
+        //{
+        //    double TotalAmount = 0;
+        //    if (amount > 0)
+        //    {
+        //        // TotalAmount = Convert.ToDouble(amount) + (Convert.ToDouble(amount) * 0.30);
+        //        TotalAmount = Convert.ToDouble(amount) + (Convert.ToDouble(amount) * 0.015);
+        //    }
+        //    return TotalAmount;
+        //    //if (money < 10000)
+        //    //{
+        //    //    tax = .05 * money;
+        //    //}
+        //    //else if (money <= 100000)
+        //    //{
+        //    //    tax = .08 * money;
+        //    //}
+        //    //else
+        //    //{
+        //    //    tax = .085 * money;
+        //    //}
 
 
-        }
+        //}
 
         private void CloseHelp()
         {

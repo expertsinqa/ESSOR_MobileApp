@@ -36,7 +36,7 @@ namespace Susu.Views
                     viewModel.IsContributionDateVisible = false;
                     viewModel.IsGroupStartDateVisible = true;
                     viewModel.IsPayoutDayVisible = true;
-                    //viewModel.IsPayoutDayVisible = false;
+                    viewModel.IsPayoutDateVisible = false;
                     //viewModel.IsPayoutDayVisible = true;
                 }
                 else
