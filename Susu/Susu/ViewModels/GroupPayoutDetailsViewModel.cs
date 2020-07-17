@@ -35,6 +35,9 @@ namespace ESORR.ViewModels
         public string PaidMembers { get { return _PaidMembers; } set { SetProperty(ref _PaidMembers, value); } }
         public string _UnPaidMembers = "";
         public string UnPaidMembers { get { return _UnPaidMembers; } set { SetProperty(ref _UnPaidMembers, value); } }
+        
+        public List<UserPayInDetails> _usersPayInDetails;
+        public List<UserPayInDetails> UserPayInDetails { get { return _usersPayInDetails; } set { SetProperty(ref _usersPayInDetails, value); } }
 
         private async void Back(object obj)
         {
@@ -48,10 +51,31 @@ namespace ESORR.ViewModels
 
         private async void BindData()
         {
+            bool isContributionCompleted = false;
             if (App.IsGroupAdmin)
                 IsAdmin = true;
             else
                 IsAdmin = false;
+            IsLoading = true;
+            groupContributionDetails = new GroupContributionDetails();
+            groupContributionDetails = await ServiceBase.GetContributionDetailsByGroupNO(groupNumber);
+            if(groupContributionDetails!=null)
+            {
+                UserPayInDetails = await ServiceBase.GetPayInDetailByGroupNO(groupNumber, groupContributionDetails.ContributionId);
+                if(UserPayInDetails!=null && UserPayInDetails.Count>0)
+                {
+                    int userscount = UserPayInDetails.Count();
+                    int paidUsers = UserPayInDetails.Where(x => x.isPaymentCompleted).Count();
+                    if(userscount == paidUsers)
+                    {
+                        isContributionCompleted = true;
+                    }
+                    else
+                    {
+                        isContributionCompleted = false;
+                    }
+                }
+            }
             UserPayOutDetails = await ServiceBase.GetPayOutDetailsByGroupNO(groupNumber);
             if (UserPayOutDetails != null && UserPayOutDetails.Count > 0)
             {
@@ -77,7 +101,7 @@ namespace ESORR.ViewModels
                 {
                     if (u != null)
                     {
-                        if (u.ContributionId == App.contributionId && IsAdmin)
+                        if (u.ContributionId == App.contributionId && IsAdmin && isContributionCompleted)
                         {
                             u.IsEnabled = true;
                         }
@@ -88,6 +112,7 @@ namespace ESORR.ViewModels
                     }
                 });
             }
+            IsLoading = false;
             //groupContributionDetails = new GroupContributionDetails();
             //groupContributionDetails = await ServiceBase.GetContributionDetailsByGroupNO(groupNumber);
             //if (groupContributionDetails != null)

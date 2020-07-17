@@ -35,5 +35,15 @@ namespace Susu.Models
             }
             set { }
         }
+        public string UserPaypalEmailId
+        {
+            get
+            {
+                if (!string.IsNullOrEmpty(PayPalEmailId))
+                    return "Paypal Email: " + PayPalEmailId;
+                else
+                    return "Paypal Email: Not provided";
+            }
+        }
     }
 }

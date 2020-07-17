@@ -1,17 +1,12 @@
 ﻿using ESORR.Models;
-using PayPal.Forms;
-using PayPal.Forms.Abstractions;
 using Prism.Navigation;
-using Susu.Interface;
 using Susu.Models;
 using Susu.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using System.Windows.Input;
-using Xamarin.Essentials;
 using Xamarin.Forms;
 using static Susu.Models.Enums;
 
@@ -109,7 +104,7 @@ namespace Susu.ViewModels
 
         public ICommand PayouDetailsClicked { get { return new Command(PayoutClicked); } }
 
-        //public ICommand PayNowClicked { get { return new Command(Paynow); } }
+        public ICommand PayNowClicked { get { return new Command(Paynow); } }
 
         public ICommand InvitelinkClicked { get { return new Command(Invite); } }
 
@@ -135,7 +130,7 @@ namespace Susu.ViewModels
 
         public ICommand CloseClicked { get { return new Command(Close); } }
 
-        //public ICommand OKButtonClicked { get { return new Command(Pay); } }
+        public ICommand OKButtonClicked { get { return new Command(OK); } }
 
         public bool _TaxMessageVisible = false;
         public bool TaxMessageVisible { get { return _TaxMessageVisible; } set { SetProperty(ref _TaxMessageVisible, value); } }
@@ -171,6 +166,15 @@ namespace Susu.ViewModels
 
         public Color _noficationLabelColor = Color.White;
         public Color noficationLabelColor { get { return _noficationLabelColor; } set { SetProperty(ref _noficationLabelColor, value); } }
+
+        public long CreatorId { get; set; }
+
+        public string _AdminPaypalId = "";
+        public string AdminPaypalId { get { return _AdminPaypalId; } set { SetProperty(ref _AdminPaypalId, value); } }
+        public bool _IsAdminhaspaypalAccount = false;
+        public bool IsAdminhaspaypalAccount { get { return _IsAdminhaspaypalAccount; } set { SetProperty(ref _IsAdminhaspaypalAccount, value); } }
+        public bool _IsAdminhasnopaypalAccount = false;
+        public bool IsAdminhasnopaypalAccount { get { return _IsAdminhasnopaypalAccount; } set { SetProperty(ref _IsAdminhasnopaypalAccount, value); } }
         public SamplePageViewModel(INavigationService navigationService) : base(navigationService)
         {
             NavigationService = navigationService;
@@ -182,7 +186,7 @@ namespace Susu.ViewModels
             GetNotification();
             _lstperiod = new List<string>() { "Weekly", "Monthly", "Yearly" };
             DaysList = new List<string>() { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
-            if (groupDto!=null && groupDto.ContributionDate != null && App.IsGroupAdmin && DateTime.Now < groupDto.ContributionDate)
+            if (groupDto != null && groupDto.ContributionDate != null && App.IsGroupAdmin && DateTime.Now < groupDto.ContributionDate)
             {
                 IsGroupInfoEditable = true;
             }
@@ -342,6 +346,7 @@ namespace Susu.ViewModels
                     {
                         App.GroupId = groupDto.Id;
                         App.Current.Properties["GroupId"] = App.GroupId;
+                        CreatorId = groupDto.CreatorId;
                         await App.Current.SavePropertiesAsync();
                         if (groupDto.ContributionAmount > 0)
                             ContributionAmount = "$ " + string.Format("{0:00.00}", groupDto.ContributionAmount);
@@ -354,7 +359,7 @@ namespace Susu.ViewModels
                         //   // selectedDate = DateTime.ParseExact(date,"d/M/yyyy", System.Globalization.CultureInfo.InvariantCulture);
                         //  }
 
-                        if(groupDto.ContributionDate!=null && App.IsGroupAdmin && DateTime.Now < groupDto.ContributionDate)
+                        if (groupDto.ContributionDate != null && App.IsGroupAdmin && DateTime.Now < groupDto.ContributionDate)
                         {
                             IsGroupInfoEditable = true;
                         }
@@ -391,7 +396,7 @@ namespace Susu.ViewModels
                     IsLoading = true;
                     groupContributionDetails = await ServiceBase.GetContributionDetailsByGroupNO(groupDto.GroupNumber);
                     IsLoading = false;
-                    if(groupContributionDetails!=null && groupContributionDetails.Id>0)
+                    if (groupContributionDetails != null && groupContributionDetails.Id > 0)
                     {
                         App.contributionId = groupContributionDetails.ContributionId;
                         App.GroupNumber = groupContributionDetails.GroupNumber;
@@ -411,9 +416,9 @@ namespace Susu.ViewModels
         public async void updateGroup()
         {
             GroupDto updatedgroupDto = groupDto;
-            if(updatedgroupDto!=null)
+            if (updatedgroupDto != null)
             {
-                if(updatedgroupDto.ContributionDate!=null && updatedgroupDto.PayOutDate!=null &&  updatedgroupDto.PayOutDate < updatedgroupDto.ContributionDate)
+                if (updatedgroupDto.ContributionDate != null && updatedgroupDto.PayOutDate != null && updatedgroupDto.PayOutDate < updatedgroupDto.ContributionDate)
                 {
                     await App.Current.MainPage.DisplayAlert("", "Group payout date should be greater than group contribution date", "OK");
                     return;
@@ -431,7 +436,7 @@ namespace Susu.ViewModels
                     await App.Current.MainPage.DisplayAlert("", "Something went wrong", "OK");
                 }
             }
-            
+
         }
 
         public async void GetNotification()
@@ -443,7 +448,7 @@ namespace Susu.ViewModels
             if (lstemailNotificatinDetailsDtos != null && lstemailNotificatinDetailsDtos.Count > 0)
             {
                 NotificationCount = lstemailNotificatinDetailsDtos.Where(x => x.isReadbyUser == false).Count();
-                if(NotificationCount>0)
+                if (NotificationCount > 0)
                 {
                     notificationBGColor = Color.Red;
                     noficationLabelColor = Color.White;
@@ -454,7 +459,7 @@ namespace Susu.ViewModels
                     noficationLabelColor = Color.Black;
                 }
             }
-            
+
         }
 
         public async void RestPassword()
@@ -471,9 +476,9 @@ namespace Susu.ViewModels
 
         public async void ViewNotifications()
         {
-                //NavigationParameters np = new NavigationParameters();
-                //np.Add("NotificationsList", lstemailNotificatinDetailsDtos);
-                await NavigationService.NavigateAsync("ViewNotifications");
+            //NavigationParameters np = new NavigationParameters();
+            //np.Add("NotificationsList", lstemailNotificatinDetailsDtos);
+            await NavigationService.NavigateAsync("ViewNotifications");
         }
 
         private async void paymentContribution()
@@ -494,11 +499,28 @@ namespace Susu.ViewModels
             await NavigationService.NavigateAsync("GroupPayoutDetails", np);
         }
 
-        //private async void Paynow()
-        //{
-        //    TaxMessageVisible = true;
+        private async void Paynow()
+        {
+            IsLoading = true;
+            TaxMessageVisible = true;
+            UserDto userDto = await ServiceBase.GetUserById(CreatorId);
+            if(userDto!=null)
+            {
+                if(string.IsNullOrEmpty(userDto.PayPalEmailId))
+                {
+                    IsAdminhasnopaypalAccount = true;
+                    IsAdminhaspaypalAccount = false;
+                }
+                else
+                {
+                    IsAdminhaspaypalAccount = true;
+                    IsAdminhasnopaypalAccount = false;
+                    AdminPaypalId = userDto.PayPalEmailId;
+                }
+            }
+            IsLoading = false;
 
-        //}
+        }
 
         private async void Invite()
         {
@@ -528,7 +550,7 @@ namespace Susu.ViewModels
                     emailNotificatinDetailsDto.mailSubject = PaymentnotificationDto.Tittle;
                     if (PaymentnotificationDto.Message != null)
                     {
-                        PaymentnotificationDto.Message = PaymentnotificationDto.Message.Replace("<Name>", userDto.FirstName+userDto.LastName);
+                        PaymentnotificationDto.Message = PaymentnotificationDto.Message.Replace("<Name>", userDto.FirstName + userDto.LastName);
                         PaymentnotificationDto.Message = PaymentnotificationDto.Message.Replace("<payment date>", groupContributionDetails.NextContributionDate.ToString());
                     }
                     emailNotificatinDetailsDto.NotificationMessage = PaymentnotificationDto.Message;
@@ -641,6 +663,10 @@ namespace Susu.ViewModels
         public void CloseGroup()
         {
             IsGroupInfoupdateVisible = false;
+        }
+        public void OK()
+        {
+            TaxMessageVisible = false;
         }
     }
 }

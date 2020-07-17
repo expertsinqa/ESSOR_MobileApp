@@ -76,6 +76,11 @@ namespace Susu.Views
             viewModel.payoutDate = e.NewDate;
         }
 
+        private void grpContributiondate_Unfocused(object sender, FocusEventArgs e)
+        {
+
+        }
+
         //private void PayoutDay(object sender, DateChangedEventArgs e)
         //{
 
