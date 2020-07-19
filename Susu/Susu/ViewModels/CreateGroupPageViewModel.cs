@@ -63,10 +63,10 @@ namespace Susu.ViewModels
         public ICommand CreateRulesClicked { get { return new Command(CreateRules); } }
 
         public string _selectedContributionDay;
-        public string selectedContributionDay { get { return _selectedContributionDay;} set { SetProperty(ref _selectedContributionDay, value); } }
+        public string selectedContributionDay { get { return _selectedContributionDay; } set { SetProperty(ref _selectedContributionDay, value); } }
 
-        public string _CustomRulesText;
-        public string CustomRulesText { get { return  _CustomRulesText; } set { SetProperty(ref _CustomRulesText, value); }  }
+        public string _CustomRulesText=string.Empty;
+        public string CustomRulesText { get { return _CustomRulesText; } set { SetProperty(ref _CustomRulesText, value); } }
 
         public bool _IsGroupStartDateVisible = false;
         public bool IsGroupStartDateVisible { get { return _IsGroupStartDateVisible; } set { SetProperty(ref _IsGroupStartDateVisible, value); } }
@@ -88,39 +88,76 @@ namespace Susu.ViewModels
 
         #endregion
         #region Constructor
-        public CreateGroupPageViewModel(INavigationService navigationService):base(navigationService)
+        public CreateGroupPageViewModel(INavigationService navigationService) : base(navigationService)
         {
-            _lstperiod = new List<string>() {"Weekly", "Monthly", "Yearly" };
+            _lstperiod = new List<string>() { "Weekly", "Monthly", "Yearly" };
             DaysList = new List<string>() { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
-            
+
         }
         #endregion
         #region Functions
         public async void Back()
         {
-           await NavigationService.NavigateAsync("LandingPage");
+            await NavigationService.NavigateAsync("LandingPage");
         }
 
-        public  void customRules()
+        public void customRules()
         {
             //CustomRulesText = "";
             IsCustomRulesVisible = true;
         }
-        public  void Close()
+        public void Close()
         {
             IsCustomRulesVisible = false;
         }
         public async void CreateGroup()
         {
-            if(string.IsNullOrEmpty(GroupName))
+            if (string.IsNullOrEmpty(GroupName))
             {
                 Groupnameplaceholder = Color.Red;
                 return;
             }
-            else if(string.IsNullOrEmpty(Amount))
+            else if (string.IsNullOrEmpty(Amount))
             {
                 AmountPlaceholder = Color.Red;
                 return;
+            }
+            else if (string.IsNullOrEmpty(selectedPeriod))
+            {
+                await App.Current.MainPage.DisplayAlert("", "Please select Contribution period", "OK");
+                return;
+            }
+            else if (!string.IsNullOrEmpty(selectedPeriod) && selectedPeriod.ToLower() == "weekly")
+            {
+
+                if (string.IsNullOrEmpty(selectedContributionDay))
+                {
+                    await App.Current.MainPage.DisplayAlert("", "Please select group contribution day", "OK");
+                    return;
+                }
+                else if (GroupStartDate == null)
+                {
+                    await App.Current.MainPage.DisplayAlert("", "Please select group start date", "OK");
+                    return;
+                }
+                else if (string.IsNullOrEmpty(selectedPayoutDay))
+                {
+                    await App.Current.MainPage.DisplayAlert("", "Please select group payout day", "OK");
+                    return;
+                }
+            }
+            else if (!string.IsNullOrEmpty(selectedPeriod) && selectedPeriod.ToLower() == "monthly")
+            {
+                if (SelectedDate == null)
+                {
+                    await App.Current.MainPage.DisplayAlert("", "Please select group contribution date", "OK");
+                    return;
+                }
+                else if (payoutDate == null)
+                {
+                    await App.Current.MainPage.DisplayAlert("", "Please select group payout date", "OK");
+                    return;
+                }
             }
             else if (SelectedDate != null && SelectedDate > payoutDate)
             {
@@ -137,7 +174,7 @@ namespace Susu.ViewModels
                 await App.Current.MainPage.DisplayAlert("", "Payout date should be greater than contribution date", "OK");
                 return;
             }
-            else if (string.IsNullOrEmpty(CustomRulesText))
+            if (string.IsNullOrEmpty(CustomRulesText))
             {
                 if (await App.Current.MainPage.DisplayAlert("", "Please add the custom rules to the group", "OK", "Cancel"))
                 {
@@ -168,7 +205,7 @@ namespace Susu.ViewModels
                 groupDto.CreatorId = App.UserId;
             GroupDto group = await ServiceBase.SaveGroupInfo(groupDto);
             IsLoading = false;
-            if (group!=null && group.Id > 0)
+            if (group != null && group.Id > 0)
             {
                 App.Current.Properties["GroupId"] = group.Id;
                 App.Current.Properties["GroupAdmin"] = true;
@@ -178,13 +215,13 @@ namespace Susu.ViewModels
                 NavigationParameters np = new NavigationParameters();
                 np.Add("GroupCode", group.GroupNumber);
                 np.Add("GroupName", group.GroupName);
-                await NavigationService.NavigateAsync("InviteScreenPage",np);
+                await NavigationService.NavigateAsync("InviteScreenPage", np);
             }
-            else if(group!=null && group.Id < 0 )
+            else if (group != null && group.Id < 0)
             {
                 await App.Current.MainPage.DisplayAlert("Alert", "Group with this name already exists", "OK");
             }
-                      
+
         }
 
         public void CreateRules()

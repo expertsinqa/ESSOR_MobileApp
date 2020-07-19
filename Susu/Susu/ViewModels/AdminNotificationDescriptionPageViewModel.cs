@@ -217,6 +217,7 @@ namespace Susu.ViewModels
                             if(notificationDto!=null && notificationDto.NotificationType == (int)NotificationType.ContributionPaymentReminder)
                             {
                                 notificationDto.Message = notificationDto.Message.Replace("<date>", string.Format("{0:M/d/yyyy}", groupContributionDetails?.ContributionDate));
+                                notificationDto.Message = notificationDto.Message.Replace("<contributionamount>", App.Amount);
                             }
                             emailNotificatinDetailsDto.NotificationMessage = notificationDto.Message;
                             emailNotificatinDetailsDto.isReadbyUser = false;

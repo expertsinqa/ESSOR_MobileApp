@@ -139,7 +139,7 @@
                                                 </DataTemplate>
                                             </CollectionView.ItemTemplate>
                                         </CollectionView>
-                                    <Frame Grid.Row="0" VerticalOptions="End" HorizontalOptions="End" BackgroundColor="#2d67e4" CornerRadius="{x:OnPlatform Android='100', iOS='40'}"  HasShadow="False" Margin="0,0,10,10" IsVisible="{Binding IsGroupAdmin}">
+                                    <Frame Grid.Row="0" VerticalOptions="End" HorizontalOptions="End" BackgroundColor="#2d67e4" CornerRadius="{x:OnPlatform Android='100', iOS='40'}"  HasShadow="False" Margin="0,0,10,10" IsVisible="{Binding IsGroupInviteVisible}">
                                         <Frame.GestureRecognizers>
                                             <TapGestureRecognizer Command="{Binding InvitelinkClicked}"/>
                                         </Frame.GestureRecognizers>

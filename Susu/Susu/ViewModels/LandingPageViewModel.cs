@@ -15,6 +15,9 @@ namespace Susu.ViewModels
         public int _GroupId;
         public int GroupId { get { return _GroupId; } set { SetProperty(ref _GroupId, value); } }
 
+        public string _GroupNumber = "";
+        public string GroupNumber { get { return _GroupNumber; } set { SetProperty(ref _GroupNumber, value); } }
+
         public Color _GroupIdPlaceholderColor = Color.Gray;
         public Color GroupIdPlaceholderColor { get { return _GroupIdPlaceholderColor; } set { SetProperty(ref _GroupIdPlaceholderColor, value); } }
         public ICommand JoinGroupClicked
@@ -86,6 +89,7 @@ namespace Susu.ViewModels
         public async void Join()
         {
             groupDto = new GroupDto();
+            GroupId = Convert.ToInt32(GroupNumber);
             if (GroupId == 0)
             {
                 GroupIdPlaceholderColor = Color.Red;
@@ -97,6 +101,11 @@ namespace Susu.ViewModels
             IsLoading = false;
             if (groupDto != null && groupDto.Id > 0)
             {
+                if(groupDto.ErrorId == -1)
+                {
+                   await App.Current.MainPage.DisplayAlert("", "Sorry,already group stared. So, you are unable to join the group ", "OK");
+                    return;
+                }
                 App.GroupId = groupDto.Id;
                 App.Current.Properties["GroupId"] = groupDto.Id;
                 await App.Current.SavePropertiesAsync();

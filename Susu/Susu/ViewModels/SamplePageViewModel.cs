@@ -14,6 +14,7 @@ namespace Susu.ViewModels
 {
     public class SamplePageViewModel : ViewModelBase
     {
+        #region Properties
         public ImageSource _GroupInfoIcon = "info_blue.png";
         public ImageSource GroupInfoIcon { get { return _GroupInfoIcon; } set { SetProperty(ref _GroupInfoIcon, value); } }
 
@@ -175,6 +176,12 @@ namespace Susu.ViewModels
         public bool IsAdminhaspaypalAccount { get { return _IsAdminhaspaypalAccount; } set { SetProperty(ref _IsAdminhaspaypalAccount, value); } }
         public bool _IsAdminhasnopaypalAccount = false;
         public bool IsAdminhasnopaypalAccount { get { return _IsAdminhasnopaypalAccount; } set { SetProperty(ref _IsAdminhasnopaypalAccount, value); } }
+
+        public bool _IsGroupInviteVisible = false;
+        public bool IsGroupInviteVisible { get { return _IsGroupInviteVisible; } set { SetProperty(ref _IsGroupInviteVisible, value); } }
+        #endregion
+
+        #region Constructor
         public SamplePageViewModel(INavigationService navigationService) : base(navigationService)
         {
             NavigationService = navigationService;
@@ -196,7 +203,9 @@ namespace Susu.ViewModels
             }
 
         }
+        #endregion
 
+        #region Functions
         private void GroupInfo()
         {
             GroupInfoIcon = "info_blue.png";
@@ -347,19 +356,27 @@ namespace Susu.ViewModels
                         App.GroupId = groupDto.Id;
                         App.Current.Properties["GroupId"] = App.GroupId;
                         CreatorId = groupDto.CreatorId;
+                        App.Amount = groupDto.ContributionAmount.ToString();
                         await App.Current.SavePropertiesAsync();
                         if (groupDto.ContributionAmount > 0)
                             ContributionAmount = "$ " + string.Format("{0:00.00}", groupDto.ContributionAmount);
                         if (groupDto.ContributionDate != null)
                             ContributionDate = string.Format("{0:d/M/yyyy}", groupDto.ContributionDate);
                         if (App.UserId != 0 && groupDto.CreatorId != 0 && App.UserId == groupDto.CreatorId)
+                        {
                             App.IsGroupAdmin = true;
+                            if(groupDto.ErrorId==0)
+                            {
+                                IsGroupInviteVisible = true;
+                            }
+                        }
+                       
                         //if (groupDto.ContributionDate != null) {
                         //    selectedDate = DateTime.Parse(groupDto.ContributionDate.ToString().Split(' ')[0]);
                         //   // selectedDate = DateTime.ParseExact(date,"d/M/yyyy", System.Globalization.CultureInfo.InvariantCulture);
                         //  }
 
-                        if (groupDto.ContributionDate != null && App.IsGroupAdmin && DateTime.Now < groupDto.ContributionDate)
+                        if (groupDto.ContributionDate != null && App.IsGroupAdmin && DateTime.Now.Date <= groupDto.ContributionDate?.Date)
                         {
                             IsGroupInfoEditable = true;
                         }
@@ -485,7 +502,10 @@ namespace Susu.ViewModels
         {
             NavigationParameters np = new NavigationParameters();
             if (groupDto != null && groupDto.GroupNumber > 0)
+            {
                 np.Add("GroupContributionDetailPage", groupDto.GroupNumber);
+                np.Add("ContributionAmount", groupDto.ContributionAmount);
+            }
 
             await NavigationService.NavigateAsync("GroupContributionDetailPage", np);
         }
@@ -669,4 +689,5 @@ namespace Susu.ViewModels
             TaxMessageVisible = false;
         }
     }
+    #endregion
 }

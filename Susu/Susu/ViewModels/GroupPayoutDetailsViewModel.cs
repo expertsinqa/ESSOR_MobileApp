@@ -35,9 +35,12 @@ namespace ESORR.ViewModels
         public string PaidMembers { get { return _PaidMembers; } set { SetProperty(ref _PaidMembers, value); } }
         public string _UnPaidMembers = "";
         public string UnPaidMembers { get { return _UnPaidMembers; } set { SetProperty(ref _UnPaidMembers, value); } }
-        
+
         public List<UserPayInDetails> _usersPayInDetails;
         public List<UserPayInDetails> UserPayInDetails { get { return _usersPayInDetails; } set { SetProperty(ref _usersPayInDetails, value); } }
+
+        public string NextPaymentUserName { get; set; }
+        public string NextPaymentDate { get; set; }
 
         private async void Back(object obj)
         {
@@ -59,14 +62,14 @@ namespace ESORR.ViewModels
             IsLoading = true;
             groupContributionDetails = new GroupContributionDetails();
             groupContributionDetails = await ServiceBase.GetContributionDetailsByGroupNO(groupNumber);
-            if(groupContributionDetails!=null)
+            if (groupContributionDetails != null)
             {
                 UserPayInDetails = await ServiceBase.GetPayInDetailByGroupNO(groupNumber, groupContributionDetails.ContributionId);
-                if(UserPayInDetails!=null && UserPayInDetails.Count>0)
+                if (UserPayInDetails != null && UserPayInDetails.Count > 0)
                 {
                     int userscount = UserPayInDetails.Count();
                     int paidUsers = UserPayInDetails.Where(x => x.isPaymentCompleted).Count();
-                    if(userscount == paidUsers)
+                    if (userscount == paidUsers)
                     {
                         isContributionCompleted = true;
                     }
@@ -111,49 +114,20 @@ namespace ESORR.ViewModels
                         }
                     }
                 });
+                int nextpaymentContributionId = UserPayOutDetails.Where(x => x.ContributionId == App.contributionId).FirstOrDefault().ContributionId + 1;
+                if (nextpaymentContributionId > 0)
+                {
+                    UserPayOutDetails userPayOut = UserPayOutDetails.Where(x => x.ContributionId == nextpaymentContributionId).FirstOrDefault();
+                    if (userPayOut != null)
+                    {
+                        NextPaymentUserName = userPayOut.UserName;
+                        NextPaymentDate = userPayOut.PayOutDate.ToString("d/M/yyyy");
+                        //NextPaymentUserName = UserPayOutDetails.Where(x => x.ContributionId == nextpaymentContributionId)?.FirstOrDefault().PayOutDate.ToString("d/M/yyyy");
+                        //NextPaymentDate = UserPayOutDetails.Where(x => x.ContributionId == nextpaymentContributionId)?.FirstOrDefault().PayOutDate.ToString("d/M/yyyy");
+                    }
+                }
             }
             IsLoading = false;
-            //groupContributionDetails = new GroupContributionDetails();
-            //groupContributionDetails = await ServiceBase.GetContributionDetailsByGroupNO(groupNumber);
-            //if (groupContributionDetails != null)
-            //{
-            //    ContributionDate = groupContributionDetails.ContributionDate.ToString("dd/M/yyyy");
-            //    ContributionDay = groupContributionDetails.ContributionDay;
-            //    UserPayOutDetails = groupContributionDetails.LstPayOutUsers;
-            //    //if (App.IsGroupAdmin)
-            //    //{
-            //    //    UserPayOutDetails.ToList().ForEach(u =>
-            //    //    {
-            //    //        if (u.isPaymentCompleted)
-            //    //        {
-            //    //            u.IsSwitchEnabled = false;
-            //    //            u.isChecked = true;
-            //    //        }
-            //    //        else
-            //    //        {
-            //    //            u.IsSwitchEnabled = true;
-            //    //            u.isChecked = false;
-            //    //        }
-            //    //    });
-
-            //    //}
-            //    //else
-            //    //{
-            //    //    UserPayOutDetails.ToList().ForEach(u =>
-            //    //    {
-            //    //        if (u.isPaymentCompleted)
-            //    //        {
-            //    //            u.IsSwitchEnabled = false;
-            //    //            u.isChecked = true;
-            //    //        }
-            //    //        else
-            //    //        {
-            //    //            u.IsSwitchEnabled = false;
-            //    //            u.isChecked = false;
-            //    //        }
-            //    //    });
-            //    //}
-            //}
         }
 
         public async void UpdatePayment(UserPayOutDetails userPayOutDetails)
@@ -179,7 +153,7 @@ namespace ESORR.ViewModels
         {
             IsLoading = true;
             List<EmailNotificatinDetailsDto> lstemailNotificatinDetailsDto = new List<EmailNotificatinDetailsDto>();
-            EmailNotificatinDetailsDto emailNotificatinDetailsDto = new EmailNotificatinDetailsDto();
+            //EmailNotificatinDetailsDto emailNotificatinDetailsDto = new EmailNotificatinDetailsDto();
             UserDto userDto = await ServiceBase.GetUserById(userPayOutDetails.UserId);
             List<NotificationDto> lstNotifications = await ServiceBase.GetNotifications(0);
             NotificationDto PaymentnotificationDto = new NotificationDto();
@@ -188,20 +162,29 @@ namespace ESORR.ViewModels
                 PaymentnotificationDto = lstNotifications.Where(x => x.NotificationType == (int)NotificationType.PayOutPaymentSuccess).FirstOrDefault();
                 if (PaymentnotificationDto != null)
                 {
-                    emailNotificatinDetailsDto.NotificationId = PaymentnotificationDto.Id;
-                    emailNotificatinDetailsDto.UserId = userDto.Id;
-                    emailNotificatinDetailsDto.UserMail = userDto != null ? userDto.Email : null;
-                    emailNotificatinDetailsDto.mailSubject = PaymentnotificationDto.Tittle;
-                    if (PaymentnotificationDto.Message != null)
+                    UserPayInDetails.ForEach(UserPayInDetails =>
                     {
-                        PaymentnotificationDto.Message = PaymentnotificationDto.Message.Replace("<username>", userDto.FirstName + " " + userDto.LastName);
-                        PaymentnotificationDto.Message = PaymentnotificationDto.Message.Replace("<paidamount>", userPayOutDetails.PaidAmount.ToString());
-                        // PaymentnotificationDto.Message = PaymentnotificationDto.Message.Replace("<<paidamount>>", userDto.CreateDate.ToString());
-                    }
-                    emailNotificatinDetailsDto.NotificationMessage = PaymentnotificationDto.Message;
-                    emailNotificatinDetailsDto.isReadbyUser = false;
-                    emailNotificatinDetailsDto.FromUserId = App.UserId;
-                    lstemailNotificatinDetailsDto.Add(emailNotificatinDetailsDto);
+                        EmailNotificatinDetailsDto emailNotificatinDetailsDto = new EmailNotificatinDetailsDto();
+                        if (UserPayInDetails != null)
+                        {
+                            emailNotificatinDetailsDto.NotificationId = PaymentnotificationDto.Id;
+                            emailNotificatinDetailsDto.UserId = UserPayInDetails.Id;
+                            emailNotificatinDetailsDto.UserMail = UserPayInDetails.UserMail;
+                            emailNotificatinDetailsDto.mailSubject = PaymentnotificationDto.Tittle;
+                            if (PaymentnotificationDto.Message != null)
+                            {
+                                PaymentnotificationDto.Message = PaymentnotificationDto.Message.Replace("<username>", userDto.FirstName + " " + userDto.LastName);
+                                PaymentnotificationDto.Message = PaymentnotificationDto.Message.Replace("<paidamount>", userPayOutDetails.PaidAmount.ToString());
+                                PaymentnotificationDto.Message = PaymentnotificationDto.Message.Replace("<nextusername>", NextPaymentUserName);
+                                PaymentnotificationDto.Message = PaymentnotificationDto.Message.Replace("<nextpayoutdate>", NextPaymentDate);
+                                // PaymentnotificationDto.Message = PaymentnotificationDto.Message.Replace("<<paidamount>>", userDto.CreateDate.ToString());
+                            }
+                            emailNotificatinDetailsDto.NotificationMessage = PaymentnotificationDto.Message;
+                            emailNotificatinDetailsDto.isReadbyUser = false;
+                            emailNotificatinDetailsDto.FromUserId = App.UserId;
+                            lstemailNotificatinDetailsDto.Add(emailNotificatinDetailsDto);
+                        }
+                    });
                 }
             }
             IsLoading = false;

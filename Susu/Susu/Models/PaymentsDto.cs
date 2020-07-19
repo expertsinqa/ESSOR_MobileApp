@@ -34,6 +34,7 @@ namespace ESORR.Models
         public string UserName { get; set; }
         public bool isChecked { get; set; } = false;
         public bool IsSwitchEnabled { get; set; } = false;
+        public string UserMail { get; set; }
 
         public ImageSource PaidImage
         {

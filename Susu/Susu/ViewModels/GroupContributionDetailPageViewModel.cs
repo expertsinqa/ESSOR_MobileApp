@@ -41,6 +41,8 @@ namespace ESORR.ViewModels
         public string _NextScheduleDate;
         public string NextScheduleDate { get { return _NextScheduleDate; } set { SetProperty(ref _NextScheduleDate, value); } }
 
+        string amount { get; set; }
+
         #endregion
 
         #region Constructor
@@ -63,11 +65,11 @@ namespace ESORR.ViewModels
             groupContributionDetails = await ServiceBase.GetContributionDetailsByGroupNO(groupNumber);
             if(groupContributionDetails!=null)
             {
-                ContributionDate = groupContributionDetails.ContributionDate.ToString("M/dd/yyyy");
+                ContributionDate = groupContributionDetails.ContributionDate.ToString("MM/dd/yyyy");
                 ContributionDay = groupContributionDetails.ContributionDay;
                 if(groupContributionDetails.NextContributionDate.HasValue)
                 {
-                    NextScheduleDate = groupContributionDetails.NextContributionDate?.ToString("M/dd/yyyy");
+                    NextScheduleDate = groupContributionDetails.NextContributionDate?.ToString("MM/dd/yyyy");
                 }
                 UserPayInDetails = await ServiceBase.GetPayInDetailByGroupNO(groupNumber, groupContributionDetails.ContributionId);
                 if(UserPayInDetails.Count == UserPayInDetails.Where(x=>x.isPaymentCompleted).Count())
@@ -127,7 +129,8 @@ namespace ESORR.ViewModels
                         if (PaymentnotificationDto.Message != null)
                         {
                             PaymentnotificationDto.Message = PaymentnotificationDto.Message.Replace("<Name>", items.UserName);
-                            PaymentnotificationDto.Message = PaymentnotificationDto.Message.Replace("<payment date>", NextScheduleDate);
+                            PaymentnotificationDto.Message = PaymentnotificationDto.Message.Replace("<paymentdate>", NextScheduleDate);
+                            PaymentnotificationDto.Message = PaymentnotificationDto.Message.Replace("<contributionamount>", amount);
                         }
                         emailNotificatinDetailsDto.NotificationMessage = PaymentnotificationDto.Message;
                         emailNotificatinDetailsDto.isReadbyUser = false;
@@ -204,6 +207,10 @@ namespace ESORR.ViewModels
                 {
                     IsLoading = true;
                     groupNumber = int.Parse(parameters["GroupContributionDetailPage"].ToString());
+                    if (parameters.ContainsKey("ContributionAmount"))
+                    {
+                        amount = parameters["ContributionAmount"].ToString();
+                    }
                     BindData();
                     IsLoading = false;
                 }

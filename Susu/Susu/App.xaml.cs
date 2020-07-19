@@ -38,6 +38,8 @@ namespace Susu
 
         public static bool IsProfilePhotoUploaded { get; set; }
 
+        public static string Amount { get; set; }
+
         public App(IPlatformInitializer initializer) : base(initializer) { }
 
         protected override async void OnInitialized()

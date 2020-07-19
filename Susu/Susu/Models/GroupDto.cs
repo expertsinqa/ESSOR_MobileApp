@@ -18,7 +18,7 @@ namespace Susu.Models
         public DateTime? GroupStartDate { get; set; }
         public DateTime? PayOutDate { get; set; }
         public string PayOutDay { get; set; }
-
+        public int? ErrorId { get; set; }
         public string ContributinDateString
         {
             get

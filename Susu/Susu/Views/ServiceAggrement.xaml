@@ -31,7 +31,7 @@
                             </Custom:CustomLabel.FormattedText>
                         </Custom:CustomLabel>
                         <Label Text="1. REPRESENTATIONS CONCERNING AGE AND JURISDICTION" TextColor="#2d67e4" FontAttributes="Bold" FontFamily="{StaticResource NormalFont}" Margin="0,10,0,0"/>
-                        <Custom:CustomLabel LineBreakMode="CharacterWrap"  HorizontalTextAlignment="Start" VerticalOptions="Fill" TextColor="Black" HorizontalOptions="Fill">
+                        <Custom:CustomLabel LineBreakMode="CharacterWrap"  HorizontalTextAlignment="Start" VerticalOptions="Fill" TextColor="Black" HorizontalOptions="Fill" FontSize="Small">
                             <Custom:CustomLabel.FormattedText>
                                 <FormattedString>
                                     <Span LineHeight="1.2" Text="You represent and warrant that you are at least thirteen (13) years old. Children under the age of thirteen (13) are not permitted to use our platform. If you reside in a jurisdiction which restricts the use of internet-based applications according to age, or which restricts the ability to enter into agreements such as this EULA according to age and you are under such age limit, you may not enter into this EULA or use the App. By entering into this EULA, you represent that you have verified in your own jurisdiction that your use is permitted by law.">
@@ -43,7 +43,7 @@
                             </Custom:CustomLabel.FormattedText>
                         </Custom:CustomLabel>
                         <Label Text="2. GRANT OF LICENSE" TextColor="#2d67e4" FontAttributes="Bold" FontFamily="{StaticResource NormalFont}" Margin="0,10,0,0"/>
-                        <Custom:CustomLabel LineBreakMode="CharacterWrap"  HorizontalTextAlignment="Start" VerticalOptions="Fill" TextColor="Black" HorizontalOptions="Fill">
+                        <Custom:CustomLabel LineBreakMode="CharacterWrap"  HorizontalTextAlignment="Start" VerticalOptions="Fill" TextColor="Black" HorizontalOptions="Fill" FontSize="Small">
                             <Custom:CustomLabel.FormattedText>
                                 <FormattedString>
                                     <Span LineHeight="1.2" Text="We grant you a limited, non-exclusive, non-sub-licensable and non-assignable license to use only with single account for the sole purpose of using the App. We shall have the right to audit your use to verify compliance with the license terms. You agree to cooperate with our audit and provide reasonable assistance and access to information. There is no any other license granted except written in this Agreement.">
@@ -55,7 +55,7 @@
                             </Custom:CustomLabel.FormattedText>
                         </Custom:CustomLabel>
                         <Label Text="3. LICENSE LIMITATIONS" TextColor="#2d67e4" FontAttributes="Bold" FontFamily="{StaticResource NormalFont}" Margin="0,10,0,0"/>
-                        <Custom:CustomLabel LineBreakMode="CharacterWrap"  HorizontalTextAlignment="Start" VerticalOptions="Fill" TextColor="Black" HorizontalOptions="Fill">
+                        <Custom:CustomLabel LineBreakMode="CharacterWrap"  HorizontalTextAlignment="Start" VerticalOptions="Fill" TextColor="Black" HorizontalOptions="Fill" FontSize="Small">
                             <Custom:CustomLabel.FormattedText>
                                 <FormattedString>
                                     <Span LineHeight="1.2" Text="Your license to use the App is subject to certain limitations. Specifically, you agree not to assign, sublicense, sell, re-sell, transfer, rent, lease or otherwise distribute or provide access to the services including, without limitation, offering the services to third parties on an application service provider, hosted, service bureau, outsourcing or time-sharing basis.">
@@ -67,7 +67,7 @@
                             </Custom:CustomLabel.FormattedText>
                         </Custom:CustomLabel>
                         <Label Text="4. INTELLECTUAL PROPERTY RIGHTS" TextColor="#2d67e4" FontAttributes="Bold" FontFamily="{StaticResource NormalFont}" Margin="0,10,0,0"/>
-                        <Custom:CustomLabel LineBreakMode="CharacterWrap"  HorizontalTextAlignment="Start" VerticalOptions="Fill" TextColor="Black" HorizontalOptions="Fill">
+                        <Custom:CustomLabel LineBreakMode="CharacterWrap"  HorizontalTextAlignment="Start" VerticalOptions="Fill" TextColor="Black" HorizontalOptions="Fill" FontSize="Small">
                             <Custom:CustomLabel.FormattedText>
                                 <FormattedString>
                                     <Span LineHeight="1.2" Text="As set forth in the Agreement, all rights, title and interest worldwide, including all associated intellectual property rights in and to the App are owned by us or our licensors.">
@@ -79,7 +79,7 @@
                             </Custom:CustomLabel.FormattedText>
                         </Custom:CustomLabel>
                         <Label Text="5. THIRD PARTY APPLICATION OR SERVICE" TextColor="#2d67e4" FontAttributes="Bold" FontFamily="{StaticResource NormalFont}" Margin="0,10,0,0"/>
-                        <Custom:CustomLabel LineBreakMode="CharacterWrap"  HorizontalTextAlignment="Start" VerticalOptions="Fill" TextColor="Black" HorizontalOptions="Fill">
+                        <Custom:CustomLabel LineBreakMode="CharacterWrap"  HorizontalTextAlignment="Start" VerticalOptions="Fill" TextColor="Black" HorizontalOptions="Fill" FontSize="Small">
                             <Custom:CustomLabel.FormattedText>
                                 <FormattedString>
                                     <Span LineHeight="1.2" Text="We may be incorporated into services and other technology owned and controlled by third parties. Any and all other third party applications or technology that may be distributed together with the App will be subject to you explicitly accepting a license agreement with that third party as well as the terms of this EULA. You acknowledge and agree that you will not enter into a contractual relationship with us or our affiliates.">
@@ -91,7 +91,7 @@
                             </Custom:CustomLabel.FormattedText>
                         </Custom:CustomLabel>
                         <Label Text="6. ACCOUNT CREDENTIALS" TextColor="#2d67e4" FontAttributes="Bold" FontFamily="{StaticResource NormalFont}" Margin="0,10,0,0"/>
-                        <Custom:CustomLabel LineBreakMode="CharacterWrap"  HorizontalTextAlignment="Start" VerticalOptions="Fill" TextColor="Black" HorizontalOptions="Fill">
+                        <Custom:CustomLabel LineBreakMode="CharacterWrap"  HorizontalTextAlignment="Start" VerticalOptions="Fill" TextColor="Black" HorizontalOptions="Fill" FontSize="Small">
                             <Custom:CustomLabel.FormattedText>
                                 <FormattedString>
                                     <Span LineHeight="1.2" Text="To protect your personal information, access to the App requires submission of login and password information to create a user Account. The login and password are for your personal use only and are not transferable. You may not share your login or password with any other individual. You agree that you will be responsible for maintaining your password as confidential and for any activity that occurs as a result of your enabling or permitting another person or entity to use your password. You agree to immediately notify us in the event that: (i) your password is lost or stolen; or (ii) you become aware of any unauthorized use of your password or of any other breach of security related to the App. We are not responsible for any loss or damage arising from your failure to comply with the provisions of this section.">
@@ -103,7 +103,7 @@
                             </Custom:CustomLabel.FormattedText>
                         </Custom:CustomLabel>
                         <Label Text="7. PRIVACY" TextColor="#2d67e4" FontAttributes="Bold" FontFamily="{StaticResource NormalFont}" Margin="0,10,0,0"/>
-                        <Custom:CustomLabel LineBreakMode="CharacterWrap"  HorizontalTextAlignment="Start" VerticalOptions="Fill" TextColor="Black" HorizontalOptions="Fill">
+                        <Custom:CustomLabel LineBreakMode="CharacterWrap"  HorizontalTextAlignment="Start" VerticalOptions="Fill" TextColor="Black" HorizontalOptions="Fill" FontSize="Small">
                             <Custom:CustomLabel.FormattedText>
                                 <FormattedString>
                                     <Span LineHeight="1.2" Text="You agree to the collection, retention, processing, and use of your information such as name, phone number, e-mail address, location, payment gateway information etc. which can be used to uniquely identify for the purpose of the services. We collect your information to provide you with the best customer experience possible. We intended to protect your information from being intercepted, accessed, used, or disclosed by unauthorized persons. Your information may also be accessible to the third parties during the usage of the App, but within limitations and we will not transfer or submit your personal information to third parties such as your username or password. We will not be responsible if your confidential information becomes accessible to third parties that you transfer directly to the third parties during the usage of the App. We will not be liable if your data, process, documents, etc. partly or fully distorted or lost and it is your own discretion to prevent access to your device for any misuse.">
@@ -115,7 +115,7 @@
                             </Custom:CustomLabel.FormattedText>
                         </Custom:CustomLabel>
                         <Label Text="8. SUBSCRIPTIONS" TextColor="#2d67e4" FontAttributes="Bold" FontFamily="{StaticResource NormalFont}" Margin="0,10,0,0"/>
-                        <Custom:CustomLabel LineBreakMode="CharacterWrap"  HorizontalTextAlignment="Start" VerticalOptions="Fill" TextColor="Black" HorizontalOptions="Fill">
+                        <Custom:CustomLabel LineBreakMode="CharacterWrap"  HorizontalTextAlignment="Start" VerticalOptions="Fill" TextColor="Black" HorizontalOptions="Fill" FontSize="Small">
                             <Custom:CustomLabel.FormattedText>
                                 <FormattedString>
                                     <Span LineHeight="1.2" Text="We may charge you If you purchase our paid services. You also agree to any terms (such as a minimum term of service, recurring subscription fees, or payment terms) of which we notify you during your purchase of the product or services. We may change the rates at any time without notice to you. You agree that, by continuing to use the product or service following the adjustments of the rate(s), you accept the new rate(s). For the subscription purpose or any of the option available on the app we may collected your credit/debit card information for the sole purpose of collection of fee and your information shall be protected under our privacy policy as mentioned herein. We may require PayPal or any other payment gateway information to make any transaction subscribed by you. We have the right of administrator privilege in every created group to manage the payments to individual members.">
@@ -127,7 +127,7 @@
                             </Custom:CustomLabel.FormattedText>
                         </Custom:CustomLabel>
                         <Label Text="9. TERMS OF USE" TextColor="#2d67e4" FontAttributes="Bold" FontFamily="{StaticResource NormalFont}" Margin="0,10,0,0"/>
-                        <Custom:CustomLabel LineBreakMode="CharacterWrap"  HorizontalTextAlignment="Start" VerticalOptions="Fill" TextColor="Black" HorizontalOptions="Fill">
+                        <Custom:CustomLabel LineBreakMode="CharacterWrap"  HorizontalTextAlignment="Start" VerticalOptions="Fill" TextColor="Black" HorizontalOptions="Fill" FontSize="Small">
                             <Custom:CustomLabel.FormattedText>
                                 <FormattedString>
                                     <Span LineHeight="1.2" Text="You may join an existing group, create group or simply signup to review the app. Each group may have its own rule and governing member participation but within the laws. Administrators should be responsible for their own groups and rules. We are no legally responsible for any groups discrepancies arise with the group rules or between the members. You will be charges on each transaction accepted by you using the App. We may associate any separate Terms of Use or any other documentation to govern the App. You may check from time to time its attachments and associated documentation however your use of App makes sure you are fully aware about the documentation of the App.">
@@ -139,7 +139,7 @@
                             </Custom:CustomLabel.FormattedText>
                         </Custom:CustomLabel>
                         <Label Text="10. ELECTRONIC COMMUNICATIONS" TextColor="#2d67e4" FontAttributes="Bold" FontFamily="{StaticResource NormalFont}" Margin="0,10,0,0"/>
-                        <Custom:CustomLabel LineBreakMode="CharacterWrap"  HorizontalTextAlignment="Start" VerticalOptions="Fill" TextColor="Black" HorizontalOptions="Fill">
+                        <Custom:CustomLabel LineBreakMode="CharacterWrap"  HorizontalTextAlignment="Start" VerticalOptions="Fill" TextColor="Black" HorizontalOptions="Fill" FontSize="Small">
                             <Custom:CustomLabel.FormattedText>
                                 <FormattedString>
                                     <Span LineHeight="1.2" Text="By using our Services, you consent to receiving electronic communications from us. These communications are part of your relationship with us and will include notices about your account (e.g. confirmations, video message notifications, and other transactional messages) and information concerning or related to App services, such as updates, new features, and other important information about your account or service.">
@@ -151,7 +151,7 @@
                             </Custom:CustomLabel.FormattedText>
                         </Custom:CustomLabel>
                         <Label Text="11. PROHIBITED BEHAVIOR " TextColor="#2d67e4" FontAttributes="Bold" FontFamily="{StaticResource NormalFont}" Margin="0,10,0,0"/>
-                        <Custom:CustomLabel LineBreakMode="CharacterWrap"  HorizontalTextAlignment="Start" VerticalOptions="Fill" TextColor="Black" HorizontalOptions="Fill">
+                        <Custom:CustomLabel LineBreakMode="CharacterWrap"  HorizontalTextAlignment="Start" VerticalOptions="Fill" TextColor="Black" HorizontalOptions="Fill" FontSize="Small">
                             <Custom:CustomLabel.FormattedText>
                                 <FormattedString>
                                     <Span LineHeight="1.2" Text="You agree to use the App solely for your own lawful personal or business needs. You are responsible for all content, including photographs, images, video and audio content that you transmit, disclose, share, disseminate or otherwise distribute, or content that you elicit and/or collect and/or store using the App and you shall not take any unlawful or improper actions with respect to such content in our violation or any third parties' rights or applicable laws. You agree not to use the App to engage in any of the prohibited behavior. We offer reporting and blocking options for the Users to get rid of people who post inappropriate posts. It is clearly acknowledged by the User that there is no tolerance for abusive, objectionable and harming content on the App platform.  The content transmitted or distributed through the App may not be appropriate or satisfactory for your use, and you should verify all content before relying on it. We shall evaluate the reporting of Users and take action immediately within 24 hours when the prohibited behavior of any User is reported or founded and if we believe that you are in breach of this EULA. Without limiting other remedies, we may limit, suspend, or terminate this license and your use of the App, prohibit access to the App and you whole account or any of its functions may also be restricted or deleted, with immediate effect and without any notice if you found in any immoral, illegal, inappropriate activity at any time.">
@@ -163,7 +163,7 @@
                             </Custom:CustomLabel.FormattedText>
                         </Custom:CustomLabel>
                         <Label Text="12. NO WARRANTY" TextColor="#2d67e4" FontAttributes="Bold" FontFamily="{StaticResource NormalFont}" Margin="0,10,0,0"/>
-                        <Custom:CustomLabel LineBreakMode="CharacterWrap"  HorizontalTextAlignment="Start" VerticalOptions="Fill" TextColor="Black" HorizontalOptions="Fill">
+                        <Custom:CustomLabel LineBreakMode="CharacterWrap"  HorizontalTextAlignment="Start" VerticalOptions="Fill" TextColor="Black" HorizontalOptions="Fill" FontSize="Small">
                             <Custom:CustomLabel.FormattedText>
                                 <FormattedString>
                                     <Span LineHeight="1.2" Text="THE APP IS PROVIDED &quot;AS IS&quot; AND WITHOUT WARRANTY OF ANY KIND WHATSOEVER, EITHER EXPRESS OR IMPLIED. TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, WE AND OUR LICENSORS SPECIFICALLY DISCLAIM AND EXCLUDE, ANY AND ALL OTHER WARRANTIES, EXPRESSED, IMPLIED OR STATUTORY, INCLUDING WITHOUT LIMITATION, ANY IMPLIED WARRANTY OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSES, NON-INFRINGEMENT OR QUALITY AND/OR PERFORMANCE. WE DO NOT WARRANT THAT THE PLATFORM WILL MEET YOUR REQUIREMENTS, THAT THE PLATFORM'S OPERATION WILL BE ERROR-FREE OR UNINTERRUPTED, THAT THE INTERNET WILL BE AVAILABLE, THAT ALL ERRORS IN THE SERVICES WILL BE CORRECTED OR THAT ALL YOUR COMMUNICATION WILL BE SECURE OR DELIVERED TO YOUR RECIPIENTS, WHETHER THEY ARE YOUR INTENDED RECIPIENTS OR OTHERWISE, OR THAT THE INFORMATION (INCLUDING, WITHOUT LIMITATION, PERSONAL INFORMATION), CONTENT AND/OR FILES STORED AND/OR ARCHIVED IN THE SERVICES OR ON OUR SERVERS WILL BE AVAILABLE, ACCESSIBLE, SECURE AND/OR ACCURATE. THE ENTIRE RISK ARISING OUT OF THE USE OR PERFORMANCE OF THE SERVICE REMAINS WITH YOU, TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW.">
@@ -175,7 +175,7 @@
                             </Custom:CustomLabel.FormattedText>
                         </Custom:CustomLabel>
                         <Label Text="13. LIMITATION OF LIABILITIES" TextColor="#2d67e4" FontAttributes="Bold" FontFamily="{StaticResource NormalFont}" Margin="0,10,0,0"/>
-                        <Custom:CustomLabel LineBreakMode="CharacterWrap"  HorizontalTextAlignment="Start" VerticalOptions="Fill" TextColor="Black" HorizontalOptions="Fill">
+                        <Custom:CustomLabel LineBreakMode="CharacterWrap"  HorizontalTextAlignment="Start" VerticalOptions="Fill" TextColor="Black" HorizontalOptions="Fill" FontSize="Small">
                             <Custom:CustomLabel.FormattedText>
                                 <FormattedString>
                                     <Span LineHeight="1.2" Text="NEITHER WE NOR ANY AGENT LICENSORS, AGENTS OR CONTRACTORS IN CONNECTION WITH THE APP SHALL BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL, EXEMPLARY, CONSEQUENTIAL, OR PUNITIVE DAMAGES OF ANY KIND (INCLUDING, WITHOUT LIMITATION, FOR ANY LOSS OF DATA, INTERRUPTION, PHYSICAL DEVICE FAILURE OR PECUNIARY LOSS) ARISING OUT OF THE USE OR INABILITY TO USE THE APP WHETHER BASED ON WARRANTY, CONTRACT, TORT (INCLUDING NEGLIGENCE) OR ANY OTHER LEGAL THEORY AND WHETHER OR NOT ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. YOU UNDERSTAND AND ACKNOWLEDGE THAT YOUR SOLE AND EXCLUSIVE REMEDY WITH RESPECT TO ANY DEFECT IN OR DISSATISFACTION WITH THE SERVICES IS TO DE-INSTALL AND CEASE TO USE THE SERVICES. YOU MAY HAVE OTHER RIGHTS WHICH MAY VARY FROM STATE TO STATE.">
@@ -187,7 +187,7 @@
                             </Custom:CustomLabel.FormattedText>
                         </Custom:CustomLabel>
                         <Label Text="14. TERM &amp; TERMINATION" TextColor="#2d67e4" FontAttributes="Bold" FontFamily="{StaticResource NormalFont}" Margin="0,10,0,0"/>
-                        <Custom:CustomLabel LineBreakMode="CharacterWrap"  HorizontalTextAlignment="Start" VerticalOptions="Fill" TextColor="Black" HorizontalOptions="Fill">
+                        <Custom:CustomLabel LineBreakMode="CharacterWrap"  HorizontalTextAlignment="Start" VerticalOptions="Fill" TextColor="Black" HorizontalOptions="Fill" FontSize="Small">
                             <Custom:CustomLabel.FormattedText>
                                 <FormattedString>
                                     <Span LineHeight="1.2" Text="This Agreement shall remain in effect until terminated by you or us. We may, in our sole discretion, at any time and for any or no reason, suspend or terminate this Agreement with or without prior notice. This Agreement will be terminated immediately, without prior notice from us, in the event that you fail to comply with any provision of this Agreement. You may also terminate this Agreement by deleting the uninstalling and all copies thereof from your electronic devices. Upon termination of this Agreement, you shall cease all use of the App and delete all copies of the App from your devices. Termination of this Agreement will not limit any of our rights or remedies at law or in equity in case of breach by you (during the term of this Agreement) of any of your obligations under the present Agreement. The User shall not be entitled to claim any refund of amount paid for the use of the App, or any other amounts for any reason.">
@@ -199,7 +199,7 @@
                             </Custom:CustomLabel.FormattedText>
                         </Custom:CustomLabel>
                         <Label Text="15. APPLICABLE LAWS" TextColor="#2d67e4" FontAttributes="Bold" FontFamily="{StaticResource NormalFont}" Margin="0,10,0,0"/>
-                        <Custom:CustomLabel LineBreakMode="CharacterWrap"  HorizontalTextAlignment="Start" VerticalOptions="Fill" TextColor="Black" HorizontalOptions="Fill">
+                        <Custom:CustomLabel LineBreakMode="CharacterWrap"  HorizontalTextAlignment="Start" VerticalOptions="Fill" TextColor="Black" HorizontalOptions="Fill" FontSize="Small">
                             <Custom:CustomLabel.FormattedText>
                                 <FormattedString>
                                     <Span LineHeight="1.2" Text="The App and this EULA (including without limitation the validity, construction and performance of duties related to the EULA) will be governed by and construed in accordance with the federal laws of State of Maryland and International Laws without giving effect to any principles of conflicts of laws. ">
@@ -211,7 +211,7 @@
                             </Custom:CustomLabel.FormattedText>
                         </Custom:CustomLabel>
                         <Label Text="16. INDEMNIFICATION" TextColor="#2d67e4" FontAttributes="Bold" FontFamily="{StaticResource NormalFont}" Margin="0,10,0,0"/>
-                        <Custom:CustomLabel LineBreakMode="CharacterWrap"  HorizontalTextAlignment="Start" VerticalOptions="Fill" TextColor="Black" HorizontalOptions="Fill">
+                        <Custom:CustomLabel LineBreakMode="CharacterWrap"  HorizontalTextAlignment="Start" VerticalOptions="Fill" TextColor="Black" HorizontalOptions="Fill" FontSize="Small">
                             <Custom:CustomLabel.FormattedText>
                                 <FormattedString>
                                     <Span LineHeight="1.2" Text="You agree to defend, indemnify and hold us harmless from and against any and all claims, damages, costs and expenses, including attorneys' fees, arising from or related to your:(i) violation or breach of any term of this EULA.">
@@ -223,7 +223,7 @@
                             </Custom:CustomLabel.FormattedText>
                         </Custom:CustomLabel>
                         <Label Text="17. DISPUTE RESOLUTION" TextColor="#2d67e4" FontAttributes="Bold" FontFamily="{StaticResource NormalFont}" Margin="0,10,0,0"/>
-                        <Custom:CustomLabel LineBreakMode="CharacterWrap"  HorizontalTextAlignment="Start" VerticalOptions="Fill" TextColor="Black" HorizontalOptions="Fill">
+                        <Custom:CustomLabel LineBreakMode="CharacterWrap"  HorizontalTextAlignment="Start" VerticalOptions="Fill" TextColor="Black" HorizontalOptions="Fill" FontSize="Small">
                             <Custom:CustomLabel.FormattedText>
                                 <FormattedString>
                                     <Span LineHeight="1.2" Text="User shall first contact with us regarding any claim or controversy arising out of or relating to this EULA, or any breach thereof. In the event such claim or controversy cannot be resolved informally, User and we agree to try in good faith to settle the dispute by mediation under the Arbitration Laws, before resorting to arbitration. Any claim or controversy arising out of or relating to this EULA, or any breach thereof, except such claims or controversies for which injunctive relief is available, that cannot be resolved by mediation within 30 days shall be finally settled by arbitration administered by the Authority in accordance with its Commercial Arbitration Rules including the Supplementary Procedures for Consumer-Related Disputes and judgment on the award rendered by the arbitrator(s) may be entered in any court having jurisdiction thereof.">
@@ -235,7 +235,7 @@
                             </Custom:CustomLabel.FormattedText>
                         </Custom:CustomLabel>
                         <Label Text="18. MISCELLANEOUS PROVISIONS " TextColor="#2d67e4" FontAttributes="Bold" FontFamily="{StaticResource NormalFont}" Margin="0,10,0,0"/>
-                        <Custom:CustomLabel LineBreakMode="CharacterWrap"  HorizontalTextAlignment="Start" VerticalOptions="Fill" TextColor="Black" HorizontalOptions="Fill">
+                        <Custom:CustomLabel LineBreakMode="CharacterWrap"  HorizontalTextAlignment="Start" VerticalOptions="Fill" TextColor="Black" HorizontalOptions="Fill" FontSize="Small">
                             <Custom:CustomLabel.FormattedText>
                                 <FormattedString>
                                     <Span LineHeight="1.2" Text="This EULA sets forth our entire liability and your exclusive remedy with respect to the App. You acknowledge that this EULA is a complete statement of the agreement between you and us, and that there are no other prior or contemporaneous understandings, promises, representations or descriptions. If any provision of this EULA is invalid or unenforceable under applicable law, it is deemed omitted and the remaining provisions will continue in full force and effect.">
@@ -247,7 +247,7 @@
                             </Custom:CustomLabel.FormattedText>
                         </Custom:CustomLabel>
                         <Label Text="19. AMENDMENTS TO THIS AGREEMENT " TextColor="#2d67e4" FontAttributes="Bold" FontFamily="{StaticResource NormalFont}" Margin="0,10,0,0"/>
-                        <Custom:CustomLabel LineBreakMode="CharacterWrap"  HorizontalTextAlignment="Start" VerticalOptions="Fill" TextColor="Black" HorizontalOptions="Fill">
+                        <Custom:CustomLabel LineBreakMode="CharacterWrap"  HorizontalTextAlignment="Start" VerticalOptions="Fill" TextColor="Black" HorizontalOptions="Fill" FontSize="Small">
                             <Custom:CustomLabel.FormattedText>
                                 <FormattedString>
                                     <Span LineHeight="1.2" Text="We reserve the right, at our sole discretion, to change, alter, modify or replace this Agreement at any time. What constitutes a material change will be determined at our sole discretion. We may from time to time revise this EULA (including by moving or deleting portions of, or adding to, the terms that govern your use of the App). You are bound by any such revisions and should therefore periodically visit this page to review the current version of the EULA. Your use of the App following any changes constitutes your agreement to be bound by the EULA, as changed. In the case of any violation of these basic terms, we reserve the right to seek all remedies available by law and in equity for such violations. We may associate any additional documentation with the App. These rules and regulations apply to all of your visits to and use of the App, both now and in the future. ">
@@ -258,7 +258,7 @@
                                 </FormattedString>
                             </Custom:CustomLabel.FormattedText>
                         </Custom:CustomLabel>
-                        <Custom:CustomLabel LineBreakMode="CharacterWrap"  HorizontalTextAlignment="Start" VerticalOptions="Fill" TextColor="Black" HorizontalOptions="Fill">
+                        <Custom:CustomLabel LineBreakMode="CharacterWrap"  HorizontalTextAlignment="Start" VerticalOptions="Fill" TextColor="Black" HorizontalOptions="Fill" FontSize="Small">
                             <Custom:CustomLabel.FormattedText>
                                 <FormattedString>
                                     <Span LineHeight="1.2" Text="NOTE: By continuing to access or use of App after any revisions become effective, you agree to be bound by the revised terms. If you do not agree to the new terms, you are no longer authorized to use the App. You can contact us on help@esorr.com for any queries.">

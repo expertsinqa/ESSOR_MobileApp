@@ -45,7 +45,7 @@ namespace Susu.ViewModels
                 IsListViewVisible = true;
                 if(App.IsGroupAdmin )
                 {
-                    if(System.DateTime.Now <= ContributionDate)
+                    if(System.DateTime.Now.Date <= ContributionDate.Date)
                     {
                         lstnotificationDto = lstAllnotificationDto.Where(y => y.Status == true).ToList();
                     }
@@ -55,7 +55,7 @@ namespace Susu.ViewModels
                     }
                      
                 }
-                if(!App.IsGroupAdmin && System.DateTime.Now <= ContributionDate)
+                if(!App.IsGroupAdmin && System.DateTime.Now.Date <= ContributionDate.Date)
                 {
                     lstnotificationDto = lstAllnotificationDto.Where(x => x.NotificationType == (int)NotificationType.RequestToChangeOrder).Where(y => y.Status == true).ToList();
                 }
@@ -89,7 +89,7 @@ namespace Susu.ViewModels
                 {
                     IsLoading = true;
                     ContributionDate = (DateTime)parameters["ContributionDate"];
-                    if (!App.IsGroupAdmin && System.DateTime.Now <= ContributionDate)
+                    if (!App.IsGroupAdmin && System.DateTime.Now.Date <= ContributionDate.Date)
                     {
                         BindData((int)NotificationLevel.SpecificUser);
                         IsSendToVisible = false;
