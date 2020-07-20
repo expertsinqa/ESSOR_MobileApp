@@ -56,9 +56,9 @@ namespace Susu.Services
             return Result;
         }
 
-        public async Task<long> SaveUser(UserDto userdata)
+        public async Task<UserDto> SaveUser(UserDto userdata)
         {
-            long UserId = 0;
+            UserDto userDto = new UserDto();
             try
             {
                 string url = baseUrl + "user/saveuserdetails";
@@ -66,13 +66,13 @@ namespace Susu.Services
                 var content = new StringContent(data, Encoding.UTF8, "application/json");
                 var res = await _client.PostAsync(url, content);
                 var result = await res.Content.ReadAsStringAsync();
-                UserId = JsonConvert.DeserializeObject<long>(result);
+                userDto = JsonConvert.DeserializeObject<UserDto>(result);
             }
             catch (Exception ex)
             {
 
             }
-            return UserId;
+            return userDto;
         }
 
         public async Task<GroupDto> SaveGroupInfo(GroupDto groupDto)

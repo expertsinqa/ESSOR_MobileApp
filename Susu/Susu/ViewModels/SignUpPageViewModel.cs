@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
+using NavigationParameters = Prism.Navigation.NavigationParameters;
 
 namespace Susu.ViewModels
 {
@@ -115,11 +116,11 @@ namespace Susu.ViewModels
             userDto.PayPalEmailId = PaypalEmailId;
             userDto.FirstName = FirstName;
             userDto.LastName = LastName;
-            long userid = await ServiceBase.SaveUser(userDto);
-            IsLoading = false;
-            if (userid > 0)
+            UserDto usersdetails = await ServiceBase.SaveUser(userDto);
+            
+            if (usersdetails!=null && usersdetails.Id>0)
             {
-                IsSuccessMessageVisible = true;
+               // IsSuccessMessageVisible = true;
                 FullName = "";
                 FirstName = "";
                 LastName = "";
@@ -132,17 +133,32 @@ namespace Susu.ViewModels
                 EmailPlaceholderColor = Color.Gray;
                 PasswordPlaceholderColor = Color.Gray;
                 MobilePlaceholderColor = Color.Gray;
-                //await NavigationService.NavigateAsync("LoginPage");
-                //await NavigationService.NavigateAsync("ServiceAggrement");
+                Dictionary<string, string> response = await ServiceBase.Login(usersdetails.Email, usersdetails.UserPassword);
+                if (response != null && response.ContainsKey("access_token"))
+                {
+                    App.AccessToken = response["access_token"];
+                    App.Current.Properties["Access_token"] = App.AccessToken;
+                    await App.Current.SavePropertiesAsync();
+                    NavigationParameters np = new NavigationParameters();
+                    np.Add("userDto", usersdetails);
+                    await NavigationService.NavigateAsync("ServiceAggrement", np);
+                }
+                else
+                {
+                    IsLoading = false;
+                    await Application.Current.MainPage.DisplayAlert("Alert", "Something went wrong", "ok");
+                }
+                IsLoading = false;
             }
-            else if(userid < 0)
+            else if(usersdetails==null)
             {
+                IsLoading = false;
                 await Application.Current.MainPage.DisplayAlert("Alert", "User already exists", "ok");
             }
-            else
-            {
-                await App.Current.MainPage.DisplayAlert("", "Something went wrong", "OK");
-            }
+            //else
+            //{
+            //    await App.Current.MainPage.DisplayAlert("", "Something went wrong", "OK");
+            //}
         }
         public async void Login()
         {

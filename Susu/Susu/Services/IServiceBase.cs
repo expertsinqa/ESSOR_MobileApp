@@ -9,7 +9,7 @@ namespace Susu.Services
     {
         void Initialize();
         Task<Dictionary<string,string>> Login(string username,string password);
-        Task<long> SaveUser(UserDto userdata);
+        Task<UserDto> SaveUser(UserDto userdata);
         Task<GroupDto> SaveGroupInfo(GroupDto groupDto);
         Task<bool> SaveUserProofFile(byte[] proofFileBytes, string fileExtension, long userId);
         Task<UserDto> GetUserById(long userId);

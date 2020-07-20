@@ -21,8 +21,8 @@ namespace Susu.ViewModels
         {
             userDto.IsAcceptAggrement = true;
             userDto.IsUpdateAggrement = true;
-            long userId = await ServiceBase.SaveUser(userDto);
-            if(userId>0)
+            UserDto userDetails = await ServiceBase.SaveUser(userDto);
+            if(userDetails!=null && userDetails.Id>0)
             {
                 App.Current.Properties["IsAggrementAccepted"] = true;
                 await App.Current.SavePropertiesAsync();

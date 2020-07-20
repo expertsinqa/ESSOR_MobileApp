@@ -299,9 +299,9 @@ namespace Susu.ViewModels
             UserDto UpdateduserDto = new UserDto();
             UpdateduserDto = userDto;
             IsLoading = true;
-            long id = await ServiceBase.SaveUser(userDto);
+            UserDto userDetails = await ServiceBase.SaveUser(userDto);
             IsLoading = false;
-            if (id > 0)
+            if (userDetails!=null && userDetails.Id > 0)
                 await App.Current.MainPage.DisplayAlert("Alert", "User data updated successfully", "OK");
             else
                 await App.Current.MainPage.DisplayAlert("Alert", "Something went wrong please try again", "OK");
