@@ -1,4 +1,5 @@
-﻿using Prism.Navigation;
+﻿using Newtonsoft.Json;
+using Prism.Navigation;
 using Prism.Navigation.Xaml;
 using Susu.Models;
 using System;
@@ -139,9 +140,26 @@ namespace Susu.ViewModels
                     App.AccessToken = response["access_token"];
                     App.Current.Properties["Access_token"] = App.AccessToken;
                     await App.Current.SavePropertiesAsync();
-                    NavigationParameters np = new NavigationParameters();
-                    np.Add("userDto", usersdetails);
-                    await NavigationService.NavigateAsync("ServiceAggrement", np);
+                    if (response != null && response.ContainsKey("userDetails"))
+                    {
+                        UserDto user = new UserDto();
+                        var res = response["userDetails"];
+                        user = JsonConvert.DeserializeObject<UserDto>(res);
+                        if (user != null && user.Id > 0)
+                        {
+                            App.UserId = user.Id;
+                            App.Current.Properties["UserId"] = user.Id;
+                            NavigationParameters np = new NavigationParameters();
+                            np.Add("userDto", user);
+                            await NavigationService.NavigateAsync("ServiceAggrement", np);
+                        }
+                        else
+                        {
+                            IsLoading = false;
+                            await Application.Current.MainPage.DisplayAlert("Alert", "Something went wrong", "ok");
+                        }
+                    }
+                    
                 }
                 else
                 {
