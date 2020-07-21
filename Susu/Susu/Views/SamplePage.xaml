@@ -17,7 +17,7 @@
                     <RowDefinition Height="80*"/>
                     <RowDefinition Height="10*"/>
                 </Grid.RowDefinitions>
-                <StackLayout Grid.Row="0" Orientation="Horizontal" BackgroundColor="#2d67e4" Padding="10,10,0,0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Spacing="0">
+                <StackLayout Grid.Row="0" Orientation="Horizontal" BackgroundColor="#083b66" Padding="10,10,0,0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Spacing="0">
                     <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="65*"/>
@@ -52,50 +52,50 @@
                 </StackLayout>
                 <StackLayout Grid.Row="1">
                     <StackLayout IsVisible="{Binding IsGroupInfoVisible}">
-                        <Label Text="GroupInfo" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#2d67e4" FontSize="20" FontAttributes="Bold" FontFamily="{StaticResource BoldFont}"/>
+                        <Label Text="GroupInfo" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#083b66" FontSize="20" FontAttributes="Bold" FontFamily="{StaticResource BoldFont}"/>
                         <ScrollView>
                         <StackLayout Margin="10,10,10,0">
-                            <Label Text="GroupName:" VerticalOptions="Center" HorizontalOptions="Start" TextColor="#2d67e4" FontFamily="{StaticResource NormalFont}" FontSize="{OnPlatform iOS='20'}" FontAttributes="None"/>
+                            <Label Text="GroupName:" VerticalOptions="Center" HorizontalOptions="Start" TextColor="#083b66" FontFamily="{StaticResource NormalFont}" FontSize="{OnPlatform iOS='20'}" FontAttributes="None"/>
                             <custom:CustomEntry Text="{Binding groupDto.GroupName}" IsEnabled="{Binding IsGroupInfoEditable}" TextColor="Black" HeightRequest="{OnPlatform iOS='50'}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" FontFamily="{StaticResource NormalFont}" />
 
-                            <Label Text="Amount($):" TextColor="#2d67e4" VerticalOptions="Center" HorizontalOptions="Start" FontFamily="{StaticResource NormalFont}" FontSize="{OnPlatform iOS='20'}" Margin="0,10,0,0"/>
+                            <Label Text="Amount($):" TextColor="#083b66" VerticalOptions="Center" HorizontalOptions="Start" FontFamily="{StaticResource NormalFont}" FontSize="{OnPlatform iOS='20'}" Margin="0,10,0,0"/>
                                 <custom:CustomEntry Text="{Binding groupDto.ContributionAmount}" IsEnabled="{Binding IsGroupInfoEditable}" TextColor="Black" HeightRequest="{OnPlatform iOS='50'}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" FontFamily="{StaticResource NormalFont}"/>
 
-                            <Label Text="Contribution Period:" TextColor="#2d67e4" VerticalOptions="Center" HorizontalOptions="Start" FontFamily="{StaticResource NormalFont}" FontSize="{OnPlatform iOS='20'}" Margin="0,10,0,0"/>
+                            <Label Text="Contribution Period:" TextColor="#083b66" VerticalOptions="Center" HorizontalOptions="Start" FontFamily="{StaticResource NormalFont}" FontSize="{OnPlatform iOS='20'}" Margin="0,10,0,0"/>
                                 <!--<custom:CustomEntry Text="{Binding groupDto.ContributionPeriod}"  TextColor="Black" HeightRequest="{OnPlatform iOS='50'}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" FontFamily="{StaticResource NormalFont}"/>-->
-                                <Frame CornerRadius="{OnPlatform Android='10'}" BorderColor="#2d67e4" Padding="0,0,0,0" IsClippedToBounds="True" HasShadow="False">
+                                <Frame CornerRadius="{OnPlatform Android='10'}" BorderColor="#083b66" Padding="0,0,0,0" IsClippedToBounds="True" HasShadow="False">
                                     <custom:CustomPicker Placeholder="Select Contribution Peroid" Title="Contribution Period" IsEnabled="{Binding IsGroupInfoEditable}" HeightRequest="{OnPlatform iOS='50'}" ItemsSource="{Binding ContributionPeriod}" SelectedItem="{Binding groupDto.ContributionPeriod}" SelectedIndexChanged="CustomPicker_SelectedIndexChanged"  VerticalOptions="Fill" HorizontalOptions="Fill" FontFamily="{StaticResource NormalFont}"/>
                                 </Frame>
                                
-                                <Label Text="Group Contribution Date:" TextColor="#2d67e4"  VerticalOptions="Center" HorizontalOptions="Start" FontFamily="{StaticResource NormalFont}" FontSize="{OnPlatform iOS='20'}" Margin="0,10,0,0" IsVisible="{Binding IsContributionDateVisible}"/>
-                                <Frame CornerRadius="{OnPlatform Android='10'}" BorderColor="#2d67e4"  Padding="0,0,0,0" IsClippedToBounds="True" HasShadow="False" IsVisible="{Binding IsContributionDateVisible}">
+                                <Label Text="Group Contribution Date:" TextColor="#083b66"  VerticalOptions="Center" HorizontalOptions="Start" FontFamily="{StaticResource NormalFont}" FontSize="{OnPlatform iOS='20'}" Margin="0,10,0,0" IsVisible="{Binding IsContributionDateVisible}"/>
+                                <Frame CornerRadius="{OnPlatform Android='10'}" BorderColor="#083b66"  Padding="0,0,0,0" IsClippedToBounds="True" HasShadow="False" IsVisible="{Binding IsContributionDateVisible}">
                                     <custom:CustomDatePicker PlaceHolder="Select Contribution Date" IsEnabled="{Binding IsGroupInfoEditable}"  NullableDate="{Binding groupDto.ContributionDate}" Format="MM/dd/yyyy" Image="date_icon.png" HeightRequest="{OnPlatform iOS='50'}"  VerticalOptions="Fill" HorizontalOptions="Fill" FontFamily="{StaticResource NormalFont}"/>
                                 </Frame>
                                 <!--<custom:CustomEntry Text="{Binding groupDto.ContributinDateString}" IsEnabled="{Binding IsGroupInfoEditable}" TextColor="Black" HeightRequest="{OnPlatform iOS='50'}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" FontFamily="{StaticResource NormalFont}" IsVisible="{Binding IsContributionDateVisible}"/>-->
 
-                                <Label Text="Group Contribution Day:" TextColor="#2d67e4"  VerticalOptions="Center" HorizontalOptions="Start" FontFamily="{StaticResource NormalFont}" FontSize="{OnPlatform iOS='20'}" Margin="0,10,0,0" IsVisible="{Binding IsContributionDayVisible}"/>
-                                <Frame CornerRadius="{OnPlatform Android='10'}" BorderColor="#2d67e4" Padding="0,0,0,0" IsClippedToBounds="True" HasShadow="False" IsVisible="{Binding IsContributionDayVisible}">
+                                <Label Text="Group Contribution Day:" TextColor="#083b66"  VerticalOptions="Center" HorizontalOptions="Start" FontFamily="{StaticResource NormalFont}" FontSize="{OnPlatform iOS='20'}" Margin="0,10,0,0" IsVisible="{Binding IsContributionDayVisible}"/>
+                                <Frame CornerRadius="{OnPlatform Android='10'}" BorderColor="#083b66" Padding="0,0,0,0" IsClippedToBounds="True" HasShadow="False" IsVisible="{Binding IsContributionDayVisible}">
                                     <custom:CustomPicker Placeholder="Select Contribution day"  IsEnabled="{Binding IsGroupInfoEditable}" Title="Contribution Day" HeightRequest="{OnPlatform iOS='50'}" ItemsSource="{Binding DaysList}" SelectedItem="{Binding groupDto.ContributionDay}" VerticalOptions="Fill" HorizontalOptions="Fill" FontFamily="{StaticResource NormalFont}"/>
                                 </Frame>
                                 <!--<custom:CustomEntry Text="{Binding groupDto.ContributionDay}" IsEnabled="{Binding IsGroupInfoEditable}" TextColor="Black" HeightRequest="{OnPlatform iOS='50'}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" FontFamily="{StaticResource NormalFont}" IsVisible="{Binding IsContributionDayVisible}"/>-->
 
-                                <Label Text="Group Start Date:" TextColor="#2d67e4"  VerticalOptions="Center" HorizontalOptions="Start" FontFamily="{StaticResource NormalFont}" FontSize="{OnPlatform iOS='20'}" Margin="0,10,0,0" IsVisible="{Binding IsGroupStartDateVisible}"/>
-                                <Frame CornerRadius="{OnPlatform Android='10'}" BorderColor="#2d67e4"  Padding="0,0,0,0" IsClippedToBounds="True" HasShadow="False" IsVisible="{Binding IsGroupStartDateVisible}">
+                                <Label Text="Group Start Date:" TextColor="#083b66"  VerticalOptions="Center" HorizontalOptions="Start" FontFamily="{StaticResource NormalFont}" FontSize="{OnPlatform iOS='20'}" Margin="0,10,0,0" IsVisible="{Binding IsGroupStartDateVisible}"/>
+                                <Frame CornerRadius="{OnPlatform Android='10'}" BorderColor="#083b66"  Padding="0,0,0,0" IsClippedToBounds="True" HasShadow="False" IsVisible="{Binding IsGroupStartDateVisible}">
                                     <custom:CustomDatePicker PlaceHolder="Select GroupStrat Date" IsEnabled="{Binding IsGroupInfoEditable}" NullableDate="{Binding groupDto.GroupStartDate}" Format="MM/dd/yyyy"  Image="date_icon.png" HeightRequest="{OnPlatform iOS='50'}"  VerticalOptions="Fill" HorizontalOptions="Fill" FontFamily="{StaticResource NormalFont}"/>
                                 </Frame>
                                 <!--<custom:CustomEntry Text="{Binding groupDto.GroupStartDateString}" IsEnabled="{Binding IsGroupInfoEditable}" TextColor="Black" HeightRequest="{OnPlatform iOS='50'}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" FontFamily="{StaticResource NormalFont}" IsVisible="{Binding IsGroupStartDateVisible}"/>-->
 
-                                <Label Text="Group PayOut Day:" TextColor="#2d67e4"  VerticalOptions="Center" HorizontalOptions="Start" FontFamily="{StaticResource NormalFont}" FontSize="{OnPlatform iOS='20'}" Margin="0,10,0,0" IsVisible="{Binding IsGroupPayOutDayVisible}"/>
-                                <Frame CornerRadius="{OnPlatform Android='10'}"  BorderColor="#2d67e4"  Padding="0,0,0,0" IsClippedToBounds="True" HasShadow="False" IsVisible="{Binding IsGroupPayOutDayVisible}">
+                                <Label Text="Group PayOut Day:" TextColor="#083b66"  VerticalOptions="Center" HorizontalOptions="Start" FontFamily="{StaticResource NormalFont}" FontSize="{OnPlatform iOS='20'}" Margin="0,10,0,0" IsVisible="{Binding IsGroupPayOutDayVisible}"/>
+                                <Frame CornerRadius="{OnPlatform Android='10'}"  BorderColor="#083b66"  Padding="0,0,0,0" IsClippedToBounds="True" HasShadow="False" IsVisible="{Binding IsGroupPayOutDayVisible}">
                                     <custom:CustomPicker Placeholder="Select Payout day" IsEnabled="{Binding IsGroupInfoEditable}"  Title="Payout Day" HeightRequest="{OnPlatform iOS='50'}" ItemsSource="{Binding DaysList}" SelectedItem="{Binding groupDto.PayOutDay}" VerticalOptions="Fill" HorizontalOptions="Fill" FontFamily="{StaticResource NormalFont}"/>
                                 </Frame>
                                 <!--<custom:CustomEntry Text="{Binding groupDto.PayOutDay}" IsEnabled="{Binding IsGroupInfoEditable}" TextColor="Black" HeightRequest="{OnPlatform iOS='50'}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" FontFamily="{StaticResource NormalFont}" IsVisible="{Binding IsGroupPayOutDayVisible}"/>-->
 
-                                <Label Text="Group PayOut Date:" TextColor="#2d67e4"  VerticalOptions="Center" HorizontalOptions="Start" FontFamily="{StaticResource NormalFont}" FontSize="{OnPlatform iOS='20'}" Margin="0,10,0,0" IsVisible="{Binding IsGroupPayOutDateVisible}"/>
-                                <Frame CornerRadius="{OnPlatform Android='10'}" BorderColor="#2d67e4"  Padding="0,0,0,0" IsClippedToBounds="True" HasShadow="False" IsVisible="{Binding IsGroupPayOutDateVisible}">
+                                <Label Text="Group PayOut Date:" TextColor="#083b66"  VerticalOptions="Center" HorizontalOptions="Start" FontFamily="{StaticResource NormalFont}" FontSize="{OnPlatform iOS='20'}" Margin="0,10,0,0" IsVisible="{Binding IsGroupPayOutDateVisible}"/>
+                                <Frame CornerRadius="{OnPlatform Android='10'}" BorderColor="#083b66"  Padding="0,0,0,0" IsClippedToBounds="True" HasShadow="False" IsVisible="{Binding IsGroupPayOutDateVisible}">
                                     <custom:CustomDatePicker PlaceHolder="Select Payout Date" IsEnabled="{Binding IsGroupInfoEditable}" NullableDate="{Binding groupDto.PayOutDate}" Format="MM/dd/yyyy" Image="date_icon.png" HeightRequest="{OnPlatform iOS='50'}"  VerticalOptions="Fill" HorizontalOptions="Fill" FontFamily="{StaticResource NormalFont}"/>
                                 </Frame>
-                                <Frame VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="#2d67e4"  CornerRadius="{OnPlatform Android='60',iOS='25'  }" WidthRequest="200" Margin="0,10,0,0" Padding="15" HasShadow="False" IsVisible="{Binding IsGroupInfoEditable}">
+                                <Frame VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="#083b66"  CornerRadius="{OnPlatform Android='60',iOS='25'  }" WidthRequest="200" Margin="0,10,0,0" Padding="15" HasShadow="False" IsVisible="{Binding IsGroupInfoEditable}">
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding updateGroupDetails}"/>
                                     </Frame.GestureRecognizers>
@@ -107,7 +107,7 @@
                         </ScrollView>
                     </StackLayout>
                     <StackLayout IsVisible="{Binding IsGroupMembersVisible}">
-                        <Label Text="Group Members" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#2d67e4" FontSize="20" FontAttributes="Bold" FontFamily="{StaticResource NormalFont}"/>
+                        <Label Text="Group Members" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#083b66" FontSize="20" FontAttributes="Bold" FontFamily="{StaticResource NormalFont}"/>
                         <StackLayout Margin="10,10,10,0">
                             <Grid>
                                 <Grid.RowDefinitions>
@@ -121,13 +121,13 @@
                                             </CollectionView.ItemsLayout>
                                             <CollectionView.ItemTemplate>
                                                 <DataTemplate>
-                                                    <Frame BackgroundColor="Transparent" BorderColor="Blue" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="0,0,0,0" CornerRadius="5" IsClippedToBounds="True" Margin="10,0,0,0">
+                                                <Frame BackgroundColor="Transparent" BorderColor="#083b66" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="0,0,0,0" CornerRadius="5" IsClippedToBounds="True" Margin="10,0,0,0">
                                                         <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="0,10,0,10">
                                                             <Grid.ColumnDefinitions>
                                                                 <ColumnDefinition Width="20*"/>
                                                                 <ColumnDefinition Width="80*"/>
                                                             </Grid.ColumnDefinitions>
-                                                            <Image Source="user.png" Aspect="AspectFit" VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="0"/>
+                                                        <Image Source="user_blue.png" Aspect="AspectFit" VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="0" WidthRequest="40" HeightRequest="40"/>
                                                             <StackLayout Grid.Column="1" Padding="0" VerticalOptions="Center">
                                                                 <Label Text="{Binding FullName}" TextColor="Black" VerticalOptions="Start" HorizontalOptions="Start" Margin="10,0,0,0" Padding="0" FontFamily="{StaticResource NormalFont}"/>
                                                                 <Label Text="{Binding Email}" TextColor="Black" VerticalOptions="Start" HorizontalOptions="Start" Margin="10,0,0,0" Padding="0" FontFamily="{StaticResource NormalFont}"/>
@@ -139,7 +139,7 @@
                                                 </DataTemplate>
                                             </CollectionView.ItemTemplate>
                                         </CollectionView>
-                                    <Frame Grid.Row="0" VerticalOptions="End" HorizontalOptions="End" BackgroundColor="#2d67e4" CornerRadius="{x:OnPlatform Android='100', iOS='40'}"  HasShadow="False" Margin="0,0,10,10" IsVisible="{Binding IsGroupInviteVisible}">
+                                    <Frame Grid.Row="0" VerticalOptions="End" HorizontalOptions="End" BackgroundColor="#083b66" CornerRadius="{x:OnPlatform Android='100', iOS='40'}"  HasShadow="False" Margin="0,0,10,10" IsVisible="{Binding IsGroupInviteVisible}">
                                         <Frame.GestureRecognizers>
                                             <TapGestureRecognizer Command="{Binding InvitelinkClicked}"/>
                                         </Frame.GestureRecognizers>
@@ -152,23 +152,23 @@
                         </StackLayout>
                     </StackLayout>
                     <StackLayout IsVisible="{Binding IsUserInfoVisible}">
-                        <Label Text="User Profile" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#2d67e4" FontSize="20" FontAttributes="Bold" FontFamily="{StaticResource NormalFont}"/>
+                        <Label Text="User Profile" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#083b66" FontSize="20" FontAttributes="Bold" FontFamily="{StaticResource NormalFont}"/>
                         <StackLayout Margin="10,10,10,0">
-                            <Label Text="First Name:" VerticalOptions="Center" HorizontalOptions="Start" TextColor="#2d67e4" FontFamily="{StaticResource NormalFont}" FontSize="{OnPlatform iOS='20'}"/>
+                            <Label Text="First Name:" VerticalOptions="Center" HorizontalOptions="Start" TextColor="#083b66" FontFamily="{StaticResource NormalFont}" FontSize="{OnPlatform iOS='20'}"/>
                             <custom:CustomEntry Text="{Binding userDto.FirstName}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" HeightRequest="{OnPlatform iOS='50'}" FontFamily="{StaticResource NormalFont}"/>
-                            <Label Text="Last Name:" VerticalOptions="Center" HorizontalOptions="Start" TextColor="#2d67e4" FontFamily="{StaticResource NormalFont}" FontSize="{OnPlatform iOS='20'}"/>
+                            <Label Text="Last Name:" VerticalOptions="Center" HorizontalOptions="Start" TextColor="#083b66" FontFamily="{StaticResource NormalFont}" FontSize="{OnPlatform iOS='20'}"/>
                             <custom:CustomEntry Text="{Binding userDto.LastName}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" HeightRequest="{OnPlatform iOS='50'}" FontFamily="{StaticResource NormalFont}"/>
 
-                            <Label Text="Email:" TextColor="#2d67e4" VerticalOptions="Center" HorizontalOptions="Start" FontFamily="{StaticResource NormalFont}" FontSize="{OnPlatform iOS='20'}" Margin="0,10,0,0"/>
+                            <Label Text="Email:" TextColor="#083b66" VerticalOptions="Center" HorizontalOptions="Start" FontFamily="{StaticResource NormalFont}" FontSize="{OnPlatform iOS='20'}" Margin="0,10,0,0"/>
                             <custom:CustomEntry Text="{Binding userDto.Email}"  IsEnabled="False" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" HeightRequest="{OnPlatform iOS='50'}" FontFamily="{StaticResource NormalFont}"/>
 
-                            <Label Text="Mobile Number:" TextColor="#2d67e4" VerticalOptions="Center" HorizontalOptions="Start" FontFamily="{StaticResource NormalFont}" FontSize="{OnPlatform iOS='20'}" Margin="0,10,0,0"/>
+                            <Label Text="Mobile Number:" TextColor="#083b66" VerticalOptions="Center" HorizontalOptions="Start" FontFamily="{StaticResource NormalFont}" FontSize="{OnPlatform iOS='20'}" Margin="0,10,0,0"/>
                             <custom:CustomEntry Text="{Binding userDto.MobileNo}" HeightRequest="{OnPlatform iOS='50'}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" FontFamily="{StaticResource NormalFont}"/>
 
-                            <Label Text="PayPal EmailId:" TextColor="#2d67e4" VerticalOptions="Center" HorizontalOptions="Start" FontFamily="{StaticResource NormalFont}" FontSize="{OnPlatform iOS='20'}" Margin="0,10,0,0"/>
+                            <Label Text="PayPal EmailId:" TextColor="#083b66" VerticalOptions="Center" HorizontalOptions="Start" FontFamily="{StaticResource NormalFont}" FontSize="{OnPlatform iOS='20'}" Margin="0,10,0,0"/>
                             <custom:CustomEntry Text="{Binding userDto.PayPalEmailId}" HeightRequest="{OnPlatform iOS='50'}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" FontFamily="{StaticResource NormalFont}"/>
 
-                            <Frame VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="#2d67e4"  CornerRadius="{OnPlatform Android='60',iOS='25'}" WidthRequest="150" Margin="0,10,0,0" Padding="15" HasShadow="False">
+                            <Frame VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="#083b66"  CornerRadius="{OnPlatform Android='60',iOS='25'}" WidthRequest="150" Margin="0,10,0,0" Padding="15" HasShadow="False">
                                 <Frame.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding SaveUserProfile}"/>
                                 </Frame.GestureRecognizers>
@@ -223,23 +223,23 @@
                         </StackLayout>-->
                     </StackLayout>
                     <StackLayout IsVisible="{Binding IsHelpVisible}">
-                        <Label Text="More" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#2d67e4" FontSize="20" FontAttributes="Bold" FontFamily="{StaticResource NormalFont}"/>
+                        <Label Text="More" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#083b66" FontSize="20" FontAttributes="Bold" FontFamily="{StaticResource NormalFont}"/>
                         <StackLayout Margin="10,10,10,0">
-                            <Frame BackgroundColor="Transparent" BorderColor="#2d67e4" CornerRadius="20" Padding="15" HasShadow="False" IsClippedToBounds="False" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="0,10,0,0">
+                            <Frame BackgroundColor="Transparent" BorderColor="#083b66" CornerRadius="20" Padding="15" HasShadow="False" IsClippedToBounds="False" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="0,10,0,0">
                                 <Frame.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding ResetPasswordCliked}"/>
                                 </Frame.GestureRecognizers>
                                 <Label Text="Reset Password" VerticalOptions="Center" HorizontalOptions="Center" FontAttributes="Bold" FontFamily="{StaticResource NormalFont}"/>
                             </Frame>
 
-                            <Frame BackgroundColor="Transparent" BorderColor="#2d67e4" CornerRadius="20" Padding="15" HasShadow="False" IsClippedToBounds="False" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="0,10,0,0">
+                            <Frame BackgroundColor="Transparent" BorderColor="#083b66" CornerRadius="20" Padding="15" HasShadow="False" IsClippedToBounds="False" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="0,10,0,0">
                                 <Frame.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding HelpClicked}"/>
                                 </Frame.GestureRecognizers>
                                 <Label Text="Help" VerticalOptions="Center" HorizontalOptions="Center" FontAttributes="Bold" FontFamily="{StaticResource NormalFont}"/>
                             </Frame>
 
-                            <Frame BackgroundColor="Transparent" BorderColor="#2d67e4" CornerRadius="20" Padding="15" HasShadow="False" IsClippedToBounds="False" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="0,10,0,0">
+                            <Frame BackgroundColor="Transparent" BorderColor="#083b66" CornerRadius="20" Padding="15" HasShadow="False" IsClippedToBounds="False" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="0,10,0,0">
                                 <Frame.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding LogoutClicked}"/>
                                 </Frame.GestureRecognizers>
@@ -320,7 +320,7 @@
                         <Label Text="ESORR" TextColor="Black" FontFamily="{StaticResource NormalFont}"/>
                         <!--<custom:CustomEntry Text="{Binding GroupId}" Placeholder="Entry Id to join the group" PlaceholderColor="{Binding GroupIdPlaceholderColor}" HeightRequest="{OnPlatform iOS='50'}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="0,10,0,0" FontFamily="{StaticResource NormalFont}"/>-->
                         <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Margin="0,10,0,0">
-                            <Frame VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="#2d67e4"  CornerRadius="{OnPlatform Android='60',iOS='25'}" WidthRequest="50" Margin="0,10,0,0" Padding="15" HasShadow="False">
+                            <Frame VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="#083b66"  CornerRadius="{OnPlatform Android='60',iOS='25'}" WidthRequest="50" Margin="0,10,0,0" Padding="15" HasShadow="False">
                                 <Frame.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding OKButtonClicked}"/>
                                 </Frame.GestureRecognizers>
@@ -366,7 +366,7 @@
                         </StackLayout>
                         <!--<custom:CustomEntry Text="{Binding GroupId}" Placeholder="Entry Id to join the group" PlaceholderColor="{Binding GroupIdPlaceholderColor}" HeightRequest="{OnPlatform iOS='50'}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="0,10,0,0" FontFamily="{StaticResource NormalFont}"/>-->
                         <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Margin="0,10,0,0">
-                            <Frame VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="#2d67e4"  CornerRadius="{OnPlatform Android='60',iOS='25'}" WidthRequest="50" Margin="0,10,0,0" Padding="15" HasShadow="False">
+                            <Frame VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="#083b66"  CornerRadius="{OnPlatform Android='60',iOS='25'}" WidthRequest="50" Margin="0,10,0,0" Padding="15" HasShadow="False">
                                 <Frame.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding HelpCloseClicked}"/>
                                 </Frame.GestureRecognizers>
@@ -412,7 +412,7 @@
                         </StackLayout>
                         <!--<custom:CustomEntry Text="{Binding GroupId}" Placeholder="Entry Id to join the group" PlaceholderColor="{Binding GroupIdPlaceholderColor}" HeightRequest="{OnPlatform iOS='50'}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="0,10,0,0" FontFamily="{StaticResource NormalFont}"/>-->
                         <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Margin="0,10,0,0">
-                            <Frame VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="#2d67e4"  CornerRadius="{OnPlatform Android='60',iOS='25'}" WidthRequest="50" Margin="0,10,0,0" Padding="15" HasShadow="False">
+                            <Frame VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="#083b66"  CornerRadius="{OnPlatform Android='60',iOS='25'}" WidthRequest="50" Margin="0,10,0,0" Padding="15" HasShadow="False">
                                 <Frame.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding GroupudateClosed}"/>
                                 </Frame.GestureRecognizers>

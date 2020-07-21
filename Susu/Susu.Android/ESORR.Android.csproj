@@ -171,9 +171,6 @@
     <AndroidResource Include="Resources\drawable\GroupUsers.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\GroupInfo.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable\card.png" />
   </ItemGroup>
   <ItemGroup>

@@ -103,7 +103,7 @@ namespace Susu.ViewModels
             {
                 if(groupDto.ErrorId == -1)
                 {
-                   await App.Current.MainPage.DisplayAlert("", "Sorry,already group stared. So, you are unable to join the group ", "OK");
+                   await App.Current.MainPage.DisplayAlert("", "Sorry the group you are trying to join is already in sesssion. Please join another group or create a new group.", "OK");
                     return;
                 }
                 App.GroupId = groupDto.Id;

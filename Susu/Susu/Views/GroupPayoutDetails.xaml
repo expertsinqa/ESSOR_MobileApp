@@ -71,7 +71,7 @@
                         </ListView>
                     </StackLayout>
                 </ScrollView>
-                <Frame Grid.Row="2" VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="#2d67e4"  CornerRadius="{OnPlatform Android='60',iOS='25'}" WidthRequest="150" Margin="0,0,0,10" Padding="10" HasShadow="False">
+                <Frame Grid.Row="2" VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="#083b66"  CornerRadius="{OnPlatform Android='60',iOS='25'}" WidthRequest="150" Margin="0,0,0,10" Padding="10" HasShadow="False">
                     <Frame.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding BackClicked}"/>
                     </Frame.GestureRecognizers>

@@ -26,10 +26,10 @@
                         </Grid.RowDefinitions>
                         <StackLayout Grid.Row="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="20,0,10,0" Spacing="10" Padding="5">
                             <Image Source="Esorr_logo.png" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit" WidthRequest="150" HeightRequest="150"/>
-                            <!--<Label Text="ESORR" VerticalOptions="Start" HorizontalOptions="Center" TextColor="#2d67e4" FontAttributes="Bold" FontSize="30" Margin="0,10,0,0" FontFamily="{StaticResource NormalFont}"/>-->
+                            <!--<Label Text="ESORR" VerticalOptions="Start" HorizontalOptions="Center" TextColor="#083b66" FontAttributes="Bold" FontSize="30" Margin="0,10,0,0" FontFamily="{StaticResource NormalFont}"/>-->
                             <!--<StackLayout  Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Center">
                             <Image Source="favicon_white.png" VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="40" WidthRequest="40" Aspect="AspectFit"/>
-                                <Label Text="ESORR" VerticalOptions="Start" HorizontalOptions="Center" TextColor="#2d67e4" FontAttributes="Bold" FontSize="20" Margin="0,10,0,0" FontFamily="{StaticResource NormalFont}"/>
+                                <Label Text="ESORR" VerticalOptions="Start" HorizontalOptions="Center" TextColor="#083b66" FontAttributes="Bold" FontSize="20" Margin="0,10,0,0" FontFamily="{StaticResource NormalFont}"/>
                             </StackLayout>-->
                             <custom:CustomEntry  Text="{Binding Email}" Keyboard="Email" Placeholder="Email" PlaceholderColor="{Binding EmailPlaceholder}" HeightRequest="{OnPlatform iOS='50'}" VerticalOptions="Fill" HorizontalOptions="Fill"  FontFamily="{StaticResource NormalFont}" Margin="0,10,0,0">
                                    <custom:CustomEntry.Behaviors>
@@ -37,24 +37,24 @@
                                 </custom:CustomEntry.Behaviors>
                             </custom:CustomEntry>
                             <custom:CustomEntry Text="{Binding Password}" IsPassword="True" Placeholder="Password" PlaceholderColor="{Binding PasswordPlaceholder}" HeightRequest="{OnPlatform iOS='50'}" VerticalOptions="Fill" HorizontalOptions="Fill"  FontFamily="{StaticResource NormalFont}"/>
-                            <Label Text="Forgot Password?" VerticalOptions="End" HorizontalOptions="End" TextColor="#2d67e4" TextDecorations="Underline" FontFamily="{StaticResource NormalFont}">
+                            <Label Text="Forgot Password?" VerticalOptions="End" HorizontalOptions="End" TextColor="#083b66" TextDecorations="Underline" FontFamily="{StaticResource NormalFont}">
                                 <Label.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding ForgotpasswordClicked}"/>
                                 </Label.GestureRecognizers>
                             </Label>
-                            <Frame VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="#2d67e4" CornerRadius="{x:OnPlatform Android='60', iOS='25'}"   WidthRequest="200" Margin="0,10,0,0" Padding="15" HasShadow="False">
+                            <Frame VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="#083b66" CornerRadius="{x:OnPlatform Android='60', iOS='25'}"   WidthRequest="200" Margin="0,10,0,0" Padding="15" HasShadow="False">
                                 <Frame.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding LoginClicked}"/>
                                 </Frame.GestureRecognizers>
                                 <Label Text="LOGIN" TextColor="White"  VerticalOptions="Center" HorizontalOptions="Center" FontFamily="{StaticResource NormalFont}"/>
                             </Frame>
                             <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,0,0,20">
-                                <Label Text="Don't, have an account ?" VerticalOptions="Start" HorizontalOptions="Start" TextColor="#2d67e4" FontSize="18" FontFamily="{StaticResource NormalFont}"/>
+                                <Label Text="Don't, have an account ?" VerticalOptions="Start" HorizontalOptions="Start" TextColor="#083b66" FontSize="18" FontFamily="{StaticResource NormalFont}"/>
                                 <StackLayout>
                                     <StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding SignUpClicked}"></TapGestureRecognizer>
                                     </StackLayout.GestureRecognizers>
-                                    <Label Text="SignUp" VerticalOptions="Start" HorizontalOptions="Start" TextColor="#2d67e4" TextDecorations="Underline" FontAttributes="Bold" FontSize="20" FontFamily="{StaticResource NormalFont}">
+                                    <Label Text="SignUp" VerticalOptions="Start" HorizontalOptions="Start" TextColor="#083b66" TextDecorations="Underline" FontAttributes="Bold" FontSize="20" FontFamily="{StaticResource NormalFont}">
                                         <Label.GestureRecognizers>
                                             <TapGestureRecognizer Command="{Binding SignUpClicked}"></TapGestureRecognizer>
                                         </Label.GestureRecognizers>
@@ -84,13 +84,13 @@
                         </custom:CustomEntry>
                         <Label Text="*Password will sent to your registered Email Id*" VerticalOptions="Start" HorizontalOptions="Start" FontSize="Subtitle" FontFamily="{StaticResource NormalFont}"/>
                         <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,10,0,0">
-                            <Frame VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="#2d67e4"  CornerRadius="{OnPlatform Android='60',iOS='25'}" WidthRequest="200" Margin="0,10,0,0" Padding="15" HasShadow="False">
+                            <Frame VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="#083b66"  CornerRadius="{OnPlatform Android='60',iOS='25'}" WidthRequest="200" Margin="0,10,0,0" Padding="15" HasShadow="False">
                                 <Frame.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding CloseForgetPasswordClicked}"/>
                                 </Frame.GestureRecognizers>
                                 <Label Text="CLOSE" TextColor="White"  VerticalOptions="Center" HorizontalOptions="Center" FontFamily="{StaticResource NormalFont}"/>
                             </Frame>
-                            <Frame VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="#2d67e4"  CornerRadius="{OnPlatform Android='60',iOS='25'}" WidthRequest="200" Margin="0,10,0,0" Padding="15" HasShadow="False">
+                            <Frame VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="#083b66"  CornerRadius="{OnPlatform Android='60',iOS='25'}" WidthRequest="200" Margin="0,10,0,0" Padding="15" HasShadow="False">
                                 <Frame.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding SubmitForgotPasswordClicked}"/>
                                 </Frame.GestureRecognizers>

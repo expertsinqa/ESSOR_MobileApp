@@ -16,7 +16,7 @@
                     <RowDefinition Height="8*"/>
                     <RowDefinition Height="90*"/>
                 </Grid.RowDefinitions>
-                <Label Text="End User License Agreement (EULA)" VerticalOptions="Center" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="#2d67e4" FontAttributes="Bold" FontFamily="{StaticResource NormalFont}" FontSize="20"/>
+                <Label Text="End User License Agreement (EULA)" VerticalOptions="Center" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="#083b66" FontAttributes="Bold" FontFamily="{StaticResource NormalFont}" FontSize="20"/>
                 <ScrollView Grid.Row="1">
                 <StackLayout Grid.Row="1" Margin="10,10,10,0">
                         <Custom:CustomLabel LineBreakMode="CharacterWrap"  HorizontalTextAlignment="Start" VerticalOptions="Fill" TextColor="Black" HorizontalOptions="Fill">
@@ -30,7 +30,7 @@
                                 </FormattedString>
                             </Custom:CustomLabel.FormattedText>
                         </Custom:CustomLabel>
-                        <Label Text="1. REPRESENTATIONS CONCERNING AGE AND JURISDICTION" TextColor="#2d67e4" FontAttributes="Bold" FontFamily="{StaticResource NormalFont}" Margin="0,10,0,0"/>
+                        <Label Text="1. REPRESENTATIONS CONCERNING AGE AND JURISDICTION" TextColor="#083b66" FontAttributes="Bold" FontFamily="{StaticResource NormalFont}" Margin="0,10,0,0"/>
                         <Custom:CustomLabel LineBreakMode="CharacterWrap"  HorizontalTextAlignment="Start" VerticalOptions="Fill" TextColor="Black" HorizontalOptions="Fill" FontSize="Small">
                             <Custom:CustomLabel.FormattedText>
                                 <FormattedString>
@@ -42,7 +42,7 @@
                                 </FormattedString>
                             </Custom:CustomLabel.FormattedText>
                         </Custom:CustomLabel>
-                        <Label Text="2. GRANT OF LICENSE" TextColor="#2d67e4" FontAttributes="Bold" FontFamily="{StaticResource NormalFont}" Margin="0,10,0,0"/>
+                        <Label Text="2. GRANT OF LICENSE" TextColor="#083b66" FontAttributes="Bold" FontFamily="{StaticResource NormalFont}" Margin="0,10,0,0"/>
                         <Custom:CustomLabel LineBreakMode="CharacterWrap"  HorizontalTextAlignment="Start" VerticalOptions="Fill" TextColor="Black" HorizontalOptions="Fill" FontSize="Small">
                             <Custom:CustomLabel.FormattedText>
                                 <FormattedString>
@@ -54,7 +54,7 @@
                                 </FormattedString>
                             </Custom:CustomLabel.FormattedText>
                         </Custom:CustomLabel>
-                        <Label Text="3. LICENSE LIMITATIONS" TextColor="#2d67e4" FontAttributes="Bold" FontFamily="{StaticResource NormalFont}" Margin="0,10,0,0"/>
+                        <Label Text="3. LICENSE LIMITATIONS" TextColor="#083b66" FontAttributes="Bold" FontFamily="{StaticResource NormalFont}" Margin="0,10,0,0"/>
                         <Custom:CustomLabel LineBreakMode="CharacterWrap"  HorizontalTextAlignment="Start" VerticalOptions="Fill" TextColor="Black" HorizontalOptions="Fill" FontSize="Small">
                             <Custom:CustomLabel.FormattedText>
                                 <FormattedString>
@@ -66,7 +66,7 @@
                                 </FormattedString>
                             </Custom:CustomLabel.FormattedText>
                         </Custom:CustomLabel>
-                        <Label Text="4. INTELLECTUAL PROPERTY RIGHTS" TextColor="#2d67e4" FontAttributes="Bold" FontFamily="{StaticResource NormalFont}" Margin="0,10,0,0"/>
+                        <Label Text="4. INTELLECTUAL PROPERTY RIGHTS" TextColor="#083b66" FontAttributes="Bold" FontFamily="{StaticResource NormalFont}" Margin="0,10,0,0"/>
                         <Custom:CustomLabel LineBreakMode="CharacterWrap"  HorizontalTextAlignment="Start" VerticalOptions="Fill" TextColor="Black" HorizontalOptions="Fill" FontSize="Small">
                             <Custom:CustomLabel.FormattedText>
                                 <FormattedString>
@@ -78,7 +78,7 @@
                                 </FormattedString>
                             </Custom:CustomLabel.FormattedText>
                         </Custom:CustomLabel>
-                        <Label Text="5. THIRD PARTY APPLICATION OR SERVICE" TextColor="#2d67e4" FontAttributes="Bold" FontFamily="{StaticResource NormalFont}" Margin="0,10,0,0"/>
+                        <Label Text="5. THIRD PARTY APPLICATION OR SERVICE" TextColor="#083b66" FontAttributes="Bold" FontFamily="{StaticResource NormalFont}" Margin="0,10,0,0"/>
                         <Custom:CustomLabel LineBreakMode="CharacterWrap"  HorizontalTextAlignment="Start" VerticalOptions="Fill" TextColor="Black" HorizontalOptions="Fill" FontSize="Small">
                             <Custom:CustomLabel.FormattedText>
                                 <FormattedString>
@@ -90,7 +90,7 @@
                                 </FormattedString>
                             </Custom:CustomLabel.FormattedText>
                         </Custom:CustomLabel>
-                        <Label Text="6. ACCOUNT CREDENTIALS" TextColor="#2d67e4" FontAttributes="Bold" FontFamily="{StaticResource NormalFont}" Margin="0,10,0,0"/>
+                        <Label Text="6. ACCOUNT CREDENTIALS" TextColor="#083b66" FontAttributes="Bold" FontFamily="{StaticResource NormalFont}" Margin="0,10,0,0"/>
                         <Custom:CustomLabel LineBreakMode="CharacterWrap"  HorizontalTextAlignment="Start" VerticalOptions="Fill" TextColor="Black" HorizontalOptions="Fill" FontSize="Small">
                             <Custom:CustomLabel.FormattedText>
                                 <FormattedString>
@@ -102,7 +102,7 @@
                                 </FormattedString>
                             </Custom:CustomLabel.FormattedText>
                         </Custom:CustomLabel>
-                        <Label Text="7. PRIVACY" TextColor="#2d67e4" FontAttributes="Bold" FontFamily="{StaticResource NormalFont}" Margin="0,10,0,0"/>
+                        <Label Text="7. PRIVACY" TextColor="#083b66" FontAttributes="Bold" FontFamily="{StaticResource NormalFont}" Margin="0,10,0,0"/>
                         <Custom:CustomLabel LineBreakMode="CharacterWrap"  HorizontalTextAlignment="Start" VerticalOptions="Fill" TextColor="Black" HorizontalOptions="Fill" FontSize="Small">
                             <Custom:CustomLabel.FormattedText>
                                 <FormattedString>
@@ -114,7 +114,7 @@
                                 </FormattedString>
                             </Custom:CustomLabel.FormattedText>
                         </Custom:CustomLabel>
-                        <Label Text="8. SUBSCRIPTIONS" TextColor="#2d67e4" FontAttributes="Bold" FontFamily="{StaticResource NormalFont}" Margin="0,10,0,0"/>
+                        <Label Text="8. SUBSCRIPTIONS" TextColor="#083b66" FontAttributes="Bold" FontFamily="{StaticResource NormalFont}" Margin="0,10,0,0"/>
                         <Custom:CustomLabel LineBreakMode="CharacterWrap"  HorizontalTextAlignment="Start" VerticalOptions="Fill" TextColor="Black" HorizontalOptions="Fill" FontSize="Small">
                             <Custom:CustomLabel.FormattedText>
                                 <FormattedString>
@@ -126,7 +126,7 @@
                                 </FormattedString>
                             </Custom:CustomLabel.FormattedText>
                         </Custom:CustomLabel>
-                        <Label Text="9. TERMS OF USE" TextColor="#2d67e4" FontAttributes="Bold" FontFamily="{StaticResource NormalFont}" Margin="0,10,0,0"/>
+                        <Label Text="9. TERMS OF USE" TextColor="#083b66" FontAttributes="Bold" FontFamily="{StaticResource NormalFont}" Margin="0,10,0,0"/>
                         <Custom:CustomLabel LineBreakMode="CharacterWrap"  HorizontalTextAlignment="Start" VerticalOptions="Fill" TextColor="Black" HorizontalOptions="Fill" FontSize="Small">
                             <Custom:CustomLabel.FormattedText>
                                 <FormattedString>
@@ -138,7 +138,7 @@
                                 </FormattedString>
                             </Custom:CustomLabel.FormattedText>
                         </Custom:CustomLabel>
-                        <Label Text="10. ELECTRONIC COMMUNICATIONS" TextColor="#2d67e4" FontAttributes="Bold" FontFamily="{StaticResource NormalFont}" Margin="0,10,0,0"/>
+                        <Label Text="10. ELECTRONIC COMMUNICATIONS" TextColor="#083b66" FontAttributes="Bold" FontFamily="{StaticResource NormalFont}" Margin="0,10,0,0"/>
                         <Custom:CustomLabel LineBreakMode="CharacterWrap"  HorizontalTextAlignment="Start" VerticalOptions="Fill" TextColor="Black" HorizontalOptions="Fill" FontSize="Small">
                             <Custom:CustomLabel.FormattedText>
                                 <FormattedString>
@@ -150,7 +150,7 @@
                                 </FormattedString>
                             </Custom:CustomLabel.FormattedText>
                         </Custom:CustomLabel>
-                        <Label Text="11. PROHIBITED BEHAVIOR " TextColor="#2d67e4" FontAttributes="Bold" FontFamily="{StaticResource NormalFont}" Margin="0,10,0,0"/>
+                        <Label Text="11. PROHIBITED BEHAVIOR " TextColor="#083b66" FontAttributes="Bold" FontFamily="{StaticResource NormalFont}" Margin="0,10,0,0"/>
                         <Custom:CustomLabel LineBreakMode="CharacterWrap"  HorizontalTextAlignment="Start" VerticalOptions="Fill" TextColor="Black" HorizontalOptions="Fill" FontSize="Small">
                             <Custom:CustomLabel.FormattedText>
                                 <FormattedString>
@@ -162,7 +162,7 @@
                                 </FormattedString>
                             </Custom:CustomLabel.FormattedText>
                         </Custom:CustomLabel>
-                        <Label Text="12. NO WARRANTY" TextColor="#2d67e4" FontAttributes="Bold" FontFamily="{StaticResource NormalFont}" Margin="0,10,0,0"/>
+                        <Label Text="12. NO WARRANTY" TextColor="#083b66" FontAttributes="Bold" FontFamily="{StaticResource NormalFont}" Margin="0,10,0,0"/>
                         <Custom:CustomLabel LineBreakMode="CharacterWrap"  HorizontalTextAlignment="Start" VerticalOptions="Fill" TextColor="Black" HorizontalOptions="Fill" FontSize="Small">
                             <Custom:CustomLabel.FormattedText>
                                 <FormattedString>
@@ -174,7 +174,7 @@
                                 </FormattedString>
                             </Custom:CustomLabel.FormattedText>
                         </Custom:CustomLabel>
-                        <Label Text="13. LIMITATION OF LIABILITIES" TextColor="#2d67e4" FontAttributes="Bold" FontFamily="{StaticResource NormalFont}" Margin="0,10,0,0"/>
+                        <Label Text="13. LIMITATION OF LIABILITIES" TextColor="#083b66" FontAttributes="Bold" FontFamily="{StaticResource NormalFont}" Margin="0,10,0,0"/>
                         <Custom:CustomLabel LineBreakMode="CharacterWrap"  HorizontalTextAlignment="Start" VerticalOptions="Fill" TextColor="Black" HorizontalOptions="Fill" FontSize="Small">
                             <Custom:CustomLabel.FormattedText>
                                 <FormattedString>
@@ -186,7 +186,7 @@
                                 </FormattedString>
                             </Custom:CustomLabel.FormattedText>
                         </Custom:CustomLabel>
-                        <Label Text="14. TERM &amp; TERMINATION" TextColor="#2d67e4" FontAttributes="Bold" FontFamily="{StaticResource NormalFont}" Margin="0,10,0,0"/>
+                        <Label Text="14. TERM &amp; TERMINATION" TextColor="#083b66" FontAttributes="Bold" FontFamily="{StaticResource NormalFont}" Margin="0,10,0,0"/>
                         <Custom:CustomLabel LineBreakMode="CharacterWrap"  HorizontalTextAlignment="Start" VerticalOptions="Fill" TextColor="Black" HorizontalOptions="Fill" FontSize="Small">
                             <Custom:CustomLabel.FormattedText>
                                 <FormattedString>
@@ -198,7 +198,7 @@
                                 </FormattedString>
                             </Custom:CustomLabel.FormattedText>
                         </Custom:CustomLabel>
-                        <Label Text="15. APPLICABLE LAWS" TextColor="#2d67e4" FontAttributes="Bold" FontFamily="{StaticResource NormalFont}" Margin="0,10,0,0"/>
+                        <Label Text="15. APPLICABLE LAWS" TextColor="#083b66" FontAttributes="Bold" FontFamily="{StaticResource NormalFont}" Margin="0,10,0,0"/>
                         <Custom:CustomLabel LineBreakMode="CharacterWrap"  HorizontalTextAlignment="Start" VerticalOptions="Fill" TextColor="Black" HorizontalOptions="Fill" FontSize="Small">
                             <Custom:CustomLabel.FormattedText>
                                 <FormattedString>
@@ -210,7 +210,7 @@
                                 </FormattedString>
                             </Custom:CustomLabel.FormattedText>
                         </Custom:CustomLabel>
-                        <Label Text="16. INDEMNIFICATION" TextColor="#2d67e4" FontAttributes="Bold" FontFamily="{StaticResource NormalFont}" Margin="0,10,0,0"/>
+                        <Label Text="16. INDEMNIFICATION" TextColor="#083b66" FontAttributes="Bold" FontFamily="{StaticResource NormalFont}" Margin="0,10,0,0"/>
                         <Custom:CustomLabel LineBreakMode="CharacterWrap"  HorizontalTextAlignment="Start" VerticalOptions="Fill" TextColor="Black" HorizontalOptions="Fill" FontSize="Small">
                             <Custom:CustomLabel.FormattedText>
                                 <FormattedString>
@@ -222,7 +222,7 @@
                                 </FormattedString>
                             </Custom:CustomLabel.FormattedText>
                         </Custom:CustomLabel>
-                        <Label Text="17. DISPUTE RESOLUTION" TextColor="#2d67e4" FontAttributes="Bold" FontFamily="{StaticResource NormalFont}" Margin="0,10,0,0"/>
+                        <Label Text="17. DISPUTE RESOLUTION" TextColor="#083b66" FontAttributes="Bold" FontFamily="{StaticResource NormalFont}" Margin="0,10,0,0"/>
                         <Custom:CustomLabel LineBreakMode="CharacterWrap"  HorizontalTextAlignment="Start" VerticalOptions="Fill" TextColor="Black" HorizontalOptions="Fill" FontSize="Small">
                             <Custom:CustomLabel.FormattedText>
                                 <FormattedString>
@@ -234,7 +234,7 @@
                                 </FormattedString>
                             </Custom:CustomLabel.FormattedText>
                         </Custom:CustomLabel>
-                        <Label Text="18. MISCELLANEOUS PROVISIONS " TextColor="#2d67e4" FontAttributes="Bold" FontFamily="{StaticResource NormalFont}" Margin="0,10,0,0"/>
+                        <Label Text="18. MISCELLANEOUS PROVISIONS " TextColor="#083b66" FontAttributes="Bold" FontFamily="{StaticResource NormalFont}" Margin="0,10,0,0"/>
                         <Custom:CustomLabel LineBreakMode="CharacterWrap"  HorizontalTextAlignment="Start" VerticalOptions="Fill" TextColor="Black" HorizontalOptions="Fill" FontSize="Small">
                             <Custom:CustomLabel.FormattedText>
                                 <FormattedString>
@@ -246,7 +246,7 @@
                                 </FormattedString>
                             </Custom:CustomLabel.FormattedText>
                         </Custom:CustomLabel>
-                        <Label Text="19. AMENDMENTS TO THIS AGREEMENT " TextColor="#2d67e4" FontAttributes="Bold" FontFamily="{StaticResource NormalFont}" Margin="0,10,0,0"/>
+                        <Label Text="19. AMENDMENTS TO THIS AGREEMENT " TextColor="#083b66" FontAttributes="Bold" FontFamily="{StaticResource NormalFont}" Margin="0,10,0,0"/>
                         <Custom:CustomLabel LineBreakMode="CharacterWrap"  HorizontalTextAlignment="Start" VerticalOptions="Fill" TextColor="Black" HorizontalOptions="Fill" FontSize="Small">
                             <Custom:CustomLabel.FormattedText>
                                 <FormattedString>
@@ -271,20 +271,20 @@
                         </Custom:CustomLabel>
                         <Label Text="Last Updated: July 07, 2020" TextColor="Black" FontAttributes="Bold" FontFamily="{StaticResource NormalFont}" Margin="0,10,0,0"/>
 
-                        <!--<Frame VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="#2d67e4"  CornerRadius="{OnPlatform Android='60',iOS='25'}" WidthRequest="100" Margin="0,10,0,10" Padding="15" IsEnabled="True">
+                        <!--<Frame VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="#083b66"  CornerRadius="{OnPlatform Android='60',iOS='25'}" WidthRequest="100" Margin="0,10,0,10" Padding="15" IsEnabled="True">
                             <Frame.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding AcceptClicked}"/>
                             </Frame.GestureRecognizers>
                             <Label Text="Accept" TextColor="White"  VerticalOptions="Center" HorizontalOptions="Center" FontFamily="{StaticResource NormalFont}"/>
                         </Frame>-->
                         <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,10,0,10">
-                            <Frame VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="#2d67e4"  CornerRadius="{OnPlatform Android='60',iOS='25'  }" WidthRequest="200" Margin="0,10,0,0" Padding="15" HasShadow="False">
+                            <Frame VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="#083b66"  CornerRadius="{OnPlatform Android='60',iOS='25'  }" WidthRequest="200" Margin="0,10,0,0" Padding="15" HasShadow="False">
                                 <Frame.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding AcceptClicked}"/>
                                 </Frame.GestureRecognizers>
                                 <Label Text="Accept" TextColor="White"  VerticalOptions="Center" HorizontalOptions="Center" FontFamily="{StaticResource NormalFont}"/>
                             </Frame>
-                            <Frame VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="#2d67e4"  CornerRadius="{OnPlatform Android='60',iOS='25'}" WidthRequest="200" Margin="0,10,0,0" Padding="15" HasShadow="False">
+                            <Frame VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="#083b66"  CornerRadius="{OnPlatform Android='60',iOS='25'}" WidthRequest="200" Margin="0,10,0,0" Padding="15" HasShadow="False">
                                 <Frame.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding RejectClicked}"/>
                                 </Frame.GestureRecognizers>

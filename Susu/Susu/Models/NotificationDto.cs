@@ -49,7 +49,7 @@ namespace Susu.Models
                 if (isReadbyUser)
                     return Color.White;
                 else
-                    return Color.FromHex("#2d67e4");
+                    return Color.FromHex("#083b66");
             }
             set { }
         }

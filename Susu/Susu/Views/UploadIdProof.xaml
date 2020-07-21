@@ -17,9 +17,9 @@
                     <RowDefinition Height="45*"/>
                     <RowDefinition Height="45*"/>
                 </Grid.RowDefinitions>
-                <Label Text="Government Id Proof" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#2d67e4" FontAttributes="Bold" FontFamily="{StaticResource NormalFont}" FontSize="20"/>
+                <Label Text="Government Id Proof" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#083b66" FontAttributes="Bold" FontFamily="{StaticResource NormalFont}" FontSize="20"/>
                 <StackLayout Grid.Row="1" VerticalOptions="Center" HorizontalOptions="Center">
-                    <Frame BorderColor="#2d67e4" BackgroundColor="Transparent" CornerRadius="100" HeightRequest="200" WidthRequest="200" HorizontalOptions="Center" Padding="0" IsClippedToBounds="True">
+                    <Frame BorderColor="#083b66" BackgroundColor="Transparent" CornerRadius="100" HeightRequest="200" WidthRequest="200" HorizontalOptions="Center" Padding="0" IsClippedToBounds="True">
                         <Frame.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding CameraClicked}"/>
                         </Frame.GestureRecognizers>
@@ -29,10 +29,10 @@
                         </Image.GestureRecognizers>
                     </Image>
                     </Frame>
-                    <Label Text="Take a photo" TextColor="#2d67e4" VerticalOptions="Center" HorizontalOptions="Center" FontSize="15" FontFamily="{StaticResource NormalFont}"/>
+                    <Label Text="Take a photo" TextColor="#083b66" VerticalOptions="Center" HorizontalOptions="Center" FontSize="15" FontFamily="{StaticResource NormalFont}"/>
                 </StackLayout>
                 <StackLayout Grid.Row="2" VerticalOptions="Center" HorizontalOptions="Center">
-                    <Frame BorderColor="#2d67e4" BackgroundColor="Transparent" CornerRadius="100" HeightRequest="200" WidthRequest="200" HorizontalOptions="Center" Padding="0" IsClippedToBounds="True">
+                    <Frame BorderColor="#083b66" BackgroundColor="Transparent" CornerRadius="100" HeightRequest="200" WidthRequest="200" HorizontalOptions="Center" Padding="0" IsClippedToBounds="True">
                         <Frame.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding FileUploadClicked}"/>
                         </Frame.GestureRecognizers>
@@ -42,7 +42,7 @@
                             </Image.GestureRecognizers>
                         </Image>
                     </Frame>
-                    <Label Text="Upload a photo" TextColor="#2d67e4" VerticalOptions="Center" HorizontalOptions="Center" FontSize="15" FontFamily="{StaticResource NormalFont}"/>
+                    <Label Text="Upload a photo" TextColor="#083b66" VerticalOptions="Center" HorizontalOptions="Center" FontSize="15" FontFamily="{StaticResource NormalFont}"/>
                 </StackLayout>
             </Grid>
             <Custom:LoadingIndicator/>

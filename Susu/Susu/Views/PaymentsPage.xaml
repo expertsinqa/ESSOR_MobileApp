@@ -10,7 +10,7 @@
              x:Class="Susu.Views.PaymentsPage">
     <ContentView.Content>
         <StackLayout>
-        <Label Text="Group Payment" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#2d67e4" FontSize="20" FontAttributes="Bold" FontFamily="{StaticResource NormalFont}"/>
+        <Label Text="Group Payment" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#083b66" FontSize="20" FontAttributes="Bold" FontFamily="{StaticResource NormalFont}"/>
             <Grid VerticalOptions="Center" HorizontalOptions="Center" Margin="10,10,10,10">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="50*"/>

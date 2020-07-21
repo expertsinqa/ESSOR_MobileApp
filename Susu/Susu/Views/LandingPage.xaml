@@ -12,14 +12,14 @@
             <Image Source="backgroundImage.PNG"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Aspect="AspectFill"   AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" Opacity="0.5" />
             <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
                 <Image Source="Esorr_logo.png" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit" WidthRequest="150" HeightRequest="150" Margin="0,5,0,0"/>
-                <!--<Label Text="Welcome to ESORR" FontSize="20" FontAttributes="Bold" TextColor="#2d67e4" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,20,0,0" FontFamily="{StaticResource NormalFont}"/>-->
+                <!--<Label Text="Welcome to ESORR" FontSize="20" FontAttributes="Bold" TextColor="#083b66" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,20,0,0" FontFamily="{StaticResource NormalFont}"/>-->
                 <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="50*"/>
                         <RowDefinition Height="50*"/>
                     </Grid.RowDefinitions>
                     <StackLayout Grid.Row="0" VerticalOptions="Center" HorizontalOptions="Center">
-                        <Frame BorderColor="#2d67e4" BackgroundColor="Transparent" CornerRadius="100" HeightRequest="200" WidthRequest="200" HorizontalOptions="Center" Padding="0" IsClippedToBounds="True" HasShadow="False">
+                        <Frame BorderColor="#083b66" BackgroundColor="Transparent" CornerRadius="100" HeightRequest="200" WidthRequest="200" HorizontalOptions="Center" Padding="0" IsClippedToBounds="True" HasShadow="False">
                             <Frame.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding JoinGroupClicked}"/>
                             </Frame.GestureRecognizers>
@@ -29,10 +29,10 @@
                                 </Image.GestureRecognizers>
                             </Image>
                         </Frame>
-                        <Label Text="Join the Group" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#2d67e4" FontFamily="{StaticResource NormalFont}"/>
+                        <Label Text="Join the Group" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#083b66" FontFamily="{StaticResource NormalFont}"/>
                     </StackLayout>
                     <StackLayout Grid.Row="1" VerticalOptions="Center" HorizontalOptions="Center">
-                        <Frame BorderColor="#2d67e4" BackgroundColor="Transparent" CornerRadius="100" HeightRequest="200" WidthRequest="200" HorizontalOptions="Center" Padding="0" IsClippedToBounds="True" HasShadow="False">
+                        <Frame BorderColor="#083b66" BackgroundColor="Transparent" CornerRadius="100" HeightRequest="200" WidthRequest="200" HorizontalOptions="Center" Padding="0" IsClippedToBounds="True" HasShadow="False">
                             <Frame.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding CreateNewGroupClicked}"/>
                             </Frame.GestureRecognizers>
@@ -42,7 +42,7 @@
                                 </Image.GestureRecognizers>
                             </Image>
                         </Frame>
-                        <Label Text="Create the Group" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#2d67e4" FontFamily="{StaticResource NormalFont}"/>
+                        <Label Text="Create the Group" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#083b66" FontFamily="{StaticResource NormalFont}"/>
                     </StackLayout>
                 </Grid>
             </StackLayout>
@@ -51,7 +51,7 @@
                     <RowDefinition Height="8*"/>
                     <RowDefinition Height="90*"/>
                 </Grid.RowDefinitions>
-                <StackLayout Grid.Row="0" BackgroundColor="#2d67e4" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="0,10,0,0">
+                <StackLayout Grid.Row="0" BackgroundColor="#083b66" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="0,10,0,0">
                     <Label Text="Welcome to Susu" TextColor="White" VerticalOptions="Center" HorizontalOptions="Center" FontSize="18"/>
                 </StackLayout>
                 <StackLayout Grid.Row="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
@@ -66,7 +66,7 @@
                                     <TapGestureRecognizer Command="{Binding JoinGroupClicked}"/>
                                 </Image.GestureRecognizers>
                             </Image>
-                            <Label Text="Join the Group" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#2d67e4"/>
+                            <Label Text="Join the Group" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#083b66"/>
                         </StackLayout>
                         <StackLayout Grid.Row="1" VerticalOptions="Center" HorizontalOptions="Center">
                             <Image Source="CreateGroup.png" VerticalOptions="Center" HorizontalOptions="Center">
@@ -74,7 +74,7 @@
                                     <TapGestureRecognizer Command="{Binding CreateNewGroupClicked}"/>
                                 </Image.GestureRecognizers>
                             </Image>
-                            <Label Text="Create the Group" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#2d67e4"/>
+                            <Label Text="Create the Group" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#083b66"/>
                         </StackLayout>
                     </Grid>
                 </StackLayout>
@@ -90,13 +90,13 @@
                         <Label Text="Enter Group code" TextColor="Black" FontFamily="{StaticResource NormalFont}"/>
                         <custom:CustomEntry Text="{Binding GroupNumber}" Placeholder="Entry code to join the group" PlaceholderColor="{Binding GroupIdPlaceholderColor}" HeightRequest="{OnPlatform iOS='50'}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="0,10,0,0" FontFamily="{StaticResource NormalFont}"/>
                         <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,10,0,0">
-                            <Frame VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="#2d67e4"  CornerRadius="{OnPlatform Android='60',iOS='25'}" WidthRequest="200" Margin="0,10,0,0" Padding="15" HasShadow="False">
+                            <Frame VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="#083b66"  CornerRadius="{OnPlatform Android='60',iOS='25'}" WidthRequest="200" Margin="0,10,0,0" Padding="15" HasShadow="False">
                                 <Frame.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding CloseClicked}"/>
                                 </Frame.GestureRecognizers>
                                 <Label Text="CLOSE" TextColor="White"  VerticalOptions="Center" HorizontalOptions="Center" FontFamily="{StaticResource NormalFont}"/>
                             </Frame>
-                            <Frame VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="#2d67e4"  CornerRadius="{OnPlatform Android='60',iOS='25'}" WidthRequest="200" Margin="0,10,0,0" Padding="15" HasShadow="False">
+                            <Frame VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="#083b66"  CornerRadius="{OnPlatform Android='60',iOS='25'}" WidthRequest="200" Margin="0,10,0,0" Padding="15" HasShadow="False">
                                 <Frame.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding JoinButtonClicked}"/>
                                 </Frame.GestureRecognizers>
@@ -118,13 +118,13 @@
 
                         </Editor>
                         <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,10,0,0">
-                            <Frame VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="#2d67e4"  CornerRadius="{OnPlatform Android='60',iOS='25'}" WidthRequest="200" Margin="0,10,0,0" Padding="15" HasShadow="False">
+                            <Frame VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="#083b66"  CornerRadius="{OnPlatform Android='60',iOS='25'}" WidthRequest="200" Margin="0,10,0,0" Padding="15" HasShadow="False">
                                 <Frame.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding GroupCustomCloseClicked}"/>
                                 </Frame.GestureRecognizers>
                                 <Label Text="CLOSE" TextColor="White"  VerticalOptions="Center" HorizontalOptions="Center" FontFamily="{StaticResource NormalFont}"/>
                             </Frame>
-                            <Frame VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="#2d67e4"  CornerRadius="{OnPlatform Android='60',iOS='25'}" WidthRequest="200" Margin="0,10,0,0" Padding="15" HasShadow="False">
+                            <Frame VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="#083b66"  CornerRadius="{OnPlatform Android='60',iOS='25'}" WidthRequest="200" Margin="0,10,0,0" Padding="15" HasShadow="False">
                                 <Frame.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding AcceptCustomGroupMessage}"/>
                                 </Frame.GestureRecognizers>

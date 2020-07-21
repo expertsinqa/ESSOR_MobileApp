@@ -10,7 +10,7 @@
         <AbsoluteLayout>
             <Image Source="backgroundImage.PNG"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Aspect="AspectFill"   AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" Opacity="0.5" />
             <StackLayout VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="Transparent" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
-                <Label Text="Susu" VerticalOptions="Center" HorizontalOptions="Center" FontSize="50" FontAttributes="Bold" TextColor="#2d67e4" />
+                <Label Text="Susu" VerticalOptions="Center" HorizontalOptions="Center" FontSize="50" FontAttributes="Bold" TextColor="#083b66" />
                 <Grid HorizontalOptions="Center" VerticalOptions="Center" Margin="0,20,0,0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="20*"/>
@@ -21,41 +21,41 @@
                         <ColumnDefinition Width="33*"/>
                         <ColumnDefinition Width="33*"/>
                     </Grid.ColumnDefinitions>
-                    <Frame Grid.Row="0" Grid.Column="0" BackgroundColor="Transparent" BorderColor="#2d67e4" CornerRadius="20" Padding="0,5,0,0" Margin="10,0,0,0">
+                    <Frame Grid.Row="0" Grid.Column="0" BackgroundColor="Transparent" BorderColor="#083b66" CornerRadius="20" Padding="0,5,0,0" Margin="10,0,0,0">
                     <StackLayout >
                         <Image Source="GroupInfo.png" VerticalOptions="Center" HorizontalOptions="Center"/>
-                        <Label Text="Group info" VerticalOptions="Center" HorizontalOptions="Center" FontSize="20" FontAttributes="Italic" TextColor="#2d67e4"/>
+                        <Label Text="Group info" VerticalOptions="Center" HorizontalOptions="Center" FontSize="20" FontAttributes="Italic" TextColor="#083b66"/>
                     </StackLayout>
                     </Frame>
-                    <Frame Grid.Row="0" Grid.Column="1" BackgroundColor="Transparent" BorderColor="#2d67e4" CornerRadius="20" Padding="0,5,0,0" Margin="10,0,0,0">
+                    <Frame Grid.Row="0" Grid.Column="1" BackgroundColor="Transparent" BorderColor="#083b66" CornerRadius="20" Padding="0,5,0,0" Margin="10,0,0,0">
                         <StackLayout Spacing="0" Padding="0,0,0,0">
                             <Image Source="GroupUsers.png" VerticalOptions="Center" HorizontalOptions="Center"/>
-                            <Label Text="Members" VerticalOptions="Center" HorizontalOptions="Center" FontSize="20" FontAttributes="Italic" TextColor="#2d67e4"/>
-                            <!--<Label Text="Users" VerticalOptions="Center" HorizontalOptions="Center" FontSize="20" FontAttributes="Italic" TextColor="#2d67e4"/>-->
+                            <Label Text="Members" VerticalOptions="Center" HorizontalOptions="Center" FontSize="20" FontAttributes="Italic" TextColor="#083b66"/>
+                            <!--<Label Text="Users" VerticalOptions="Center" HorizontalOptions="Center" FontSize="20" FontAttributes="Italic" TextColor="#083b66"/>-->
                         </StackLayout>
                     </Frame>
-                    <Frame Grid.Row="0" Grid.Column="2" BackgroundColor="Transparent" BorderColor="#2d67e4" CornerRadius="20" Padding="0,5,0,0" Margin="10,0,10,0">
+                    <Frame Grid.Row="0" Grid.Column="2" BackgroundColor="Transparent" BorderColor="#083b66" CornerRadius="20" Padding="0,5,0,0" Margin="10,0,10,0">
                         <StackLayout >
                             <Image Source="pay.png" VerticalOptions="Center" HorizontalOptions="Center"/>
-                            <Label Text="Payments" VerticalOptions="Center" HorizontalOptions="Center" FontSize="20" FontAttributes="Italic" TextColor="#2d67e4"/>
+                            <Label Text="Payments" VerticalOptions="Center" HorizontalOptions="Center" FontSize="20" FontAttributes="Italic" TextColor="#083b66"/>
                         </StackLayout>
                     </Frame>
-                    <Frame Grid.Row="1" Grid.Column="0" BackgroundColor="Transparent" BorderColor="#2d67e4" CornerRadius="20" Padding="0,5,0,0" Margin="10,10,0,0">
+                    <Frame Grid.Row="1" Grid.Column="0" BackgroundColor="Transparent" BorderColor="#083b66" CornerRadius="20" Padding="0,5,0,0" Margin="10,10,0,0">
                         <StackLayout >
                             <Image Source="user_profile.png" VerticalOptions="Center" HorizontalOptions="Center"/>
-                            <Label Text="User Info" VerticalOptions="Center" HorizontalOptions="Center" FontSize="20" FontAttributes="Italic" TextColor="#2d67e4"/>
+                            <Label Text="User Info" VerticalOptions="Center" HorizontalOptions="Center" FontSize="20" FontAttributes="Italic" TextColor="#083b66"/>
                         </StackLayout>
                     </Frame>
-                    <Frame Grid.Row="1" Grid.Column="1" BackgroundColor="Transparent" BorderColor="#2d67e4" CornerRadius="20" Padding="0,5,0,0" Margin="10,10,0,0">
+                    <Frame Grid.Row="1" Grid.Column="1" BackgroundColor="Transparent" BorderColor="#083b66" CornerRadius="20" Padding="0,5,0,0" Margin="10,10,0,0">
                         <StackLayout>
                             <Image Source="card.png" VerticalOptions="Center" HorizontalOptions="Center"/>
-                            <Label Text="Id Proof" VerticalOptions="Center" HorizontalOptions="Center" FontSize="20" FontAttributes="Italic" TextColor="#2d67e4"/>
+                            <Label Text="Id Proof" VerticalOptions="Center" HorizontalOptions="Center" FontSize="20" FontAttributes="Italic" TextColor="#083b66"/>
                         </StackLayout>
                     </Frame>
-                    <Frame Grid.Row="1" Grid.Column="2" BackgroundColor="Transparent" BorderColor="#2d67e4" CornerRadius="20" Padding="0,5,0,0" Margin="10,10,10,0">
+                    <Frame Grid.Row="1" Grid.Column="2" BackgroundColor="Transparent" BorderColor="#083b66" CornerRadius="20" Padding="0,5,0,0" Margin="10,10,10,0">
                         <StackLayout>
                             <Image Source="info.png" VerticalOptions="Center" HorizontalOptions="Center"/>
-                            <Label Text="Info" VerticalOptions="Center" HorizontalOptions="Center" FontSize="20" FontAttributes="Italic" TextColor="#2d67e4"/>
+                            <Label Text="Info" VerticalOptions="Center" HorizontalOptions="Center" FontSize="20" FontAttributes="Italic" TextColor="#083b66"/>
                         </StackLayout>
                     </Frame>
                 </Grid>

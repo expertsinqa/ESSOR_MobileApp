@@ -32,7 +32,7 @@ namespace Susu.Droid.CustomRenderer
                     GradientDrawable gd = new GradientDrawable();
                     gd.SetColor(Android.Graphics.Color.White);
                     gd.SetCornerRadius(20);
-                    gd.SetStroke(3, Android.Graphics.Color.ParseColor("#2d67e4"));
+                    gd.SetStroke(3, Android.Graphics.Color.ParseColor("#083b66"));
                     nativeEditText.SetBackground(gd);
                     //nativeEditText.Background = Resources.GetDrawable("EntryBorderColor");
                 }

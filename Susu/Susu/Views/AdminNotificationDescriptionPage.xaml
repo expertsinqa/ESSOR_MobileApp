@@ -37,18 +37,18 @@
                     </StackLayout>-->
                     <StackLayout Margin="0,10,0,0" IsVisible="{Binding IsSelectedUsersVisible}">
                         <Label Text="Select User:" TextColor="Black" FontFamily="{StaticResource NormalFont}"/>
-                        <Frame CornerRadius="{OnPlatform Android='10'}" BorderColor="#2d67e4" Padding="0,0,0,0" IsClippedToBounds="True" HasShadow="False" IsVisible="{Binding IsContributionDayVisible}">
+                        <Frame CornerRadius="{OnPlatform Android='10'}" BorderColor="#083b66" Padding="0,0,0,0" IsClippedToBounds="True" HasShadow="False" IsVisible="{Binding IsContributionDayVisible}">
                             <Custom:CustomPicker Placeholder="Select User"  Title="Users" HeightRequest="{OnPlatform iOS='50'}" ItemsSource="{Binding UsersList}" ItemDisplayBinding="{Binding FullName}" SelectedIndexChanged="CustomPicker_SelectedIndexChanged" VerticalOptions="Fill" HorizontalOptions="Fill" FontFamily="{StaticResource NormalFont}"/>
                         </Frame>
                     </StackLayout>
                     <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Orientation="Horizontal">
-                        <Frame VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="#2d67e4"  CornerRadius="{OnPlatform Android='60',iOS='25'}" WidthRequest="200" Margin="0,10,0,0" Padding="15" HasShadow="False">
+                        <Frame VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="#083b66"  CornerRadius="{OnPlatform Android='60',iOS='25'}" WidthRequest="200" Margin="0,10,0,0" Padding="15" HasShadow="False">
                             <Frame.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding CloseClicked}"/>
                             </Frame.GestureRecognizers>
                             <Label Text="CLOSE" TextColor="White"  VerticalOptions="Center" HorizontalOptions="Center" FontFamily="{StaticResource NormalFont}"/>
                         </Frame>
-                        <Frame VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="#2d67e4"  CornerRadius="{OnPlatform Android='60',iOS='25'}" WidthRequest="200" Margin="0,10,0,0" Padding="15" HasShadow="False">
+                        <Frame VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="#083b66"  CornerRadius="{OnPlatform Android='60',iOS='25'}" WidthRequest="200" Margin="0,10,0,0" Padding="15" HasShadow="False">
                             <Frame.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding SendClicked}"/>
                             </Frame.GestureRecognizers>

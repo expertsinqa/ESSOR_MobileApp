@@ -21,7 +21,7 @@ namespace Susu.iOS.CustomRenderer
             this.Control.BorderStyle = UIKit.UITextBorderStyle.RoundedRect;
             //this.Control.Layer.BorderColor = UIKit.UIColor.Blue.CGColor;
             this.Control.Layer.BorderWidth = 1;
-            this.Control.Layer.BorderColor = new UIColor(red: 0.18f, green: 0.40f, blue: 0.89f, alpha: 1.00f).CGColor;
+            this.Control.Layer.BorderColor = new UIColor(red: 0.03f, green: 0.23f, blue: 0.40f, alpha: 1.00f).CGColor;
         //this.Control.BorderColor = UIColor.Blue;        
 
         }

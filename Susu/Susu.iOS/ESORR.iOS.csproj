@@ -272,9 +272,6 @@
     <BundleResource Include="Resources\bell.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\card.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\close_black.png" />
   </ItemGroup>
   <ItemGroup>
@@ -285,9 +282,6 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Group_blue.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\GroupInfo.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\GroupUsers.png" />
@@ -309,9 +303,6 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\left_arrow.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\pay.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\payment_black.png" />
@@ -345,6 +336,9 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\check_box_empty.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\more_blue.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>
