@@ -1,12 +1,7 @@
 ﻿using Susu.Models;
 using Susu.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 using static Susu.Models.Enums;
 
@@ -20,6 +15,7 @@ namespace Susu.Views
         {
             InitializeComponent();
             vm = BindingContext as AdminNotificationPageViewModel;
+            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
         }
 
         private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)

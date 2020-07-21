@@ -1,13 +1,9 @@
 ﻿using ESORR.Models;
 using ESORR.ViewModels;
-using Prism.Navigation;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
 namespace ESORR.Views
@@ -20,6 +16,7 @@ namespace ESORR.Views
         {
             InitializeComponent();
             vm = BindingContext as GroupContributionDetailPageViewModel;
+            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
         }
 
         private void Switch_Toggled(object sender, ToggledEventArgs e)
