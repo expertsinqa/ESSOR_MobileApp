@@ -142,7 +142,7 @@ namespace Susu.ViewModels
             IsAcceptCustomRule = true;
             groupDto = await ServiceBase.JoinUser(userId, GroupId, IsAcceptCustomRule);
             if (groupDto.Id > 0)
-                await NavigationService.NavigateAsync("SamplePage");
+                await NavigationService.NavigateAsync("HomePage");
         }
         #endregion
     }

@@ -35,7 +35,7 @@ namespace Susu.Views
         {
             await Share.RequestAsync(new ShareTextRequest
             {
-                Text = "I want to invite you to join the group! "+GroupName +" Please install app from "+ "Android: https://play.google.com/store/ "+ "Install the app and signup and the join the group with code: "+GroupCode,
+                Text = "I want to invite you to join the group! "+GroupName +" Please install app from "+ "Android:https://play.google.com/store/apps/details?id=com.esorr.esorrApp " + "Install the app and signup and the join the group with code: "+GroupCode,
                 Title = "Share Text",
                 Subject="Group Invitation"
                
@@ -44,7 +44,7 @@ namespace Susu.Views
 
         public async void Next()
         {
-            await NavigationService.NavigateAsync("SamplePage");
+            await NavigationService.NavigateAsync("HomePage");
         }
 
         public void OnNavigatedFrom(INavigationParameters parameters)

@@ -135,7 +135,7 @@ namespace Susu.ViewModels
                         }
                         else if (userDto.GroupId > 0)
                         {
-                            await NavigationService.NavigateAsync("SamplePage");
+                            await NavigationService.NavigateAsync("HomePage");
                         }
                         else if (userDto.ProofFilePath == null)
                         {

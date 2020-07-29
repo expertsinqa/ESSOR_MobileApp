@@ -12,7 +12,7 @@ using static Susu.Models.Enums;
 
 namespace Susu.ViewModels
 {
-    public class SamplePageViewModel : ViewModelBase
+    public class SamplePageViewModel : ViewModelBase,INavigationAware
     {
         #region Properties
         public ImageSource _GroupInfoIcon = "info_blue.png";
@@ -179,6 +179,8 @@ namespace Susu.ViewModels
 
         public bool _IsGroupInviteVisible = false;
         public bool IsGroupInviteVisible { get { return _IsGroupInviteVisible; } set { SetProperty(ref _IsGroupInviteVisible, value); } }
+
+        public ICommand HomeClicked { get { return new Command(Home); } }
         #endregion
 
         #region Constructor
@@ -687,6 +689,56 @@ namespace Susu.ViewModels
         public void OK()
         {
             TaxMessageVisible = false;
+        }
+
+        private void Home()
+        {
+            NavigationService.NavigateAsync("HomePage");
+        }
+
+        public void OnNavigatedFrom(INavigationParameters parameters)
+        {
+        }
+
+        public void OnNavigatedTo(INavigationParameters parameters)
+        {
+            try
+            {
+                if (parameters.ContainsKey("IsFromHomePage"))
+                {
+                    IsLoading = true;
+                    if (parameters.ContainsKey("TappedIcon"))
+                    {
+                        if(parameters["TappedIcon"].ToString() == "GroupInfo")
+                        {
+                            GroupInfo();
+                        }
+                        else if(parameters["TappedIcon"].ToString() == "GroupUsers")
+                        {
+                            GroupUsers();
+                        }
+                        else if (parameters["TappedIcon"].ToString() == "More")
+                        {
+                            Help();
+                        }
+                        else if (parameters["TappedIcon"].ToString() == "Profile")
+                        {
+                            UserInfo();
+                        }
+                        else if (parameters["TappedIcon"].ToString() == "Payment")
+                        {
+                            Payments();
+                        }
+                    }
+                    
+                    
+                    IsLoading = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                IsLoading = false;
+            }
         }
     }
     #endregion

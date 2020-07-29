@@ -73,7 +73,7 @@ namespace Susu
                     }
                     if(App.GroupId>0)
                     {
-                        await NavigationService.NavigateAsync("SamplePage");
+                        await NavigationService.NavigateAsync("HomePage");
                     }
                     else
                     {
@@ -103,6 +103,7 @@ namespace Susu
             ViewModelLocationProvider.Register<PaymentsPage, PaymentsPageViewModel>();
             containerRegistry.RegisterForNavigation<ResetPasswordPage, ResetPasswordPageViewModel>();
             containerRegistry.RegisterForNavigation<GroupContributionDetailPage, GroupContributionDetailPageViewModel>();
+            containerRegistry.RegisterForNavigation<HomePage,HomePageViewModel>();
             //containerRegistry.RegisterForNavigation<PaymentsPage, PaymentsPageViewModel>
         }
     }

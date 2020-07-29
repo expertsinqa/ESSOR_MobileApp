@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" xmlns:custom="clr-namespace:Susu.CustomControl"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="ESORR.Views.HomePage">
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+                <Image Source="Esorr_logo.png" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit" WidthRequest="150" HeightRequest="150" Margin="0,5,0,0"/>
+                <Label Text="Welcome to Group" TextColor="#2A2A2A" VerticalOptions="Center" HorizontalOptions="Center" HorizontalTextAlignment="Center" FontSize="18" FontFamily="{StaticResource BoldFont}"/>
+                <ScrollView>
+                    <StackLayout>
+                <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="20" RowSpacing="10" ColumnSpacing="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="20*"/>
+                        <RowDefinition Height="20*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50*"/>
+                        <ColumnDefinition Width="50*"/>
+                    </Grid.ColumnDefinitions>
+                    <Frame Grid.Row="0" Grid.Column="0" HeightRequest="150" WidthRequest="150" CornerRadius="10">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding GroupInfoClicked}"/>
+                                </Frame.GestureRecognizers>
+                        <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                            <Image Source="info_blue.png" Aspect="AspectFit"/>
+                            <Label Text="Group Info" TextColor="#083b66" HorizontalTextAlignment="Center" FontAttributes="Bold"/>
+                        </StackLayout>
+                    </Frame>
+                    <Frame Grid.Row="0" Grid.Column="1" HeightRequest="150" WidthRequest="150" CornerRadius="10">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding GroupUsersClicked}"/>
+                                </Frame.GestureRecognizers>
+                                <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                            <Image Source="group_blue.png" Aspect="AspectFit"/>
+                            <Label Text="Group Users" TextColor="#083b66" HorizontalTextAlignment="Center" FontAttributes="Bold"/>
+                        </StackLayout>
+                    </Frame>
+                    <Frame Grid.Row="1" Grid.Column="0" HeightRequest="150" WidthRequest="150" CornerRadius="10">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding PaymentsClicked}"/>
+                                </Frame.GestureRecognizers>
+                                <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                            <Image Source="Payment_blue.png" Aspect="AspectFit"/>
+                            <Label Text="Payments" TextColor="#083b66" HorizontalTextAlignment="Center" FontAttributes="Bold"/>
+                        </StackLayout>
+                    </Frame>
+                    <Frame Grid.Row="1" Grid.Column="1" HeightRequest="150" WidthRequest="150" CornerRadius="10">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding ProfileClicked}"/>
+                                </Frame.GestureRecognizers>
+                                <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                            <Image Source="user_blue.png" Aspect="AspectFit"/>
+                            <Label Text="Profile" TextColor="#083b66" HorizontalTextAlignment="Center" FontAttributes="Bold"/>
+                        </StackLayout>
+                    </Frame>
+                </Grid>
+                    <Frame  HeightRequest="100" WidthRequest="200" CornerRadius="10" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,-5,0,20">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding MoreClicked}"/>
+                            </Frame.GestureRecognizers>
+                            <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                            <Image Source="more_blue.png" Aspect="AspectFit"/>
+                            <Label Text="More" TextColor="#083b66" HorizontalTextAlignment="Center" FontAttributes="Bold"/>
+                        </StackLayout>
+                    </Frame>
+                    </StackLayout>
+                </ScrollView>
+            </StackLayout>
+            <custom:LoadingIndicator/>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>
