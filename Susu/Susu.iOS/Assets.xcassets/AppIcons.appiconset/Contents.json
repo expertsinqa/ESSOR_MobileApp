@@ -79,19 +79,19 @@
       "scale": "2x",
       "size": "60x60",
       "idiom": "iphone",
-      "filename": "Favicon_120.png"
+      "filename": "120.png"
     },
     {
       "scale": "3x",
       "size": "60x60",
       "idiom": "iphone",
-      "filename": "Favicon_180.png"
+      "filename": "180.png"
     },
     {
       "scale": "1x",
       "size": "1024x1024",
       "idiom": "ios-marketing",
-      "filename": "Favicon_1024.png"
+      "filename": "1024.png"
     }
   ],
   "properties": {},
