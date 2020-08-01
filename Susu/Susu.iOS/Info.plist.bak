@@ -43,7 +43,6 @@
 	<string>App uses media for upload government Proof.</string>
 	<key>CFBundleDisplayName</key>
 	<string>ESORR</string>
-	<key>XSAppIconAssets</key>
-	<string>Assets.xcassets/AppIcons.appiconset</string>
+	
 </dict>
 </plist>
