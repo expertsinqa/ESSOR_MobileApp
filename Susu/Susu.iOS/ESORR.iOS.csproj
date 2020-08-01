@@ -142,9 +142,7 @@
     <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\Favicon_180.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\Contents.json">
-      <Visible>false</Visible>
-    </ImageAsset>
+   
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-20x20@3x.png">
       <Visible>false</Visible>
     </ImageAsset>
