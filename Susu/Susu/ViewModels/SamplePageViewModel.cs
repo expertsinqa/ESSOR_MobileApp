@@ -1,4 +1,5 @@
 ﻿using ESORR.Models;
+using Prism;
 using Prism.Navigation;
 using Susu.Models;
 using Susu.Views;
@@ -7,6 +8,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using static Susu.Models.Enums;
 
@@ -181,6 +183,18 @@ namespace Susu.ViewModels
         public bool IsGroupInviteVisible { get { return _IsGroupInviteVisible; } set { SetProperty(ref _IsGroupInviteVisible, value); } }
 
         public ICommand HomeClicked { get { return new Command(Home); } }
+
+        public ICommand PayMemberClicked { get { return new Command(PayMember); } }
+
+        public bool _IsPayMemberpopupVisible = false;
+        public bool IsPayMemberpopupVisible { get { return _IsPayMemberpopupVisible; } set { SetProperty(ref _IsPayMemberpopupVisible, value); } }
+        public string _ZeeleText = "";
+        public string ZeeleText { get { return _ZeeleText; } set { SetProperty(ref _ZeeleText, value); } }
+
+        public ICommand OpenZelleClicked { get { return new Command(OpenZelle); } }
+
+
+
         #endregion
 
         #region Constructor
@@ -608,6 +622,10 @@ namespace Susu.ViewModels
         private void Close()
         {
             TaxMessageVisible = false;
+            if (IsPayMemberpopupVisible)
+            {
+                IsPayMemberpopupVisible = false;
+            }
         }
 
         //private async void Pay()
@@ -689,6 +707,10 @@ namespace Susu.ViewModels
         public void OK()
         {
             TaxMessageVisible = false;
+            if (IsPayMemberpopupVisible)
+            {
+                IsPayMemberpopupVisible = false;
+            }
         }
 
         private void Home()
@@ -696,6 +718,38 @@ namespace Susu.ViewModels
             NavigationService.NavigateAsync("HomePage");
         }
 
+        private async void PayMember()
+        {
+            
+           List<UserPayOutDetails> UserPayOutDetails = await ServiceBase.GetPayOutDetailsByGroupNO(App.GroupNumber);
+            if (UserPayOutDetails != null && UserPayOutDetails.Count>0)
+            {
+                UserPayOutDetails userPayoutDetail = UserPayOutDetails.Where(x => x.ContributionId == App.contributionId).FirstOrDefault();
+                if (userPayoutDetail != null)
+                {
+                    UserDto userDto = await ServiceBase.GetUserById(userPayoutDetail.UserId);
+                    if (!string.IsNullOrEmpty(userDto.PayPalEmailId))
+                        ZeeleText = "Please pay the contributed amount for the month of " + userPayoutDetail.ContributionDateString.ToString() + "the user" + userPayoutDetail.UserName + "using Zelle ID is " + userDto.PayPalEmailId;
+                    else
+                        ZeeleText = "Oops, the user "+userPayoutDetail.UserName +" is not provided their Zelle ID, Please ask them to upload Zell ID under their user information.";
+                }
+            }
+            IsPayMemberpopupVisible = true;
+        }
+
+        private async void OpenZelle()
+        {
+            if(Device.RuntimePlatform == Device.Android)
+            {
+               Uri uri = new Uri("https://play.google.com/store/apps/details?id=com.zellepay.zelle&hl=en_IN");
+                await Browser.OpenAsync(uri, BrowserLaunchMode.SystemPreferred);
+            }
+            else
+            {
+                Uri uri = new Uri("https://apps.apple.com/us/app/zelle/id1260755201");
+                await Browser.OpenAsync(uri, BrowserLaunchMode.SystemPreferred);
+            }
+        }
         public void OnNavigatedFrom(INavigationParameters parameters)
         {
         }

@@ -1,9 +1,5 @@
-﻿using PayPal.Forms;
-using PayPal.Forms.Abstractions;
-using Prism.Navigation;
+﻿using Prism.Navigation;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -25,19 +21,19 @@ namespace Susu.ViewModels
         }
         public async void PayNow()
         {
-            var result = await CrossPayPalManager.Current.Buy(new PayPalItem("ESORR", new Decimal(12.50), "USD"), new Decimal(0));
-            if (result.Status == PayPalStatus.Cancelled)
-            {
-                //Debug.WriteLine("Cancelled");
-            }
-            else if (result.Status == PayPalStatus.Error)
-            {
-                //Debug.WriteLine(result.ErrorMessage);
-            }
-            else if (result.Status == PayPalStatus.Successful)
-            {
-               // Debug.WriteLine(result.ServerResponse.Response.Id);
-            }
+            //var result = await CrossPayPalManager.Current.Buy(new PayPalItem("ESORR", new Decimal(12.50), "USD"), new Decimal(0));
+            //if (result.Status == PayPalStatus.Cancelled)
+            //{
+            //    //Debug.WriteLine("Cancelled");
+            //}
+            //else if (result.Status == PayPalStatus.Error)
+            //{
+            //    //Debug.WriteLine(result.ErrorMessage);
+            //}
+            //else if (result.Status == PayPalStatus.Successful)
+            //{
+            //   // Debug.WriteLine(result.ServerResponse.Response.Id);
+            //}
         }
 
         private async void paymentContribution()

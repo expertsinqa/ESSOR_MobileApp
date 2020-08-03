@@ -1,10 +1,7 @@
 ﻿using Foundation;
-using PayPal.Forms;
-using PayPal.Forms.Abstractions;
 using Prism;
 using Prism.Ioc;
 using UIKit;
-using Xamarin.Forms;
 
 namespace Susu.iOS
 {
@@ -27,26 +24,6 @@ namespace Susu.iOS
             //global::Xamarin.Forms.Forms.SetFlags("CollectionView_Experimental");
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App(new iOSInitializer()));
-            //var config = new PayPalConfiguration(PayPalEnvironment.Sandbox, "AUSkwXXhdMQBLTjWwTBHilMz4SvfZ_I5AbOA6icmIhX6_IVNWzoghjBP0AUTffaT2R4-UGIyIRLFRR-D")
-            //{
-            //    //If you want to accept credit cards
-            //    AcceptCreditCards = true,
-            //    //Your business name
-            //    MerchantName = "ESORR",
-            //    //Your privacy policy Url
-            //    MerchantPrivacyPolicyUri = "https://www.example.com/privacy",
-            //    //Your user agreement Url
-            //    MerchantUserAgreementUri = "https://www.example.com/legal",
-            //    // OPTIONAL - ShippingAddressOption (Both, None, PayPal, Provided)
-            //    ShippingAddressOption = ShippingAddressOption.Both,
-            //    // OPTIONAL - Language: Default languege for PayPal Plug-In
-            //    Language = "us",
-            //    // OPTIONAL - PhoneCountryCode: Default phone country code for PayPal Plug-In
-            //    PhoneCountryCode = "52",
-            //};
-            //CrossPayPalManager.Init(config);
-            
-
             return base.FinishedLaunching(app, options);
         }
     }

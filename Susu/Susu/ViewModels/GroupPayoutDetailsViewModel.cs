@@ -121,7 +121,7 @@ namespace ESORR.ViewModels
                     if (userPayOut != null)
                     {
                         NextPaymentUserName = userPayOut.UserName;
-                        NextPaymentDate = userPayOut.PayOutDate.ToString("d/M/yyyy");
+                        NextPaymentDate = userPayOut.PayOutDate.ToString("M/d/yyyy");
                         //NextPaymentUserName = UserPayOutDetails.Where(x => x.ContributionId == nextpaymentContributionId)?.FirstOrDefault().PayOutDate.ToString("d/M/yyyy");
                         //NextPaymentDate = UserPayOutDetails.Where(x => x.ContributionId == nextpaymentContributionId)?.FirstOrDefault().PayOutDate.ToString("d/M/yyyy");
                     }

@@ -65,6 +65,9 @@ namespace Susu.ViewModels
         public Color _LastNamePlaceholderColor = Color.Gray;
         public Color LastNamePlaceholderColor { get { return _LastNamePlaceholderColor; } set { SetProperty(ref _LastNamePlaceholderColor, value); } }
 
+        public string _ZelleId = "";
+        public string ZelleId { get { return _ZelleId; } set { SetProperty(ref _ZelleId, value); } }
+
         #endregion
         #region Constructor
         public SignUpPageViewModel(INavigationService navigationService) :base(navigationService)
@@ -117,6 +120,7 @@ namespace Susu.ViewModels
             userDto.PayPalEmailId = PaypalEmailId;
             userDto.FirstName = FirstName;
             userDto.LastName = LastName;
+            userDto.ZelleId = ZelleId;
             UserDto usersdetails = await ServiceBase.SaveUser(userDto);
             
             if (usersdetails!=null && usersdetails.Id>0)

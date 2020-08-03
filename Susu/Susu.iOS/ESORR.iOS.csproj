@@ -115,8 +115,6 @@
     <None Include="Info.plist" />
     <LinkDescription Include="LinkerSettings.xml" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <ITunesArtwork Include="iTunesArtwork@1x.png" />
-    <ITunesArtwork Include="iTunesArtwork@2x.png" />
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
     <BundleResource Include="Resources\Montserrat-Light.ttf" />
     <BundleResource Include="Resources\Montserrat-Medium.ttf" />
@@ -127,7 +125,6 @@
     <BundleResource Include="Resources\more_black.png" />
     <BundleResource Include="Resources\addUsers.png" />
     <ITunesArtwork Include="iTunesArtwork" />
-    <ITunesArtwork Include="iTunesArtwork%402x" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\1024.png">
@@ -204,9 +201,6 @@
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json">
       <Version>12.0.3</Version>
-    </PackageReference>
-    <PackageReference Include="PayPal.Forms">
-      <Version>2.18.6</Version>
     </PackageReference>
     <PackageReference Include="Plugin.Permissions">
       <Version>6.0.1</Version>

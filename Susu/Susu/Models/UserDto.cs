@@ -27,6 +27,7 @@ namespace Susu.Models
         public bool IsUpdateAggrement { get; set; }
         public string PayPalEmailId { get; set; }
         public int? UserOrderNo { get; set; }
+        public string ZelleId { get; set; }
         public string FullName
         {
             get
@@ -39,10 +40,10 @@ namespace Susu.Models
         {
             get
             {
-                if (!string.IsNullOrEmpty(PayPalEmailId))
-                    return "Paypal Email: " + PayPalEmailId;
+                if (!string.IsNullOrEmpty(ZelleId))
+                    return "Zelle ID " + ZelleId;
                 else
-                    return "Paypal Email: Not provided";
+                    return "Zelle ID: Not provided";
             }
         }
     }

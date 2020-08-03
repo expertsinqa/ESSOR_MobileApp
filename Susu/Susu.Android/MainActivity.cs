@@ -2,12 +2,8 @@
 using Android.Content;
 using Android.Content.PM;
 using Android.OS;
-using Android.Widget;
-using PayPal.Forms;
-using PayPal.Forms.Abstractions;
 using Prism;
 using Prism.Ioc;
-using Xamarin.Forms;
 
 namespace Susu.Droid
 {

@@ -4,7 +4,9 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:custom="clr-namespace:Susu.CustomControl"
              mc:Ignorable="d"
-               xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" xmlns:custom1="clr-namespace:Susu.Behaviours"
+               xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" 
+             xmlns:custom1="clr-namespace:Susu.Behaviours" 
+             xmlns:Behaviorus="clr-namespace:ESORR.Behaviours"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="Susu.Views.SignUpPage">
     <ContentPage.Content>
@@ -34,7 +36,11 @@
                             </custom:CustomEntry>
                             <custom:CustomEntry Text="{Binding Password}" IsPassword="True" Placeholder="Password" PlaceholderColor="{Binding PasswordPlaceholderColor}" HeightRequest="{OnPlatform iOS='50'}" VerticalOptions="Fill" HorizontalOptions="Fill" FontFamily="{StaticResource NormalFont}"/>
                             <custom:CustomEntry Text="{Binding MobileNumber}" Keyboard="Numeric" Placeholder="Mobile Number" PlaceholderColor="{Binding MobilePlaceholderColor}" HeightRequest="{OnPlatform iOS='50'}" VerticalOptions="Fill" HorizontalOptions="Fill" FontFamily="{StaticResource NormalFont}"/>
-                            <custom:CustomEntry Text="{Binding PaypalEmailId}" Placeholder="Paypal EmailId" PlaceholderColor="{Binding PaypalEmailIdPlaceholder}" HeightRequest="{OnPlatform iOS='50'}" VerticalOptions="Fill" HorizontalOptions="Fill" FontFamily="{StaticResource NormalFont}"/>
+                            <custom:CustomEntry Text="{Binding ZelleId}" Keyboard="Numeric" Placeholder="Zelle ID (Phone No)" PlaceholderColor="{Binding PaypalEmailIdPlaceholder}" HeightRequest="{OnPlatform iOS='50'}" VerticalOptions="Fill" HorizontalOptions="Fill" FontFamily="{StaticResource NormalFont}">
+                                <custom:CustomEntry.Behaviors>
+                                    <Behaviorus:MaskedBehavior Mask="(XXX)XXX-XXXX"/>
+                                </custom:CustomEntry.Behaviors>
+                            </custom:CustomEntry>
                             <!--<Button BackgroundColor="White" Text="Cretae Account" VerticalOptions="Center" HorizontalOptions="Center" CornerRadius="50" BorderColor="#FFD733"/>-->
                             <Frame VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="#083b66"  CornerRadius="{OnPlatform Android='60', iOS='25'}" WidthRequest="200" Margin="0,10,0,0" Padding="15" HasShadow="False">
                                 <Frame.GestureRecognizers>
