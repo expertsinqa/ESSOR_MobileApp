@@ -41,7 +41,7 @@ namespace Susu.Models
             get
             {
                 if (!string.IsNullOrEmpty(ZelleId))
-                    return "Zelle ID " + ZelleId;
+                    return "Zelle ID: " + ZelleId;
                 else
                     return "Zelle ID: Not provided";
             }

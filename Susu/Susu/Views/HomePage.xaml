@@ -37,7 +37,7 @@
                                     <TapGestureRecognizer Command="{Binding GroupUsersClicked}"/>
                                 </Frame.GestureRecognizers>
                                 <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-                            <Image Source="group_blue.png" Aspect="AspectFit"/>
+                                    <Image Source="Group_blue.png" Aspect="AspectFit"/>
                             <Label Text="Group Users" TextColor="#083b66" HorizontalTextAlignment="Center" FontAttributes="Bold"/>
                         </StackLayout>
                     </Frame>
