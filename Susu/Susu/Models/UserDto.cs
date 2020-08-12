@@ -47,4 +47,10 @@ namespace Susu.Models
             }
         }
     }
+    public class APPVersionDetails
+    {
+        public int Id { get; set; }
+        public double VersionNUmber { get; set; }
+        public DateTime UpdateDate { get; set; }
+    }
 }

@@ -33,6 +33,8 @@ namespace Susu.Services
 
         Task<SwapUserDetails> SwapUserDetailsById(long usernotificationId);
 
+        Task<APPVersionDetails> GetAppVesrion();
+
 
     }
 }

@@ -207,7 +207,7 @@ namespace Susu.ViewModels
                 IsGroupAdmin = false;
             GetGroupDetails();
             GetNotification();
-            _lstperiod = new List<string>() { "Weekly", "Monthly", "Yearly" };
+            _lstperiod = new List<string>() { "Weekly", "Bi-Weekly", "Semi-Monthly", "Monthly", "Semi-Yearly", "Yearly" };
             DaysList = new List<string>() { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
             if (groupDto != null && groupDto.ContributionDate != null && App.IsGroupAdmin && DateTime.Now < groupDto.ContributionDate)
             {
@@ -400,8 +400,22 @@ namespace Susu.ViewModels
                         {
                             IsGroupInfoEditable = false;
                         }
-
-                        if (groupDto != null && groupDto.ContributionPeriod == "Monthly")
+                        //if (groupDto != null && !string.IsNullOrEmpty(groupDto.ContributionPeriod))
+                        //{
+                        //    if (groupDto.ContributionPeriod == "biweekly")
+                        //    {
+                        //        groupDto.Contrbution_peroid = "Bi-Weekly";
+                        //    }
+                        //    else if (groupDto.ContributionPeriod == "semimonthly")
+                        //    {
+                        //        groupDto.Contrbution_peroid = "Semi-Monthly";
+                        //    }
+                        //    else if (groupDto.ContributionPeriod == "semiyearly")
+                        //    {
+                        //        groupDto.Contrbution_peroid = "Semi-Yearly";
+                        //    }
+                        //}
+                        if (groupDto != null && groupDto.Contrbution_peroid == "Monthly" || groupDto.Contrbution_peroid =="Semi-Monthly")
                         {
                             IsContributionDateVisible = true;
                             IsContributionDayVisible = false;
@@ -409,7 +423,15 @@ namespace Susu.ViewModels
                             IsGroupPayOutDateVisible = true;
                             IsGroupPayOutDayVisible = false;
                         }
-                        else if (groupDto != null && groupDto.ContributionPeriod == "Weekly")
+                        else if (groupDto != null && groupDto.Contrbution_peroid == "Weekly")
+                        {
+                            IsContributionDateVisible = false;
+                            IsContributionDayVisible = true;
+                            IsGroupStartDateVisible = true;
+                            IsGroupPayOutDateVisible = false;
+                            IsGroupPayOutDayVisible = true;
+                        }
+                        else if (groupDto != null && groupDto.Contrbution_peroid == "Bi-Weekly")
                         {
                             IsContributionDateVisible = false;
                             IsContributionDayVisible = true;
@@ -419,10 +441,10 @@ namespace Susu.ViewModels
                         }
                         else
                         {
-                            IsContributionDateVisible = false;
+                            IsContributionDateVisible = true;
                             IsContributionDayVisible = false;
                             IsGroupStartDateVisible = false;
-                            IsGroupPayOutDateVisible = false;
+                            IsGroupPayOutDateVisible = true;
                             IsGroupPayOutDayVisible = false;
                         }
                     }
@@ -456,8 +478,133 @@ namespace Susu.ViewModels
                     await App.Current.MainPage.DisplayAlert("", "Group payout date should be greater than group contribution date", "OK");
                     return;
                 }
+                else if (!string.IsNullOrEmpty(updatedgroupDto.Contrbution_peroid) && updatedgroupDto.Contrbution_peroid.ToLower() == "weekly")
+                {
+
+                    if (string.IsNullOrEmpty(updatedgroupDto.ContributionDay))
+                    {
+                        await App.Current.MainPage.DisplayAlert("", "Please select group contribution day", "OK");
+                        return;
+                    }
+                    else if (updatedgroupDto.ContributionDate == null)
+                    {
+                        await App.Current.MainPage.DisplayAlert("", "Please select group start date", "OK");
+                        return;
+                    }
+                    else if (string.IsNullOrEmpty(updatedgroupDto.PayOutDay))
+                    {
+                        await App.Current.MainPage.DisplayAlert("", "Please select group payout day", "OK");
+                        return;
+                    }
+                }
+                else if (!string.IsNullOrEmpty(updatedgroupDto.Contrbution_peroid) && updatedgroupDto.Contrbution_peroid.ToLower() == "bi-weekly")
+                {
+                    if (string.IsNullOrEmpty(updatedgroupDto.ContributionDay))
+                    {
+                        await App.Current.MainPage.DisplayAlert("", "Please select group contribution day", "OK");
+                        return;
+                    }
+                    else if (updatedgroupDto.ContributionDate == null)
+                    {
+                        await App.Current.MainPage.DisplayAlert("", "Please select group start date", "OK");
+                        return;
+                    }
+                    else if (string.IsNullOrEmpty(updatedgroupDto.PayOutDay))
+                    {
+                        await App.Current.MainPage.DisplayAlert("", "Please select group payout day", "OK");
+                        return;
+                    }
+                }
+                else if (!string.IsNullOrEmpty(updatedgroupDto.Contrbution_peroid) && updatedgroupDto.Contrbution_peroid.ToLower() == "monthly")
+                {
+                    if (updatedgroupDto.ContributionDate == null)
+                    {
+                        await App.Current.MainPage.DisplayAlert("", "Please select group contribution date", "OK");
+                        return;
+                    }
+                    else if (updatedgroupDto.PayOutDate == null)
+                    {
+                        await App.Current.MainPage.DisplayAlert("", "Please select group payout date", "OK");
+                        return;
+                    }
+
+                }
+                else if (!string.IsNullOrEmpty(updatedgroupDto.Contrbution_peroid) && updatedgroupDto.Contrbution_peroid.ToLower() == "semi-monthly")
+                {
+                    if (updatedgroupDto.ContributionDate == null)
+                    {
+                        await App.Current.MainPage.DisplayAlert("", "Please select group contribution date", "OK");
+                        return;
+                    }
+                    else if (updatedgroupDto.PayOutDate == null)
+                    {
+                        await App.Current.MainPage.DisplayAlert("", "Please select group payout date", "OK");
+                        return;
+                    }
+                    
+                }
+                else if (!string.IsNullOrEmpty(updatedgroupDto.Contrbution_peroid) && updatedgroupDto.Contrbution_peroid.ToLower() == "yearly")
+                {
+                    if (updatedgroupDto.ContributionDate == null)
+                    {
+                        await App.Current.MainPage.DisplayAlert("", "Please select group contribution date", "OK");
+                        return;
+                    }
+                    else if (updatedgroupDto.PayOutDate == null)
+                    {
+                        await App.Current.MainPage.DisplayAlert("", "Please select group payout date", "OK");
+                        return;
+                    }
+
+                }
+                else if (!string.IsNullOrEmpty(updatedgroupDto.Contrbution_peroid) && updatedgroupDto.Contrbution_peroid.ToLower() == "semi-yearly")
+                {
+                    if (updatedgroupDto.ContributionDate == null)
+                    {
+                        await App.Current.MainPage.DisplayAlert("", "Please select group contribution date", "OK");
+                        return;
+                    }
+                    else if (updatedgroupDto.PayOutDate == null)
+                    {
+                        await App.Current.MainPage.DisplayAlert("", "Please select group payout date", "OK");
+                        return;
+                    }
+                    
+                }
+                else if (updatedgroupDto.ContributionDate != null && updatedgroupDto.ContributionDate > updatedgroupDto.PayOutDate)
+                {
+                    await App.Current.MainPage.DisplayAlert("", "Contribution date should be less than payout date", "OK");
+                    return;
+                }
+                else if (updatedgroupDto.ContributionDate != null && updatedgroupDto.PayOutDate == null)
+                {
+                    await App.Current.MainPage.DisplayAlert("", "Payout date should be greater than contribution date", "OK");
+                    return;
+                }
+                else if (updatedgroupDto.ContributionDate != null && updatedgroupDto.PayOutDate != null && updatedgroupDto.PayOutDate < updatedgroupDto.ContributionDate)
+                {
+                    await App.Current.MainPage.DisplayAlert("", "Payout date should be greater than contribution date", "OK");
+                    return;
+                }
+                if (!string.IsNullOrEmpty(updatedgroupDto.Contrbution_peroid) && updatedgroupDto.Contrbution_peroid == "Bi-Weekly")
+                {
+                    updatedgroupDto.ContributionPeriod = "biweekly";
+                }
+                else if (!string.IsNullOrEmpty(updatedgroupDto.Contrbution_peroid) && updatedgroupDto.Contrbution_peroid == "Semi-Monthly")
+                {
+                    updatedgroupDto.ContributionPeriod = "semimonthly";
+                }
+                else if (!string.IsNullOrEmpty(updatedgroupDto.Contrbution_peroid) && updatedgroupDto.Contrbution_peroid == "Semi-Yearly")
+                {
+                    updatedgroupDto.ContributionPeriod = "semiyearly";
+                }
+                else
+                {
+                    updatedgroupDto.ContributionPeriod = updatedgroupDto.ContributionPeriod;
+                }
                 IsLoading = true;
                 GroupDto group = await ServiceBase.SaveGroupInfo(updatedgroupDto);
+                
                 IsLoading = false;
                 if (group != null && group.Id > 0)
                 {
@@ -728,11 +875,15 @@ namespace Susu.ViewModels
                 if (userPayoutDetail != null)
                 {
                     UserDto userDto = await ServiceBase.GetUserById(userPayoutDetail.UserId);
-                    if (!string.IsNullOrEmpty(userDto.PayPalEmailId))
+                    if (!string.IsNullOrEmpty(userDto.ZelleId))
                         ZeeleText = "Please pay the contributed amount for the month of " + userPayoutDetail.ContributionDateString.ToString() + "the user" + userPayoutDetail.UserName + "using Zelle ID is " + userDto.ZelleId;
                     else
                         ZeeleText = "Oops, the user "+userPayoutDetail.UserName +" is not provided their Zelle ID, Please ask them to upload Zell ID under their user information.";
                 }
+            }
+            else
+            {
+                ZeeleText = "Something went wrong,please contact admin";
             }
             IsPayMemberpopupVisible = true;
         }

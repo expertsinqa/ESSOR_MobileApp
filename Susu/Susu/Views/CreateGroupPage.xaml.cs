@@ -39,6 +39,15 @@ namespace Susu.Views
                     viewModel.IsPayoutDateVisible = false;
                     //viewModel.IsPayoutDayVisible = true;
                 }
+                else if (viewModel.selectedPeriod != null && viewModel.selectedPeriod == "Bi-Weekly")
+                {
+                    viewModel.IsContributionDayVisible = true;
+                    viewModel.IsContributionDateVisible = false;
+                    viewModel.IsGroupStartDateVisible = true;
+                    viewModel.IsPayoutDayVisible = true;
+                    viewModel.IsPayoutDateVisible = false;
+                    //viewModel.IsPayoutDayVisible = true;
+                }
                 else
                 {
                     viewModel.IsContributionDateVisible = true;

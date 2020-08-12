@@ -26,7 +26,7 @@
                             <ColumnDefinition Width="20*"/>
                             <ColumnDefinition Width="10*"/>
                         </Grid.ColumnDefinitions>
-                        <Label Grid.Column="0" Text="{Binding groupDto.GroupName}" VerticalOptions="Center" HorizontalOptions="StartAndExpand" TextColor="White" FontSize="20" FontFamily="{StaticResource BoldFont}"/>
+                        <Label Grid.Column="0" Text="{Binding groupDto.GroupName}" VerticalOptions="Center" HorizontalOptions="StartAndExpand" TextColor="White" FontSize="18" FontFamily="{StaticResource BoldFont}"/>
                         <Image Grid.Column="1" Source="home.png"  Aspect="AspectFit"  VerticalOptions="Center" HorizontalOptions="Center" Margin="0,0,0,0">
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding HomeClicked}"/>
@@ -71,36 +71,36 @@
                             <Label Text="Contribution Period:" TextColor="#083b66" VerticalOptions="Center" HorizontalOptions="Start" FontFamily="{StaticResource NormalFont}" FontSize="{OnPlatform iOS='20'}" Margin="0,10,0,0"/>
                                 <!--<custom:CustomEntry Text="{Binding groupDto.ContributionPeriod}"  TextColor="Black" HeightRequest="{OnPlatform iOS='50'}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" FontFamily="{StaticResource NormalFont}"/>-->
                                 <Frame CornerRadius="{OnPlatform Android='10'}" BorderColor="#083b66" Padding="0,0,0,0" IsClippedToBounds="True" HasShadow="False">
-                                    <custom:CustomPicker Placeholder="Select Contribution Peroid" Title="Contribution Period" IsEnabled="{Binding IsGroupInfoEditable}" HeightRequest="{OnPlatform iOS='50'}" ItemsSource="{Binding ContributionPeriod}" SelectedItem="{Binding groupDto.ContributionPeriod}" SelectedIndexChanged="CustomPicker_SelectedIndexChanged"  VerticalOptions="Fill" HorizontalOptions="Fill" FontFamily="{StaticResource NormalFont}"/>
+                                    <custom:CustomPicker Placeholder="Select Contribution Peroid*" Title="Contribution Period" IsEnabled="{Binding IsGroupInfoEditable}" HeightRequest="{OnPlatform iOS='50'}" ItemsSource="{Binding ContributionPeriod}" SelectedItem="{Binding groupDto.Contrbution_peroid}" SelectedIndexChanged="CustomPicker_SelectedIndexChanged"  VerticalOptions="Fill" HorizontalOptions="Fill" FontFamily="{StaticResource NormalFont}"/>
                                 </Frame>
                                
                                 <Label Text="Group Contribution Date:" TextColor="#083b66"  VerticalOptions="Center" HorizontalOptions="Start" FontFamily="{StaticResource NormalFont}" FontSize="{OnPlatform iOS='20'}" Margin="0,10,0,0" IsVisible="{Binding IsContributionDateVisible}"/>
                                 <Frame CornerRadius="{OnPlatform Android='10'}" BorderColor="#083b66"  Padding="0,0,0,0" IsClippedToBounds="True" HasShadow="False" IsVisible="{Binding IsContributionDateVisible}">
-                                    <custom:CustomDatePicker PlaceHolder="Select Contribution Date" IsEnabled="{Binding IsGroupInfoEditable}"  NullableDate="{Binding groupDto.ContributionDate}" Format="MM/dd/yyyy" Image="date_icon.png" HeightRequest="{OnPlatform iOS='50'}"  VerticalOptions="Fill" HorizontalOptions="Fill" FontFamily="{StaticResource NormalFont}"/>
+                                    <custom:CustomDatePicker PlaceHolder="Select Contribution Date*" IsEnabled="{Binding IsGroupInfoEditable}"  NullableDate="{Binding groupDto.ContributionDate}" Format="MM/dd/yyyy" Image="date_icon.png" HeightRequest="{OnPlatform iOS='50'}"  VerticalOptions="Fill" HorizontalOptions="Fill" FontFamily="{StaticResource NormalFont}"/>
                                 </Frame>
                                 <!--<custom:CustomEntry Text="{Binding groupDto.ContributinDateString}" IsEnabled="{Binding IsGroupInfoEditable}" TextColor="Black" HeightRequest="{OnPlatform iOS='50'}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" FontFamily="{StaticResource NormalFont}" IsVisible="{Binding IsContributionDateVisible}"/>-->
 
                                 <Label Text="Group Contribution Day:" TextColor="#083b66"  VerticalOptions="Center" HorizontalOptions="Start" FontFamily="{StaticResource NormalFont}" FontSize="{OnPlatform iOS='20'}" Margin="0,10,0,0" IsVisible="{Binding IsContributionDayVisible}"/>
                                 <Frame CornerRadius="{OnPlatform Android='10'}" BorderColor="#083b66" Padding="0,0,0,0" IsClippedToBounds="True" HasShadow="False" IsVisible="{Binding IsContributionDayVisible}">
-                                    <custom:CustomPicker Placeholder="Select Contribution day"  IsEnabled="{Binding IsGroupInfoEditable}" Title="Contribution Day" HeightRequest="{OnPlatform iOS='50'}" ItemsSource="{Binding DaysList}" SelectedItem="{Binding groupDto.ContributionDay}" VerticalOptions="Fill" HorizontalOptions="Fill" FontFamily="{StaticResource NormalFont}"/>
+                                    <custom:CustomPicker Placeholder="Select Contribution day*"  IsEnabled="{Binding IsGroupInfoEditable}" Title="Contribution Day" HeightRequest="{OnPlatform iOS='50'}" ItemsSource="{Binding DaysList}" SelectedItem="{Binding groupDto.ContributionDay}" VerticalOptions="Fill" HorizontalOptions="Fill" FontFamily="{StaticResource NormalFont}"/>
                                 </Frame>
                                 <!--<custom:CustomEntry Text="{Binding groupDto.ContributionDay}" IsEnabled="{Binding IsGroupInfoEditable}" TextColor="Black" HeightRequest="{OnPlatform iOS='50'}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" FontFamily="{StaticResource NormalFont}" IsVisible="{Binding IsContributionDayVisible}"/>-->
 
                                 <Label Text="Group Start Date:" TextColor="#083b66"  VerticalOptions="Center" HorizontalOptions="Start" FontFamily="{StaticResource NormalFont}" FontSize="{OnPlatform iOS='20'}" Margin="0,10,0,0" IsVisible="{Binding IsGroupStartDateVisible}"/>
                                 <Frame CornerRadius="{OnPlatform Android='10'}" BorderColor="#083b66"  Padding="0,0,0,0" IsClippedToBounds="True" HasShadow="False" IsVisible="{Binding IsGroupStartDateVisible}">
-                                    <custom:CustomDatePicker PlaceHolder="Select GroupStrat Date" IsEnabled="{Binding IsGroupInfoEditable}" NullableDate="{Binding groupDto.GroupStartDate}" Format="MM/dd/yyyy"  Image="date_icon.png" HeightRequest="{OnPlatform iOS='50'}"  VerticalOptions="Fill" HorizontalOptions="Fill" FontFamily="{StaticResource NormalFont}"/>
+                                    <custom:CustomDatePicker PlaceHolder="Select GroupStrat Date*" IsEnabled="{Binding IsGroupInfoEditable}" NullableDate="{Binding groupDto.GroupStartDate}" Format="MM/dd/yyyy"  Image="date_icon.png" HeightRequest="{OnPlatform iOS='50'}"  VerticalOptions="Fill" HorizontalOptions="Fill" FontFamily="{StaticResource NormalFont}"/>
                                 </Frame>
                                 <!--<custom:CustomEntry Text="{Binding groupDto.GroupStartDateString}" IsEnabled="{Binding IsGroupInfoEditable}" TextColor="Black" HeightRequest="{OnPlatform iOS='50'}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" FontFamily="{StaticResource NormalFont}" IsVisible="{Binding IsGroupStartDateVisible}"/>-->
 
                                 <Label Text="Group PayOut Day:" TextColor="#083b66"  VerticalOptions="Center" HorizontalOptions="Start" FontFamily="{StaticResource NormalFont}" FontSize="{OnPlatform iOS='20'}" Margin="0,10,0,0" IsVisible="{Binding IsGroupPayOutDayVisible}"/>
                                 <Frame CornerRadius="{OnPlatform Android='10'}"  BorderColor="#083b66"  Padding="0,0,0,0" IsClippedToBounds="True" HasShadow="False" IsVisible="{Binding IsGroupPayOutDayVisible}">
-                                    <custom:CustomPicker Placeholder="Select Payout day" IsEnabled="{Binding IsGroupInfoEditable}"  Title="Payout Day" HeightRequest="{OnPlatform iOS='50'}" ItemsSource="{Binding DaysList}" SelectedItem="{Binding groupDto.PayOutDay}" VerticalOptions="Fill" HorizontalOptions="Fill" FontFamily="{StaticResource NormalFont}"/>
+                                    <custom:CustomPicker Placeholder="Select Payout day*" IsEnabled="{Binding IsGroupInfoEditable}"  Title="Payout Day" HeightRequest="{OnPlatform iOS='50'}" ItemsSource="{Binding DaysList}" SelectedItem="{Binding groupDto.PayOutDay}" VerticalOptions="Fill" HorizontalOptions="Fill" FontFamily="{StaticResource NormalFont}"/>
                                 </Frame>
                                 <!--<custom:CustomEntry Text="{Binding groupDto.PayOutDay}" IsEnabled="{Binding IsGroupInfoEditable}" TextColor="Black" HeightRequest="{OnPlatform iOS='50'}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" FontFamily="{StaticResource NormalFont}" IsVisible="{Binding IsGroupPayOutDayVisible}"/>-->
 
                                 <Label Text="Group PayOut Date:" TextColor="#083b66"  VerticalOptions="Center" HorizontalOptions="Start" FontFamily="{StaticResource NormalFont}" FontSize="{OnPlatform iOS='20'}" Margin="0,10,0,0" IsVisible="{Binding IsGroupPayOutDateVisible}"/>
                                 <Frame CornerRadius="{OnPlatform Android='10'}" BorderColor="#083b66"  Padding="0,0,0,0" IsClippedToBounds="True" HasShadow="False" IsVisible="{Binding IsGroupPayOutDateVisible}">
-                                    <custom:CustomDatePicker PlaceHolder="Select Payout Date" IsEnabled="{Binding IsGroupInfoEditable}" NullableDate="{Binding groupDto.PayOutDate}" Format="MM/dd/yyyy" Image="date_icon.png" HeightRequest="{OnPlatform iOS='50'}"  VerticalOptions="Fill" HorizontalOptions="Fill" FontFamily="{StaticResource NormalFont}"/>
+                                    <custom:CustomDatePicker PlaceHolder="Select Payout Date*" IsEnabled="{Binding IsGroupInfoEditable}" NullableDate="{Binding groupDto.PayOutDate}" Format="MM/dd/yyyy" Image="date_icon.png" HeightRequest="{OnPlatform iOS='50'}"  VerticalOptions="Fill" HorizontalOptions="Fill" FontFamily="{StaticResource NormalFont}"/>
                                 </Frame>
                                 <Frame VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="#083b66"  CornerRadius="{OnPlatform Android='60',iOS='25'  }" WidthRequest="200" Margin="0,10,0,0" Padding="15" HasShadow="False" IsVisible="{Binding IsGroupInfoEditable}">
                                     <Frame.GestureRecognizers>
@@ -318,7 +318,7 @@
                         <StackLayout IsVisible="{Binding IsAdminhaspaypalAccount}" Margin="0,10,0,0">
                             <Label Text="Hello ," TextColor="Black"  FontAttributes="Bold" FontFamily="{StaticResource NormalFont}" Margin="0,10,0,0"/>
                             <Label Text="Thank you for looking Payment solutions." TextColor="Black" FontFamily="{StaticResource NormalFont}" Margin="0,5,0,0"/>
-                            <Label Text="Please Pay your contribution amount to the below give Admin Zelle address." TextColor="Black" FontFamily="{StaticResource NormalFont}"/>
+                            <Label Text="Please Pay your contribution amount to the below give Admin Zelle Id." TextColor="Black" FontFamily="{StaticResource NormalFont}"/>
                             <Label Text="Zelle ID:" TextColor="Black" FontFamily="{StaticResource NormalFont}" FontSize="15"/>
                                 <Label Text="{Binding AdminPaypalId}" TextColor="Blue" FontFamily="{StaticResource NormalFont}" Margin="0,-5,0,0"/>
                             <StackLayout Orientation="Horizontal">

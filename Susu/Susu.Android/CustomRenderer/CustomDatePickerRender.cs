@@ -150,7 +150,7 @@ namespace Susu.Droid.CustomRenderer
         {
             var drawable = Resources.GetDrawable(imagePath);
             var bitmap = ((BitmapDrawable)drawable).Bitmap;
-            var result = new BitmapDrawable(Resources, Bitmap.CreateScaledBitmap(bitmap, 50, 50, true));
+            var result = new BitmapDrawable(Resources, Bitmap.CreateScaledBitmap(bitmap, 25, 25, true));
             result.Gravity = Android.Views.GravityFlags.Right;
             return result;
         }

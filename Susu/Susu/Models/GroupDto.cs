@@ -54,6 +54,41 @@ namespace Susu.Models
             }
         }
 
+        public string Contrbution_peroid
+        {
+            get
+            {
 
+                if (!string.IsNullOrEmpty(ContributionPeriod) && ContributionPeriod == "biweekly")
+                {
+                    return "Bi-Weekly";
+                }
+                else if (!string.IsNullOrEmpty(ContributionPeriod) && ContributionPeriod.ToLower() == "semimonthly")
+                {
+                    return "Semi-Monthly";
+                }
+                else if (!string.IsNullOrEmpty(ContributionPeriod) && ContributionPeriod.ToLower() == "semiyearly")
+                {
+                    return "Semi-Yearly";
+                }
+                else if (!string.IsNullOrEmpty(ContributionPeriod) && ContributionPeriod.ToLower() == "monthly")
+                {
+                    return "Monthly";
+                }
+                else if (!string.IsNullOrEmpty(ContributionPeriod) && ContributionPeriod.ToLower() == "weekly")
+                {
+                    return "Weekly";
+                }
+                else if (!string.IsNullOrEmpty(ContributionPeriod) && ContributionPeriod.ToLower() == "yearly")
+                {
+                    return "Yearly";
+                }
+                else
+                {
+                    return string.Empty;
+                }
+            }
+            set { }
+        }
     }
 }

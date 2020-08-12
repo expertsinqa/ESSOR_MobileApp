@@ -90,7 +90,7 @@ namespace Susu.ViewModels
         #region Constructor
         public CreateGroupPageViewModel(INavigationService navigationService) : base(navigationService)
         {
-            _lstperiod = new List<string>() { "Weekly", "Monthly", "Yearly" };
+            _lstperiod = new List<string>() { "Weekly","Bi-Weekly", "Semi-Monthly","Monthly","Semi-Yearly","Yearly" };
             DaysList = new List<string>() { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
 
         }
@@ -146,6 +146,24 @@ namespace Susu.ViewModels
                     return;
                 }
             }
+            else if (!string.IsNullOrEmpty(selectedPeriod) && selectedPeriod.ToLower() == "bi-weekly")
+            {
+                if (string.IsNullOrEmpty(selectedContributionDay))
+                {
+                    await App.Current.MainPage.DisplayAlert("", "Please select group contribution day", "OK");
+                    return;
+                }
+                else if (GroupStartDate == null)
+                {
+                    await App.Current.MainPage.DisplayAlert("", "Please select group start date", "OK");
+                    return;
+                }
+                else if (string.IsNullOrEmpty(selectedPayoutDay))
+                {
+                    await App.Current.MainPage.DisplayAlert("", "Please select group payout day", "OK");
+                    return;
+                }
+            }
             else if (!string.IsNullOrEmpty(selectedPeriod) && selectedPeriod.ToLower() == "monthly")
             {
                 if (SelectedDate == null)
@@ -158,6 +176,49 @@ namespace Susu.ViewModels
                     await App.Current.MainPage.DisplayAlert("", "Please select group payout date", "OK");
                     return;
                 }
+                
+            }
+            else if (!string.IsNullOrEmpty(selectedPeriod) && selectedPeriod.ToLower() == "semi-monthly")
+            {
+                if (SelectedDate == null)
+                {
+                    await App.Current.MainPage.DisplayAlert("", "Please select group contribution date", "OK");
+                    return;
+                }
+                else if (payoutDate == null)
+                {
+                    await App.Current.MainPage.DisplayAlert("", "Please select group payout date", "OK");
+                    return;
+                }
+                
+            }
+            else if (!string.IsNullOrEmpty(selectedPeriod) && selectedPeriod.ToLower() == "yearly")
+            {
+                if (SelectedDate == null)
+                {
+                    await App.Current.MainPage.DisplayAlert("", "Please select group contribution date", "OK");
+                    return;
+                }
+                else if (payoutDate == null)
+                {
+                    await App.Current.MainPage.DisplayAlert("", "Please select group payout date", "OK");
+                    return;
+                }
+                
+            }
+            else if (!string.IsNullOrEmpty(selectedPeriod) && selectedPeriod.ToLower() == "semi-yearly")
+            {
+                if (SelectedDate == null)
+                {
+                    await App.Current.MainPage.DisplayAlert("", "Please select group contribution date", "OK");
+                    return;
+                }
+                else if (payoutDate == null)
+                {
+                    await App.Current.MainPage.DisplayAlert("", "Please select group payout date", "OK");
+                    return;
+                }
+               
             }
             else if (SelectedDate != null && SelectedDate > payoutDate)
             {
@@ -192,7 +253,22 @@ namespace Susu.ViewModels
             GroupDto groupDto = new GroupDto();
             groupDto.GroupName = GroupName;
             groupDto.ContributionAmount = Decimal.Parse(Amount);
-            groupDto.ContributionPeriod = selectedPeriod;
+            if (!string.IsNullOrEmpty(selectedPeriod) && selectedPeriod == "Bi-Weekly")
+            {
+                groupDto.ContributionPeriod = "biweekly";
+            }
+            else if (!string.IsNullOrEmpty(selectedPeriod) && selectedPeriod == "Semi-Monthly")
+            {
+                groupDto.ContributionPeriod = "semimonthly";
+            }
+            else if (!string.IsNullOrEmpty(selectedPeriod) && selectedPeriod == "Semi-Yearly")
+            {
+                groupDto.ContributionPeriod = "semiyearly";
+            }
+            else
+            {
+                groupDto.ContributionPeriod = selectedPeriod;
+            }
             groupDto.ContributionDate = SelectedDate;
             groupDto.CustomRules = CustomRulesText;
             groupDto.GroupStartDate = GroupStartDate;

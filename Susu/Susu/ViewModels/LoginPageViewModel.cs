@@ -7,6 +7,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using static Susu.Models.Enums;
 
@@ -56,12 +57,27 @@ namespace Susu.ViewModels
         public Color _ForgotPasswordEmailPlaceholderColor = Color.Gray;
         public Color ForgotPasswordEmailPlaceholderColor { get { return _ForgotPasswordEmailPlaceholderColor; } set { SetProperty(ref _ForgotPasswordEmailPlaceholderColor, value); } }
 
+        public ICommand UpdateAppClicked {get { return new Command(AppUpdate); } }
+        public ICommand CancelAppClicked { get { return new Command(Cancel); } }
+
+        public bool _IsAppUpdateVisible = false;
+        public bool IsAppUpdateVisible { get { return _IsAppUpdateVisible; } set { SetProperty(ref _IsAppUpdateVisible, value); } }
+        public string _AppUpdateText = "";
+        public string AppUpdateText { get { return _AppUpdateText; } set { SetProperty(ref _AppUpdateText, value); } }
+
+
+
         #endregion
 
         #region Constructor
         public LoginPageViewModel(INavigationService navigationService) : base(navigationService)
         {
             SignUpClicked = new Command(SignUp);
+            Task.Run(async () =>
+            {
+                await GetAppVersionDetails();
+            });
+            
         }
         #endregion
 
@@ -69,6 +85,47 @@ namespace Susu.ViewModels
         public async void SignUp()
         {
             await NavigationService.NavigateAsync("SignUpPage");
+        }
+
+        public  async Task<APPVersionDetails> GetAppVersionDetails()
+        {
+            APPVersionDetails appVersionDetails= new APPVersionDetails();
+            try {
+                IsLoading = true;
+                appVersionDetails = await ServiceBase.GetAppVesrion();
+                if (appVersionDetails != null && appVersionDetails.VersionNUmber>0)
+                {
+                    var currentVersion = VersionTracking.CurrentVersion;
+                    if (!string.IsNullOrEmpty(currentVersion))
+                    {
+                        float version = float.Parse(currentVersion);
+                        if (version < appVersionDetails.VersionNUmber) 
+                        {
+                            if (Device.RuntimePlatform == Device.Android)
+                            {
+                                AppUpdateText = "An updated version of app is available.";
+                                IsAppUpdateVisible = true;
+                            }
+                            else
+                            {
+                                //AppUpdateText = "An updated version of app is available.";
+                                //IsAppUpdateVisible = true;
+                            }
+                            //IsAppUpdateVisible = true;
+                        }
+                        else
+                        {
+                            IsAppUpdateVisible = false;
+                        }
+                    }
+                    IsLoading = false;
+                }
+            }
+            catch(Exception ex)
+            {
+                IsLoading = false;
+            }
+            return appVersionDetails;
         }
         public async void Login()
         {
@@ -199,6 +256,26 @@ namespace Susu.ViewModels
                 IsLoading = true;
                 ForgotPasswordEmailPlaceholderColor = Color.Red;
             }
+        }
+
+        private async void AppUpdate()
+        {
+            if (Device.RuntimePlatform == Device.Android)
+            {
+                Uri uri = new Uri("https://play.google.com/store/apps/details?id=com.esorr.esorrApp&hl=en_IN");
+                await Browser.OpenAsync(uri, BrowserLaunchMode.SystemPreferred);
+                IsAppUpdateVisible = false;
+            }
+            else
+            {
+                //Uri uri = new Uri("https://play.google.com/store/apps/details?id=com.esorr.esorrApp&hl=en_IN");
+                //await Browser.OpenAsync(uri, BrowserLaunchMode.SystemPreferred);
+                IsAppUpdateVisible = false;
+            }
+        }
+        private void Cancel()
+        {
+            IsAppUpdateVisible = false;
         }
         #endregion
     }

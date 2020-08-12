@@ -26,16 +26,33 @@ namespace Susu.Views
         {
             if (viewModel != null)
             {
-                if (viewModel != null && viewModel.groupDto!=null && viewModel.groupDto.ContributionPeriod!=null && viewModel.groupDto.ContributionPeriod == "Daily")
+                var picker = sender as Xamarin.Forms.Picker;
+                string val = picker.SelectedItem.ToString();
+                if (viewModel != null && viewModel.groupDto != null && val == "Daily")
                 {
+                    viewModel.groupDto.Contrbution_peroid = "Daily";
+                    viewModel.groupDto.ContributionPeriod = "Daily";
                     viewModel.IsContributionDayVisible = false;
                     viewModel.IsContributionDateVisible = false;
                     viewModel.IsGroupStartDateVisible = false;
                     viewModel.IsGroupPayOutDayVisible = false;
                     //viewModel.IsPayoutDayVisible = false;
                 }
-                else if (viewModel!= null && viewModel.groupDto != null && viewModel.groupDto.ContributionPeriod != null && viewModel.groupDto.ContributionPeriod == "Weekly")
+                else if (viewModel != null && viewModel.groupDto != null && val == "Weekly")
                 {
+                    viewModel.groupDto.Contrbution_peroid = "Weekly";
+                    viewModel.groupDto.ContributionPeriod = "Weekly";
+                    viewModel.IsContributionDayVisible = true;
+                    viewModel.IsContributionDateVisible = false;
+                    viewModel.IsGroupStartDateVisible = true;
+                    viewModel.IsGroupPayOutDayVisible = true;
+                    viewModel.IsGroupPayOutDateVisible = false;
+                    //viewModel.IsPayoutDayVisible = true;
+                }
+                else if (viewModel != null && viewModel.groupDto != null && val == "Bi-Weekly")
+                {
+                    viewModel.groupDto.Contrbution_peroid = "biweekly";
+                    viewModel.groupDto.ContributionPeriod = "biweekly";
                     viewModel.IsContributionDayVisible = true;
                     viewModel.IsContributionDateVisible = false;
                     viewModel.IsGroupStartDateVisible = true;
@@ -45,6 +62,20 @@ namespace Susu.Views
                 }
                 else
                 {
+                    if(val == "Monthly")
+                    {
+                        viewModel.groupDto.ContributionPeriod = "Monthly";
+                    }
+                    else if(val == "Semi-Monthly") {
+                        viewModel.groupDto.ContributionPeriod = "semimonthly";
+                    }
+                    else if(val == "Yearly") {
+                        viewModel.groupDto.ContributionPeriod = "Yearly";
+                    }
+                    else if(val == "Semi-Yearly")
+                    {
+                        viewModel.groupDto.ContributionPeriod = "semiyearly";
+                    }
                     viewModel.IsContributionDateVisible = true;
                     viewModel.IsContributionDayVisible = false;
                     viewModel.IsGroupPayOutDayVisible = false;
@@ -52,6 +83,41 @@ namespace Susu.Views
                     viewModel.IsGroupStartDateVisible = false;
                     //  viewModel.IsPayoutDayVisible = false;
                 }
+                //if (viewModel != null && viewModel.groupDto!=null && viewModel.groupDto.Contrbution_peroid != null && viewModel.groupDto.Contrbution_peroid == "Daily")
+                //{
+                //    viewModel.IsContributionDayVisible = false;
+                //    viewModel.IsContributionDateVisible = false;
+                //    viewModel.IsGroupStartDateVisible = false;
+                //    viewModel.IsGroupPayOutDayVisible = false;
+                //    //viewModel.IsPayoutDayVisible = false;
+                //}
+                //else if (viewModel!= null && viewModel.groupDto != null && viewModel.groupDto.Contrbution_peroid != null && viewModel.groupDto.Contrbution_peroid == "Weekly")
+                //{
+                //    viewModel.IsContributionDayVisible = true;
+                //    viewModel.IsContributionDateVisible = false;
+                //    viewModel.IsGroupStartDateVisible = true;
+                //    viewModel.IsGroupPayOutDayVisible = true;
+                //    viewModel.IsGroupPayOutDateVisible = false;
+                //    //viewModel.IsPayoutDayVisible = true;
+                //}
+                //else if (viewModel != null && viewModel.groupDto != null && viewModel.groupDto.Contrbution_peroid != null && viewModel.groupDto.Contrbution_peroid == "Bi-Weekly")
+                //{
+                //    viewModel.IsContributionDayVisible = true;
+                //    viewModel.IsContributionDateVisible = false;
+                //    viewModel.IsGroupStartDateVisible = true;
+                //    viewModel.IsGroupPayOutDayVisible = true;
+                //    viewModel.IsGroupPayOutDateVisible = false;
+                //    //viewModel.IsPayoutDayVisible = true;
+                //}
+                //else
+                //{
+                //    viewModel.IsContributionDateVisible = true;
+                //    viewModel.IsContributionDayVisible = false;
+                //    viewModel.IsGroupPayOutDayVisible = false;
+                //    viewModel.IsGroupPayOutDateVisible = true;
+                //    viewModel.IsGroupStartDateVisible = false;
+                //    //  viewModel.IsPayoutDayVisible = false;
+                //}
             }
         }
     }

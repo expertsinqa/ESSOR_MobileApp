@@ -88,7 +88,7 @@
                             </Image.GestureRecognizers>
                         </Image>
                         <Label Text="Enter Group code" TextColor="Black" FontFamily="{StaticResource NormalFont}"/>
-                        <custom:CustomEntry Text="{Binding GroupNumber}" Placeholder="Entry code to join the group" PlaceholderColor="{Binding GroupIdPlaceholderColor}" HeightRequest="{OnPlatform iOS='50'}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="0,10,0,0" FontFamily="{StaticResource NormalFont}"/>
+                        <custom:CustomEntry Text="{Binding GroupNumber}" Placeholder="Entry code to join the group*" PlaceholderColor="{Binding GroupIdPlaceholderColor}" HeightRequest="{OnPlatform iOS='50'}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="0,10,0,0" FontFamily="{StaticResource NormalFont}"/>
                         <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,10,0,0">
                             <Frame VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="#083b66"  CornerRadius="{OnPlatform Android='60',iOS='25'}" WidthRequest="200" Margin="0,10,0,0" Padding="15" HasShadow="False">
                                 <Frame.GestureRecognizers>
