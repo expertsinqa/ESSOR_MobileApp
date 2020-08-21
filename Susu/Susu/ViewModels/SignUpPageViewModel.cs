@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Input;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using NavigationParameters = Prism.Navigation.NavigationParameters;
 
@@ -68,6 +69,22 @@ namespace Susu.ViewModels
         public string _ZelleId = "";
         public string ZelleId { get { return _ZelleId; } set { SetProperty(ref _ZelleId, value); } }
 
+        public string _ConfirmPassword = "";
+        public string ConfirmPassword { get { return _ConfirmPassword; } set { SetProperty(ref _ConfirmPassword, value); } }
+
+        public Color _ConfirmPlaceholderColor = Color.Gray;
+        public Color ConfirmPlaceholderColor { get { return _ConfirmPlaceholderColor; } set { SetProperty(ref _ConfirmPlaceholderColor, value); } }
+
+        public ICommand PrivacyPlociyClicked { get { return new Command(PrivacyPolicy); } }
+
+        public ImageSource _PrivacyPolicyImage = "check_box_empty.png";
+        public ImageSource PrivacyPolicyImage { get { return _PrivacyPolicyImage; } set { SetProperty(ref _PrivacyPolicyImage, value); } }
+
+        public ICommand CheckTermsandConditions { get { return new Command(checkprivacyPloicy); } }
+
+        public bool isPolicyAccepted = false;
+
+       
         #endregion
         #region Constructor
         public SignUpPageViewModel(INavigationService navigationService) :base(navigationService)
@@ -101,9 +118,24 @@ namespace Susu.ViewModels
                 PasswordPlaceholderColor = Color.Red;
                 return;
             }
+            else if (string.IsNullOrEmpty(ConfirmPassword))
+            {
+                ConfirmPlaceholderColor = Color.Red;
+                return;
+            }
             else if(string.IsNullOrEmpty(MobileNumber))
             {
                 MobilePlaceholderColor = Color.Red;
+                return;
+            }
+            else if (Password != ConfirmPassword)
+            {
+               await App.Current.MainPage.DisplayAlert("", "Password and confirm password should be same", "Ok");
+                return;
+            }
+            else if (!isPolicyAccepted)
+            {
+                await App.Current.MainPage.DisplayAlert("", "Please accept terms & conditions", "Ok");
                 return;
             }
             //else if(string.IsNullOrEmpty(PaypalEmailId))
@@ -133,11 +165,14 @@ namespace Susu.ViewModels
                 Password = "";
                 MobileNumber = "";
                 PaypalEmailId = "";
+                ConfirmPassword = "";
+                ZelleId = "";
                 FirstNamePlaceholder = Color.Gray;
                 LastNamePlaceholderColor = Color.Gray;
                 EmailPlaceholderColor = Color.Gray;
                 PasswordPlaceholderColor = Color.Gray;
                 MobilePlaceholderColor = Color.Gray;
+                ConfirmPlaceholderColor = Color.Gray;
                 Dictionary<string, string> response = await ServiceBase.Login(usersdetails.Email, usersdetails.UserPassword);
                 if (response != null && response.ContainsKey("access_token"))
                 {
@@ -191,6 +226,26 @@ namespace Susu.ViewModels
         {
             IsSuccessMessageVisible = false;
         }
+
+        private async void PrivacyPolicy(object obj)
+        {
+            await Browser.OpenAsync("https://esorr.com/privatepolicy.html");
+        }
+
+        private void checkprivacyPloicy()
+        {
+            if (PrivacyPolicyImage.ToString().Contains("check_box_empty.png"))
+            {
+                PrivacyPolicyImage = "check_box.png";
+                isPolicyAccepted = true;
+            }
+            else
+            {
+                PrivacyPolicyImage = "check_box_empty.png";
+                isPolicyAccepted = false;
+            }
+        }
+
         #endregion
 
     }

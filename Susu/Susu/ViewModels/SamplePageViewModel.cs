@@ -300,8 +300,9 @@ namespace Susu.ViewModels
 
         public async void BindGroupUsers()
         {
-            IsLoading = true;
+            
             List<UserDto> lstUsersDto = new List<UserDto>();
+            IsLoading = true;
             lstUsersDto = await ServiceBase.GetUsersByGroupId(App.GroupId);
             IsLoading = false;
             if (lstUsersDto != null && lstUsersDto.Count > 0)
@@ -354,6 +355,9 @@ namespace Susu.ViewModels
             App.AccessToken = null;
             App.GroupNumber = 0;
             App.contributionId = 0;
+            App.IsAggreementAccepted = false;
+            App.IsProfilePhotoUploaded = false;
+            App.GroupNumber = 0;
             App.Current.MainPage = new LoginPage();
             //DependencyService.Get<ICloseApplication>().closeApplication();
         }
@@ -638,6 +642,12 @@ namespace Susu.ViewModels
                     notificationBGColor = Color.White;
                     noficationLabelColor = Color.Black;
                 }
+            }
+            else
+            {
+                NotificationCount = 0;
+                notificationBGColor = Color.White;
+                noficationLabelColor = Color.Black;
             }
 
         }

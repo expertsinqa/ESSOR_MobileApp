@@ -43,6 +43,9 @@ namespace ESORR.ViewModels
 
         string amount { get; set; }
 
+        public double _lstviewHeightRequest = 0;
+        public double lstviewHeightRequest { get { return _lstviewHeightRequest; } set { SetProperty(ref _lstviewHeightRequest, value); } }
+
         #endregion
 
         #region Constructor
@@ -57,31 +60,44 @@ namespace ESORR.ViewModels
         #region Functions
         private async void BindData()
         {
-            if (App.IsGroupAdmin)
-                IsAdmin = true;
-            else
-                IsAdmin = false;
-            groupContributionDetails = new GroupContributionDetails();
-            groupContributionDetails = await ServiceBase.GetContributionDetailsByGroupNO(groupNumber);
-            if(groupContributionDetails!=null)
+            try
             {
-                ContributionDate = groupContributionDetails.ContributionDate.ToString("MM/dd/yyyy");
-                ContributionDay = groupContributionDetails.ContributionDay;
-                if(groupContributionDetails.NextContributionDate.HasValue)
-                {
-                    NextScheduleDate = groupContributionDetails.NextContributionDate?.ToString("MM/dd/yyyy");
-                }
-                UserPayInDetails = await ServiceBase.GetPayInDetailByGroupNO(groupNumber, groupContributionDetails.ContributionId);
-                if(UserPayInDetails.Count == UserPayInDetails.Where(x=>x.isPaymentCompleted).Count())
-                {
-                    AllnumberCheckbox = "check_box.png";
-                }
-                else
-                {
-                    AllnumberCheckbox = "check_box_empty.png";
-                }
                 
+                if (App.IsGroupAdmin)
+                    IsAdmin = true;
+                else
+                    IsAdmin = false;
+                groupContributionDetails = new GroupContributionDetails();
+                IsLoading = true;
+                groupContributionDetails = await ServiceBase.GetContributionDetailsByGroupNO(groupNumber);
+                IsLoading = false;
+                if (groupContributionDetails != null)
+                {
+                    IsLoading = true;
+                    ContributionDate = groupContributionDetails.ContributionDate.ToString("MM/dd/yyyy");
+                    ContributionDay = groupContributionDetails.ContributionDay;
+                    if (groupContributionDetails.NextContributionDate.HasValue)
+                    {
+                        NextScheduleDate = groupContributionDetails.NextContributionDate?.ToString("MM/dd/yyyy");
+                    }
+                    UserPayInDetails = await ServiceBase.GetPayInDetailByGroupNO(groupNumber, groupContributionDetails.ContributionId);
+                    if (UserPayInDetails != null)
+                        lstviewHeightRequest = UserPayInDetails.Count * 20;
+                    if (UserPayInDetails.Count == UserPayInDetails.Where(x => x.isPaymentCompleted).Count())
+                    {
+                        AllnumberCheckbox = "check_box.png";
+                    }
+                    else
+                    {
+                        AllnumberCheckbox = "check_box_empty.png";
+                    }
+                    IsLoading = false;
+                }
             }
+            catch(Exception ex) {
+                IsLoading = false;
+            }
+
         }
 
         public async void UpdatePayment(UserPayInDetails userPayInDetails)
@@ -164,29 +180,38 @@ namespace ESORR.ViewModels
 
         public async void UpdateAllpayments()
         {
-            List<UserPayInDetails> lstPayedUsers = new List<UserPayInDetails>();
-            if (UserPayInDetails != null && UserPayInDetails.Count > 0)
+            try
             {
-                lstPayedUsers = UserPayInDetails.Where(x => x.isPaymentCompleted == false).ToList();
-                if (lstPayedUsers != null && lstPayedUsers.Count > 0)
+                List<UserPayInDetails> lstPayedUsers = new List<UserPayInDetails>();
+                if (UserPayInDetails != null && UserPayInDetails.Count > 0)
                 {
-                    lstPayedUsers.Select(c => { c.isPaymentCompleted = true; return c; }).ToList();
                     IsLoading = true;
-                    bool isSuccess = await ServiceBase.SaveUserPayInDetails(lstPayedUsers);
+                    lstPayedUsers = UserPayInDetails.Where(x => x.isPaymentCompleted == false).ToList();
+                    if (lstPayedUsers != null && lstPayedUsers.Count > 0)
+                    {
+                        lstPayedUsers.Select(c => { c.isPaymentCompleted = true; return c; }).ToList();
+                        IsLoading = true;
+                        bool isSuccess = await ServiceBase.SaveUserPayInDetails(lstPayedUsers);
+                        IsLoading = false;
+                        if (isSuccess)
+                        {
+                            SendNotification(lstPayedUsers);
+                        }
+                        else
+                        {
+                            // await App.Current.MainPage.DisplayAlert("", "Something went wrong", "OK");
+                        }
+                    }
                     IsLoading = false;
-                    if (isSuccess)
-                    {
-                        SendNotification(lstPayedUsers);
-                    }
-                    else
-                    {
-                        // await App.Current.MainPage.DisplayAlert("", "Something went wrong", "OK");
-                    }
+                }
+                else
+                {
+                    IsLoading = false;
+                    await App.Current.MainPage.DisplayAlert("", "Something went wrong", "OK");
                 }
             }
-            else
-            {
-                 await App.Current.MainPage.DisplayAlert("", "Something went wrong", "OK");
+            catch(Exception ex) {
+                IsLoading = false;
             }
         }
         private void Back()
@@ -217,7 +242,7 @@ namespace ESORR.ViewModels
             }
             catch (Exception ex)
             {
-
+                IsLoading = false;
             }
         }
         #endregion

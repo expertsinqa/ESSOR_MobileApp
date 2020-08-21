@@ -113,8 +113,7 @@ namespace ESORR.Models
         }
 
        public bool IsEnabled { get; set; }
-
-
+       public DateTime? BufferPayOutDate { get; set; }
     }
 
     public class UserPaymentDetails

@@ -46,7 +46,7 @@ namespace ESORR.Views
         {
             var s = sender as Image;
             var item = s.Parent.BindingContext as UserPayInDetails;
-            if(item!=null && !item.isPaymentCompleted)
+            if(item!=null && !item.isPaymentCompleted && vm.IsAdmin)
             {
                 item.isPaymentCompleted = true;
                 vm.UpdatePayment(item);
@@ -56,17 +56,20 @@ namespace ESORR.Views
 
         private void AllUsersTaped(object sender, EventArgs e)
         {
-            var s = sender as Image;
-            var selectedImage = s.Source as FileImageSource;
+            if (vm.IsAdmin)
+            {
+                var s = sender as Image;
+                var selectedImage = s.Source as FileImageSource;
 
-            if (selectedImage.File == "check_box.png")
-            {
-                DisplayAlert("", "All payments are done", "OK");
-            }
-            else
-            {
-                var item = s.Parent.BindingContext as UserPayInDetails;
-                vm.UpdateAllpayments();
+                if (selectedImage.File == "check_box.png")
+                {
+                    DisplayAlert("", "All payments are done", "OK");
+                }
+                else
+                {
+                    var item = s.Parent.BindingContext as UserPayInDetails;
+                    vm.UpdateAllpayments();
+                }
             }
           
         }

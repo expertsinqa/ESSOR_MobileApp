@@ -41,7 +41,8 @@ namespace ESORR.ViewModels
 
         public string NextPaymentUserName { get; set; }
         public string NextPaymentDate { get; set; }
-
+        public double _listViewHeightRequest = 0;
+        public double listViewHeightRequest { get { return _listViewHeightRequest; } set { SetProperty(ref _listViewHeightRequest, value); } }
         private async void Back(object obj)
         {
             await NavigationService.GoBackAsync();
@@ -54,80 +55,99 @@ namespace ESORR.ViewModels
 
         private async void BindData()
         {
-            bool isContributionCompleted = false;
-            if (App.IsGroupAdmin)
-                IsAdmin = true;
-            else
-                IsAdmin = false;
-            IsLoading = true;
-            groupContributionDetails = new GroupContributionDetails();
-            groupContributionDetails = await ServiceBase.GetContributionDetailsByGroupNO(groupNumber);
-            if (groupContributionDetails != null)
+            try
             {
-                UserPayInDetails = await ServiceBase.GetPayInDetailByGroupNO(groupNumber, groupContributionDetails.ContributionId);
-                if (UserPayInDetails != null && UserPayInDetails.Count > 0)
-                {
-                    int userscount = UserPayInDetails.Count();
-                    int paidUsers = UserPayInDetails.Where(x => x.isPaymentCompleted).Count();
-                    if (userscount == paidUsers)
-                    {
-                        isContributionCompleted = true;
-                    }
-                    else
-                    {
-                        isContributionCompleted = false;
-                    }
-                }
-            }
-            UserPayOutDetails = await ServiceBase.GetPayOutDetailsByGroupNO(groupNumber);
-            if (UserPayOutDetails != null && UserPayOutDetails.Count > 0)
-            {
-                int Pm = UserPayOutDetails.Where(x => x.isPaymentCompleted == true).Count();
-                int UPm = UserPayOutDetails.Where(x => x.isPaymentCompleted == false).Count();
-                if (Pm < 10)
-                {
-                    PaidMembers = "0" + Pm;
-                }
+                bool isContributionCompleted = false;
+                if (App.IsGroupAdmin)
+                    IsAdmin = true;
                 else
+                    IsAdmin = false;
+
+                groupContributionDetails = new GroupContributionDetails();
+                IsLoading = true;
+                groupContributionDetails = await ServiceBase.GetContributionDetailsByGroupNO(groupNumber);
+                IsLoading = false;
+                if (groupContributionDetails != null)
                 {
-                    PaidMembers = Pm.ToString();
-                }
-                if (UPm < 10)
-                {
-                    UnPaidMembers = "0" + UPm;
-                }
-                else
-                {
-                    UnPaidMembers = UPm.ToString();
-                }
-                UserPayOutDetails.ForEach(u =>
-                {
-                    if (u != null)
+                    UserPayInDetails = await ServiceBase.GetPayInDetailByGroupNO(groupNumber, groupContributionDetails.ContributionId);
+                    if (UserPayInDetails != null && UserPayInDetails.Count > 0)
                     {
-                        if (u.ContributionId == App.contributionId && IsAdmin && isContributionCompleted)
+                        int userscount = UserPayInDetails.Count();
+                        int paidUsers = UserPayInDetails.Where(x => x.isPaymentCompleted).Count();
+                        if (userscount == paidUsers)
                         {
-                            u.IsEnabled = true;
+                            isContributionCompleted = true;
                         }
                         else
                         {
-                            u.IsEnabled = false;
+                            isContributionCompleted = false;
                         }
                     }
-                });
-                int nextpaymentContributionId = UserPayOutDetails.Where(x => x.ContributionId == App.contributionId).FirstOrDefault().ContributionId + 1;
-                if (nextpaymentContributionId > 0)
+                }
+                IsLoading = true;
+                UserPayOutDetails = await ServiceBase.GetPayOutDetailsByGroupNO(groupNumber);
+                IsLoading = false;
+                if (UserPayOutDetails != null && UserPayOutDetails.Count > 0)
                 {
-                    UserPayOutDetails userPayOut = UserPayOutDetails.Where(x => x.ContributionId == nextpaymentContributionId).FirstOrDefault();
-                    if (userPayOut != null)
+                    listViewHeightRequest = UserPayOutDetails.Count * 20;
+                    int Pm = UserPayOutDetails.Where(x => x.isPaymentCompleted == true).Count();
+                    int UPm = UserPayOutDetails.Where(x => x.isPaymentCompleted == false).Count();
+                    if (Pm < 10)
                     {
-                        NextPaymentUserName = userPayOut.UserName;
-                        NextPaymentDate = userPayOut.PayOutDate.ToString("M/d/yyyy");
-                        //NextPaymentUserName = UserPayOutDetails.Where(x => x.ContributionId == nextpaymentContributionId)?.FirstOrDefault().PayOutDate.ToString("d/M/yyyy");
-                        //NextPaymentDate = UserPayOutDetails.Where(x => x.ContributionId == nextpaymentContributionId)?.FirstOrDefault().PayOutDate.ToString("d/M/yyyy");
+                        PaidMembers = "0" + Pm;
+                    }
+                    else
+                    {
+                        PaidMembers = Pm.ToString();
+                    }
+                    if (UPm < 10)
+                    {
+                        UnPaidMembers = "0" + UPm;
+                    }
+                    else
+                    {
+                        UnPaidMembers = UPm.ToString();
+                    }
+                    UserPayOutDetails.ForEach(u =>
+                    {
+                        if (u != null)
+                        {
+                            if (u.ContributionId == App.contributionId && IsAdmin && isContributionCompleted)
+                            {
+                                u.IsEnabled = true;
+                            }
+                            else
+                            {
+                                if (u.isPaymentCompleted == false && u.BufferPayOutDate >= DateTime.Now && u.ContributionId <= App.contributionId)
+                                {
+                                    u.IsEnabled = true;
+                                }
+                                else
+                                {
+                                    u.IsEnabled = false;
+                                }
+                            }
+                        }
+                    });
+                    int nextpaymentContributionId = UserPayOutDetails.Where(x => x.ContributionId == App.contributionId).FirstOrDefault().ContributionId + 1;
+                    if (nextpaymentContributionId > 0)
+                    {
+                        UserPayOutDetails userPayOut = UserPayOutDetails.Where(x => x.ContributionId == nextpaymentContributionId).FirstOrDefault();
+                        if (userPayOut != null)
+                        {
+                            NextPaymentUserName = userPayOut.UserName;
+                            NextPaymentDate = userPayOut.PayOutDate.ToString("M/d/yyyy");
+                            //NextPaymentUserName = UserPayOutDetails.Where(x => x.ContributionId == nextpaymentContributionId)?.FirstOrDefault().PayOutDate.ToString("d/M/yyyy");
+                            //NextPaymentDate = UserPayOutDetails.Where(x => x.ContributionId == nextpaymentContributionId)?.FirstOrDefault().PayOutDate.ToString("d/M/yyyy");
+                        }
                     }
                 }
             }
-            IsLoading = false;
+            catch(Exception ex)
+            {
+                IsLoading = false;
+            }
+          
         }
 
         public async void UpdatePayment(UserPayOutDetails userPayOutDetails)
@@ -168,7 +188,7 @@ namespace ESORR.ViewModels
                         if (UserPayInDetails != null)
                         {
                             emailNotificatinDetailsDto.NotificationId = PaymentnotificationDto.Id;
-                            emailNotificatinDetailsDto.UserId = UserPayInDetails.Id;
+                            emailNotificatinDetailsDto.UserId = UserPayInDetails.UserId;
                             emailNotificatinDetailsDto.UserMail = UserPayInDetails.UserMail;
                             emailNotificatinDetailsDto.mailSubject = PaymentnotificationDto.Tittle;
                             if (PaymentnotificationDto.Message != null)
