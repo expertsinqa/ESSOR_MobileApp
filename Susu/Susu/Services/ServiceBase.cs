@@ -520,16 +520,16 @@ namespace Susu.Services
             return swapUserDetails;
         }
 
-        public async Task<APPVersionDetails> GetAppVesrion()
+        public async Task<List<APPVersionDetails>> GetAppVesrion()
         {
-            APPVersionDetails appVersionDetails = null;
+            List<APPVersionDetails> appVersionDetails = null;
             try
             {
                 string url = baseUrl + "user/getappversiondetails";
                 var res = await _client.GetStringAsync(url).ConfigureAwait(false);
                 if (res != null)
                 {
-                    appVersionDetails = JsonConvert.DeserializeObject<APPVersionDetails>(res);
+                    appVersionDetails = JsonConvert.DeserializeObject<List<APPVersionDetails>>(res);
                 }
                 return appVersionDetails;
             }

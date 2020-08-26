@@ -57,7 +57,7 @@ namespace Susu.ViewModels
         public Color _ForgotPasswordEmailPlaceholderColor = Color.Gray;
         public Color ForgotPasswordEmailPlaceholderColor { get { return _ForgotPasswordEmailPlaceholderColor; } set { SetProperty(ref _ForgotPasswordEmailPlaceholderColor, value); } }
 
-        public ICommand UpdateAppClicked {get { return new Command(AppUpdate); } }
+        public ICommand UpdateAppClicked { get { return new Command(AppUpdate); } }
         public ICommand CancelAppClicked { get { return new Command(Cancel); } }
 
         public bool _IsAppUpdateVisible = false;
@@ -73,10 +73,7 @@ namespace Susu.ViewModels
         public LoginPageViewModel(INavigationService navigationService) : base(navigationService)
         {
             SignUpClicked = new Command(SignUp);
-            Task.Run(async () =>
-            {
-                await GetAppVersionDetails();
-            });
+            GetAppVersionDetails();
             
         }
         #endregion
@@ -87,45 +84,85 @@ namespace Susu.ViewModels
             await NavigationService.NavigateAsync("SignUpPage");
         }
 
-        public  async Task<APPVersionDetails> GetAppVersionDetails()
+        public  async void  GetAppVersionDetails()
         {
-            APPVersionDetails appVersionDetails= new APPVersionDetails();
-            try {
+            List<APPVersionDetails> appVersionDetails = new List<APPVersionDetails>();
+            try
+            {
                 IsLoading = true;
                 appVersionDetails = await ServiceBase.GetAppVesrion();
-                if (appVersionDetails != null && appVersionDetails.VersionNUmber>0)
+                if (appVersionDetails != null && appVersionDetails.Count > 0)
                 {
                     var currentVersion = VersionTracking.CurrentVersion;
                     if (!string.IsNullOrEmpty(currentVersion))
                     {
                         float version = float.Parse(currentVersion);
-                        if (version < appVersionDetails.VersionNUmber) 
+                        
+                        
+
+                        if(Device.RuntimePlatform == Device.Android)
                         {
-                            if (Device.RuntimePlatform == Device.Android)
+                            double androidVersion = 0;
+                            if (appVersionDetails[0]!=null && !string.IsNullOrEmpty(appVersionDetails[0].VersionNUmber.ToString()))
+                            {
+                                androidVersion = double.Parse(appVersionDetails[0].VersionNUmber.ToString());
+                            }
+                            if (version < androidVersion)
                             {
                                 AppUpdateText = "An updated version of app is available.";
                                 IsAppUpdateVisible = true;
                             }
                             else
                             {
-                                //AppUpdateText = "An updated version of app is available.";
-                                //IsAppUpdateVisible = true;
+                                IsAppUpdateVisible = false;
                             }
-                            //IsAppUpdateVisible = true;
                         }
                         else
                         {
-                            IsAppUpdateVisible = false;
+                            double iosVersion = 0;
+                            if (appVersionDetails[1] != null && !string.IsNullOrEmpty(appVersionDetails[1].VersionNUmber.ToString()))
+                                 iosVersion = double.Parse(appVersionDetails[0].VersionNUmber.ToString());
+                            if (version < iosVersion)
+                            {
+                                AppUpdateText = "An updated version of app is available.";
+                                IsAppUpdateVisible = true;
+                            }
+                            else
+                            {
+                                IsAppUpdateVisible = false;
+                            }
                         }
+                        //if (version < appVersionDetails[0].VersionNUmber)
+                        //{
+                        //    if (Device.RuntimePlatform == Device.Android)
+                        //    {
+                        //        AppUpdateText = "An updated version of app is available.";
+                        //        IsAppUpdateVisible = true;
+                        //    }
+                        //    else
+                        //    {
+                        //        //AppUpdateText = "An updated version of app is available.";
+                        //        //IsAppUpdateVisible = true;
+                        //    }
+                        //    //IsAppUpdateVisible = true;
+                        //}
+                        //else
+                        //{
+                        //    IsAppUpdateVisible = false;
+                        //}
                     }
                     IsLoading = false;
                 }
+                else
+                {
+                    IsLoading = false;
+                }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 IsLoading = false;
             }
-            return appVersionDetails;
+           
         }
         public async void Login()
         {
@@ -173,7 +210,7 @@ namespace Susu.ViewModels
                         else
                             App.Current.Properties["IsAggrementAccepted"] = false;
 
-                        if(userDto.ProofFilePath!=null)
+                        if (userDto.ProofFilePath != null)
                             App.Current.Properties["IsProfileUpdated"] = true;
                         else
                             App.Current.Properties["IsProfileUpdated"] = false;
@@ -181,7 +218,7 @@ namespace Susu.ViewModels
                         if (RoledId == (int)Roles.groupadmin)
                         {
                             App.IsGroupAdmin = true;
-                            App.Current.Properties["GroupAdmin"] = true ;
+                            App.Current.Properties["GroupAdmin"] = true;
                         }
                         await App.Current.SavePropertiesAsync();
                         if (!userDto.IsAcceptAggrement)

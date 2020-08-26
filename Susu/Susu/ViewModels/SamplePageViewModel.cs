@@ -886,7 +886,7 @@ namespace Susu.ViewModels
                 {
                     UserDto userDto = await ServiceBase.GetUserById(userPayoutDetail.UserId);
                     if (!string.IsNullOrEmpty(userDto.ZelleId))
-                        ZeeleText = "Please pay the contributed amount for the month of " + userPayoutDetail.ContributionDateString.ToString() + "the user" + userPayoutDetail.UserName + "using Zelle ID is " + userDto.ZelleId;
+                        ZeeleText = "Please pay the contributed amount for the month of " + userPayoutDetail.ContributionDateString.ToString() + " the user " + userPayoutDetail.UserName + " using Zelle ID is " + userDto.ZelleId;
                     else
                         ZeeleText = "Oops, the user "+userPayoutDetail.UserName +" is not provided their Zelle ID, Please ask them to upload Zell ID under their user information.";
                 }

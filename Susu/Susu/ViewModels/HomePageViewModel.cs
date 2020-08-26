@@ -35,45 +35,77 @@ namespace ESORR.ViewModels
         public HomePageViewModel(INavigationService navigationService): base(navigationService)
         {
             NavigationService = navigationService;
-            Task.Run(async () =>
-            {
-                await GetAppVersionDetails();
-            });
+            GetAppVersionDetails();
         }
         #endregion
         #region Functions
 
-        public async Task<APPVersionDetails> GetAppVersionDetails()
+        public async void GetAppVersionDetails()
         {
-            APPVersionDetails appVersionDetails = new APPVersionDetails();
+            List<APPVersionDetails> appVersionDetails = new List<APPVersionDetails>();
             try
             {
                 IsLoading = true;
                 appVersionDetails = await ServiceBase.GetAppVesrion();
-                if (appVersionDetails != null && appVersionDetails.VersionNUmber > 0)
+                if (appVersionDetails != null && appVersionDetails.Count > 0)
                 {
                     var currentVersion = VersionTracking.CurrentVersion;
                     if (!string.IsNullOrEmpty(currentVersion))
                     {
                         float version = float.Parse(currentVersion);
-                        if (version < appVersionDetails.VersionNUmber)
+
+
+
+                        if (Device.RuntimePlatform == Device.Android)
                         {
-                            if (Device.RuntimePlatform == Device.Android)
+                            double androidVersion = 0;
+                            if (appVersionDetails[0] != null && !string.IsNullOrEmpty(appVersionDetails[0].VersionNUmber.ToString()))
+                            {
+                                androidVersion = double.Parse(appVersionDetails[0].VersionNUmber.ToString());
+                            }
+                            if (version < androidVersion)
                             {
                                 AppUpdateText = "An updated version of app is available.";
                                 IsAppUpdateVisible = true;
                             }
                             else
                             {
-                                //AppUpdateText = "An updated version of app is available.";
-                                //IsAppUpdateVisible = true;
+                                IsAppUpdateVisible = false;
                             }
-                            //IsAppUpdateVisible = true;
                         }
                         else
                         {
-                            IsAppUpdateVisible = false;
+                            double iosVersion = 0;
+                            if (appVersionDetails[1] != null && !string.IsNullOrEmpty(appVersionDetails[1].VersionNUmber.ToString()))
+                                iosVersion = double.Parse(appVersionDetails[0].VersionNUmber.ToString());
+                            if (version < iosVersion)
+                            {
+                                AppUpdateText = "An updated version of app is available.";
+                                IsAppUpdateVisible = true;
+                            }
+                            else
+                            {
+                                IsAppUpdateVisible = false;
+                            }
                         }
+                        //if (version < appVersionDetails[0].VersionNUmber)
+                        //{
+                        //    if (Device.RuntimePlatform == Device.Android)
+                        //    {
+                        //        AppUpdateText = "An updated version of app is available.";
+                        //        IsAppUpdateVisible = true;
+                        //    }
+                        //    else
+                        //    {
+                        //        //AppUpdateText = "An updated version of app is available.";
+                        //        //IsAppUpdateVisible = true;
+                        //    }
+                        //    //IsAppUpdateVisible = true;
+                        //}
+                        //else
+                        //{
+                        //    IsAppUpdateVisible = false;
+                        //}
                     }
                     IsLoading = false;
                 }
@@ -82,7 +114,7 @@ namespace ESORR.ViewModels
             {
                 IsLoading = false;
             }
-            return appVersionDetails;
+
         }
         private void GroupInfo()
         {

@@ -36,12 +36,12 @@ namespace Susu.Droid.CustomRenderer
                     nativeEditText.SetBackground(gd);
                     //nativeEditText.Background = Resources.GetDrawable("EntryBorderColor");
                 }
-                if (Control != null)
-                {
-                    Control.ImeOptions = Android.Views.InputMethods.ImeAction.Done;
-                    Control.InputType = Android.Text.InputTypes.ClassText | Android.Text.InputTypes.TextVariationVisiblePassword | Android.Text.InputTypes.TextFlagMultiLine;
-                    Control.SetTypeface(Typeface.Default, TypefaceStyle.Normal);
-                }
+                //if (Control != null)
+                //{
+                //    Control.ImeOptions = Android.Views.InputMethods.ImeAction.Done;
+                //    Control.InputType = Android.Text.InputTypes.ClassText | Android.Text.InputTypes.TextVariationVisiblePassword | Android.Text.InputTypes.TextFlagMultiLine;
+                //    Control.SetTypeface(Typeface.Default, TypefaceStyle.Normal);
+                //}
             }
             catch (Exception ex)
             {
