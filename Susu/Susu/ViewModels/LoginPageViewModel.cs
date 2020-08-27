@@ -97,15 +97,12 @@ namespace Susu.ViewModels
                     if (!string.IsNullOrEmpty(currentVersion))
                     {
                         float version = float.Parse(currentVersion);
-                        
-                        
-
                         if(Device.RuntimePlatform == Device.Android)
                         {
                             double androidVersion = 0;
-                            if (appVersionDetails[0]!=null && !string.IsNullOrEmpty(appVersionDetails[0].VersionNUmber.ToString()))
+                            if (appVersionDetails[1]!=null && !string.IsNullOrEmpty(appVersionDetails[1].VersionNUmber.ToString()))
                             {
-                                androidVersion = double.Parse(appVersionDetails[0].VersionNUmber.ToString());
+                                androidVersion = double.Parse(appVersionDetails[1].VersionNUmber.ToString());
                             }
                             if (version < androidVersion)
                             {
@@ -120,7 +117,7 @@ namespace Susu.ViewModels
                         else
                         {
                             double iosVersion = 0;
-                            if (appVersionDetails[1] != null && !string.IsNullOrEmpty(appVersionDetails[1].VersionNUmber.ToString()))
+                            if (appVersionDetails[0] != null && !string.IsNullOrEmpty(appVersionDetails[0].VersionNUmber.ToString()))
                                  iosVersion = double.Parse(appVersionDetails[0].VersionNUmber.ToString());
                             if (version < iosVersion)
                             {
@@ -305,8 +302,8 @@ namespace Susu.ViewModels
             }
             else
             {
-                //Uri uri = new Uri("https://play.google.com/store/apps/details?id=com.esorr.esorrApp&hl=en_IN");
-                //await Browser.OpenAsync(uri, BrowserLaunchMode.SystemPreferred);
+                Uri uri = new Uri("https://apps.apple.com/us/app/id1523820384");
+                await Browser.OpenAsync(uri, BrowserLaunchMode.SystemPreferred);
                 IsAppUpdateVisible = false;
             }
         }
