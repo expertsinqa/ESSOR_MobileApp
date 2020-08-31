@@ -1,5 +1,6 @@
 ﻿using ESORR.Models;
 using ESORR.ViewModels;
+using Susu;
 using System;
 
 using Xamarin.Forms;
@@ -42,19 +43,27 @@ namespace ESORR.Views
 
         }
 
-        private void TapedSpecificUser(object sender, EventArgs e)
+        private async void TapedSpecificUser(object sender, EventArgs e)
         {
             var s = sender as Image;
             var item = s.Parent.BindingContext as UserPayInDetails;
             if(item!=null && !item.isPaymentCompleted && vm.IsAdmin)
             {
-                item.isPaymentCompleted = true;
-                vm.UpdatePayment(item);
+                if (await DisplayAlert("", "Are you sure the user "+item.UserName +" have contributed", "OK", "Cancel"))
+                {
+                    item.isPaymentCompleted = true;
+                    vm.UpdatePayment(item);
+                }
+                else
+                {
+
+                }
+               
             }
           
         }
 
-        private void AllUsersTaped(object sender, EventArgs e)
+        private async void AllUsersTaped(object sender, EventArgs e)
         {
             if (vm.IsAdmin)
             {
@@ -63,12 +72,20 @@ namespace ESORR.Views
 
                 if (selectedImage.File == "check_box.png")
                 {
-                    DisplayAlert("", "All payments are done", "OK");
+                   await DisplayAlert("", "All payments are done", "OK");
                 }
                 else
                 {
                     var item = s.Parent.BindingContext as UserPayInDetails;
-                    vm.UpdateAllpayments();
+                    if(await DisplayAlert("","Are you sure everyone in the group have contributed","OK","Cancel"))
+                    {
+                        vm.UpdateAllpayments();
+                    }
+                    else
+                    {
+
+                    }
+                    
                 }
             }
           

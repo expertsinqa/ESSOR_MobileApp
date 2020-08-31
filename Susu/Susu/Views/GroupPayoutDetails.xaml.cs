@@ -39,14 +39,22 @@ namespace ESORR.Views
             //    }
             }
 
-        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
             var s = sender as Image;
             var item = s.Parent.BindingContext as UserPayOutDetails;
             if (item != null && !item.isPaymentCompleted && item.IsEnabled && vm.IsAdmin)
             {
-                item.isPaymentCompleted = true;
-                vm.UpdatePayment(item);
+                if (await DisplayAlert("", "Are you sure to payout to the user "+item.UserName, "OK", "Cancel"))
+                {
+                    item.isPaymentCompleted = true;
+                    vm.UpdatePayment(item);
+                }
+                else
+                {
+
+                }
+                
             }
         }
 

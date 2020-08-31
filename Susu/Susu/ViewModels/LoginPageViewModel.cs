@@ -96,13 +96,13 @@ namespace Susu.ViewModels
                     var currentVersion = VersionTracking.CurrentVersion;
                     if (!string.IsNullOrEmpty(currentVersion))
                     {
-                        float version = float.Parse(currentVersion);
+                        double version = double.Parse(currentVersion);
                         if(Device.RuntimePlatform == Device.Android)
                         {
                             double androidVersion = 0;
-                            if (appVersionDetails[1]!=null && !string.IsNullOrEmpty(appVersionDetails[1].VersionNUmber.ToString()))
+                            if (appVersionDetails[0]!=null && !string.IsNullOrEmpty(appVersionDetails[0].VersionNUmber.ToString()))
                             {
-                                androidVersion = double.Parse(appVersionDetails[1].VersionNUmber.ToString());
+                                androidVersion = appVersionDetails[0].VersionNUmber;
                             }
                             if (version < androidVersion)
                             {
@@ -117,8 +117,8 @@ namespace Susu.ViewModels
                         else
                         {
                             double iosVersion = 0;
-                            if (appVersionDetails[0] != null && !string.IsNullOrEmpty(appVersionDetails[0].VersionNUmber.ToString()))
-                                 iosVersion = double.Parse(appVersionDetails[0].VersionNUmber.ToString());
+                            if (appVersionDetails[1] != null && !string.IsNullOrEmpty(appVersionDetails[1].VersionNUmber.ToString()))
+                                 iosVersion = appVersionDetails[1].VersionNUmber;
                             if (version < iosVersion)
                             {
                                 AppUpdateText = "An updated version of app is available.";
@@ -164,7 +164,7 @@ namespace Susu.ViewModels
         public async void Login()
         {
             UserDto userDto = null;
-            if (string.IsNullOrEmpty(Email))
+            if (string.IsNullOrEmpty(Email) && Email.Trim().Length < 0)
             {
                 EmailPlaceholder = Color.Red;
                 return;
@@ -268,7 +268,7 @@ namespace Susu.ViewModels
         }
         private async void SubmitForgetPassword()
         {
-            if (!string.IsNullOrEmpty(UserMail) && !IsLoading)
+            if (!string.IsNullOrWhiteSpace(UserMail) && !IsLoading)
             {
                 IsLoading = true;
                 bool result = await ServiceBase.ForgotPassword(UserMail);
@@ -287,7 +287,7 @@ namespace Susu.ViewModels
             }
             else
             {
-                IsLoading = true;
+                IsLoading = false;
                 ForgotPasswordEmailPlaceholderColor = Color.Red;
             }
         }

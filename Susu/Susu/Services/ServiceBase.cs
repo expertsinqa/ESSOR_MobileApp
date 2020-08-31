@@ -525,7 +525,7 @@ namespace Susu.Services
             List<APPVersionDetails> appVersionDetails = null;
             try
             {
-                string url = baseUrl + "user/getappversiondetails";
+                string url = baseUrl + "user/GetLstAppVersionDetails";
                 var res = await _client.GetStringAsync(url).ConfigureAwait(false);
                 if (res != null)
                 {
