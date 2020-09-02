@@ -10,58 +10,92 @@
              x:Class="Susu.Views.CreateGroupPage">
     <ContentPage.Content>
         <AbsoluteLayout>
-            <Image Source="backgroundImage.PNG"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Aspect="AspectFill"   AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" Opacity="0.5" />            
+            <Image Source="backgroundImage.PNG"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Aspect="AspectFill"   AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" Opacity="0.5" />
             <Grid VerticalOptions="FillAndExpand" HorizontalOptions="Fill" BackgroundColor="Transparent" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="20*"/>
                     <RowDefinition Height="80*"/>
                 </Grid.RowDefinitions>
                 <Image Grid.Row="0" Source="Esorr_logo.png" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit" WidthRequest="150" HeightRequest="150" Margin="0,5,0,0"/>
-                <StackLayout Grid.Row="1">
-                <Label Text="Create Group" FontSize="20" FontAttributes="Bold" TextColor="#083b66" VerticalOptions="Center" HorizontalOptions="Center" FontFamily="{StaticResource NormalFont}"/>
-                <StackLayout Margin="10,10,10,10">
-                    <custom:CustomEntry Text="{Binding GroupName}" Placeholder="GroupName*" PlaceholderColor="{Binding Groupnameplaceholder}"  HeightRequest="{OnPlatform iOS='50'}" VerticalOptions="Fill" HorizontalOptions="Fill" FontFamily="{StaticResource NormalFont}"/>
-                    <custom:CustomEntry Text="{Binding Amount}" Placeholder="Amount($)*" PlaceholderColor="{Binding AmountPlaceholder}" HeightRequest="{OnPlatform iOS='50'}" VerticalOptions="Fill" HorizontalOptions="Fill" FontFamily="{StaticResource NormalFont}" />
-                    <Frame CornerRadius="{OnPlatform Android='10'}" BorderColor="#083b66" Padding="0,0,0,0" IsClippedToBounds="True" HasShadow="False">
-                        <custom:CustomPicker Placeholder="Select Contribution Peroid*" Title="Contribution Period" HeightRequest="{OnPlatform iOS='50'}" ItemsSource="{Binding ContributionPeriod}" SelectedItem="{Binding selectedPeriod}" SelectedIndexChanged="CustomPicker_SelectedIndexChanged" VerticalOptions="Fill" HorizontalOptions="Fill" FontFamily="{StaticResource NormalFont}"/>
-                    </Frame>
-                    <Frame CornerRadius="{OnPlatform Android='10'}" BorderColor="#083b66" Padding="0,0,0,0" IsClippedToBounds="True" HasShadow="False" IsVisible="{Binding IsContributionDayVisible}">
-                            <custom:CustomPicker Placeholder="Select Contribution day*"  Title="Contribution Day" HeightRequest="{OnPlatform iOS='50'}" ItemsSource="{Binding DaysList}" SelectedItem="{Binding selectedContributionDay}" VerticalOptions="Fill" HorizontalOptions="Fill" FontFamily="{StaticResource NormalFont}"/>
-                    </Frame>
-                    <Frame CornerRadius="{OnPlatform Android='10'}" BorderColor="#083b66"  Padding="0,0,0,0" IsClippedToBounds="True" HasShadow="False" IsVisible="{Binding IsContributionDateVisible}">
-                            <custom:CustomDatePicker x:Name="grpContributiondate" PlaceHolder="Select Contribution Date*" NullableDate="{Binding SelectedDate}" DateSelected="CustomDatePicker_DateSelected"  Image="date_icon.png" HeightRequest="{OnPlatform iOS='50'}"  VerticalOptions="Fill" HorizontalOptions="Fill" FontFamily="{StaticResource NormalFont}"/>
-                    </Frame>
-                        <Frame CornerRadius="{OnPlatform Android='10'}" BorderColor="#083b66"  Padding="0,0,0,0" IsClippedToBounds="True" HasShadow="False" IsVisible="{Binding IsGroupStartDateVisible}">
-                            <custom:CustomDatePicker x:Name="grpStartdate" PlaceHolder="Select Group Start Date*" NullableDate="{Binding GroupStartDate}" DateSelected="GroupSartdate"  Image="date_icon.png" HeightRequest="{OnPlatform iOS='50'}"  VerticalOptions="Fill" HorizontalOptions="Fill" FontFamily="{StaticResource NormalFont}"/>
-                        </Frame>
-                        <Frame CornerRadius="{OnPlatform Android='10'}" BorderColor="#083b66"  Padding="0,0,0,0" IsClippedToBounds="True" HasShadow="False" IsVisible="{Binding IsPayoutDateVisible}">
-                            <custom:CustomDatePicker PlaceHolder="Select Payout Date*" DateSelected="PayoutDate" NullableDate="{Binding payoutDate}"  Image="date_icon.png" HeightRequest="{OnPlatform iOS='50'}"  VerticalOptions="Fill" HorizontalOptions="Fill" FontFamily="{StaticResource NormalFont}"/>
-                        </Frame>
-                        <Frame CornerRadius="{OnPlatform Android='10'}" BorderColor="#083b66"  Padding="0,0,0,0" IsClippedToBounds="True" HasShadow="False" IsVisible="{Binding IsPayoutDayVisible}">
-                            <custom:CustomPicker Placeholder="Select Payout day*"  Title="Payout Day" HeightRequest="{OnPlatform iOS='50'}" ItemsSource="{Binding DaysList}" SelectedItem="{Binding selectedPayoutDay}" VerticalOptions="Fill" HorizontalOptions="Fill" FontFamily="{StaticResource NormalFont}"/>
-                        </Frame>
-                        <Label Text="Click here to add customrules for group" VerticalOptions="Start" HorizontalOptions="Start" TextDecorations="Underline" FontFamily="{StaticResource NormalFont}" FontSize="15">
-                            <Label.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding CustomRolesClicked}"/>
-                            </Label.GestureRecognizers>
-                        </Label>
-                    <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,10,0,0">
-                        <Frame VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="#083b66"  CornerRadius="{OnPlatform Android='60',iOS='25'  }" WidthRequest="200" Margin="0,10,0,0" Padding="15" HasShadow="False">
-                            <Frame.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding BackClicked}"/>
-                            </Frame.GestureRecognizers>
-                            <Label Text="BACK" TextColor="White"  VerticalOptions="Center" HorizontalOptions="Center" FontFamily="{StaticResource NormalFont}"/>
-                        </Frame>
-                        <Frame VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="#083b66"  CornerRadius="{OnPlatform Android='60',iOS='25'}" WidthRequest="200" Margin="0,10,0,0" Padding="15" HasShadow="False">
-                            <Frame.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding CreateGroupClicked}"/>
-                            </Frame.GestureRecognizers>
-                            <Label Text="CREATE GROUP" TextColor="White"  VerticalOptions="Center" HorizontalOptions="Center" FontFamily="{StaticResource NormalFont}"/>
-                        </Frame>
+                <ScrollView Grid.Row="1">
+                    <StackLayout Grid.Row="1">
+                        <Label Text="Create Group" FontSize="20" FontAttributes="Bold" TextColor="#083b66" VerticalOptions="Center" HorizontalOptions="Center" FontFamily="{StaticResource NormalFont}"/>
+                        <StackLayout Margin="10,10,10,10">
+                            <StackLayout Orientation="Horizontal" Spacing="0">
+                                <Label Text="Group Name " VerticalOptions="Start" TextColor="{Binding Groupnameplaceholder}" FontFamily="{StaticResource NormalFont}"/>
+                                <Label Text="*" VerticalOptions="Start" TextColor="Red" FontFamily="{StaticResource NormalFont}"/>
+                            </StackLayout>
+                            <custom:CustomEntry Text="{Binding GroupName}"  HeightRequest="{OnPlatform iOS='50'}" VerticalOptions="Fill" HorizontalOptions="Fill" FontFamily="{StaticResource NormalFont}"/>
+                            <StackLayout Orientation="Horizontal" Spacing="0">
+                                <Label Text="Amount($) " VerticalOptions="Start" TextColor="{Binding AmountPlaceholder}" FontFamily="{StaticResource NormalFont}"/>
+                                <Label Text="*" VerticalOptions="Start" TextColor="Red" FontFamily="{StaticResource NormalFont}"/>
+                            </StackLayout>
+                            <custom:CustomEntry Text="{Binding Amount}" HeightRequest="{OnPlatform iOS='50'}" Keyboard="Numeric" VerticalOptions="Fill" HorizontalOptions="Fill" FontFamily="{StaticResource NormalFont}" TextChanged="CustomEntry_TextChanged"/>
+                            <StackLayout Orientation="Horizontal" Spacing="0">
+                                <Label Text="Select Contribution Peroid " VerticalOptions="Start" TextColor="Black" FontFamily="{StaticResource NormalFont}"/>
+                                <Label Text="*" VerticalOptions="Start" TextColor="Red" FontFamily="{StaticResource NormalFont}"/>
+                            </StackLayout>
+                            <Frame CornerRadius="{OnPlatform Android='10'}" BorderColor="#083b66" Padding="0,0,0,0" IsClippedToBounds="True" HasShadow="False">
+                                <custom:CustomPicker  HeightRequest="{OnPlatform iOS='50'}" ItemsSource="{Binding ContributionPeriod}" SelectedItem="{Binding selectedPeriod}" SelectedIndexChanged="CustomPicker_SelectedIndexChanged" VerticalOptions="Fill" HorizontalOptions="Fill" FontFamily="{StaticResource NormalFont}"/>
+                            </Frame>
+                            <StackLayout Orientation="Horizontal" Spacing="0" IsVisible="{Binding IsContributionDayVisible}">
+                                <Label Text="Select Contribution day " VerticalOptions="Start" TextColor="Black" FontFamily="{StaticResource NormalFont}"/>
+                                <Label Text="*" VerticalOptions="Start" TextColor="Red" FontFamily="{StaticResource NormalFont}"/>
+                            </StackLayout>
+                            <Frame CornerRadius="{OnPlatform Android='10'}" BorderColor="#083b66" Padding="0,0,0,0" IsClippedToBounds="True" HasShadow="False" IsVisible="{Binding IsContributionDayVisible}">
+                                <custom:CustomPicker    HeightRequest="{OnPlatform iOS='50'}" ItemsSource="{Binding DaysList}" SelectedItem="{Binding selectedContributionDay}" VerticalOptions="Fill" HorizontalOptions="Fill" FontFamily="{StaticResource NormalFont}"/>
+                            </Frame>
+                            <StackLayout Orientation="Horizontal" Spacing="0" IsVisible="{Binding IsContributionDateVisible}">
+                                <Label Text="Select Contribution Date " VerticalOptions="Start" TextColor="Black" FontFamily="{StaticResource NormalFont}"/>
+                                <Label Text="*" VerticalOptions="Start" TextColor="Red" FontFamily="{StaticResource NormalFont}"/>
+                            </StackLayout>
+                            <Frame CornerRadius="{OnPlatform Android='10'}" BorderColor="#083b66"  Padding="0,0,0,0" IsClippedToBounds="True" HasShadow="False" IsVisible="{Binding IsContributionDateVisible}">
+                                <custom:CustomDatePicker x:Name="grpContributiondate"  NullableDate="{Binding SelectedDate}" DateSelected="CustomDatePicker_DateSelected"  Image="date_icon.png" HeightRequest="{OnPlatform iOS='50'}"  VerticalOptions="Fill" HorizontalOptions="Fill" FontFamily="{StaticResource NormalFont}"/>
+                            </Frame>
+                            <StackLayout Orientation="Horizontal" Spacing="0" IsVisible="{Binding IsGroupStartDateVisible}">
+                                <Label Text="Select Group Start Date " VerticalOptions="Start" TextColor="Black" FontFamily="{StaticResource NormalFont}"/>
+                                <Label Text="*" VerticalOptions="Start" TextColor="Red" FontFamily="{StaticResource NormalFont}"/>
+                            </StackLayout>
+                            <Frame CornerRadius="{OnPlatform Android='10'}" BorderColor="#083b66"  Padding="0,0,0,0" IsClippedToBounds="True" HasShadow="False" IsVisible="{Binding IsGroupStartDateVisible}">
+                                <custom:CustomDatePicker x:Name="grpStartdate"  NullableDate="{Binding GroupStartDate}" DateSelected="GroupSartdate"  Image="date_icon.png" HeightRequest="{OnPlatform iOS='50'}"  VerticalOptions="Fill" HorizontalOptions="Fill" FontFamily="{StaticResource NormalFont}"/>
+                            </Frame>
+                            <StackLayout Orientation="Horizontal" Spacing="0" IsVisible="{Binding IsPayoutDateVisible}">
+                                <Label Text="Select Payout Date " VerticalOptions="Start" TextColor="Black" FontFamily="{StaticResource NormalFont}"/>
+                                <Label Text="*" VerticalOptions="Start" TextColor="Red" FontFamily="{StaticResource NormalFont}"/>
+                            </StackLayout>
+                            <Frame CornerRadius="{OnPlatform Android='10'}" BorderColor="#083b66"  Padding="0,0,0,0" IsClippedToBounds="True" HasShadow="False" IsVisible="{Binding IsPayoutDateVisible}">
+                                <custom:CustomDatePicker  DateSelected="PayoutDate" NullableDate="{Binding payoutDate}"  Image="date_icon.png" HeightRequest="{OnPlatform iOS='50'}"  VerticalOptions="Fill" HorizontalOptions="Fill" FontFamily="{StaticResource NormalFont}"/>
+                            </Frame>
+                            <StackLayout Orientation="Horizontal" Spacing="0" IsVisible="{Binding IsPayoutDayVisible}">
+                                <Label Text="Select Payout day " VerticalOptions="Start" TextColor="Black" FontFamily="{StaticResource NormalFont}"/>
+                                <Label Text="*" VerticalOptions="Start" TextColor="Red" FontFamily="{StaticResource NormalFont}"/>
+                            </StackLayout>
+                            <Frame CornerRadius="{OnPlatform Android='10'}" BorderColor="#083b66"  Padding="0,0,0,0" IsClippedToBounds="True" HasShadow="False" IsVisible="{Binding IsPayoutDayVisible}">
+                                <custom:CustomPicker  HeightRequest="{OnPlatform iOS='50'}" ItemsSource="{Binding DaysList}" SelectedItem="{Binding selectedPayoutDay}" VerticalOptions="Fill" HorizontalOptions="Fill" FontFamily="{StaticResource NormalFont}"/>
+                            </Frame>
+                            <Label Text="Click here to add customrules for group" VerticalOptions="Start" HorizontalOptions="Start" TextDecorations="Underline" FontFamily="{StaticResource NormalFont}" FontSize="15">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding CustomRolesClicked}"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+                            <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,10,0,0">
+                                <Frame VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="#083b66"  CornerRadius="{OnPlatform Android='60',iOS='25'  }" WidthRequest="200" Margin="0,10,0,0" Padding="15" HasShadow="False">
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding BackClicked}"/>
+                                    </Frame.GestureRecognizers>
+                                    <Label Text="BACK" TextColor="White"  VerticalOptions="Center" HorizontalOptions="Center" FontFamily="{StaticResource NormalFont}"/>
+                                </Frame>
+                                <Frame VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="#083b66"  CornerRadius="{OnPlatform Android='60',iOS='25'}" WidthRequest="200" Margin="0,10,0,0" Padding="15" HasShadow="False">
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding CreateGroupClicked}"/>
+                                    </Frame.GestureRecognizers>
+                                    <Label Text="CREATE GROUP" TextColor="White"  VerticalOptions="Center" HorizontalOptions="Center" FontFamily="{StaticResource NormalFont}"/>
+                                </Frame>
+                            </StackLayout>
+                            <!--<DatePicker Date="{Binding SelectedDate}" VerticalOptions="Fill" HorizontalOptions="Fill"/>-->
+                        </StackLayout>
                     </StackLayout>
-                    <!--<DatePicker Date="{Binding SelectedDate}" VerticalOptions="Fill" HorizontalOptions="Fill"/>-->
-                </StackLayout>
-                </StackLayout>
+                </ScrollView>
             </Grid>
             <ContentView x:Name="popupLoginView" BackgroundColor="#C0808080"  Padding="10,10,10,10" IsVisible="{Binding IsCustomRulesVisible}" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
                 <StackLayout  HorizontalOptions="Center" BackgroundColor="Black" VerticalOptions="Center" Spacing="0" Padding="5,5,5,5">
@@ -83,27 +117,27 @@
                                 </Editor>
                             </StackLayout>
                             <ScrollView Grid.Row="1">
-                            <StackLayout Grid.Row="1" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,0,0,0">
-                                <Frame VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="#083b66"  CornerRadius="{OnPlatform Android='60',iOS='25'}" WidthRequest="200" Margin="0,10,0,0" Padding="15" HasShadow="False">
-                                    <Frame.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding CloseClicked}"/>
-                                    </Frame.GestureRecognizers>
-                                    <Label Text="CLOSE" TextColor="White"  VerticalOptions="Center" HorizontalOptions="Center" FontFamily="{StaticResource NormalFont}"/>
-                                </Frame>
-                                <Frame VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="#083b66"  CornerRadius="{OnPlatform Android='60',iOS='25'}" WidthRequest="200" Margin="0,10,0,0" Padding="15" HasShadow="False">
-                                    <Frame.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding CreateRulesClicked}"/>
-                                    </Frame.GestureRecognizers>
-                                    <Label Text="CREAT RULES" TextColor="White"  VerticalOptions="Center" HorizontalOptions="Center" FontFamily="{StaticResource NormalFont}"/>
-                                </Frame>
-                            </StackLayout>
+                                <StackLayout Grid.Row="1" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,0,0,0">
+                                    <Frame VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="#083b66"  CornerRadius="{OnPlatform Android='60',iOS='25'}" WidthRequest="200" Margin="0,10,0,0" Padding="15" HasShadow="False">
+                                        <Frame.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding CloseClicked}"/>
+                                        </Frame.GestureRecognizers>
+                                        <Label Text="CLOSE" TextColor="White"  VerticalOptions="Center" HorizontalOptions="Center" FontFamily="{StaticResource NormalFont}"/>
+                                    </Frame>
+                                    <Frame VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="#083b66"  CornerRadius="{OnPlatform Android='60',iOS='25'}" WidthRequest="200" Margin="0,10,0,0" Padding="15" HasShadow="False">
+                                        <Frame.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding CreateRulesClicked}"/>
+                                        </Frame.GestureRecognizers>
+                                        <Label Text="CREAT RULES" TextColor="White"  VerticalOptions="Center" HorizontalOptions="Center" FontFamily="{StaticResource NormalFont}"/>
+                                    </Frame>
+                                </StackLayout>
                             </ScrollView>
                         </Grid>
-                        
+
                     </StackLayout>
                 </StackLayout>
             </ContentView>
             <custom:LoadingIndicator/>
-        </AbsoluteLayout> 
+        </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>

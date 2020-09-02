@@ -1,4 +1,5 @@
-﻿using Susu.ViewModels;
+﻿using Susu.CustomControl;
+using Susu.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -118,6 +119,16 @@ namespace Susu.Views
                 //    viewModel.IsGroupStartDateVisible = false;
                 //    //  viewModel.IsPayoutDayVisible = false;
                 //}
+            }
+        }
+
+        private void CustomEntry_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(e.NewTextValue)) return;
+
+            if (!double.TryParse(e.NewTextValue, out double value))
+            {
+                ((CustomEntry)sender).Text = e.OldTextValue;
             }
         }
     }

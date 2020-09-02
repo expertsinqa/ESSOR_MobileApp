@@ -23,6 +23,10 @@ namespace Susu.ViewModels
 
         public ICommand FileUploadClicked { get { return new Command(uploadViaFile); } }
 
+        public ICommand IsMoreClicked { get { return new Command(MoreClicked); } }
+
+       
+
         //public UserDto userDto = null;
         #endregion
         #region Constructor
@@ -202,7 +206,10 @@ namespace Susu.ViewModels
 
             }
         }
-
+        private void MoreClicked(object obj)
+        {
+            NavigationService.NavigateAsync("MorePage");
+        }
         //public override void OnNavigatedTo(INavigationParameters parameters)
         //{
         //    try

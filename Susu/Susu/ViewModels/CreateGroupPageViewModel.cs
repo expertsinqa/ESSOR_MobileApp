@@ -17,10 +17,10 @@ namespace Susu.ViewModels
         public string _Amount;
         public string Amount { get { return _Amount; } set { SetProperty(ref _Amount, value); } }
 
-        public Color _Groupnameplaceholder = Color.Gray;
+        public Color _Groupnameplaceholder = Color.FromHex("#083b66");
         public Color Groupnameplaceholder { get { return _Groupnameplaceholder; } set { SetProperty(ref _Groupnameplaceholder, value); } }
 
-        public Color _AmountPlaceholder = Color.Gray;
+        public Color _AmountPlaceholder = Color.FromHex("#083b66");
         public Color AmountPlaceholder { get { return _AmountPlaceholder; } set { SetProperty(ref _AmountPlaceholder, value); } }
 
 
@@ -65,7 +65,7 @@ namespace Susu.ViewModels
         public string _selectedContributionDay;
         public string selectedContributionDay { get { return _selectedContributionDay; } set { SetProperty(ref _selectedContributionDay, value); } }
 
-        public string _CustomRulesText=string.Empty;
+        public string _CustomRulesText = string.Empty;
         public string CustomRulesText { get { return _CustomRulesText; } set { SetProperty(ref _CustomRulesText, value); } }
 
         public bool _IsGroupStartDateVisible = false;
@@ -90,7 +90,7 @@ namespace Susu.ViewModels
         #region Constructor
         public CreateGroupPageViewModel(INavigationService navigationService) : base(navigationService)
         {
-            _lstperiod = new List<string>() { "Weekly","Bi-Weekly", "Semi-Monthly","Monthly","Semi-Yearly","Yearly" };
+            _lstperiod = new List<string>() { "Weekly", "Bi-Weekly", "Semi-Monthly", "Monthly", "Semi-Yearly", "Yearly" };
             DaysList = new List<string>() { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
 
         }
@@ -112,194 +112,222 @@ namespace Susu.ViewModels
         }
         public async void CreateGroup()
         {
-            if (string.IsNullOrEmpty(GroupName))
-            {
-                Groupnameplaceholder = Color.Red;
-                return;
-            }
-            else if (string.IsNullOrEmpty(Amount))
-            {
-                AmountPlaceholder = Color.Red;
-                return;
-            }
-            else if (string.IsNullOrEmpty(selectedPeriod))
-            {
-                await App.Current.MainPage.DisplayAlert("", "Please select Contribution period", "OK");
-                return;
-            }
-            else if (!string.IsNullOrEmpty(selectedPeriod) && selectedPeriod.ToLower() == "weekly")
+            if (validate())
             {
 
-                if (string.IsNullOrEmpty(selectedContributionDay))
+                if (string.IsNullOrEmpty(selectedPeriod))
                 {
-                    await App.Current.MainPage.DisplayAlert("", "Please select group contribution day", "OK");
+                    await App.Current.MainPage.DisplayAlert("", "Please select Contribution period", "OK");
                     return;
                 }
-                else if (GroupStartDate == null)
+                else if (!string.IsNullOrEmpty(selectedPeriod) && selectedPeriod.ToLower() == "weekly")
                 {
-                    await App.Current.MainPage.DisplayAlert("", "Please select group start date", "OK");
+
+                    if (string.IsNullOrEmpty(selectedContributionDay))
+                    {
+                        await App.Current.MainPage.DisplayAlert("", "Please select group contribution day", "OK");
+                        return;
+                    }
+                    else if (GroupStartDate == null)
+                    {
+                        await App.Current.MainPage.DisplayAlert("", "Please select group start date", "OK");
+                        return;
+                    }
+                    else if (string.IsNullOrEmpty(selectedPayoutDay))
+                    {
+                        await App.Current.MainPage.DisplayAlert("", "Please select group payout day", "OK");
+                        return;
+                    }
+                }
+                else if (!string.IsNullOrEmpty(selectedPeriod) && selectedPeriod.ToLower() == "bi-weekly")
+                {
+                    if (string.IsNullOrEmpty(selectedContributionDay))
+                    {
+                        await App.Current.MainPage.DisplayAlert("", "Please select group contribution day", "OK");
+                        return;
+                    }
+                    else if (GroupStartDate == null)
+                    {
+                        await App.Current.MainPage.DisplayAlert("", "Please select group start date", "OK");
+                        return;
+                    }
+                    else if (string.IsNullOrEmpty(selectedPayoutDay))
+                    {
+                        await App.Current.MainPage.DisplayAlert("", "Please select group payout day", "OK");
+                        return;
+                    }
+                }
+                else if (!string.IsNullOrEmpty(selectedPeriod) && selectedPeriod.ToLower() == "monthly")
+                {
+                    if (SelectedDate == null)
+                    {
+                        await App.Current.MainPage.DisplayAlert("", "Please select group contribution date", "OK");
+                        return;
+                    }
+                    else if (payoutDate == null)
+                    {
+                        await App.Current.MainPage.DisplayAlert("", "Please select group payout date", "OK");
+                        return;
+                    }
+
+                }
+                else if (!string.IsNullOrEmpty(selectedPeriod) && selectedPeriod.ToLower() == "semi-monthly")
+                {
+                    if (SelectedDate == null)
+                    {
+                        await App.Current.MainPage.DisplayAlert("", "Please select group contribution date", "OK");
+                        return;
+                    }
+                    else if (payoutDate == null)
+                    {
+                        await App.Current.MainPage.DisplayAlert("", "Please select group payout date", "OK");
+                        return;
+                    }
+
+                }
+                else if (!string.IsNullOrEmpty(selectedPeriod) && selectedPeriod.ToLower() == "yearly")
+                {
+                    if (SelectedDate == null)
+                    {
+                        await App.Current.MainPage.DisplayAlert("", "Please select group contribution date", "OK");
+                        return;
+                    }
+                    else if (payoutDate == null)
+                    {
+                        await App.Current.MainPage.DisplayAlert("", "Please select group payout date", "OK");
+                        return;
+                    }
+
+                }
+                else if (!string.IsNullOrEmpty(selectedPeriod) && selectedPeriod.ToLower() == "semi-yearly")
+                {
+                    if (SelectedDate == null)
+                    {
+                        await App.Current.MainPage.DisplayAlert("", "Please select group contribution date", "OK");
+                        return;
+                    }
+                    else if (payoutDate == null)
+                    {
+                        await App.Current.MainPage.DisplayAlert("", "Please select group payout date", "OK");
+                        return;
+                    }
+
+                }
+                else if (SelectedDate != null && SelectedDate > payoutDate)
+                {
+                    await App.Current.MainPage.DisplayAlert("", "Contribution date should be less than payout date", "OK");
                     return;
                 }
-                else if (string.IsNullOrEmpty(selectedPayoutDay))
+                else if (SelectedDate != null && payoutDate == null)
                 {
-                    await App.Current.MainPage.DisplayAlert("", "Please select group payout day", "OK");
+                    await App.Current.MainPage.DisplayAlert("", "Payout date should be greater than contribution date", "OK");
                     return;
                 }
-            }
-            else if (!string.IsNullOrEmpty(selectedPeriod) && selectedPeriod.ToLower() == "bi-weekly")
-            {
-                if (string.IsNullOrEmpty(selectedContributionDay))
+                else if (SelectedDate != null && payoutDate != null && payoutDate < SelectedDate)
                 {
-                    await App.Current.MainPage.DisplayAlert("", "Please select group contribution day", "OK");
+                    await App.Current.MainPage.DisplayAlert("", "Payout date should be greater than contribution date", "OK");
                     return;
                 }
-                else if (GroupStartDate == null)
+                if (string.IsNullOrEmpty(CustomRulesText))
                 {
-                    await App.Current.MainPage.DisplayAlert("", "Please select group start date", "OK");
-                    return;
+                    if (await App.Current.MainPage.DisplayAlert("", "Please add the custom rules to the group", "OK", "Cancel"))
+                    {
+                        IsCustomRulesVisible = true;
+                        return;
+                    }
+                    else
+                    {
+                        IsCustomRulesVisible = false;
+                        //CreateGroup();
+                    }
                 }
-                else if (string.IsNullOrEmpty(selectedPayoutDay))
+
+                IsLoading = true;
+                GroupDto groupDto = new GroupDto();
+                groupDto.GroupName = GroupName;
+                groupDto.ContributionAmount = Decimal.Parse(Amount);
+                if (!string.IsNullOrEmpty(selectedPeriod) && selectedPeriod == "Bi-Weekly")
                 {
-                    await App.Current.MainPage.DisplayAlert("", "Please select group payout day", "OK");
-                    return;
+                    groupDto.ContributionPeriod = "biweekly";
                 }
-            }
-            else if (!string.IsNullOrEmpty(selectedPeriod) && selectedPeriod.ToLower() == "monthly")
-            {
-                if (SelectedDate == null)
+                else if (!string.IsNullOrEmpty(selectedPeriod) && selectedPeriod == "Semi-Monthly")
                 {
-                    await App.Current.MainPage.DisplayAlert("", "Please select group contribution date", "OK");
-                    return;
+                    groupDto.ContributionPeriod = "semimonthly";
                 }
-                else if (payoutDate == null)
+                else if (!string.IsNullOrEmpty(selectedPeriod) && selectedPeriod == "Semi-Yearly")
                 {
-                    await App.Current.MainPage.DisplayAlert("", "Please select group payout date", "OK");
-                    return;
-                }
-                
-            }
-            else if (!string.IsNullOrEmpty(selectedPeriod) && selectedPeriod.ToLower() == "semi-monthly")
-            {
-                if (SelectedDate == null)
-                {
-                    await App.Current.MainPage.DisplayAlert("", "Please select group contribution date", "OK");
-                    return;
-                }
-                else if (payoutDate == null)
-                {
-                    await App.Current.MainPage.DisplayAlert("", "Please select group payout date", "OK");
-                    return;
-                }
-                
-            }
-            else if (!string.IsNullOrEmpty(selectedPeriod) && selectedPeriod.ToLower() == "yearly")
-            {
-                if (SelectedDate == null)
-                {
-                    await App.Current.MainPage.DisplayAlert("", "Please select group contribution date", "OK");
-                    return;
-                }
-                else if (payoutDate == null)
-                {
-                    await App.Current.MainPage.DisplayAlert("", "Please select group payout date", "OK");
-                    return;
-                }
-                
-            }
-            else if (!string.IsNullOrEmpty(selectedPeriod) && selectedPeriod.ToLower() == "semi-yearly")
-            {
-                if (SelectedDate == null)
-                {
-                    await App.Current.MainPage.DisplayAlert("", "Please select group contribution date", "OK");
-                    return;
-                }
-                else if (payoutDate == null)
-                {
-                    await App.Current.MainPage.DisplayAlert("", "Please select group payout date", "OK");
-                    return;
-                }
-               
-            }
-            else if (SelectedDate != null && SelectedDate > payoutDate)
-            {
-                await App.Current.MainPage.DisplayAlert("", "Contribution date should be less than payout date", "OK");
-                return;
-            }
-            else if (SelectedDate != null && payoutDate == null)
-            {
-                await App.Current.MainPage.DisplayAlert("", "Payout date should be greater than contribution date", "OK");
-                return;
-            }
-            else if (SelectedDate != null && payoutDate != null && payoutDate < SelectedDate)
-            {
-                await App.Current.MainPage.DisplayAlert("", "Payout date should be greater than contribution date", "OK");
-                return;
-            }
-            if (string.IsNullOrEmpty(CustomRulesText))
-            {
-                if (await App.Current.MainPage.DisplayAlert("", "Please add the custom rules to the group", "OK", "Cancel"))
-                {
-                    IsCustomRulesVisible = true;
-                    return;
+                    groupDto.ContributionPeriod = "semiyearly";
                 }
                 else
                 {
-                    IsCustomRulesVisible = false;
-                    //CreateGroup();
+                    groupDto.ContributionPeriod = selectedPeriod;
+                }
+                groupDto.ContributionDate = SelectedDate;
+                groupDto.CustomRules = CustomRulesText;
+                groupDto.GroupStartDate = GroupStartDate;
+                groupDto.PayOutDate = payoutDate;
+                groupDto.PayOutDay = selectedPayoutDay;
+                groupDto.ContributionDay = selectedContributionDay;
+                if (App.Current.Properties.ContainsKey("UserId") && !string.IsNullOrEmpty(App.Current.Properties["UserId"].ToString()))
+                    groupDto.CreatorId = long.Parse(App.Current.Properties["UserId"].ToString());
+                else
+                    groupDto.CreatorId = App.UserId;
+                GroupDto group = await ServiceBase.SaveGroupInfo(groupDto);
+                IsLoading = false;
+                if (group != null && group.Id > 0)
+                {
+                    App.Current.Properties["GroupId"] = group.Id;
+                    App.Current.Properties["GroupAdmin"] = true;
+                    await App.Current.SavePropertiesAsync();
+                    App.GroupId = group.Id;
+                    App.IsGroupAdmin = true;
+                    NavigationParameters np = new NavigationParameters();
+                    np.Add("GroupCode", group.GroupNumber);
+                    np.Add("GroupName", group.GroupName);
+                    await NavigationService.NavigateAsync("InviteScreenPage", np);
+                }
+                else if (group != null && group.Id < 0)
+                {
+                    await App.Current.MainPage.DisplayAlert("Alert", "Group with this name already exists", "OK");
                 }
             }
-
-            IsLoading = true;
-            GroupDto groupDto = new GroupDto();
-            groupDto.GroupName = GroupName;
-            groupDto.ContributionAmount = Decimal.Parse(Amount);
-            if (!string.IsNullOrEmpty(selectedPeriod) && selectedPeriod == "Bi-Weekly")
-            {
-                groupDto.ContributionPeriod = "biweekly";
-            }
-            else if (!string.IsNullOrEmpty(selectedPeriod) && selectedPeriod == "Semi-Monthly")
-            {
-                groupDto.ContributionPeriod = "semimonthly";
-            }
-            else if (!string.IsNullOrEmpty(selectedPeriod) && selectedPeriod == "Semi-Yearly")
-            {
-                groupDto.ContributionPeriod = "semiyearly";
-            }
             else
             {
-                groupDto.ContributionPeriod = selectedPeriod;
-            }
-            groupDto.ContributionDate = SelectedDate;
-            groupDto.CustomRules = CustomRulesText;
-            groupDto.GroupStartDate = GroupStartDate;
-            groupDto.PayOutDate = payoutDate;
-            groupDto.PayOutDay = selectedPayoutDay;
-            groupDto.ContributionDay = selectedContributionDay;
-            if (App.Current.Properties.ContainsKey("UserId") && !string.IsNullOrEmpty(App.Current.Properties["UserId"].ToString()))
-                groupDto.CreatorId = long.Parse(App.Current.Properties["UserId"].ToString());
-            else
-                groupDto.CreatorId = App.UserId;
-            GroupDto group = await ServiceBase.SaveGroupInfo(groupDto);
-            IsLoading = false;
-            if (group != null && group.Id > 0)
-            {
-                App.Current.Properties["GroupId"] = group.Id;
-                App.Current.Properties["GroupAdmin"] = true;
-                await App.Current.SavePropertiesAsync();
-                App.GroupId = group.Id;
-                App.IsGroupAdmin = true;
-                NavigationParameters np = new NavigationParameters();
-                np.Add("GroupCode", group.GroupNumber);
-                np.Add("GroupName", group.GroupName);
-                await NavigationService.NavigateAsync("InviteScreenPage", np);
-            }
-            else if (group != null && group.Id < 0)
-            {
-                await App.Current.MainPage.DisplayAlert("Alert", "Group with this name already exists", "OK");
+                IsLoading = false;
             }
 
         }
 
+        public bool validate()
+        {
+            int count = 0;
+            if (string.IsNullOrEmpty(GroupName))
+            {
+                Groupnameplaceholder = Color.Red;
+                count++;
+            }
+            else
+            {
+                Groupnameplaceholder = Color.FromHex("#083b66");
+            }
+            if (string.IsNullOrEmpty(Amount))
+            {
+                AmountPlaceholder = Color.Red;
+                count++;
+            }
+            else
+            {
+                AmountPlaceholder = Color.FromHex("#083b66");
+            }
+            if (count == 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
         public void CreateRules()
         {
             IsCustomRulesVisible = false;

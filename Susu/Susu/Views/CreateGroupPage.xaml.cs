@@ -1,4 +1,5 @@
 ﻿
+using Susu.CustomControl;
 using Susu.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
@@ -88,6 +89,16 @@ namespace Susu.Views
         private void grpContributiondate_Unfocused(object sender, FocusEventArgs e)
         {
 
+        }
+
+        private void CustomEntry_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(e.NewTextValue)) return;
+
+            if (!double.TryParse(e.NewTextValue, out double value))
+            {
+                ((CustomEntry)sender).Text = e.OldTextValue;
+            }
         }
 
         //private void PayoutDay(object sender, DateChangedEventArgs e)

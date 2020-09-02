@@ -118,7 +118,7 @@ namespace ESORR.ViewModels
                             }
                             else
                             {
-                                if (u.isPaymentCompleted == false && u.BufferPayOutDate >= DateTime.Now && u.ContributionId <= App.contributionId)
+                                if (u.isPaymentCompleted == false && u.BufferPayOutDate >= DateTime.Now && u.ContributionId <= App.contributionId && isContributionCompleted)
                                 {
                                     u.IsEnabled = true;
                                 }

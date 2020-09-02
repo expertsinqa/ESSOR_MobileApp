@@ -23,10 +23,10 @@ namespace Susu.ViewModels
         public string _Password;
         public string Password { get { return _Password; } set { SetProperty(ref _Password, value); } }
 
-        public Color _EmailPlaceholder = Color.Gray;
+        public Color _EmailPlaceholder = Color.FromHex("#083b66");
         public Color EmailPlaceholder { get { return _EmailPlaceholder; } set { SetProperty(ref _EmailPlaceholder, value); } }
 
-        public Color _PasswordPlaceholder = Color.Gray;
+        public Color _PasswordPlaceholder = Color.FromHex("#083b66");
         public Color PasswordPlaceholder { get { return _PasswordPlaceholder; } set { SetProperty(ref _PasswordPlaceholder, value); } }
 
         public ICommand ForgotpasswordClicked { get { return new Command(ForgotPassword); } }
@@ -54,7 +54,7 @@ namespace Susu.ViewModels
         public string _UserMail;
         public string UserMail { get { return _UserMail; } set { SetProperty(ref _UserMail, value); } }
 
-        public Color _ForgotPasswordEmailPlaceholderColor = Color.Gray;
+        public Color _ForgotPasswordEmailPlaceholderColor = Color.FromHex("#083b66");
         public Color ForgotPasswordEmailPlaceholderColor { get { return _ForgotPasswordEmailPlaceholderColor; } set { SetProperty(ref _ForgotPasswordEmailPlaceholderColor, value); } }
 
         public ICommand UpdateAppClicked { get { return new Command(AppUpdate); } }
@@ -164,12 +164,12 @@ namespace Susu.ViewModels
         public async void Login()
         {
             UserDto userDto = null;
-            if (string.IsNullOrEmpty(Email) && Email.Trim().Length < 0)
+            if (string.IsNullOrWhiteSpace(Email))
             {
                 EmailPlaceholder = Color.Red;
                 return;
             }
-            else if (string.IsNullOrEmpty(Password))
+            else if (string.IsNullOrWhiteSpace(Password))
             {
                 PasswordPlaceholder = Color.Red;
                 return;
@@ -258,6 +258,7 @@ namespace Susu.ViewModels
         {
             IsLoading = true;
             UserMail = string.Empty;
+            ForgotPasswordEmailPlaceholderColor = Color.FromHex("#083b66");
             IsForgotPasswordVisible = true;
             IsLoading = false;
         }

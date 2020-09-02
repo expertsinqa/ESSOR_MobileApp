@@ -8,7 +8,7 @@ using Xamarin.Forms;
 
 namespace Susu.Views
 {
-    public class ResetPasswordPageViewModel:ViewModelBase
+    public class ResetPasswordPageViewModel : ViewModelBase
     {
         #region Properties
         public string _NewPassword;
@@ -25,17 +25,17 @@ namespace Susu.Views
 
         public ICommand UpdateClicked { get { return new Command(Update); } }
 
-        public Color _NewPasswordPlaceholder;
+        public Color _NewPasswordPlaceholder = Color.FromHex("#083b66");
         public Color NewPasswordPlaceholder { get { return _NewPasswordPlaceholder; } set { SetProperty(ref _NewPasswordPlaceholder, value); } }
 
-        public Color _ConfirmPlaceholder;
+        public Color _ConfirmPlaceholder = Color.FromHex("#083b66");
         public Color ConfirmPlaceholder { get { return _ConfirmPlaceholder; } set { SetProperty(ref _ConfirmPlaceholder, value); } }
 
-        public Color _oldPasswordPlaceholder = Color.Gray;
+        public Color _oldPasswordPlaceholder = Color.FromHex("#083b66");
         public Color oldPasswordPlaceholder { get { return _oldPasswordPlaceholder; } set { SetProperty(ref _oldPasswordPlaceholder, value); } }
 
         #endregion
-        public ResetPasswordPageViewModel(INavigationService navigationService):base(navigationService)
+        public ResetPasswordPageViewModel(INavigationService navigationService) : base(navigationService)
         {
             NavigationService = navigationService;
         }
@@ -47,39 +47,88 @@ namespace Susu.Views
 
         public async void Update()
         {
-            if(string.IsNullOrEmpty(OldPassword))
+            if (Validation())
             {
-                oldPasswordPlaceholder = Color.Red;
-            }
-            else if (string.IsNullOrEmpty(NewPassword))
-            {
-                NewPasswordPlaceholder = Color.Red;
-            }
-            else if (string.IsNullOrEmpty(ConfirmPassword))
-            {
-                ConfirmPlaceholder = Color.Red;
-            }
-            else if(!string.IsNullOrEmpty(NewPassword) && !string.IsNullOrEmpty(ConfirmPassword))
-            {
-                if(NewPassword != ConfirmPassword)
+                if (!string.IsNullOrEmpty(NewPassword) && !string.IsNullOrEmpty(ConfirmPassword))
                 {
-                  await  App.Current.MainPage.DisplayAlert("", "Password and confirm password mismatch", "OK");
-                }
-                else
-                {
-                    bool ispasswordReset = await ServiceBase.ResetPassword(App.UserId,OldPassword, NewPassword);
-                    if(ispasswordReset)
+                    if (NewPassword != ConfirmPassword)
                     {
-                        if(await App.Current.MainPage.DisplayAlert("", "Password updated Successfully", "OK"," "))
+                        await App.Current.MainPage.DisplayAlert("", "Password and confirm password mismatch", "OK");
+                    }
+                    else
+                    {
+                        bool ispasswordReset = await ServiceBase.ResetPassword(App.UserId, OldPassword, NewPassword);
+                        if (ispasswordReset)
                         {
-                            await NavigationService.NavigateAsync("SamplePage");
+                            if (await App.Current.MainPage.DisplayAlert("", "Password updated Successfully.\n Please login again with new password", "OK", " "))
+                            {
+                                App.Current.Properties.Clear();
+                                App.IsGroupAdmin = false;
+                                App.UserId = 0;
+                                App.GroupId = 0;
+                                App.AccessToken = null;
+                                App.GroupNumber = 0;
+                                App.contributionId = 0;
+                                App.IsAggreementAccepted = false;
+                                App.IsProfilePhotoUploaded = false;
+                                App.GroupNumber = 0;
+                                App.Current.MainPage = new LoginPage();
+                            }
+                            else
+                            {
+
+                            }
                         }
                         else
                         {
-
+                            await App.Current.MainPage.DisplayAlert("", "Something went wrong,please contact admin", "OK");
                         }
                     }
                 }
+            }
+            else
+            {
+                IsLoading = false;
+            }
+        }
+
+        public bool Validation()
+        {
+            int count = 0;
+            if (string.IsNullOrEmpty(OldPassword))
+            {
+                oldPasswordPlaceholder = Color.Red;
+                count++;
+            }
+            else
+            {
+                oldPasswordPlaceholder = Color.FromHex("#083b66");
+            }
+            if (string.IsNullOrEmpty(NewPassword))
+            {
+                NewPasswordPlaceholder = Color.Red;
+                count++;
+            }
+            else
+            {
+                NewPasswordPlaceholder = Color.FromHex("#083b66");
+            }
+            if (string.IsNullOrEmpty(ConfirmPassword))
+            {
+                ConfirmPlaceholder = Color.Red;
+                count++;
+            }
+            else
+            {
+                ConfirmPlaceholder = Color.FromHex("#083b66");
+            }
+            if (count == 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
     }

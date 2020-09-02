@@ -27,17 +27,17 @@ namespace Susu.ViewModels
         public string _MobileNumber;
         public string MobileNumber { get { return _MobileNumber; } set { SetProperty(ref _MobileNumber, value); } }
 
-        public Color _FullNamePlaceholderColor= Color.Gray;
+        public Color _FullNamePlaceholderColor= Color.FromHex("#083b66");
         public Color FullNamePlaceholderColor { get { return _FullNamePlaceholderColor; } set { SetProperty(ref _FullNamePlaceholderColor, value); } }
 
-        public Color _EmailPlaceholderColor = Color.Gray;
+        public Color _EmailPlaceholderColor = Color.FromHex("#083b66");
         public Color EmailPlaceholderColor { get { return _EmailPlaceholderColor; } set { SetProperty(ref _EmailPlaceholderColor, value); } }
 
 
-        public Color _PasswordPlaceholderColor = Color.Gray;
+        public Color _PasswordPlaceholderColor = Color.FromHex("#083b66");
         public Color PasswordPlaceholderColor { get { return _PasswordPlaceholderColor; } set { SetProperty(ref _PasswordPlaceholderColor, value); } }
 
-        public Color _MobilePlaceholderColor = Color.Gray;
+        public Color _MobilePlaceholderColor = Color.FromHex("#083b66");
         public Color MobilePlaceholderColor { get { return _MobilePlaceholderColor; } set { SetProperty(ref _MobilePlaceholderColor, value); } }
 
         public ICommand CreateAccountClicked { get; set; }
@@ -51,7 +51,7 @@ namespace Susu.ViewModels
         public string _PaypalEmailId;
         public string PaypalEmailId { get { return _PaypalEmailId; } set { SetProperty(ref _PaypalEmailId, value); } }
 
-        public Color _PaypalEmailIdPlaceholder = Color.Gray;
+        public Color _PaypalEmailIdPlaceholder = Color.FromHex("#083b66");
         public Color PaypalEmailIdPlaceholder { get { return _PaypalEmailIdPlaceholder; } set { SetProperty(ref _PaypalEmailIdPlaceholder, value); } }
 
         public string _FirstName;
@@ -60,10 +60,10 @@ namespace Susu.ViewModels
         public string _LastName;
         public string LastName { get { return _LastName; } set { SetProperty(ref _LastName, value); } }
 
-        public Color _FirstNamePlaceholder = Color.Gray;
+        public Color _FirstNamePlaceholder = Color.FromHex("#083b66");
         public Color FirstNamePlaceholder { get { return _FirstNamePlaceholder; } set { SetProperty(ref _FirstNamePlaceholder, value); } }
 
-        public Color _LastNamePlaceholderColor = Color.Gray;
+        public Color _LastNamePlaceholderColor = Color.FromHex("#083b66");
         public Color LastNamePlaceholderColor { get { return _LastNamePlaceholderColor; } set { SetProperty(ref _LastNamePlaceholderColor, value); } }
 
         public string _ZelleId = "";
@@ -72,7 +72,7 @@ namespace Susu.ViewModels
         public string _ConfirmPassword = "";
         public string ConfirmPassword { get { return _ConfirmPassword; } set { SetProperty(ref _ConfirmPassword, value); } }
 
-        public Color _ConfirmPlaceholderColor = Color.Gray;
+        public Color _ConfirmPlaceholderColor = Color.FromHex("#083b66");
         public Color ConfirmPlaceholderColor { get { return _ConfirmPlaceholderColor; } set { SetProperty(ref _ConfirmPlaceholderColor, value); } }
 
         public ICommand PrivacyPlociyClicked { get { return new Command(PrivacyPolicy); } }
@@ -98,32 +98,32 @@ namespace Susu.ViewModels
         #region Functions
         public async void CreateAccount()
         {
-            if(string.IsNullOrEmpty(FirstName))
+            if(string.IsNullOrWhiteSpace(FirstName))
             {
                 FirstNamePlaceholder = Color.Red;
                 return;
             }
-            else if(string.IsNullOrEmpty(LastName))
+            else if(string.IsNullOrWhiteSpace(LastName))
             {
                 LastNamePlaceholderColor = Color.Red;
                 return;
             }
-            else if(string.IsNullOrEmpty(Email))
+            else if(string.IsNullOrWhiteSpace(Email))
             {
                 EmailPlaceholderColor = Color.Red;
                 return;
             }
-            else if(string.IsNullOrEmpty(Password))
+            else if(string.IsNullOrWhiteSpace(Password))
             {
                 PasswordPlaceholderColor = Color.Red;
                 return;
             }
-            else if (string.IsNullOrEmpty(ConfirmPassword))
+            else if (string.IsNullOrWhiteSpace(ConfirmPassword))
             {
                 ConfirmPlaceholderColor = Color.Red;
                 return;
             }
-            else if(string.IsNullOrEmpty(MobileNumber))
+            else if(string.IsNullOrWhiteSpace(MobileNumber))
             {
                 MobilePlaceholderColor = Color.Red;
                 return;
@@ -167,12 +167,12 @@ namespace Susu.ViewModels
                 PaypalEmailId = "";
                 ConfirmPassword = "";
                 ZelleId = "";
-                FirstNamePlaceholder = Color.Gray;
-                LastNamePlaceholderColor = Color.Gray;
-                EmailPlaceholderColor = Color.Gray;
-                PasswordPlaceholderColor = Color.Gray;
-                MobilePlaceholderColor = Color.Gray;
-                ConfirmPlaceholderColor = Color.Gray;
+                FirstNamePlaceholder = Color.FromHex("#083b66");
+                LastNamePlaceholderColor = Color.FromHex("#083b66");
+                EmailPlaceholderColor = Color.FromHex("#083b66");
+                PasswordPlaceholderColor = Color.FromHex("#083b66");
+                MobilePlaceholderColor = Color.FromHex("#083b66");
+                ConfirmPlaceholderColor = Color.FromHex("#083b66");
                 Dictionary<string, string> response = await ServiceBase.Login(usersdetails.Email, usersdetails.UserPassword);
                 if (response != null && response.ContainsKey("access_token"))
                 {
@@ -212,6 +212,7 @@ namespace Susu.ViewModels
                 IsLoading = false;
                 await Application.Current.MainPage.DisplayAlert("Alert", "User already exists", "ok");
             }
+            IsLoading = false;
             //else
             //{
             //    await App.Current.MainPage.DisplayAlert("", "Something went wrong", "OK");

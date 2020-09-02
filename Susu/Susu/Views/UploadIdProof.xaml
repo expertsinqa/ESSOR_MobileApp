@@ -13,12 +13,26 @@
             <Image Source="backgroundImage.PNG"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Aspect="AspectFill"   AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" Opacity="0.5" />
             <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="10*"/>
-                    <RowDefinition Height="45*"/>
-                    <RowDefinition Height="45*"/>
+                    <RowDefinition Height="20*"/>
+                    <RowDefinition Height="40*"/>
+                    <RowDefinition Height="40*"/>
                 </Grid.RowDefinitions>
-                <Label Text="Government Id Proof" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#083b66" FontAttributes="Bold" FontFamily="{StaticResource NormalFont}" FontSize="20"/>
+                <Grid Grid.Row="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="70*"/>
+                        <ColumnDefinition Width="10*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Column="1" Source="Esorr_logo.png" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit" WidthRequest="150" HeightRequest="150" Margin="0,5,0,0"/>
+                    <Image Grid.Column="2" Source="more_blue.png" VerticalOptions="Start" HorizontalOptions="Center" Aspect="AspectFit" WidthRequest="30" HeightRequest="30" Margin="0,15,0,0">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding IsMoreClicked}"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                </Grid>
+                <!--<Label Text="Government Id Proof" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#083b66" FontAttributes="Bold" FontFamily="{StaticResource NormalFont}" FontSize="20"/>-->
                 <StackLayout Grid.Row="1" VerticalOptions="Center" HorizontalOptions="Center">
+                    <Label Text="Government Id Proof" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#083b66" FontAttributes="Bold" FontFamily="{StaticResource NormalFont}" FontSize="20"/>
                     <Frame BorderColor="#083b66" BackgroundColor="Transparent" CornerRadius="100" HeightRequest="200" WidthRequest="200" HorizontalOptions="Center" Padding="0" IsClippedToBounds="True">
                         <Frame.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding CameraClicked}"/>

@@ -66,7 +66,7 @@
                             <custom:CustomEntry Text="{Binding groupDto.GroupName}" IsEnabled="{Binding IsGroupInfoEditable}" TextColor="Black" HeightRequest="{OnPlatform iOS='50'}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" FontFamily="{StaticResource NormalFont}" />
 
                             <Label Text="Amount($):" TextColor="#083b66" VerticalOptions="Center" HorizontalOptions="Start" FontFamily="{StaticResource NormalFont}" FontSize="{OnPlatform iOS='20'}" Margin="0,10,0,0"/>
-                                <custom:CustomEntry Text="{Binding groupDto.ContributionAmount}" IsEnabled="{Binding IsGroupInfoEditable}" TextColor="Black" HeightRequest="{OnPlatform iOS='50'}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" FontFamily="{StaticResource NormalFont}"/>
+                                <custom:CustomEntry Text="{Binding groupDto.ContributionAmount}" IsEnabled="{Binding IsGroupInfoEditable}" TextChanged="CustomEntry_TextChanged" TextColor="Black" HeightRequest="{OnPlatform iOS='50'}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" FontFamily="{StaticResource NormalFont}"/>
 
                             <Label Text="Contribution Period:" TextColor="#083b66" VerticalOptions="Center" HorizontalOptions="Start" FontFamily="{StaticResource NormalFont}" FontSize="{OnPlatform iOS='20'}" Margin="0,10,0,0"/>
                                 <!--<custom:CustomEntry Text="{Binding groupDto.ContributionPeriod}"  TextColor="Black" HeightRequest="{OnPlatform iOS='50'}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" FontFamily="{StaticResource NormalFont}"/>-->

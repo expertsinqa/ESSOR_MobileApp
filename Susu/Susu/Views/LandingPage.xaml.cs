@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using Susu.CustomControl;
+using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
@@ -11,6 +12,16 @@ namespace Susu.Views
         {
             InitializeComponent();
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+        }
+
+        private void CustomEntry_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(e.NewTextValue)) return;
+
+            if (!double.TryParse(e.NewTextValue, out double value))
+            {
+                ((CustomEntry)sender).Text = e.OldTextValue;
+            }
         }
     }
 }

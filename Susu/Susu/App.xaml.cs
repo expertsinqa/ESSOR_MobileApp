@@ -104,6 +104,7 @@ namespace Susu
             containerRegistry.RegisterForNavigation<ResetPasswordPage, ResetPasswordPageViewModel>();
             containerRegistry.RegisterForNavigation<GroupContributionDetailPage, GroupContributionDetailPageViewModel>();
             containerRegistry.RegisterForNavigation<HomePage,HomePageViewModel>();
+            containerRegistry.RegisterForNavigation<MorePage, MorePageViewModel>();
             //containerRegistry.RegisterForNavigation<PaymentsPage, PaymentsPageViewModel>
         }
     }

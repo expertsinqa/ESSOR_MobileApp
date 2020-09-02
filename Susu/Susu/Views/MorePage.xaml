@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:custom="clr-namespace:Susu.CustomControl"
+             mc:Ignorable="d"
+             x:Class="ESORR.Views.MorePage">
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <Image Source="backgroundImage.PNG"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Aspect="AspectFill"   AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" Opacity="0.5" />
+            <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="80*"/>
+            </Grid.RowDefinitions>
+                <Image Grid.Row="0" Source="Esorr_logo.png" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit" WidthRequest="150" HeightRequest="150"/> 
+                <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="Fill" Grid.Row="1">
+                    <StackLayout Margin="10,20,10,0">
+                        <Frame BackgroundColor="Transparent" BorderColor="#083b66" CornerRadius="20" Padding="15" HasShadow="False" IsClippedToBounds="False" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="0,10,0,0">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ResetPasswordCliked}"/>
+                            </Frame.GestureRecognizers>
+                            <Label Text="Reset Password" TextColor="Black" VerticalOptions="Center" HorizontalOptions="Center" FontAttributes="Bold" FontFamily="{StaticResource NormalFont}"/>
+                        </Frame>
+
+                        <Frame BackgroundColor="Transparent" BorderColor="#083b66" CornerRadius="20" Padding="15" HasShadow="False" IsClippedToBounds="False" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="0,10,0,0">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding HelpClicked}"/>
+                            </Frame.GestureRecognizers>
+                            <Label Text="Help" TextColor="Black" VerticalOptions="Center" HorizontalOptions="Center" FontAttributes="Bold" FontFamily="{StaticResource NormalFont}"/>
+                        </Frame>
+
+                        <Frame BackgroundColor="Transparent" BorderColor="#083b66" CornerRadius="20" Padding="15" HasShadow="False" IsClippedToBounds="False" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="0,10,0,0">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding LogoutClicked}"/>
+                            </Frame.GestureRecognizers>
+                            <Label Text="LogOut" TextColor="Black" VerticalOptions="Center" HorizontalOptions="Center" FontAttributes="Bold" FontFamily="{StaticResource NormalFont}"/>
+                        </Frame>
+                        <Frame VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="#083b66"  CornerRadius="{OnPlatform Android='60', iOS='25'}" WidthRequest="150" Margin="0,20,0,0" Padding="15" HasShadow="False">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding BackClicked}"/>
+                            </Frame.GestureRecognizers>
+                            <Label Text="Back" TextColor="White"  VerticalOptions="Center" HorizontalOptions="Center" FontFamily="{StaticResource NormalFont}"/>
+                        </Frame>
+                    </StackLayout>
+                </StackLayout>
+        </Grid>
+            <ContentView BackgroundColor="#C0808080"  Padding="10,10,10,10" IsVisible="{Binding IsHelppopupVisible}" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+                <StackLayout  HorizontalOptions="Center" BackgroundColor="Black" VerticalOptions="Center" Spacing="0" Padding="5,5,5,5">
+                    <StackLayout  BackgroundColor="White" Spacing="0" Padding="10,10,10,10">
+                        <Image Source="close_black.png" VerticalOptions="End" HorizontalOptions="End" Aspect="AspectFill" Margin="0,0,0,0" Grid.Row="0">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding HelpCloseClicked}"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                            <custom:CustomLabel LineBreakMode="CharacterWrap"  HorizontalTextAlignment="Start" VerticalOptions="Fill" TextColor="Black" HorizontalOptions="Fill">
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span LineHeight="1.2" Text="Thanks for reaching help section we appreciate your decision.">
+                                            <Span.FontFamily>
+                                                <OnPlatform  x:TypeArguments="x:String" Android="Montserrat-Medium.ttf#Montserrat Medium" iOS="Montserrat Medium"/>
+                                            </Span.FontFamily>
+                                        </Span>
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+                            </custom:CustomLabel>
+                            <custom:CustomLabel LineBreakMode="CharacterWrap"  HorizontalTextAlignment="Start" VerticalOptions="Fill" TextColor="Black" HorizontalOptions="Fill">
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span LineHeight="1.2" Text="Please drop your feedback or complaints at help@esorr.com and will get back you for your queries within 48 hours of maximum time frame">
+                                            <Span.FontFamily>
+                                                <OnPlatform  x:TypeArguments="x:String" Android="Montserrat-Medium.ttf#Montserrat Medium" iOS="Montserrat Medium"/>
+                                            </Span.FontFamily>
+                                        </Span>
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+                            </custom:CustomLabel>
+                            <Label Text="Thanks," TextColor="Black" VerticalOptions="Start" HorizontalOptions="Start" FontFamily="{StaticResource NormalFont}" Margin="0,10,0,0"/>
+                            <Label Text="ESORR" TextColor="Black" VerticalOptions="Start" HorizontalOptions="Start" FontFamily="{StaticResource NormalFont}"/>
+                        </StackLayout>
+                        <!--<custom:CustomEntry Text="{Binding GroupId}" Placeholder="Entry Id to join the group" PlaceholderColor="{Binding GroupIdPlaceholderColor}" HeightRequest="{OnPlatform iOS='50'}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="0,10,0,0" FontFamily="{StaticResource NormalFont}"/>-->
+                        <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Margin="0,10,0,0">
+                            <Frame VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="#083b66"  CornerRadius="{OnPlatform Android='60',iOS='25'}" WidthRequest="50" Margin="0,10,0,0" Padding="15" HasShadow="False">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding HelpCloseClicked}"/>
+                                </Frame.GestureRecognizers>
+                                <Label Text="OK" TextColor="White"  VerticalOptions="Center" HorizontalOptions="Center" FontFamily="{StaticResource NormalFont}"/>
+                            </Frame>
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+            </ContentView>
+            <custom:LoadingIndicator/>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

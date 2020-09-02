@@ -16,12 +16,22 @@ namespace Susu.Services
 {
     public class ServiceBase : IServiceBase
     {
+
+        #region Staging
+        public string baseUrl = "https://www.esorr.com/testesorrapi/api/";
+        public string TokenUrl = "https://www.esorr.com/testesorrapi/token";
+        #endregion
+
+        //#region Production
+        //public string baseUrl = "https://www.esorr.com/ESORRAPI/api/";
+        //public string TokenUrl = "https://www.esorr.com/ESORRAPI/token";
+        //#endregion
+
         public void Initialize()
         {
 
         }
-         //public string baseUrl = "http://167.86.126.236/ESORRAPI/api/";
-          public string baseUrl = "https://www.esorr.com/ESORRAPI/api/";
+       
         public HttpClient _client { get; set; }
         public ServiceBase()
         {
@@ -38,9 +48,7 @@ namespace Susu.Services
                              new KeyValuePair<string, string>("password",password),
                              new KeyValuePair<string, string>("grant_type","password")
                 });
-                // public string baseUrl = "http://167.86.126.236/ESORRAPI/api/";
-                 string url = "https://www.esorr.com/ESORRAPI/token";
-               // string url = "http://167.86.126.236/ESORRAPI/token";
+                string url = TokenUrl;
                 var request = await _client.PostAsync(url, formcontent);
                 request.EnsureSuccessStatusCode();
                 var response = await request.Content.ReadAsStringAsync();
@@ -151,7 +159,7 @@ namespace Susu.Services
                 _client.DefaultRequestHeaders.Remove("Authorization");
                 if (App.AccessToken != null)
                     _client.DefaultRequestHeaders.Add("Authorization", "bearer " + App.AccessToken);
-                string url = baseUrl + "user/saveusergroupdetails?lstUserIds=" + lstUserIds + "&groupnumber=" + groupnumber+ "&IsAcceptCustomRules="+IsAcceptCustomRules;
+                string url = baseUrl + "user/saveusergroupdetails?lstUserIds=" + lstUserIds + "&groupnumber=" + groupnumber + "&IsAcceptCustomRules=" + IsAcceptCustomRules;
                 var data = JsonConvert.SerializeObject("");
                 var content = new StringContent(data, Encoding.UTF8, "application/json");
                 var res = await _client.PostAsync(url, content);
@@ -184,7 +192,7 @@ namespace Susu.Services
             }
             catch (Exception ex)
             {
-                if(ex.Message.Contains("401"))
+                if (ex.Message.Contains("401"))
                 {
                     App.Current.MainPage = new LoginPage();
                 }
@@ -239,7 +247,7 @@ namespace Susu.Services
                 _client.DefaultRequestHeaders.Remove("Authorization");
                 if (App.AccessToken != null)
                     _client.DefaultRequestHeaders.Add("Authorization", "bearer " + App.AccessToken);
-                string url = baseUrl + "notification/getnotifications?notificationlevelId="+notificationlevelId;
+                string url = baseUrl + "notification/getnotifications?notificationlevelId=" + notificationlevelId;
                 var res = await _client.GetStringAsync(url).ConfigureAwait(false);
                 if (res != null)
                 {
@@ -278,7 +286,8 @@ namespace Susu.Services
         public async Task<bool> SaveAndSendNotificationMail(List<EmailNotificatinDetailsDto> lstNotificationmailDetails)
         {
             bool isSuccess = false;
-            try {
+            try
+            {
                 _client.DefaultRequestHeaders.Remove("Authorization");
                 if (App.AccessToken != null)
                     _client.DefaultRequestHeaders.Add("Authorization", "bearer " + App.AccessToken);
@@ -290,7 +299,7 @@ namespace Susu.Services
                 if (result != null)
                     isSuccess = JsonConvert.DeserializeObject<bool>(result);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
             }
@@ -327,7 +336,7 @@ namespace Susu.Services
                 _client.DefaultRequestHeaders.Remove("Authorization");
                 if (App.AccessToken != null)
                     _client.DefaultRequestHeaders.Add("Authorization", "bearer " + App.AccessToken);
-                string url = baseUrl + "notification/updatenotificationreadstatus?userNotificationId="+userNotificationId;
+                string url = baseUrl + "notification/updatenotificationreadstatus?userNotificationId=" + userNotificationId;
                 var data = JsonConvert.SerializeObject("");
                 var content = new StringContent(data, Encoding.UTF8, "application/json");
                 var res = await _client.PostAsync(url, content);
@@ -349,7 +358,7 @@ namespace Susu.Services
                 _client.DefaultRequestHeaders.Remove("Authorization");
                 if (App.AccessToken != null)
                     _client.DefaultRequestHeaders.Add("Authorization", "bearer " + App.AccessToken);
-                string url = baseUrl + "user/swapuserorder?requestFromUserId=" + requestFromUserId+ "&requestToUserId="+requestToUserId;
+                string url = baseUrl + "user/swapuserorder?requestFromUserId=" + requestFromUserId + "&requestToUserId=" + requestToUserId;
                 var data = JsonConvert.SerializeObject("");
                 var content = new StringContent(data, Encoding.UTF8, "application/json");
                 var res = await _client.PostAsync(url, content);
@@ -440,7 +449,7 @@ namespace Susu.Services
                 _client.DefaultRequestHeaders.Remove("Authorization");
                 if (App.AccessToken != null)
                     _client.DefaultRequestHeaders.Add("Authorization", "bearer " + App.AccessToken);
-                string url = baseUrl + "user/getpayInDetailsbygroupno?groupNumber=" + groupNumber+ "&contributionId="+contributionId;
+                string url = baseUrl + "user/getpayInDetailsbygroupno?groupNumber=" + groupNumber + "&contributionId=" + contributionId;
                 var res = await _client.GetStringAsync(url).ConfigureAwait(false);
                 if (res != null)
                 {
@@ -533,7 +542,7 @@ namespace Susu.Services
                 }
                 return appVersionDetails;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return null;
             }

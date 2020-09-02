@@ -18,7 +18,7 @@ namespace Susu.ViewModels
         public string _GroupNumber = "";
         public string GroupNumber { get { return _GroupNumber; } set { SetProperty(ref _GroupNumber, value); } }
 
-        public Color _GroupIdPlaceholderColor = Color.Gray;
+        public Color _GroupIdPlaceholderColor = Color.FromHex("#083b66");
         public Color GroupIdPlaceholderColor { get { return _GroupIdPlaceholderColor; } set { SetProperty(ref _GroupIdPlaceholderColor, value); } }
         public ICommand JoinGroupClicked
         {
@@ -63,6 +63,10 @@ namespace Susu.ViewModels
         string userId = "";
         GroupDto groupDto = null;
 
+        public ICommand IsMoreClicked { get { return new Command(MoreClicked); } }
+
+       
+
         #endregion
 
 
@@ -89,7 +93,10 @@ namespace Susu.ViewModels
         public async void Join()
         {
             groupDto = new GroupDto();
-            GroupId = Convert.ToInt32(GroupNumber);
+            if (!string.IsNullOrWhiteSpace(GroupNumber))
+            {
+                GroupId = Convert.ToInt32(GroupNumber);
+            }
             if (GroupId == 0)
             {
                 GroupIdPlaceholderColor = Color.Red;
@@ -143,6 +150,11 @@ namespace Susu.ViewModels
             groupDto = await ServiceBase.JoinUser(userId, GroupId, IsAcceptCustomRule);
             if (groupDto.Id > 0)
                 await NavigationService.NavigateAsync("HomePage");
+        }
+
+        private void MoreClicked()
+        {
+            NavigationService.NavigateAsync("MorePage");
         }
         #endregion
     }
