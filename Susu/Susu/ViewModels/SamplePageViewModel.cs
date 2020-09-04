@@ -209,14 +209,14 @@ namespace Susu.ViewModels
             GetNotification();
             _lstperiod = new List<string>() { "Weekly", "Bi-Weekly", "Semi-Monthly", "Monthly", "Semi-Yearly", "Yearly" };
             DaysList = new List<string>() { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
-            if (groupDto != null && groupDto.ContributionDate != null && App.IsGroupAdmin && DateTime.Now < groupDto.ContributionDate)
-            {
-                IsGroupInfoEditable = true;
-            }
-            else
-            {
-                IsGroupInfoEditable = false;
-            }
+            //if (groupDto != null  && App.IsGroupAdmin && groupDto.ErrorId !=-1)
+            //{
+            //    IsGroupInfoEditable = true;
+            //}
+            //else
+            //{
+            //    IsGroupInfoEditable = false;
+            //}
 
         }
         #endregion
@@ -390,13 +390,13 @@ namespace Susu.ViewModels
                                 IsGroupInviteVisible = true;
                             }
                         }
-                       
+
                         //if (groupDto.ContributionDate != null) {
                         //    selectedDate = DateTime.Parse(groupDto.ContributionDate.ToString().Split(' ')[0]);
                         //   // selectedDate = DateTime.ParseExact(date,"d/M/yyyy", System.Globalization.CultureInfo.InvariantCulture);
                         //  }
 
-                        if (groupDto.ContributionDate != null && App.IsGroupAdmin && DateTime.Now.Date <= groupDto.ContributionDate?.Date)
+                        if (groupDto != null && App.IsGroupAdmin && groupDto.ErrorId != -1)
                         {
                             IsGroupInfoEditable = true;
                         }
