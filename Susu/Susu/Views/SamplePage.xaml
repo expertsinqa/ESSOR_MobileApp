@@ -170,7 +170,11 @@
                             <custom:CustomEntry Text="{Binding userDto.Email}"  IsEnabled="False" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" HeightRequest="{OnPlatform iOS='50'}" FontFamily="{StaticResource NormalFont}"/>
 
                             <Label Text="Mobile Number:" TextColor="#083b66" VerticalOptions="Center" HorizontalOptions="Start" FontFamily="{StaticResource NormalFont}" FontSize="{OnPlatform iOS='20'}" Margin="0,10,0,0"/>
-                            <custom:CustomEntry Text="{Binding userDto.MobileNo}" HeightRequest="{OnPlatform iOS='50'}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" FontFamily="{StaticResource NormalFont}"/>
+                            <custom:CustomEntry Text="{Binding userDto.MobileNo}" HeightRequest="{OnPlatform iOS='50'}" Keyboard="Numeric" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" FontFamily="{StaticResource NormalFont}">
+                                <custom:CustomEntry.Behaviors>
+                                    <Behaviorus:MaskedBehavior Mask="(XXX)XXX-XXXX"/>
+                                </custom:CustomEntry.Behaviors>
+                            </custom:CustomEntry>
 
                             <Label Text="Zelle ID (Phone No):" TextColor="#083b66" VerticalOptions="Center" HorizontalOptions="Start" FontFamily="{StaticResource NormalFont}" FontSize="{OnPlatform iOS='20'}" Margin="0,10,0,0"/>
                             <custom:CustomEntry Text="{Binding userDto.ZelleId}" Keyboard="Numeric" HeightRequest="{OnPlatform iOS='50'}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" FontFamily="{StaticResource NormalFont}">
