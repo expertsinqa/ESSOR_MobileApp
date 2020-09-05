@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using ESORR.Interface;
+using Newtonsoft.Json;
 using Prism.Navigation;
 using Susu.Models;
 using System;
@@ -64,7 +65,7 @@ namespace Susu.ViewModels
         public bool IsAppUpdateVisible { get { return _IsAppUpdateVisible; } set { SetProperty(ref _IsAppUpdateVisible, value); } }
         public string _AppUpdateText = "";
         public string AppUpdateText { get { return _AppUpdateText; } set { SetProperty(ref _AppUpdateText, value); } }
-
+        IFirebaseAnalytics eventTracker;
 
 
         #endregion
@@ -74,7 +75,8 @@ namespace Susu.ViewModels
         {
             SignUpClicked = new Command(SignUp);
             GetAppVersionDetails();
-            
+            eventTracker = DependencyService.Get<IFirebaseAnalytics>();
+
         }
         #endregion
 
@@ -194,6 +196,7 @@ namespace Susu.ViewModels
                     }
                     if (userDto != null && userDto.Id > 0)
                     {
+                        eventTracker.SendEvent("LoginSuccessfull");
                         App.Current.Properties["UserId"] = userDto.Id;
                         //App.Current.Properties["UserName"] = userDto.Email;
                         //App.Current.Properties["Password"] = userDto.UserPassword;

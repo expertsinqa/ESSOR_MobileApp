@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1047599255915",
+    "firebase_url": "https://esorrapp-7b69b.firebaseio.com",
+    "project_id": "esorrapp-7b69b",
+    "storage_bucket": "esorrapp-7b69b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1047599255915:android:7c1cf6a18622f2d20dfc2e",
+        "android_client_info": {
+          "package_name": "com.esorr.esorrApp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1047599255915-cu1tt8ced8kaeutne9qd2t9r04dr9t0r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBDnozXuvfdwR86XEync_ceyhpY64uHLNk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1047599255915-cu1tt8ced8kaeutne9qd2t9r04dr9t0r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

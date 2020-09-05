@@ -18,13 +18,13 @@ namespace Susu.Services
     {
 
         #region Staging
-        //public string baseUrl = "https://www.esorr.com/testesorrapi/api/";
-        //public string TokenUrl = "https://www.esorr.com/testesorrapi/token";
+        public string baseUrl = "https://www.esorr.com/testesorrapi/api/";
+        public string TokenUrl = "https://www.esorr.com/testesorrapi/token";
         #endregion
 
         //#region Production
-        public string baseUrl = "https://www.esorr.com/ESORRAPI/api/";
-        public string TokenUrl = "https://www.esorr.com/ESORRAPI/token";
+        //public string baseUrl = "https://www.esorr.com/ESORRAPI/api/";
+        //public string TokenUrl = "https://www.esorr.com/ESORRAPI/token";
         //#endregion
 
         public void Initialize()

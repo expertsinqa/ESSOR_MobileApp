@@ -102,6 +102,9 @@
     <OnDemandResourcesInitialInstallTags>
     </OnDemandResourcesInitialInstallTags>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'Default' ">
+    <AppExtensionDebugBundleId />
+  </PropertyGroup>
   <ItemGroup>
     <Compile Include="CustomRenderer\CustomDatePickerRender.cs" />
     <Compile Include="CustomRenderer\CustomLabelRender.cs" />
@@ -111,6 +114,7 @@
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <Compile Include="Services\CloseApplication.cs" />
+    <Compile Include="Services\FirebaseAnalyticsIOS.cs" />
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <LinkDescription Include="LinkerSettings.xml" />
@@ -125,6 +129,7 @@
     <BundleResource Include="Resources\more_black.png" />
     <BundleResource Include="Resources\addUsers.png" />
     <ITunesArtwork Include="iTunesArtwork" />
+    <ITunesArtwork Include="iTunesArtwork%402x" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Default-568h@2x.png" />
@@ -154,6 +159,9 @@
     </PackageReference>
     <PackageReference Include="Xam.Plugin.Media">
       <Version>5.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Firebase.iOS.Analytics">
+      <Version>6.4.1</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="4.6.0.847" />
     <PackageReference Include="Xamarin.Essentials.Interfaces" Version="1.5.2" />

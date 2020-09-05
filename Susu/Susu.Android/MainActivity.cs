@@ -2,6 +2,8 @@
 using Android.Content;
 using Android.Content.PM;
 using Android.OS;
+using Firebase;
+using Firebase.Analytics;
 using Prism;
 using Prism.Ioc;
 
@@ -20,6 +22,7 @@ namespace Susu.Droid
             global::Xamarin.Forms.Forms.SetFlags("CollectionView_Experimental");
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
+            FirebaseApp.InitializeApp(Application.Context);
             LoadApplication(new App(new AndroidInitializer()));
             //var config = new PayPalConfiguration(PayPalEnvironment.Sandbox, "AUSkwXXhdMQBLTjWwTBHilMz4SvfZ_I5AbOA6icmIhX6_IVNWzoghjBP0AUTffaT2R4-UGIyIRLFRR-D")
             //{
