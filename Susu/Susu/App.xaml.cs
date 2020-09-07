@@ -105,6 +105,7 @@ namespace Susu
             containerRegistry.RegisterForNavigation<GroupContributionDetailPage, GroupContributionDetailPageViewModel>();
             containerRegistry.RegisterForNavigation<HomePage,HomePageViewModel>();
             containerRegistry.RegisterForNavigation<MorePage, MorePageViewModel>();
+            containerRegistry.RegisterForNavigation<PrivacyPolicyPage, PrivacyPolicyPageViewModel>();
             //containerRegistry.RegisterForNavigation<PaymentsPage, PaymentsPageViewModel>
         }
     }

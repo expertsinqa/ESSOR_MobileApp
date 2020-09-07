@@ -45,24 +45,24 @@
                                 <Label Text="*" VerticalOptions="Start" TextColor="Red" FontFamily="{StaticResource NormalFont}"/>
                             </StackLayout>
                             <custom:CustomEntry Text="{Binding Password}" IsPassword="True" HeightRequest="{OnPlatform iOS='50'}" VerticalOptions="Fill" HorizontalOptions="Fill"  FontFamily="{StaticResource NormalFont}"/>
-                            <Label Text="Forgot Password?" VerticalOptions="End" HorizontalOptions="End" TextColor="#083b66" TextDecorations="Underline" FontFamily="{StaticResource NormalFont}">
+                            <Label Text="Forgot Password?" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#083b66" TextDecorations="Underline" FontFamily="{StaticResource NormalFont}">
                                 <Label.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding ForgotpasswordClicked}"/>
                                 </Label.GestureRecognizers>
                             </Label>
-                            <Frame VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="#083b66" CornerRadius="{x:OnPlatform Android='60', iOS='25'}"   WidthRequest="200" Margin="0,10,0,0" Padding="15" HasShadow="False">
+                            <Frame VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="#083b66" CornerRadius="{x:OnPlatform Android='60', iOS='25'}"   WidthRequest="200" Margin="0,10,0,0" Padding="10" HasShadow="False">
                                 <Frame.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding LoginClicked}"/>
                                 </Frame.GestureRecognizers>
                                 <Label Text="LOGIN" TextColor="White"  VerticalOptions="Center" HorizontalOptions="Center" FontFamily="{StaticResource NormalFont}"/>
                             </Frame>
                             <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,0,0,20">
-                                <Label Text="Don't, have an account ?" VerticalOptions="Start" HorizontalOptions="Start" TextColor="#083b66" FontSize="18" FontFamily="{StaticResource NormalFont}"/>
+                                <Label Text="Don't, have an account ?" VerticalOptions="Start" HorizontalOptions="Start" TextColor="#083b66" FontSize="15" FontFamily="{StaticResource NormalFont}"/>
                                 <StackLayout>
                                     <StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding SignUpClicked}"></TapGestureRecognizer>
                                     </StackLayout.GestureRecognizers>
-                                    <Label Text="SignUp" VerticalOptions="Start" HorizontalOptions="Start" TextColor="#083b66" TextDecorations="Underline" FontAttributes="Bold" FontSize="20" FontFamily="{StaticResource NormalFont}">
+                                    <Label Text="SignUp" VerticalOptions="Start" HorizontalOptions="Start" TextColor="#083b66" TextDecorations="Underline" FontAttributes="Bold" FontSize="16" FontFamily="{StaticResource NormalFont}">
                                         <Label.GestureRecognizers>
                                             <TapGestureRecognizer Command="{Binding SignUpClicked}"></TapGestureRecognizer>
                                         </Label.GestureRecognizers>
@@ -86,7 +86,7 @@
                             </Image.GestureRecognizers>
                         </Image>
                         <StackLayout Orientation="Horizontal" Spacing="0">
-                            <Label Text="Enter registered EmailId " TextColor="{Binding ForgotPasswordEmailPlaceholderColor}" FontFamily="{StaticResource NormalFont}"/>
+                            <Label Text="Enter registered Email ID " TextColor="{Binding ForgotPasswordEmailPlaceholderColor}" FontFamily="{StaticResource NormalFont}"/>
                             <Label Text="*" TextColor="Red" FontFamily="{StaticResource NormalFont}"/>
                         </StackLayout>
                         <custom:CustomEntry Text="{Binding UserMail}"  HeightRequest="{OnPlatform iOS='50'}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="0,10,0,0" FontFamily="{StaticResource NormalFont}">
@@ -94,7 +94,7 @@
                                 <custom1:EmailValidationBehaviour/>
                             </custom:CustomEntry.Behaviors>
                         </custom:CustomEntry>
-                        <Label Text="*Password will sent to your registered Email Id*" VerticalOptions="Start" HorizontalOptions="Start" FontSize="Subtitle" FontFamily="{StaticResource NormalFont}"/>
+                        <Label Text="*Password will sent to your registered Email" VerticalOptions="Start" HorizontalOptions="Start" FontSize="Subtitle" FontFamily="{StaticResource NormalFont}"/>
                         <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,10,0,0">
                             <Frame VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="#083b66"  CornerRadius="{OnPlatform Android='60',iOS='25'}" WidthRequest="200" Margin="0,10,0,0" Padding="15" HasShadow="False">
                                 <Frame.GestureRecognizers>

@@ -230,7 +230,8 @@ namespace Susu.ViewModels
 
         private async void PrivacyPolicy(object obj)
         {
-            await Browser.OpenAsync("https://esorr.com/privatepolicy.html");
+            //await Browser.OpenAsync("https://esorr.com/privatepolicy.html");
+            await NavigationService.NavigateAsync("PrivacyPolicyPage");
         }
 
         private void checkprivacyPloicy()
