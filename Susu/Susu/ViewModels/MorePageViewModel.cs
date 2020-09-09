@@ -12,6 +12,7 @@ namespace ESORR.ViewModels
 {
     public class MorePageViewModel: ViewModelBase
     {
+        #region Properties
         public bool _IsHelppopupVisible = false;
         public bool IsHelppopupVisible { get { return _IsHelppopupVisible; } set { SetProperty(ref _IsHelppopupVisible, value); } }
 
@@ -38,25 +39,44 @@ namespace ESORR.ViewModels
         {
             get { return new Command(Back); }
         }
+        #endregion
+       
 
+        #region Constructor
+        public MorePageViewModel(INavigationService navigationService) : base(navigationService)
+        {
+            NavigationService = navigationService;
+        }
+        #endregion
+
+        #region Fuctions
+        /// <summary>
+        /// This method hit when user click on Back button
+        /// </summary>
+        /// <param name="obj"></param>
         private void Back(object obj)
         {
             NavigationService.GoBackAsync();
         }
-
-        public MorePageViewModel(INavigationService navigationService) : base(navigationService)
-        {
-
-        }
+        /// <summary>
+        /// This method hit when user click on Reset Password
+        /// </summary>
         private async void ResetPassword()
         {
                 await NavigationService.NavigateAsync("ResetPasswordPage");
         }
+
+        /// <summary>
+        /// This method hit when user click on help button
+        /// </summary>
         private void Help()
         {
             IsHelppopupVisible = true;
         }
 
+        /// <summary>
+        /// This method hit when user click on Logout button
+        /// </summary>
         private void LogOut()
         {
             App.Current.Properties.Clear();
@@ -73,10 +93,13 @@ namespace ESORR.ViewModels
             //DependencyService.Get<ICloseApplication>().closeApplication();
         }
 
+        /// <summary>
+        /// This method hit when user click on close help popup
+        /// </summary>
         private void CloseHelp()
         {
             IsHelppopupVisible = false;
         }
-        
+        #endregion
     }
 }

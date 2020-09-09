@@ -9,6 +9,7 @@ namespace Susu.Views
 {
     public class InviteScreenPageViewModel : ViewModelBase,INavigationAware
     {
+        #region Properties
         public ICommand InviteClicked { get { return new Command(Invite); } }
 
         public ICommand NextClicked { get { return new Command(Next); } }
@@ -25,12 +26,19 @@ namespace Susu.Views
 
         public string _GroupCreationSuccess;
         public string GroupCreationSuccess { get { return _GroupCreationSuccess; } set { SetProperty(ref _GroupCreationSuccess, value); } }
+
+        #endregion
         #region Constructor
         public InviteScreenPageViewModel(INavigationService navigationService) : base(navigationService)
         {
             NavigationService = navigationService;
         }
         #endregion
+
+        #region Functions
+        /// <summary>
+        /// This method hit when user link on Invite button
+        /// </summary>
         public async void Invite()
         {
             await Share.RequestAsync(new ShareTextRequest
@@ -42,6 +50,9 @@ namespace Susu.Views
             });;
         }
 
+        /// <summary>
+        /// This method hit when user link on next button
+        /// </summary>
         public async void Next()
         {
             await NavigationService.NavigateAsync("HomePage");
@@ -52,6 +63,10 @@ namespace Susu.Views
            // throw new System.NotImplementedException();
         }
 
+        /// <summary>
+        /// Get the data from the previous page
+        /// </summary>
+        /// <param name="parameters"></param>
         public void OnNavigatedTo(INavigationParameters parameters)
         {
             try
@@ -77,5 +92,6 @@ namespace Susu.Views
 
             }
         }
+        #endregion
     }
 }

@@ -123,6 +123,7 @@
                 </StackLayout>
             </ContentView>
             <ContentView  BackgroundColor="#C0808080"  Padding="10,10,10,10" IsVisible="{Binding GroupCustomMeassageVisible}" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+                <ScrollView>
                 <StackLayout  HorizontalOptions="Center" BackgroundColor="Black" VerticalOptions="Center" Spacing="0" Padding="5,5,5,5">
                     <StackLayout  BackgroundColor="White" Spacing="0" Padding="10,10,10,10">
                         <Image Source="close_black.png" VerticalOptions="End" HorizontalOptions="End" Aspect="AspectFill" Margin="0,0,0,0" Grid.Row="0">
@@ -130,7 +131,7 @@
                                 <TapGestureRecognizer Command="{Binding GroupCustomCloseClicked}"/>
                             </Image.GestureRecognizers>
                         </Image>
-                        <Editor  Text="{Binding CustomRulesText}" FontFamily="{StaticResource NormalFont}" HeightRequest="500" IsEnabled="False" TextColor="Black">
+                        <Editor  Text="{Binding CustomRulesText}" FontFamily="{StaticResource NormalFont}" HeightRequest="400" IsEnabled="False" TextColor="Black">
 
                         </Editor>
                         <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,10,0,0">
@@ -149,6 +150,7 @@
                         </StackLayout>
                     </StackLayout>
                 </StackLayout>
+                </ScrollView>
             </ContentView>
             <custom:LoadingIndicator/>
         </AbsoluteLayout>

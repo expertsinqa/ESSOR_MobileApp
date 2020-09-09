@@ -11,6 +11,7 @@ namespace Susu.ViewModels
 {
     public class ViewDetailNotificationViewModel : ViewModelBase, INavigatedAware
     {
+        #region Properties
         EmailNotificatinDetailsDto emailNotificatinDetailsDto = null;
         public string _NotificationTitle;
         public string NotificationTitle { get { return _NotificationTitle; } set { SetProperty(ref _NotificationTitle, value); } }
@@ -44,18 +45,26 @@ namespace Susu.ViewModels
 
         public SwapUserDetails swapUserDetails = new SwapUserDetails();
 
+        #endregion
+
+        #region Constructor
         public ViewDetailNotificationViewModel(INavigationService navigationService) : base(navigationService)
         {
             NavigationService = navigationService;
         }
+        #endregion
 
+        #region Functions
         private async void Back()
         {
             await NavigationService.NavigateAsync("ViewNotifications");
-           // await NavigationService.GoBackAsync();
 
         }
 
+        /// <summary>
+        /// Bind the notification Intially
+        /// </summary>
+        /// <param name="notificationId"></param>
         public async void BindData(long notificationId)
         {
             swapUserDetails = await ServiceBase.SwapUserDetailsById(notificationId);
@@ -115,39 +124,6 @@ namespace Susu.ViewModels
                         IsAdminApprove = false;
                         return;
                     }
-                    // if (swapUserDetails.ApproverId == swapUserDetails.RequestToId && !isRequestToUser && !swapUserDetails.IsUserAccept)
-                    // {
-                    //     isBackVisible = false;
-                    //     IsOrderSwap = true;
-                    //     IsAdminApprove = false;
-                    //     return;
-                    // }
-                    //// if (swapUserDetails.IsAdminApprove || swapUserDetails.IsAdminReject && swapUserDetails.IsCompleted)
-                    // if (swapUserDetails.LevelId == 1 && swapUserDetails.IsCompleted == true)
-                    // {
-                    //     isBackVisible = true;
-                    //     IsOrderSwap = false;
-                    //     IsAdminApprove = false;
-                    // }
-                    // //else if (swapUserDetails.IsUserAccept && isRequestToUser)
-                    // else if (swapUserDetails.IsUserAccept && isRequestToUser)
-                    // {
-                    //     isBackVisible = true;
-                    //     IsOrderSwap = false;
-                    //     IsAdminApprove = true;
-                    // }
-                    // else if(swapUserDetails.IsUserReject)
-                    // {
-                    //     isBackVisible = true;
-                    //     IsOrderSwap = false;
-                    //     IsAdminApprove = false;
-                    // }
-                    // else
-                    // {
-                    //     isBackVisible = true;
-                    //     IsOrderSwap = false;
-                    //     IsAdminApprove = false;
-                    // }
                 }
                 else
                 {
@@ -175,36 +151,13 @@ namespace Susu.ViewModels
                         IsOrderSwap = true;
                         IsAdminApprove = false;
                     }
-                    //if (swapUserDetails.IsAdminApprove || swapUserDetails.IsAdminReject && swapUserDetails.IsCompleted )
-                    //{
-                    //    isBackVisible = true;
-                    //    IsOrderSwap = false;
-                    //    IsAdminApprove = false;
-                    //}
-                    //else if (swapUserDetails.IsUserAccept || swapUserDetails.IsUserReject && swapUserDetails.IsCompleted)
-                    //{
-                    //    isBackVisible = true;
-                    //    IsOrderSwap = false;
-                    //    IsAdminApprove = false;
-                    //}
-                    //else
-                    //{
-                    //    isBackVisible = true;
-                    //    IsOrderSwap = true;
-                    //    IsAdminApprove = false;
-                    //}
                 }
-                //if(App.IsGroupAdmin)
-                //{
-
-                //}
-                //else
-                //{
-
-                //}
             }
         }
 
+        /// <summary>
+        /// Method hit when user  accept swap
+        /// </summary>
         public void AcceptSwap()
         {
             if (emailNotificatinDetailsDto != null && emailNotificatinDetailsDto.Id > 0)
@@ -214,7 +167,9 @@ namespace Susu.ViewModels
 
             }
         }
-
+        /// <summary>
+        /// Method hit when user  reject swap
+        /// </summary>
         public void RejectSwap()
         {
             if (emailNotificatinDetailsDto != null && emailNotificatinDetailsDto.Id > 0)
@@ -223,6 +178,9 @@ namespace Susu.ViewModels
                 SendNotification((int)NotificationType.UserRejectChangeOrder);
             }
         }
+        /// <summary>
+        /// Method hit when Admin  Approve swap
+        /// </summary>
         public void AdminApprove()
         {
             if (emailNotificatinDetailsDto != null && emailNotificatinDetailsDto.Id > 0)
@@ -232,7 +190,9 @@ namespace Susu.ViewModels
 
             }
         }
-
+        /// <summary>
+        /// Method hit when Admin  reject swap
+        /// </summary>
         public void AdminReject()
         {
             if (emailNotificatinDetailsDto != null && emailNotificatinDetailsDto.Id > 0)
@@ -243,6 +203,10 @@ namespace Susu.ViewModels
             }
         }
 
+        /// <summary>
+        /// Method to send notification
+        /// </summary>
+        /// <param name="notificationType"></param>
         private async void SendNotification(int notificationType)
         {
             IsLoading = true;
@@ -319,28 +283,12 @@ namespace Susu.ViewModels
                                 AcceptSwapNotification.Message = AcceptSwapNotification.Message.Replace("<requesttoname>", RequestToName);
                                 AcceptSwapNotification.Message = AcceptSwapNotification.Message.Replace("<requestfromname>", RequestFromname);
                             }
-                            //else if (AcceptSwapNotification.Message != null && notificationType == (int)NotificationType.RequestToChangeOrder)
-                            //{
-                            //    string RequestFromname = UsersList.Where(x => x.Id == FromUserId).Select(x => x.FullName).FirstOrDefault();
-                            //    string RequestToName = UsersList.Where(x => x.Id == RequestToId).Select(x => x.FullName).FirstOrDefault();
-                            //    AcceptSwapNotification.Message = AcceptSwapNotification.Message.Replace("<acceptusername>", RequestToName);
-                            //    AcceptSwapNotification.Message = AcceptSwapNotification.Message.Replace("<requestfromname>", RequestFromname);
-                            // }
                             else if (AcceptSwapNotification.Message != null && notificationType == (int)NotificationType.AdminAcceptChangeOrder || notificationType == (int)NotificationType.AdminRejectChangeOrder)
                             {
                                 AcceptSwapNotification.Message = AcceptSwapNotification.Message.Replace("<requesttoname>", RequestToName);
                                 AcceptSwapNotification.Message = AcceptSwapNotification.Message.Replace("<requestfromname>", RequestFromname);
                                 AcceptSwapNotification.Message = AcceptSwapNotification.Message.Replace("<approvername>", ApproveName);
                             }
-                            //else if (AcceptSwapNotification.Message != null && notificationType == (int)NotificationType.AdminRejectChangeOrder)
-                            //{
-                            //    string RequestFromname = UsersList.Where(x => x.Id == FromUserId).Select(x => x.FullName).FirstOrDefault();
-                            //    string RequestToName = UsersList.Where(x => x.Id == RequestToId).Select(x => x.FullName).FirstOrDefault();
-                            //    string ApproveName = UsersList.Where(x => x.RoleId == (int)Roles.groupadmin).Select(x => x.FullName).FirstOrDefault();
-                            //    AcceptSwapNotification.Message = AcceptSwapNotification.Message.Replace("<acceptusername>", RequestToName);
-                            //    AcceptSwapNotification.Message = AcceptSwapNotification.Message.Replace("<requestfromname>", RequestFromname);
-                            //    AcceptSwapNotification.Message = AcceptSwapNotification.Message.Replace("<approvername>", RequestFromname);
-                            //}
 
                             emailNotificatinDetailsDto.NotificationMessage = AcceptSwapNotification.Message;
                             emailNotificatinDetailsDto.isReadbyUser = false;
@@ -434,6 +382,8 @@ namespace Susu.ViewModels
                 IsLoading = false;
             }
         }
+
+        #endregion
     }
 
 

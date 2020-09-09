@@ -81,11 +81,17 @@ namespace Susu.ViewModels
         #endregion
 
         #region Functions
+        /// <summary>
+        /// This method hits when user click on signup link
+        /// </summary>
         public async void SignUp()
         {
             await NavigationService.NavigateAsync("SignUpPage");
         }
 
+        /// <summary>
+        /// Method to  Get App version deails
+        /// </summary>
         public  async void  GetAppVersionDetails()
         {
             List<APPVersionDetails> appVersionDetails = new List<APPVersionDetails>();
@@ -163,6 +169,10 @@ namespace Susu.ViewModels
             }
            
         }
+
+        /// <summary>
+        ///  This method hits when user click on Login  button
+        /// </summary>
         public async void Login()
         {
             UserDto userDto = null;
@@ -257,6 +267,10 @@ namespace Susu.ViewModels
             }
 
         }
+
+        /// <summary>
+        /// This method hits when user click on forgot password
+        /// </summary>
         public void ForgotPassword()
         {
             IsLoading = true;
@@ -265,11 +279,17 @@ namespace Susu.ViewModels
             IsForgotPasswordVisible = true;
             IsLoading = false;
         }
-
+        /// <summary>
+        /// This method hits when user click on close button in forgot password
+        /// </summary>
         private void CloseForgetPassword()
         {
             IsForgotPasswordVisible = false;
         }
+
+        /// <summary>
+        /// This method hits when user click submit button in Forgot password
+        /// </summary>
         private async void SubmitForgetPassword()
         {
             if (!string.IsNullOrWhiteSpace(UserMail) && !IsLoading)
@@ -296,6 +316,9 @@ namespace Susu.ViewModels
             }
         }
 
+        /// <summary>
+        /// This method hits when user click on Update App
+        /// </summary>
         private async void AppUpdate()
         {
             if (Device.RuntimePlatform == Device.Android)
@@ -311,6 +334,9 @@ namespace Susu.ViewModels
                 IsAppUpdateVisible = false;
             }
         }
+        /// <summary>
+        /// This method hits when user click on close App update
+        /// </summary>
         private void Cancel()
         {
             IsAppUpdateVisible = false;

@@ -10,13 +10,23 @@ namespace Susu.ViewModels
 {
     public class ServiceAggrementViewModel : ViewModelBase,INavigationAware
     {
+        #region Properties
         public UserDto userDto = null;
         public ICommand AcceptClicked { get { return new Command(Accept); } }
         public ICommand RejectClicked { get { return new Command(Reject); } }
+
+        #endregion
+        #region Constructor
         public ServiceAggrementViewModel(INavigationService navigationService):base(navigationService)
         {
             NavigationService = navigationService;
         }
+        #endregion
+
+        #region Functions
+        /// <summary>
+        /// When user click accept aggrement
+        /// </summary>
         public async void Accept()
         {
             userDto.IsAcceptAggrement = true;
@@ -35,6 +45,9 @@ namespace Susu.ViewModels
             }
             
         }
+        /// <summary>
+        /// When user  Rejject aggrement
+        /// </summary>
         public async void Reject()
         {
             await NavigationService.NavigateAsync("LoginPage");
@@ -62,5 +75,7 @@ namespace Susu.ViewModels
         {
            // throw new NotImplementedException();
         }
+
+        #endregion
     }
 }

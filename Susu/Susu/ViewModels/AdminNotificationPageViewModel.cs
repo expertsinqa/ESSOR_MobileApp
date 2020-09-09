@@ -29,12 +29,20 @@ namespace Susu.ViewModels
         public DateTime ContributionDate;
 
         #endregion
+        #region Constructor
         public AdminNotificationPageViewModel(INavigationService navigationService):base(navigationService)
         {
             NavigationService = navigationService;
             
                
         }
+        #endregion
+
+        #region Functions
+        /// <summary>
+        /// Intially bind the data to the screen
+        /// </summary>
+        /// <param name="Id"></param>
         public async void BindData(int Id)
         {
             IsLoading = true;
@@ -64,11 +72,18 @@ namespace Susu.ViewModels
 
         }
 
+        /// <summary>
+        /// When user click on Back button
+        /// </summary>
         private async void Back()
         {
            await NavigationService.NavigateAsync("SamplePage");
         }
 
+        /// <summary>
+        /// When the user click on specific notification
+        /// </summary>
+        /// <param name="notificationDto"></param>
         public async void selectedNotification(NotificationDto notificationDto)
         {
             NavigationParameters np = new NavigationParameters();
@@ -81,6 +96,10 @@ namespace Susu.ViewModels
             //throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// When the page navigating from previous page
+        /// </summary>
+        /// <param name="parameters"></param>
         public void OnNavigatedTo(INavigationParameters parameters)
         {
             try
@@ -109,5 +128,7 @@ namespace Susu.ViewModels
 
             }
         }
+
+        #endregion
     }
 }

@@ -14,7 +14,7 @@ using static Susu.Models.Enums;
 
 namespace Susu.ViewModels
 {
-    public class SamplePageViewModel : ViewModelBase,INavigationAware
+    public class SamplePageViewModel : ViewModelBase, INavigationAware
     {
         #region Properties
         public ImageSource _GroupInfoIcon = "info_blue.png";
@@ -209,19 +209,14 @@ namespace Susu.ViewModels
             GetNotification();
             _lstperiod = new List<string>() { "Weekly", "Bi-Weekly", "Semi-Monthly", "Monthly", "Semi-Yearly", "Yearly" };
             DaysList = new List<string>() { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
-            //if (groupDto != null  && App.IsGroupAdmin && groupDto.ErrorId !=-1)
-            //{
-            //    IsGroupInfoEditable = true;
-            //}
-            //else
-            //{
-            //    IsGroupInfoEditable = false;
-            //}
 
         }
         #endregion
 
         #region Functions
+        /// <summary>
+        /// This method hit when user click on group info
+        /// </summary>
         private void GroupInfo()
         {
             GroupInfoIcon = "info_blue.png";
@@ -237,6 +232,9 @@ namespace Susu.ViewModels
             GetGroupDetails();
             GetNotification();
         }
+        /// <summary>
+        ///  This method hit when user click on group users
+        /// </summary>
         private void GroupUsers()
         {
             BindGroupUsers();
@@ -252,6 +250,9 @@ namespace Susu.ViewModels
             IsPaymentInfoVisibe = false;
             IsHelpVisible = false;
         }
+        /// <summary>
+        /// This method hit when user click on help
+        /// </summary>
         private void Help()
         {
             GroupInfoIcon = "info_black.png";
@@ -267,6 +268,9 @@ namespace Susu.ViewModels
             GetNotification();
         }
 
+        /// <summary>
+        /// /// This method hit when user click on payments
+        /// </summary>
         private void Payments()
         {
             GroupInfoIcon = "info_black.png";
@@ -282,6 +286,10 @@ namespace Susu.ViewModels
             GetNotification();
 
         }
+
+        /// <summary>
+        /// /// This method hit when user click on user Info
+        /// </summary>
         private void UserInfo()
         {
             GroupInfoIcon = "info_black.png";
@@ -298,9 +306,12 @@ namespace Susu.ViewModels
             GetNotification();
         }
 
+        /// <summary>
+        /// Call to bind Groupusers
+        /// </summary>
         public async void BindGroupUsers()
         {
-            
+
             List<UserDto> lstUsersDto = new List<UserDto>();
             IsLoading = true;
             lstUsersDto = await ServiceBase.GetUsersByGroupId(App.GroupId);
@@ -311,6 +322,9 @@ namespace Susu.ViewModels
             }
         }
 
+        /// <summary>
+        /// Method to update user details
+        /// </summary>
         public async void update()
         {
             UserDto UpdateduserDto = new UserDto();
@@ -318,13 +332,16 @@ namespace Susu.ViewModels
             IsLoading = true;
             UserDto userDetails = await ServiceBase.SaveUser(userDto);
             IsLoading = false;
-            if (userDetails!=null && userDetails.Id > 0)
+            if (userDetails != null && userDetails.Id > 0)
                 await App.Current.MainPage.DisplayAlert("Alert", "User data updated successfully", "OK");
             else
                 await App.Current.MainPage.DisplayAlert("Alert", "Something went wrong please try again", "OK");
 
         }
 
+        /// <summary>
+        /// Method to get User details
+        /// </summary>
         public async void GetUserDetails()
         {
             try
@@ -346,6 +363,9 @@ namespace Susu.ViewModels
             }
         }
 
+        /// <summary>
+        /// /// This method hit when user click Logout
+        /// </summary>
         public void Logout()
         {
             App.Current.Properties.Clear();
@@ -362,6 +382,9 @@ namespace Susu.ViewModels
             //DependencyService.Get<ICloseApplication>().closeApplication();
         }
 
+        /// <summary>
+        /// Method to get groupdetails
+        /// </summary>
         public async void GetGroupDetails()
         {
             try
@@ -370,8 +393,8 @@ namespace Susu.ViewModels
                 {
                     IsLoading = true;
                     long groupId = long.Parse(App.Current.Properties["GroupId"].ToString());
-                    groupDto = await ServiceBase.GetGroupDetialsByGroupId(App.GroupId != null ? App.GroupId : 0);
-                    if (groupDto != null)
+                    groupDto = await ServiceBase.GetGroupDetialsByGroupId(App.GroupId != 0 ? App.GroupId : 0);
+                    if (groupDto != null && groupDto.Id > 0)
                     {
                         App.GroupId = groupDto.Id;
                         App.Current.Properties["GroupId"] = App.GroupId;
@@ -385,16 +408,11 @@ namespace Susu.ViewModels
                         if (App.UserId != 0 && groupDto.CreatorId != 0 && App.UserId == groupDto.CreatorId)
                         {
                             App.IsGroupAdmin = true;
-                            if(groupDto.ErrorId==0)
+                            if (groupDto.ErrorId == 0)
                             {
                                 IsGroupInviteVisible = true;
                             }
                         }
-
-                        //if (groupDto.ContributionDate != null) {
-                        //    selectedDate = DateTime.Parse(groupDto.ContributionDate.ToString().Split(' ')[0]);
-                        //   // selectedDate = DateTime.ParseExact(date,"d/M/yyyy", System.Globalization.CultureInfo.InvariantCulture);
-                        //  }
 
                         if (groupDto != null && App.IsGroupAdmin && groupDto.ErrorId != -1)
                         {
@@ -404,22 +422,7 @@ namespace Susu.ViewModels
                         {
                             IsGroupInfoEditable = false;
                         }
-                        //if (groupDto != null && !string.IsNullOrEmpty(groupDto.ContributionPeriod))
-                        //{
-                        //    if (groupDto.ContributionPeriod == "biweekly")
-                        //    {
-                        //        groupDto.Contrbution_peroid = "Bi-Weekly";
-                        //    }
-                        //    else if (groupDto.ContributionPeriod == "semimonthly")
-                        //    {
-                        //        groupDto.Contrbution_peroid = "Semi-Monthly";
-                        //    }
-                        //    else if (groupDto.ContributionPeriod == "semiyearly")
-                        //    {
-                        //        groupDto.Contrbution_peroid = "Semi-Yearly";
-                        //    }
-                        //}
-                        if (groupDto != null && groupDto.Contrbution_peroid == "Monthly" || groupDto.Contrbution_peroid =="Semi-Monthly")
+                        if (groupDto != null && groupDto.Contrbution_peroid == "Monthly" || groupDto.Contrbution_peroid == "Semi-Monthly")
                         {
                             IsContributionDateVisible = true;
                             IsContributionDayVisible = false;
@@ -451,16 +454,24 @@ namespace Susu.ViewModels
                             IsGroupPayOutDateVisible = true;
                             IsGroupPayOutDayVisible = false;
                         }
+                        IsLoading = true;
+                        groupContributionDetails = await ServiceBase.GetContributionDetailsByGroupNO(groupDto.GroupNumber);
+                        IsLoading = false;
+                        if (groupContributionDetails != null && groupContributionDetails.Id > 0)
+                        {
+                            App.contributionId = groupContributionDetails.ContributionId;
+                            App.GroupNumber = groupContributionDetails.GroupNumber;
+                        }
+                        IsLoading = false;
                     }
-                    IsLoading = true;
-                    groupContributionDetails = await ServiceBase.GetContributionDetailsByGroupNO(groupDto.GroupNumber);
-                    IsLoading = false;
-                    if (groupContributionDetails != null && groupContributionDetails.Id > 0)
+                    else
                     {
-                        App.contributionId = groupContributionDetails.ContributionId;
-                        App.GroupNumber = groupContributionDetails.GroupNumber;
+                        if (await App.Current.MainPage.DisplayAlert("", "Your are  no longer in the system", "Logout", " "))
+                        {
+                            Logout();
+                        }
                     }
-                    IsLoading = false;
+
                 }
                 else
                 {
@@ -472,6 +483,9 @@ namespace Susu.ViewModels
             { }
         }
 
+        /// <summary>
+        /// Method to update groupdetails by admin 
+        /// </summary>
         public async void updateGroup()
         {
             GroupDto updatedgroupDto = groupDto;
@@ -545,7 +559,7 @@ namespace Susu.ViewModels
                         await App.Current.MainPage.DisplayAlert("", "Please select group payout date", "OK");
                         return;
                     }
-                    
+
                 }
                 else if (!string.IsNullOrEmpty(updatedgroupDto.Contrbution_peroid) && updatedgroupDto.Contrbution_peroid.ToLower() == "yearly")
                 {
@@ -573,7 +587,7 @@ namespace Susu.ViewModels
                         await App.Current.MainPage.DisplayAlert("", "Please select group payout date", "OK");
                         return;
                     }
-                    
+
                 }
                 else if (updatedgroupDto.ContributionDate != null && updatedgroupDto.ContributionDate > updatedgroupDto.PayOutDate)
                 {
@@ -608,7 +622,7 @@ namespace Susu.ViewModels
                 }
                 IsLoading = true;
                 GroupDto group = await ServiceBase.SaveGroupInfo(updatedgroupDto);
-                
+
                 IsLoading = false;
                 if (group != null && group.Id > 0)
                 {
@@ -623,6 +637,9 @@ namespace Susu.ViewModels
 
         }
 
+        /// <summary>
+        /// Method to Bind notification count
+        /// </summary>
         public async void GetNotification()
         {
             IsLoading = true;
@@ -652,11 +669,17 @@ namespace Susu.ViewModels
 
         }
 
+        /// <summary>
+        /// /// This method hit when user click on Resset Password
+        /// </summary>
         public async void RestPassword()
         {
             await NavigationService.NavigateAsync("ResetPasswordPage");
         }
 
+        /// <summary>
+        /// /// This method hit when user click on notification
+        /// </summary>
         private async void Notification()
         {
             NavigationParameters np = new NavigationParameters();
@@ -664,6 +687,9 @@ namespace Susu.ViewModels
             await NavigationService.NavigateAsync("AdminNotificationPage", np);
         }
 
+        /// <summary>
+        /// Method to view notifications
+        /// </summary>
         public async void ViewNotifications()
         {
             //NavigationParameters np = new NavigationParameters();
@@ -671,6 +697,9 @@ namespace Susu.ViewModels
             await NavigationService.NavigateAsync("ViewNotifications");
         }
 
+        /// <summary>
+        /// /// This method hit when user click on group Contribution
+        /// </summary>
         private async void paymentContribution()
         {
             NavigationParameters np = new NavigationParameters();
@@ -683,6 +712,9 @@ namespace Susu.ViewModels
             await NavigationService.NavigateAsync("GroupContributionDetailPage", np);
         }
 
+        /// <summary>
+        /// /// This method hit when user click on group Payout
+        /// </summary>
         private async void PayoutClicked()
         {
             NavigationParameters np = new NavigationParameters();
@@ -692,14 +724,17 @@ namespace Susu.ViewModels
             await NavigationService.NavigateAsync("GroupPayoutDetails", np);
         }
 
+        /// <summary>
+        /// Pay now method
+        /// </summary>
         private async void Paynow()
         {
             IsLoading = true;
             TaxMessageVisible = true;
             UserDto userDto = await ServiceBase.GetUserById(CreatorId);
-            if(userDto!=null)
+            if (userDto != null)
             {
-                if(string.IsNullOrEmpty(userDto.ZelleId))
+                if (string.IsNullOrEmpty(userDto.ZelleId))
                 {
                     IsAdminhasnopaypalAccount = true;
                     IsAdminhaspaypalAccount = false;
@@ -715,6 +750,9 @@ namespace Susu.ViewModels
 
         }
 
+        /// <summary>
+        /// /// This method hit when admin click on group invite
+        /// </summary>
         private async void Invite()
         {
             NavigationParameters np = new NavigationParameters();
@@ -776,6 +814,9 @@ namespace Susu.ViewModels
 
         }
 
+        /// <summary>
+        /// close member popup
+        /// </summary>
         private void Close()
         {
             TaxMessageVisible = false;
@@ -849,18 +890,28 @@ namespace Susu.ViewModels
 
         //}
 
+        /// <summary>
+        /// Method to close hlep popup
+        /// </summary>
         private void CloseHelp()
         {
             IsHelppopupVisible = false;
         }
+        /// <summary>
+        /// Method to display help popup
+        /// </summary>
         private void HelpPopup()
         {
             IsHelppopupVisible = true;
         }
+        /// <summary>
+        /// Method to close group popup
+        /// </summary>
         public void CloseGroup()
         {
             IsGroupInfoupdateVisible = false;
         }
+
         public void OK()
         {
             TaxMessageVisible = false;
@@ -869,17 +920,22 @@ namespace Susu.ViewModels
                 IsPayMemberpopupVisible = false;
             }
         }
-
+        /// <summary>
+        /// /// This method hit when user click on home button
+        /// </summary>
         private void Home()
         {
             NavigationService.NavigateAsync("HomePage");
         }
 
+        /// <summary>
+        /// Pay member popup
+        /// </summary>
         private async void PayMember()
         {
-            
-           List<UserPayOutDetails> UserPayOutDetails = await ServiceBase.GetPayOutDetailsByGroupNO(App.GroupNumber);
-            if (UserPayOutDetails != null && UserPayOutDetails.Count>0)
+
+            List<UserPayOutDetails> UserPayOutDetails = await ServiceBase.GetPayOutDetailsByGroupNO(App.GroupNumber);
+            if (UserPayOutDetails != null && UserPayOutDetails.Count > 0)
             {
                 UserPayOutDetails userPayoutDetail = UserPayOutDetails.Where(x => x.ContributionId == App.contributionId).FirstOrDefault();
                 if (userPayoutDetail != null)
@@ -888,7 +944,7 @@ namespace Susu.ViewModels
                     if (!string.IsNullOrEmpty(userDto.ZelleId))
                         ZeeleText = "Please pay the contributed amount for the month of " + userPayoutDetail.ContributionDateString.ToString() + " the user " + userPayoutDetail.UserName + " using Zelle ID is " + userDto.ZelleId;
                     else
-                        ZeeleText = "Oops, the user "+userPayoutDetail.UserName +" is not provided their Zelle ID, Please ask them to upload Zell ID under their user information.";
+                        ZeeleText = "Oops, the user " + userPayoutDetail.UserName + " is not provided their Zelle ID, Please ask them to upload Zell ID under their user information.";
                 }
             }
             else
@@ -898,11 +954,14 @@ namespace Susu.ViewModels
             IsPayMemberpopupVisible = true;
         }
 
+        /// <summary>
+        /// Method to open zelle App
+        /// </summary>
         private async void OpenZelle()
         {
-            if(Device.RuntimePlatform == Device.Android)
+            if (Device.RuntimePlatform == Device.Android)
             {
-               Uri uri = new Uri("https://play.google.com/store/apps/details?id=com.zellepay.zelle&hl=en_IN");
+                Uri uri = new Uri("https://play.google.com/store/apps/details?id=com.zellepay.zelle&hl=en_IN");
                 await Browser.OpenAsync(uri, BrowserLaunchMode.SystemPreferred);
             }
             else
@@ -924,11 +983,11 @@ namespace Susu.ViewModels
                     IsLoading = true;
                     if (parameters.ContainsKey("TappedIcon"))
                     {
-                        if(parameters["TappedIcon"].ToString() == "GroupInfo")
+                        if (parameters["TappedIcon"].ToString() == "GroupInfo")
                         {
                             GroupInfo();
                         }
-                        else if(parameters["TappedIcon"].ToString() == "GroupUsers")
+                        else if (parameters["TappedIcon"].ToString() == "GroupUsers")
                         {
                             GroupUsers();
                         }
@@ -945,8 +1004,8 @@ namespace Susu.ViewModels
                             Payments();
                         }
                     }
-                    
-                    
+
+
                     IsLoading = false;
                 }
             }

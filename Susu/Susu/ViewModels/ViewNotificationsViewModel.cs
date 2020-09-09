@@ -25,7 +25,9 @@ namespace Susu.ViewModels
         #endregion
 
         #region Functions
-
+        /// <summary>
+        /// Bind the notification
+        /// </summary>
         public async void BindData()
         {
             try
@@ -40,6 +42,10 @@ namespace Susu.ViewModels
 
             }
         }
+        /// <summary>
+        /// Method to view deail notification
+        /// </summary>
+        /// <param name="emailNotificatinDetailsDto"></param>
         public async void ViewNotification(EmailNotificatinDetailsDto emailNotificatinDetailsDto)
         {
             NavigationParameters np = new NavigationParameters();
@@ -47,6 +53,9 @@ namespace Susu.ViewModels
             await NavigationService.NavigateAsync("ViewDetailNotification", np);
         }
 
+        /// <summary>
+        /// Methd when user click on Back
+        /// </summary>
         public async void Back()
         {
             await NavigationService.NavigateAsync("SamplePage");
@@ -58,17 +67,5 @@ namespace Susu.ViewModels
             //throw new NotImplementedException();
         }
 
-        //public void OnNavigatedTo(INavigationParameters parameters)
-        //{
-        //    if (parameters.ContainsKey("NotificationsList"))
-        //    {
-        //        IsLoading = true;
-        //        lstEmailNotificationDto = new List<EmailNotificatinDetailsDto>();
-        //        List<EmailNotificatinDetailsDto> lst = new List<EmailNotificatinDetailsDto>();
-        //        lst = (List<EmailNotificatinDetailsDto>)parameters["NotificationsList"];
-        //        lstEmailNotificationDto = new List<EmailNotificatinDetailsDto>(lst);
-        //        IsLoading = false;
-        //    }
-        //}
     }
 }

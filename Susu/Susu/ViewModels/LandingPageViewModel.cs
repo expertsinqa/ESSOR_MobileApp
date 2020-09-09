@@ -78,18 +78,32 @@ namespace Susu.ViewModels
         #endregion
 
         #region Functions
+        /// <summary>
+        /// This method hits when user click on Join Group Image
+        /// </summary>
         public void JoinGroup()
         {
             IsJoinGroupViisble = true;
         }
+        /// <summary>
+        /// This method hits when user click on Create Group Image
+        /// </summary>
+        /// <param name="obj"></param>
         private async void CreateGroup(object obj)
         {
             await NavigationService.NavigateAsync("CreateGroupPage");
         }
+        /// <summary>
+        /// This method hits when user close button in  Join Group 
+        /// </summary>
         public void Close()
         {
             IsJoinGroupViisble = false;
         }
+
+        /// <summary>
+        /// This method hits when user click on join button
+        /// </summary>
         public async void Join()
         {
             groupDto = new GroupDto();
@@ -138,12 +152,18 @@ namespace Susu.ViewModels
 
         }
 
+        /// <summary>
+        /// This method hits when user click on Close custom Rules
+        /// </summary>
         private void CloseCustomGroup()
         {
             GroupCustomMeassageVisible = false;
             IsJoinGroupViisble = false;
         }
 
+        /// <summary>
+        /// This method hits when user click on accept custom Rules
+        /// </summary>
         private async void AcceptCustomRules()
         {
             IsAcceptCustomRule = true;
@@ -152,6 +172,9 @@ namespace Susu.ViewModels
                 await NavigationService.NavigateAsync("HomePage");
         }
 
+        /// <summary>
+        /// This method hits when user click on Three dots icon
+        /// </summary>
         private void MoreClicked()
         {
             NavigationService.NavigateAsync("MorePage");

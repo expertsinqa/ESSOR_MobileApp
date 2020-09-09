@@ -76,6 +76,10 @@ namespace Susu.ViewModels
             IsLoading = false;
         }
 
+        /// <summary>
+        /// Get the list of users
+        /// </summary>
+        /// <returns></returns>
         public async Task<List<UserDto>> GetUsers()
         {
             IsLoading = true;
@@ -91,12 +95,18 @@ namespace Susu.ViewModels
             IsLoading = false;
             return UsersList;
         }
+
+        /// <summary>
+        /// Close the page
+        /// </summary>
         public async void close()
         {
-            //await NavigationService.NavigateAsync("AdminNotificationPage");
            await NavigationService.GoBackAsync();
         }
 
+        /// <summary>
+        /// To send notification to the user
+        /// </summary>
         private async void SendNotification()
         {
             if(IsSelectedUsersVisible)
@@ -263,6 +273,10 @@ namespace Susu.ViewModels
             //throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// This method get hit while navigating from page
+        /// </summary>
+        /// <param name="parameters"></param>
         public async void OnNavigatedTo(INavigationParameters parameters)
         {
             try

@@ -58,6 +58,9 @@ namespace ESORR.ViewModels
         #endregion
 
         #region Functions
+        /// <summary>
+        /// This method will bind all contribution list
+        /// </summary>
         private async void BindData()
         {
             try
@@ -100,6 +103,10 @@ namespace ESORR.ViewModels
 
         }
 
+        /// <summary>
+        /// This method hits when admin click on individaul contribution checkbox
+        /// </summary>
+        /// <param name="userPayInDetails"></param>
         public async void UpdatePayment(UserPayInDetails userPayInDetails)
         {
             List<UserPayInDetails> lstuserPayInDetails = new List<UserPayInDetails>();
@@ -123,6 +130,10 @@ namespace ESORR.ViewModels
         {
 
         }
+        /// <summary>
+        /// This method is to send the notification to the user
+        /// </summary>
+        /// <param name="lstuserPayInDetails"></param>
         private async void SendNotification(List<UserPayInDetails> lstuserPayInDetails)
         {
             IsLoading = true;
@@ -178,6 +189,9 @@ namespace ESORR.ViewModels
 
         }
 
+        /// <summary>
+        /// This method hits when admin click on all contribution checkbox
+        /// </summary>
         public async void UpdateAllpayments()
         {
             try
@@ -214,6 +228,10 @@ namespace ESORR.ViewModels
                 IsLoading = false;
             }
         }
+
+        /// <summary>
+        /// This method hits when admin click on back button
+        /// </summary>
         private void Back()
         {
             NavigationService.GoBackAsync();
@@ -224,6 +242,10 @@ namespace ESORR.ViewModels
             //throw new System.NotImplementedException();
         }
 
+        /// <summary>
+        /// This method get the requried data from previous data 
+        /// </summary>
+        /// <param name="parameters"></param>
         public void OnNavigatedTo(INavigationParameters parameters)
         {
             try

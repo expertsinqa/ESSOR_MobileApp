@@ -36,15 +36,26 @@ namespace Susu.ViewModels
         }
         #endregion
         #region Functions
+        /// <summary>
+        /// When user click on uplod via camera
+        /// </summary>
         public  void UploadViaCamera()
         {
             Photo();
         }
-        public  void uploadViaFile()
+
+        /// <summary>
+        /// When user click on uplod via camera
+        /// </summary>
+        public void uploadViaFile()
         {
             Upload();
         }
 
+        /// <summary>
+        /// Camer premission Alert
+        /// </summary>
+        /// <returns></returns>
         public async Task<bool> CheckCameraPermissionAsync()
         {
             try
@@ -70,6 +81,9 @@ namespace Susu.ViewModels
             }
         }
 
+        /// <summary>
+        /// Method to take photo
+        /// </summary>
         public async void Photo()
         {
             if (await CheckCameraPermissionAsync())
@@ -117,6 +131,10 @@ namespace Susu.ViewModels
             }
         }
 
+        /// <summary>
+        /// Storage premission alert
+        /// </summary>
+        /// <returns></returns>
         public async Task<bool> CheckStoragePermission()
         {
             try
@@ -142,6 +160,9 @@ namespace Susu.ViewModels
             }
         }
 
+        /// <summary>
+        /// Method to upload photo
+        /// </summary>
         public async void Upload()
         {
             if (await CheckStoragePermission())
@@ -181,6 +202,12 @@ namespace Susu.ViewModels
             }
         }
 
+        /// <summary>
+        /// Method to save Id Proof
+        /// </summary>
+        /// <param name="file"></param>
+        /// <param name="extension"></param>
+        /// <param name="userId"></param>
         public async void SaveGovernmentIdProof(byte[] file,string extension,long userId=0)
         {
             
@@ -206,27 +233,16 @@ namespace Susu.ViewModels
 
             }
         }
+
+        /// <summary>
+        /// When user click on MoreOption
+        /// </summary>
+        /// <param name="obj"></param>
         private void MoreClicked(object obj)
         {
             NavigationService.NavigateAsync("MorePage");
         }
-        //public override void OnNavigatedTo(INavigationParameters parameters)
-        //{
-        //    try
-        //    {
-        //        if (parameters.ContainsKey("userDto"))
-        //        {
-        //            userDto = new UserDto();
-        //            userDto = (UserDto)parameters["userDto"];
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-
-
-        //    }
-
-        //}
+        
         #endregion
     }
 }

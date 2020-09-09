@@ -35,16 +35,26 @@ namespace Susu.Views
         public Color oldPasswordPlaceholder { get { return _oldPasswordPlaceholder; } set { SetProperty(ref _oldPasswordPlaceholder, value); } }
 
         #endregion
+
+        #region Constructor
         public ResetPasswordPageViewModel(INavigationService navigationService) : base(navigationService)
         {
             NavigationService = navigationService;
         }
+        #endregion
 
+        #region Functions
+        /// <summary>
+        /// This method hit when user click on Back button
+        /// </summary>
         public void Back()
         {
             NavigationService.GoBackAsync();
         }
 
+        /// <summary>
+        /// This method hit when user click on update button
+        /// </summary>
         public async void Update()
         {
             if (Validation())
@@ -92,6 +102,10 @@ namespace Susu.Views
             }
         }
 
+        /// <summary>
+        /// Method to validate required fields
+        /// </summary>
+        /// <returns></returns>
         public bool Validation()
         {
             int count = 0;
@@ -131,5 +145,7 @@ namespace Susu.Views
                 return false;
             }
         }
+
+        #endregion
     }
 }

@@ -15,6 +15,7 @@ namespace ESORR.ViewModels
 {
     public class GroupPayoutDetailsViewModel : ViewModelBase, INavigationAware
     {
+        #region Properties
         GroupContributionDetails groupContributionDetails { get; set; }
         public int groupNumber = 0;
         public List<UserPayOutDetails> _usersPayoutList;
@@ -43,16 +44,21 @@ namespace ESORR.ViewModels
         public string NextPaymentDate { get; set; }
         public double _listViewHeightRequest = 0;
         public double listViewHeightRequest { get { return _listViewHeightRequest; } set { SetProperty(ref _listViewHeightRequest, value); } }
-        private async void Back(object obj)
-        {
-            await NavigationService.GoBackAsync();
-        }
 
+        #endregion
+       
+
+        #region Constructor
         public GroupPayoutDetailsViewModel(INavigationService navigationService) : base(navigationService)
         {
             NavigationService = navigationService;
         }
+        #endregion
 
+        #region Function
+        /// <summary>
+        /// Bind the payout details 
+        /// </summary>
         private async void BindData()
         {
             try
@@ -150,6 +156,10 @@ namespace ESORR.ViewModels
           
         }
 
+        /// <summary>
+        /// This method hits when the admin check the checkbox
+        /// </summary>
+        /// <param name="userPayOutDetails"></param>
         public async void UpdatePayment(UserPayOutDetails userPayOutDetails)
         {
             //List<UserPayInDetails> lstuserPayInDetails = new List<UserPayInDetails>();
@@ -169,6 +179,10 @@ namespace ESORR.ViewModels
             }
         }
 
+        /// <summary>
+        /// This method is send the notification
+        /// </summary>
+        /// <param name="userPayOutDetails"></param>
         private async void SendNotification(UserPayOutDetails userPayOutDetails)
         {
             IsLoading = true;
@@ -231,11 +245,23 @@ namespace ESORR.ViewModels
 
         }
 
+        /// <summary>
+        ///  This method hits when the user click on back button
+        /// </summary>
+        /// <param name="obj"></param>
+        private async void Back(object obj)
+        {
+            await NavigationService.GoBackAsync();
+        }
         public void OnNavigatedFrom(INavigationParameters parameters)
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// This method get the data from the previous page
+        /// </summary>
+        /// <param name="parameters"></param>
         public void OnNavigatedTo(INavigationParameters parameters)
         {
             try
@@ -253,5 +279,7 @@ namespace ESORR.ViewModels
 
             }
         }
+
+        #endregion
     }
 }

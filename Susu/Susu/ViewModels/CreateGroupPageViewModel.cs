@@ -95,21 +95,34 @@ namespace Susu.ViewModels
 
         }
         #endregion
+
         #region Functions
+        /// <summary>
+        /// This method hits when user hit on back button
+        /// </summary>
         public async void Back()
         {
             await NavigationService.NavigateAsync("LandingPage");
         }
 
+        /// <summary>
+        /// This method hits when user click on cutom rules link
+        /// </summary>
         public void customRules()
         {
             //CustomRulesText = "";
             IsCustomRulesVisible = true;
         }
+        /// <summary>
+        /// This method hits when user click icon in custom rules
+        /// </summary>
         public void Close()
         {
             IsCustomRulesVisible = false;
         }
+        /// <summary>
+        /// This method hits when user click on create group button 
+        /// </summary>
         public async void CreateGroup()
         {
             if (validate())
@@ -298,6 +311,10 @@ namespace Susu.ViewModels
 
         }
 
+        /// <summary>
+        /// This method is to validate filed when click on create group button
+        /// </summary>
+        /// <returns></returns>
         public bool validate()
         {
             int count = 0;
@@ -328,6 +345,10 @@ namespace Susu.ViewModels
                 return false;
             }
         }
+
+        /// <summary>
+        /// This method hits when user click on cretae in the  cutom rules
+        /// </summary>
         public void CreateRules()
         {
             IsCustomRulesVisible = false;

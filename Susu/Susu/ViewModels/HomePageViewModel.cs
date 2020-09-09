@@ -39,7 +39,9 @@ namespace ESORR.ViewModels
         }
         #endregion
         #region Functions
-
+        /// <summary>
+        /// App version update call
+        /// </summary>
         public async void GetAppVersionDetails()
         {
             List<APPVersionDetails> appVersionDetails = new List<APPVersionDetails>();
@@ -117,6 +119,10 @@ namespace ESORR.ViewModels
             }
 
         }
+
+        /// <summary>
+        /// This method hits when the user click on GroupInfo
+        /// </summary>
         private void GroupInfo()
         {
             IsLoading = true;
@@ -126,6 +132,9 @@ namespace ESORR.ViewModels
             NavigationService.NavigateAsync("SamplePage", np);
             IsLoading = false;
         }
+        /// <summary>
+        /// This method hits when the user click on GroupUsers Tab
+        /// </summary>
         private void GroupUsers()
         {
             IsLoading = true;
@@ -135,6 +144,10 @@ namespace ESORR.ViewModels
             NavigationService.NavigateAsync("SamplePage", np);
             IsLoading = false;
         }
+
+        /// <summary>
+        /// This method hits when the user click on More Tab
+        /// </summary>
         private void More()
         {
             IsLoading = true;
@@ -144,6 +157,9 @@ namespace ESORR.ViewModels
             NavigationService.NavigateAsync("SamplePage", np);
             IsLoading = false;
         }
+        /// <summary>
+        /// This method hits when the user click on Profile Tab
+        /// </summary>
 
         private void Profile()
         {
@@ -155,6 +171,9 @@ namespace ESORR.ViewModels
             IsLoading = false;
         }
 
+        /// <summary>
+        /// This method hits when the user click on Payment Tab
+        /// </summary>
         private void Payment()
         {
             IsLoading = true;
@@ -164,6 +183,10 @@ namespace ESORR.ViewModels
             NavigationService.NavigateAsync("SamplePage", np);
             IsLoading = false;
         }
+
+        /// <summary>
+        /// This method to navigate to stores fro app updates
+        /// </summary>
         private async void AppUpdate()
         {
             if (Device.RuntimePlatform == Device.Android)
@@ -179,6 +202,10 @@ namespace ESORR.ViewModels
                 IsAppUpdateVisible = false;
             }
         }
+
+        /// <summary>
+        /// This method hits when the user click on Cancel button in app update
+        /// </summary>
         private void Cancel()
         {
             IsAppUpdateVisible = false;

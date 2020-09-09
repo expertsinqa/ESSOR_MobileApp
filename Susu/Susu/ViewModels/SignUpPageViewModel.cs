@@ -96,6 +96,9 @@ namespace Susu.ViewModels
         }
         #endregion
         #region Functions
+        /// <summary>
+        /// Method to Create the user
+        /// </summary>
         public async void CreateAccount()
         {
             if(string.IsNullOrWhiteSpace(FirstName))
@@ -218,22 +221,35 @@ namespace Susu.ViewModels
             //    await App.Current.MainPage.DisplayAlert("", "Something went wrong", "OK");
             //}
         }
+
+        /// <summary>
+        /// Method to open Login
+        /// </summary>
         public async void Login()
         {
            await NavigationService.NavigateAsync("LoginPage");
         }
 
+        /// <summary>
+        /// Method to close success Message
+        /// </summary>
         public void close()
         {
             IsSuccessMessageVisible = false;
         }
 
+        /// <summary>
+        /// Method to open privacy policy 
+        /// </summary>
+        /// <param name="obj"></param>
         private async void PrivacyPolicy(object obj)
         {
-            //await Browser.OpenAsync("https://esorr.com/privatepolicy.html");
             await NavigationService.NavigateAsync("PrivacyPolicyPage");
         }
 
+        /// <summary>
+        /// Method hit when user check the privacy policy check box
+        /// </summary>
         private void checkprivacyPloicy()
         {
             if (PrivacyPolicyImage.ToString().Contains("check_box_empty.png"))
